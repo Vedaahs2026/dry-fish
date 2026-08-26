@@ -45,4 +45,4 @@ playwright-report/
 test-results/
 
 # Database
-sqlite.db
+# sqlite.db
