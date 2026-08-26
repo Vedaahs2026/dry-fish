@@ -93,7 +93,8 @@ export default function AdminLogin() {
         const result = await confirmationResult.confirm(otp);
         idToken = await result.user.getIdToken();
       } else {
-        if (otp !== "999999") {
+        const adminPass = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "999999";
+        if (otp !== adminPass) {
           throw new Error("Invalid verification code. Please use the correct password.");
         }
       }
