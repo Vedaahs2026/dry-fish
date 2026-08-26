@@ -171,7 +171,7 @@ export default function Home() {
                     }}
                   />
                 </div>
-                <span className="mt-2 text-[10px] sm:text-xs font-bold tracking-wide text-brand/85 group-hover:text-[#064e3b] transition-colors text-center w-full max-w-[6.5rem] break-words block">
+                <span className="mt-2 text-[10px] sm:text-xs font-bold tracking-wide text-black group-hover:text-[#064e3b] transition-colors text-center w-full max-w-[6.5rem] break-words block">
                   {item.name}
                 </span>
               </Link>
@@ -416,8 +416,8 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center text-center mb-12 border-b border-brand/10 pb-6"
             >
-              <h2 className="text-4xl font-playfair font-bold mb-3 text-brand">Customer Testimonials</h2>
-              <p className="text-brand/60 italic">See what our customers love about our traditional delicacies.</p>
+              <h2 className="text-4xl font-playfair font-bold mb-3 text-black">Customer Testimonials</h2>
+              <p className="text-gray-600 italic">See what our customers love about our traditional delicacies.</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -78,14 +78,14 @@ export default function ProductGrid() {
         className="flex flex-col items-center text-center mb-12 border-b border-brand/10 pb-6"
       >
         <div>
-          <h2 className="text-4xl font-playfair font-bold mb-3 text-brand">Featured Products</h2>
-          <p className="text-brand/60 italic">Handpicked premium dry fish delicacies.</p>
+          <h2 className="text-4xl font-playfair font-bold mb-3 text-black">Featured Products</h2>
+          <p className="text-gray-600 italic">Handpicked premium dry fish delicacies.</p>
         </div>
       </motion.div>
 
       {products.length === 0 ? (
         <div className="py-20 text-center border-2 border-dashed border-brand/10 rounded-3xl">
-          <p className="text-brand/30 font-bold uppercase tracking-widest text-xs">New collections coming soon</p>
+          <p className="text-black/40 font-bold uppercase tracking-widest text-xs">New collections coming soon</p>
         </div>
       ) : (
         <motion.div 
