@@ -235,8 +235,8 @@ export default function WishlistPage() {
         
         {/* Header */}
         <div className="flex items-center space-x-4 mb-10">
-          <h1 className="text-4xl font-playfair font-bold text-brand">My Wishlist</h1>
-          <span className="bg-brand/5 text-brand/60 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+          <h1 className="text-4xl font-playfair font-bold text-black">My Wishlist</h1>
+          <span className="bg-brand/5 text-black/60 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
             {wishlistItems.length} {wishlistItems.length === 1 ? "Item" : "Items"}
           </span>
         </div>
@@ -470,7 +470,7 @@ export default function WishlistPage() {
                                   onClick={() => setSelectedSize(size)}
                                   className={`w-12 h-12 rounded-full border flex items-center justify-center font-bold text-xs transition-all cursor-pointer ${
                                     isOutOfStock
-                                      ? "border-brand/5 bg-brand/5 text-brand/20 cursor-not-allowed line-through"
+                                      ? "border-brand/5 bg-brand/5 text-black/20 cursor-not-allowed line-through"
                                       : selectedSize === size
                                       ? "bg-[#eab308] text-[#064e3b] border-transparent scale-105 shadow-sm"
                                       : "border-[#1B3022]/10 bg-white text-[#1B3022] hover:border-[#064e3b]/50 hover:bg-[#eab308]/5"

@@ -72,10 +72,10 @@ export default function ProfilePage() {
     <div className="max-w-4xl mx-auto px-4 py-16">
       <div className="mb-10 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Link href="/" className="p-2 rounded-full bg-white border border-brand/5 hover:border-[#C5A059]/30 transition-all text-brand">
+          <Link href="/" className="p-2 rounded-full bg-white border border-brand/5 hover:border-[#C5A059]/30 transition-all text-black">
             <ArrowLeft size={20} />
           </Link>
-          <h1 className="text-4xl font-playfair font-bold text-brand">Edit Profile</h1>
+          <h1 className="text-4xl font-playfair font-bold text-black">Edit Profile</h1>
         </div>
       </div>
 
@@ -84,16 +84,16 @@ export default function ProfilePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Name Input */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-brand/60 uppercase tracking-widest ml-1">Full Name</label>
+              <label className="text-xs font-bold text-black/60 uppercase tracking-widest ml-1">Full Name</label>
               <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-brand/40">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-black/40">
                   <User size={18} />
                 </div>
                 <input
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full bg-brand-light border border-brand/10 rounded-2xl py-4 pl-12 pr-4 text-brand font-medium focus:outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] transition-all"
+                  className="w-full bg-brand-light border border-brand/10 rounded-2xl py-4 pl-12 pr-4 text-black font-medium focus:outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059] transition-all"
                   placeholder="Your full name"
                   required
                 />
@@ -102,19 +102,19 @@ export default function ProfilePage() {
 
             {/* Phone (Read Only) */}
             <div className="space-y-2">
-              <label className="text-xs font-bold text-brand/60 uppercase tracking-widest ml-1">Phone Number</label>
+              <label className="text-xs font-bold text-black/60 uppercase tracking-widest ml-1">Phone Number</label>
               <div className="relative opacity-60">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-brand/40">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-black/40">
                   <Phone size={18} />
                 </div>
                 <input
                   type="text"
                   value={phoneNumber}
                   readOnly
-                  className="w-full bg-brand/5 border border-brand/10 rounded-2xl py-4 pl-12 pr-4 text-brand font-medium cursor-not-allowed"
+                  className="w-full bg-brand/5 border border-brand/10 rounded-2xl py-4 pl-12 pr-4 text-black font-medium cursor-not-allowed"
                 />
               </div>
-              <p className="text-[10px] text-brand/40 ml-1">Phone number cannot be changed</p>
+              <p className="text-[10px] text-black/40 ml-1">Phone number cannot be changed</p>
             </div>
           </div>
 

@@ -21,10 +21,10 @@ export default function RefineDrawer({ isOpen, onClose, baseSize }: DrawerProps)
     <div className="py-6 border-b border-brand/10">
       <div className="flex justify-between items-start mb-2">
         <div>
-          <h4 className="text-sm font-bold text-brand tracking-wider uppercase">{title}</h4>
-          <p className="text-xs text-brand/60 mt-1 font-medium">{desc}</p>
+          <h4 className="text-sm font-bold text-black tracking-wider uppercase">{title}</h4>
+          <p className="text-xs text-black/60 mt-1 font-medium">{desc}</p>
         </div>
-        <span className="text-brand font-mono text-sm font-bold bg-brand-accent/20 px-2 py-1 rounded">
+        <span className="text-black font-mono text-sm font-bold bg-brand-accent/20 px-2 py-1 rounded">
           {formatAdj(value)}
         </span>
       </div>
@@ -32,7 +32,7 @@ export default function RefineDrawer({ isOpen, onClose, baseSize }: DrawerProps)
       <div className="flex items-center space-x-4 mt-4">
         <button 
           onClick={() => setValue(Math.max(min, value - step))}
-          className="p-2 rounded-full bg-white border border-brand/20 hover:border-brand text-brand transition-colors shadow-sm"
+          className="p-2 rounded-full bg-white border border-brand/20 hover:border-brand text-black transition-colors shadow-sm"
         >
           <Minus size={16} />
         </button>
@@ -46,7 +46,7 @@ export default function RefineDrawer({ isOpen, onClose, baseSize }: DrawerProps)
 
         <button 
           onClick={() => setValue(Math.min(max, value + step))}
-          className="p-2 rounded-full bg-white border border-brand/20 hover:border-brand text-brand transition-colors shadow-sm"
+          className="p-2 rounded-full bg-white border border-brand/20 hover:border-brand text-black transition-colors shadow-sm"
         >
           <Plus size={16} />
         </button>
@@ -76,14 +76,14 @@ export default function RefineDrawer({ isOpen, onClose, baseSize }: DrawerProps)
             <div className="p-6 border-b border-brand/10 flex justify-between items-center bg-white border-t-4 border-t-brand-accent">
               <div className="flex items-center space-x-3">
                 <div className="p-2 bg-brand-light rounded-md border border-brand/10">
-                  <Ruler className="text-brand-accent" size={20} />
+                  <Ruler className="text-black-accent" size={20} />
                 </div>
                 <div>
-                  <h2 className="text-lg font-serif font-bold text-brand">Refine Your Fit</h2>
-                  <p className="text-xs text-brand/60 font-semibold">Base Size: {baseSize || "Not selected"}</p>
+                  <h2 className="text-lg font-serif font-bold text-black">Refine Your Fit</h2>
+                  <p className="text-xs text-black/60 font-semibold">Base Size: {baseSize || "Not selected"}</p>
                 </div>
               </div>
-              <button onClick={onClose} className="p-2 text-brand/50 hover:text-brand transition">
+              <button onClick={onClose} className="p-2 text-black/50 hover:text-black transition">
                 <X size={20} />
               </button>
             </div>

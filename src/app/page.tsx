@@ -141,7 +141,7 @@ export default function Home() {
   }, [offers]);
 
   return (
-    <div className="min-h-screen bg-brand-light text-brand font-sans selection:bg-brand-accent/30">
+    <div className="min-h-screen bg-brand-light text-black font-sans selection:bg-brand-accent/30">
 
       {/* 1. Circular Categories Row (rendered just below navbar) */}
       <section className="w-full bg-[#FFFDF6] border-b border-brand/5 py-4">
@@ -300,7 +300,7 @@ export default function Home() {
                     (prev) => (prev - 1 + banners.length) % banners.length
                   )
                 }
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-brand shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-black shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
               >
                 <ChevronLeft size={20} />
               </button>
@@ -309,7 +309,7 @@ export default function Home() {
                 onClick={() =>
                   setCurrentBannerIndex((prev) => (prev + 1) % banners.length)
                 }
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-brand shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-black shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
               >
                 <ChevronRight size={20} />
               </button>
@@ -433,16 +433,16 @@ export default function Home() {
                         <Star
                           key={i}
                           size={14}
-                          className={i < review.rating ? "fill-[#C5A059] text-[#C5A059]" : "text-brand/15"}
+                          className={i < review.rating ? "fill-[#C5A059] text-[#C5A059]" : "text-black/15"}
                         />
                       ))}
                     </div>
-                    <p className="text-brand/75 text-sm italic leading-relaxed mb-6">
+                    <p className="text-black/75 text-sm italic leading-relaxed mb-6">
                       "{review.comment}"
                     </p>
                   </div>
                   <div className="border-t border-brand/5 pt-4 flex items-center justify-between">
-                    <span className="text-xs font-bold text-brand">{review.userName}</span>
+                    <span className="text-xs font-bold text-black">{review.userName}</span>
                     {review.designation && (
                       <span className="text-[10px] font-black text-[#C5A059] uppercase tracking-wider">{review.designation}</span>
                     )}

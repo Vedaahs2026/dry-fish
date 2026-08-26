@@ -107,8 +107,8 @@ export default function InventoryPage() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center py-40">
-        <Loader2 className="animate-spin text-brand-accent mb-4" size={40} />
-        <p className="text-brand/40 font-bold uppercase tracking-widest text-xs">Syncing Inventory...</p>
+        <Loader2 className="animate-spin text-black-accent mb-4" size={40} />
+        <p className="text-black/40 font-bold uppercase tracking-widest text-xs">Syncing Inventory...</p>
       </div>
     );
   }
@@ -124,19 +124,19 @@ export default function InventoryPage() {
     <div className="pb-20 px-8 pt-8">
       {/* Header section */}
       <div className="mb-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Inventory Management</h1>
-        <p className="mt-2 text-brand/60 font-medium">Real-time stock tracking and fulfillment metrics.</p>
+        <h1 className="text-4xl font-playfair font-bold text-black">Inventory Management</h1>
+        <p className="mt-2 text-black/60 font-medium">Real-time stock tracking and fulfillment metrics.</p>
       </div>
 
       <div className="mb-10 flex justify-center">
         <div className="relative group min-w-[350px] max-w-md w-full">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand/30 group-focus-within:text-[#C5A059] transition-colors" size={18} />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black/30 group-focus-within:text-[#C5A059] transition-colors" size={18} />
           <input 
             type="text" 
             placeholder="Search products or categories..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-white border border-brand/10 rounded-2xl py-4 pl-12 pr-6 text-sm font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+            className="w-full bg-white border border-brand/10 rounded-2xl py-4 pl-12 pr-6 text-sm font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
           />
         </div>
       </div>
@@ -153,8 +153,8 @@ export default function InventoryPage() {
               className={`
                 flex items-center space-x-2 px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all
                 ${isActive 
-                  ? "bg-brand text-brand-accent shadow-lg shadow-brand/20 scale-105" 
-                  : "text-brand/40 hover:text-brand hover:bg-white"
+                  ? "bg-brand text-black-accent shadow-lg shadow-brand/20 scale-105" 
+                  : "text-black/40 hover:text-black hover:bg-white"
                 }
               `}
             >
@@ -171,10 +171,10 @@ export default function InventoryPage() {
         {Object.keys(filteredData).length === 0 ? (
           <div className="bg-white rounded-[2.5rem] p-20 shadow-sm border border-brand/5 text-center">
             <div className="w-20 h-20 bg-brand/5 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Box size={40} className="text-brand/20" />
+              <Box size={40} className="text-black/20" />
             </div>
-            <h3 className="text-2xl font-playfair font-bold text-brand mb-2">No products found</h3>
-            <p className="text-brand/60 font-medium max-w-sm mx-auto">Try adjusting your search terms to find specific inventory items.</p>
+            <h3 className="text-2xl font-playfair font-bold text-black mb-2">No products found</h3>
+            <p className="text-black/60 font-medium max-w-sm mx-auto">Try adjusting your search terms to find specific inventory items.</p>
           </div>
         ) : (
           (() => {
@@ -226,12 +226,12 @@ export default function InventoryPage() {
                       >
                         <div className="flex items-center space-x-3">
                           <div className="w-2 h-2 rounded-full bg-[#C5A059]" />
-                          <h2 className="text-sm font-black uppercase tracking-widest text-brand">{category}</h2>
-                          <span className="text-[10px] font-bold text-brand/30 bg-white border border-brand/5 px-2 py-0.5 rounded-full">
+                          <h2 className="text-sm font-black uppercase tracking-widest text-black">{category}</h2>
+                          <span className="text-[10px] font-bold text-black/30 bg-white border border-brand/5 px-2 py-0.5 rounded-full">
                             {categoryTotalCounts[category]} Products
                           </span>
                         </div>
-                        {expandedCategories.includes(category) ? <ChevronUp size={16} className="text-brand/30" /> : <ChevronDown size={16} className="text-brand/30" />}
+                        {expandedCategories.includes(category) ? <ChevronUp size={16} className="text-black/30" /> : <ChevronDown size={16} className="text-black/30" />}
                       </button>
 
                       {expandedCategories.includes(category) && (
@@ -244,17 +244,17 @@ export default function InventoryPage() {
                                   {product.image ? (
                                     <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                   ) : (
-                                    <div className="w-full h-full flex items-center justify-center text-brand/20">
+                                    <div className="w-full h-full flex items-center justify-center text-black/20">
                                       <ImageIcon size={24} />
                                     </div>
                                   )}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <h3 className="text-lg font-bold text-brand truncate mb-1">{product.name}</h3>
+                                  <h3 className="text-lg font-bold text-black truncate mb-1">{product.name}</h3>
                                   <div className="flex items-center space-x-2">
                                     <span className="text-[10px] font-black text-[#C5A059] uppercase tracking-widest">₹{product.basePrice.toLocaleString()}</span>
-                                    <span className="text-brand/10">|</span>
-                                    <span className="text-[10px] font-bold text-brand/40 uppercase tracking-widest truncate">{product.category}</span>
+                                    <span className="text-black/10">|</span>
+                                    <span className="text-[10px] font-bold text-black/40 uppercase tracking-widest truncate">{product.category}</span>
                                   </div>
                                 </div>
                               </div>
@@ -262,10 +262,10 @@ export default function InventoryPage() {
                               {/* Stats Grid */}
                               <div className="grid grid-cols-3 gap-3">
                                 <div className={`p-4 rounded-2xl border text-center ${product.remaining < 10 ? 'bg-red-50/50 border-red-100/50' : 'bg-brand/5 border-brand/5'}`}>
-                                  <p className={`text-[8px] font-black uppercase tracking-widest mb-1 ${product.remaining < 10 ? 'text-red-600' : 'text-brand/40'}`}>Remaining</p>
+                                  <p className={`text-[8px] font-black uppercase tracking-widest mb-1 ${product.remaining < 10 ? 'text-red-600' : 'text-black/40'}`}>Remaining</p>
                                   <div className="flex items-center justify-center space-x-1">
                                     {product.remaining < 10 && <AlertCircle size={12} className="text-red-500" />}
-                                    <p className={`text-lg font-black ${product.remaining < 10 ? 'text-red-700' : 'text-brand'}`}>{product.remaining}</p>
+                                    <p className={`text-lg font-black ${product.remaining < 10 ? 'text-red-700' : 'text-black'}`}>{product.remaining}</p>
                                   </div>
                                 </div>
 
@@ -315,7 +315,7 @@ export default function InventoryPage() {
                                         {/* Size Title & Summary Header */}
                                         <div className="flex items-center justify-between">
                                           {/* Size Badge */}
-                                          <div className="bg-white border border-brand/10 rounded-xl px-3.5 py-1.5 text-xs font-black text-brand shadow-sm min-w-[50px] text-center">
+                                          <div className="bg-white border border-brand/10 rounded-xl px-3.5 py-1.5 text-xs font-black text-black shadow-sm min-w-[50px] text-center">
                                             {v.size}
                                           </div>
                                           
@@ -348,11 +348,11 @@ export default function InventoryPage() {
                                                     backgroundColor: getHexColor(c.color) 
                                                   }} 
                                                 />
-                                                <span className="text-brand/70 font-semibold">{c.color.includes("::") ? c.color.split("::")[0] : c.color}</span>
+                                                <span className="text-black/70 font-semibold">{c.color.includes("::") ? c.color.split("::")[0] : c.color}</span>
                                               </div>
                                               
                                               {/* Stats breakdown */}
-                                              <div className="flex space-x-6 text-[10px] font-bold text-right text-brand/40">
+                                              <div className="flex space-x-6 text-[10px] font-bold text-right text-black/40">
                                                 <span className="min-w-[45px] text-rose-500/70">{c.remaining} left</span>
                                                 <span className="min-w-[45px] text-green-500/70">{c.sold} sold</span>
                                                 <span className="min-w-[55px] text-blue-500/70">{c.toBeDelivered} pending</span>
@@ -379,7 +379,7 @@ export default function InventoryPage() {
                     <button
                       onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                       disabled={currentPage === 1}
-                      className="px-3 py-1.5 rounded-xl border border-brand/10 text-xs font-bold text-brand hover:bg-brand/5 disabled:opacity-40 disabled:hover:bg-transparent transition-all cursor-pointer"
+                      className="px-3 py-1.5 rounded-xl border border-brand/10 text-xs font-bold text-black hover:bg-brand/5 disabled:opacity-40 disabled:hover:bg-transparent transition-all cursor-pointer"
                     >
                       Prev
                     </button>
@@ -394,7 +394,7 @@ export default function InventoryPage() {
                           className={`w-8 h-8 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                             isCurrent
                               ? "bg-brand text-[#C5A059] shadow-md scale-105"
-                              : "border border-brand/10 text-brand hover:bg-brand/5"
+                              : "border border-brand/10 text-black hover:bg-brand/5"
                           }`}
                         >
                           {pageNum}
@@ -405,7 +405,7 @@ export default function InventoryPage() {
                     <button
                       onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                       disabled={currentPage === totalPages}
-                      className="px-3 py-1.5 rounded-xl border border-brand/10 text-xs font-bold text-brand hover:bg-brand/5 disabled:opacity-40 disabled:hover:bg-transparent transition-all cursor-pointer"
+                      className="px-3 py-1.5 rounded-xl border border-brand/10 text-xs font-bold text-black hover:bg-brand/5 disabled:opacity-40 disabled:hover:bg-transparent transition-all cursor-pointer"
                     >
                       Next
                     </button>

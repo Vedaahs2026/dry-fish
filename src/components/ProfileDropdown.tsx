@@ -49,14 +49,14 @@ export default function ProfileDropdown({ user, onLogout }: ProfileDropdownProps
       {isOpen && (
         <div className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-brand/5 overflow-hidden z-[60] animate-in slide-in-from-top-2 duration-200">
           <div className="p-5 bg-brand/5 border-b border-brand/5">
-            <div className="text-sm font-bold text-brand truncate">{user.fullName || "User"}</div>
-            <div className="text-[10px] text-brand/40 tracking-widest uppercase font-medium mt-1">{user.phoneNumber}</div>
+            <div className="text-sm font-bold text-black truncate">{user.fullName || "User"}</div>
+            <div className="text-[10px] text-black/40 tracking-widest uppercase font-medium mt-1">{user.phoneNumber}</div>
           </div>
           
           <div className="p-2">
             <Link 
               href="/account/profile" 
-              className="flex items-center space-x-3 px-4 py-3 rounded-xl text-brand/70 hover:bg-brand/5 hover:text-brand transition-all group"
+              className="flex items-center space-x-3 px-4 py-3 rounded-xl text-black/70 hover:bg-brand/5 hover:text-black transition-all group"
               onClick={() => setIsOpen(false)}
             >
               <div className="p-2 rounded-lg bg-brand/5 group-hover:bg-white transition-colors">
@@ -67,7 +67,7 @@ export default function ProfileDropdown({ user, onLogout }: ProfileDropdownProps
 
             <Link 
               href="/profile/orders" 
-              className="flex items-center space-x-3 px-4 py-3 rounded-xl text-brand/70 hover:bg-brand/5 hover:text-brand transition-all group"
+              className="flex items-center space-x-3 px-4 py-3 rounded-xl text-black/70 hover:bg-brand/5 hover:text-black transition-all group"
               onClick={() => setIsOpen(false)}
             >
               <div className="p-2 rounded-lg bg-brand/5 group-hover:bg-white transition-colors">
@@ -78,7 +78,7 @@ export default function ProfileDropdown({ user, onLogout }: ProfileDropdownProps
 
             <Link 
               href="/account/address" 
-              className="flex items-center space-x-3 px-4 py-3 rounded-xl text-brand/70 hover:bg-brand/5 hover:text-brand transition-all group"
+              className="flex items-center space-x-3 px-4 py-3 rounded-xl text-black/70 hover:bg-brand/5 hover:text-black transition-all group"
               onClick={() => setIsOpen(false)}
             >
               <div className="p-2 rounded-lg bg-brand/5 group-hover:bg-white transition-colors">

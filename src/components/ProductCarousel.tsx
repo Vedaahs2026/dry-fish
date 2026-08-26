@@ -34,7 +34,7 @@ export default function ProductCarousel({ title, products }: ProductCarouselProp
   return (
     <section className="py-6 border-b border-brand/5 last:border-0">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl md:text-3xl font-playfair font-bold text-brand tracking-tight">{title}</h2>
+        <h2 className="text-2xl md:text-3xl font-playfair font-bold text-black tracking-tight">{title}</h2>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 animate-in fade-in duration-300">
@@ -69,8 +69,8 @@ export default function ProductCarousel({ title, products }: ProductCarouselProp
             disabled={currentPage === 1}
             className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
               currentPage === 1
-                ? "bg-brand/5 text-brand/30 border border-brand/5 cursor-not-allowed opacity-60"
-                : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                ? "bg-brand/5 text-black/30 border border-brand/5 cursor-not-allowed opacity-60"
+                : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
             }`}
           >
             Prev
@@ -86,7 +86,7 @@ export default function ProductCarousel({ title, products }: ProductCarouselProp
                 className={`w-10 h-10 rounded-2xl text-xs font-bold transition-all ${
                   isCurrent
                     ? "bg-brand text-[#C5A059] shadow-md scale-105"
-                    : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                    : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
                 }`}
               >
                 {pageNum}
@@ -99,8 +99,8 @@ export default function ProductCarousel({ title, products }: ProductCarouselProp
             disabled={currentPage === totalPages}
             className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
               currentPage === totalPages
-                ? "bg-brand/5 text-brand/30 border border-brand/5 cursor-not-allowed opacity-60"
-                : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                ? "bg-brand/5 text-black/30 border border-brand/5 cursor-not-allowed opacity-60"
+                : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
             }`}
           >
             Next

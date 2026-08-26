@@ -116,7 +116,7 @@ export default function Login() {
       <div id="recaptcha-container"></div>
 
       <div className="absolute top-8 left-8">
-        <Link href="/" className="inline-flex items-center space-x-2 text-brand/60 hover:text-brand transition text-sm font-medium">
+        <Link href="/" className="inline-flex items-center space-x-2 text-black/60 hover:text-black transition text-sm font-medium">
           <ArrowLeft size={16} />
           <span>Back to Home</span>
         </Link>
@@ -124,13 +124,13 @@ export default function Login() {
 
       <div className="w-full max-w-md bg-white border border-brand/10 rounded-2xl p-10 shadow-2xl border-t-8 border-t-brand-accent transform transition-all">
         <div className="text-center mb-10">
-          <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-brand flex items-center justify-center text-brand-accent font-bold text-3xl shadow-lg rotate-3 hover:rotate-0 transition-transform">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-brand flex items-center justify-center text-black-accent font-bold text-3xl shadow-lg rotate-3 hover:rotate-0 transition-transform">
             D
           </div>
-          <h2 className="text-3xl font-playfair font-bold text-brand mb-3">
+          <h2 className="text-3xl font-playfair font-bold text-black mb-3">
             {step === "profile" ? "Welcome to Dry Fish Basket" : "Sign In"}
           </h2>
-          <p className="text-brand/60 text-sm leading-relaxed px-4">
+          <p className="text-black/60 text-sm leading-relaxed px-4">
             {step === "phone" && "Enter your 10-digit mobile number to access your account."}
             {step === "otp" && `We've sent a 6-digit verification code to +91 ${phone}`}
             {step === "profile" && "One last step! Tell us your name to personalize your experience."}
@@ -147,18 +147,18 @@ export default function Login() {
         {step === "phone" && (
           <form onSubmit={handleSendOTP} className="space-y-6">
             <div>
-              <label className="block text-[10px] font-black text-brand/40 uppercase mb-2 tracking-[0.2em] ml-1">Mobile Number</label>
+              <label className="block text-[10px] font-black text-black/40 uppercase mb-2 tracking-[0.2em] ml-1">Mobile Number</label>
               <div className="relative group">
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center space-x-2 border-r border-brand/10 pr-3">
-                  <Phone size={14} className="text-brand-accent" />
-                  <span className="text-brand font-bold text-sm">+91</span>
+                  <Phone size={14} className="text-black-accent" />
+                  <span className="text-black font-bold text-sm">+91</span>
                 </div>
                 <input 
                   type="tel" 
                   value={phone}
                   onChange={handlePhoneChange}
                   placeholder="Enter 10 digits" 
-                  className="w-full bg-brand/5 border-2 border-transparent focus:border-brand-accent/30 focus:bg-white rounded-xl py-4 pl-20 pr-4 text-brand font-bold tracking-widest placeholder:text-brand/20 placeholder:tracking-normal transition-all outline-none"
+                  className="w-full bg-brand/5 border-2 border-transparent focus:border-brand-accent/30 focus:bg-white rounded-xl py-4 pl-20 pr-4 text-black font-bold tracking-widest placeholder:text-black/20 placeholder:tracking-normal transition-all outline-none"
                   required
                 />
               </div>
@@ -181,26 +181,26 @@ export default function Login() {
         {step === "otp" && (
           <form onSubmit={handleVerifyOTP} className="space-y-6">
             <div>
-              <label className="block text-[10px] font-black text-brand/40 uppercase mb-2 tracking-[0.2em] ml-1">Verification Code</label>
+              <label className="block text-[10px] font-black text-black/40 uppercase mb-2 tracking-[0.2em] ml-1">Verification Code</label>
               <div className="relative">
-                <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-accent" size={18} />
+                <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 text-black-accent" size={18} />
                 <input 
                   type="text" 
                   inputMode="numeric"
                   value={otp}
                   onChange={handleOtpChange}
                   placeholder="0 0 0 0 0 0" 
-                  className="w-full bg-brand/5 border-2 border-transparent focus:border-brand-accent/30 focus:bg-white rounded-xl py-4 px-12 text-brand font-mono font-bold text-center text-2xl tracking-[0.5em] placeholder:text-brand/10 placeholder:tracking-normal transition-all outline-none"
+                  className="w-full bg-brand/5 border-2 border-transparent focus:border-brand-accent/30 focus:bg-white rounded-xl py-4 px-12 text-black font-mono font-bold text-center text-2xl tracking-[0.5em] placeholder:text-black/10 placeholder:tracking-normal transition-all outline-none"
                   required
                 />
               </div>
               <div className="flex justify-between mt-4 px-1">
-                <button type="button" onClick={() => setStep("phone")} className="text-xs text-brand/40 hover:text-brand font-bold transition-colors">Change Number</button>
+                <button type="button" onClick={() => setStep("phone")} className="text-xs text-black/40 hover:text-black font-bold transition-colors">Change Number</button>
                 <button 
                   type="button" 
                   onClick={handleSendOTP}
                   disabled={timer > 0 || loading}
-                  className={`text-xs font-bold ${timer > 0 ? "text-brand/30 cursor-not-allowed" : "text-brand-accent hover:underline"}`}
+                  className={`text-xs font-bold ${timer > 0 ? "text-black/30 cursor-not-allowed" : "text-black-accent hover:underline"}`}
                 >
                   {timer > 0 ? `Resend in ${timer}s` : "Resend Code"}
                 </button>
@@ -224,15 +224,15 @@ export default function Login() {
         {step === "profile" && (
           <form onSubmit={handleSaveProfile} className="space-y-6">
             <div>
-              <label className="block text-[10px] font-black text-brand/40 uppercase mb-2 tracking-[0.2em] ml-1">Full Name</label>
+              <label className="block text-[10px] font-black text-black/40 uppercase mb-2 tracking-[0.2em] ml-1">Full Name</label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-accent" size={18} />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-black-accent" size={18} />
                 <input 
                   type="text" 
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="e.g. Arjun Kapoor" 
-                  className="w-full bg-brand/5 border-2 border-transparent focus:border-brand-accent/30 focus:bg-white rounded-xl py-4 px-12 text-brand font-bold transition-all outline-none"
+                  className="w-full bg-brand/5 border-2 border-transparent focus:border-brand-accent/30 focus:bg-white rounded-xl py-4 px-12 text-black font-bold transition-all outline-none"
                   required
                 />
               </div>
@@ -252,8 +252,8 @@ export default function Login() {
         )}
       </div>
 
-      <p className="mt-10 text-center text-[10px] text-brand/40 max-w-xs leading-relaxed uppercase tracking-widest font-bold">
-        Secure login powered by Dry Fish Basket. By continuing, you agree to our <a href="#" className="text-brand hover:underline">Terms</a> & <a href="#" className="text-brand hover:underline">Privacy</a>.
+      <p className="mt-10 text-center text-[10px] text-black/40 max-w-xs leading-relaxed uppercase tracking-widest font-bold">
+        Secure login powered by Dry Fish Basket. By continuing, you agree to our <a href="#" className="text-black hover:underline">Terms</a> & <a href="#" className="text-black hover:underline">Privacy</a>.
       </p>
     </div>
   );

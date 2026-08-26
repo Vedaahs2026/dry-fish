@@ -63,7 +63,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="relative w-full aspect-[4/5] overflow-hidden bg-brand-light/50 border-b border-brand/5">
         {product.isCustomizable && (
           <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-brand/10 shadow-sm">
-            <span className="text-[8px] font-black uppercase tracking-[0.15em] text-brand">Customizable</span>
+            <span className="text-[8px] font-black uppercase tracking-[0.15em] text-black">Customizable</span>
           </div>
         )}
         <HoverImageCarousel 

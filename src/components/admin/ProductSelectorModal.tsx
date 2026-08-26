@@ -188,52 +188,52 @@ export default function ProductSelectorModal({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2">Product Name *</label>
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2">Product Name *</label>
                   <input 
                     type="text" 
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
                     placeholder="e.g. Silk Saree"
-                    className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-brand outline-none transition-all"
+                    className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-black outline-none transition-all"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2">MRP (₹) *</label>
+                    <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2">MRP (₹) *</label>
                     <input 
                       type="number" 
                       value={newPrice}
                       onChange={(e) => setNewPrice(e.target.value)}
                       placeholder="1200"
-                      className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-brand outline-none transition-all"
+                      className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-black outline-none transition-all"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2">Sale Price (₹) *</label>
+                    <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2">Sale Price (₹) *</label>
                     <input 
                       type="number" 
                       value={newSalePrice}
                       onChange={(e) => setNewSalePrice(e.target.value)}
                       placeholder="999"
-                      className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-brand outline-none transition-all"
+                      className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-black outline-none transition-all"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2">Category</label>
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2">Category</label>
                   <input 
                     type="text" 
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value)}
                     placeholder="e.g. Saree, Nighty"
-                    className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-brand outline-none transition-all"
+                    className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-black outline-none transition-all"
                   />
                 </div>
               </div>
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2">Image URL</label>
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2">Image URL</label>
                   <div className="border-2 border-dashed border-brand/10 rounded-3xl p-6 text-center hover:border-[#C5A059]/30 transition-all group">
                     {newImageUrl ? (
                       <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
@@ -242,8 +242,8 @@ export default function ProductSelectorModal({
                       </div>
                     ) : (
                       <div className="py-4">
-                        <Plus size={32} className="mx-auto text-brand/10 mb-2 group-hover:text-[#C5A059]/50 transition-colors" />
-                        <p className="text-[10px] font-black text-brand/30 uppercase tracking-widest">Paste Image Link Below</p>
+                        <Plus size={32} className="mx-auto text-black/10 mb-2 group-hover:text-[#C5A059]/50 transition-colors" />
+                        <p className="text-[10px] font-black text-black/30 uppercase tracking-widest">Paste Image Link Below</p>
                       </div>
                     )}
                     <input 
@@ -251,13 +251,13 @@ export default function ProductSelectorModal({
                       value={newImageUrl}
                       onChange={(e) => setNewImageUrl(e.target.value)}
                       placeholder="https://..."
-                      className="w-full bg-white border border-brand/10 rounded-xl py-3 px-4 text-xs font-bold text-brand outline-none focus:border-[#C5A059]/30 transition-all shadow-sm"
+                      className="w-full bg-white border border-brand/10 rounded-xl py-3 px-4 text-xs font-bold text-black outline-none focus:border-[#C5A059]/30 transition-all shadow-sm"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2">Quantity & Variations (Click to add)</label>
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2">Quantity & Variations (Click to add)</label>
                   <div className="flex flex-wrap gap-2">
                     {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map(size => {
                       const isSelected = newSizes.find(s => s.size === size);
@@ -269,7 +269,7 @@ export default function ProductSelectorModal({
                           className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
                             isSelected 
                               ? "bg-brand text-[#064e3b] border-brand" 
-                              : "bg-brand/5 text-brand/50 border-transparent hover:border-brand/10"
+                              : "bg-brand/5 text-black/50 border-transparent hover:border-brand/10"
                           }`}
                         >
                           {size}
@@ -281,9 +281,9 @@ export default function ProductSelectorModal({
                     <div className="mt-4 space-y-2">
                       {newSizes.map(s => (
                         <div key={s.size} className="flex items-center justify-between bg-brand/5 p-3 rounded-xl">
-                          <span className="text-xs font-bold text-brand">{s.size}</span>
+                          <span className="text-xs font-bold text-black">{s.size}</span>
                           <div className="flex items-center space-x-2">
-                            <span className="text-[10px] font-black text-brand/40 uppercase tracking-widest">Stock:</span>
+                            <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Stock:</span>
                             <input 
                               type="number" 
                               value={s.stock}
@@ -291,19 +291,19 @@ export default function ProductSelectorModal({
                                 const val = parseInt(e.target.value) || 0;
                                 setNewSizes(newSizes.map(item => item.size === s.size ? { ...item, stock: val } : item));
                               }}
-                              className="w-16 bg-white border border-brand/10 rounded-lg px-2 py-1 text-xs font-bold text-brand outline-none"
+                              className="w-16 bg-white border border-brand/10 rounded-lg px-2 py-1 text-xs font-bold text-black outline-none"
                             />
                           </div>
                         </div>
                       ))}
                       <div className="pt-2 border-t border-brand/5 flex justify-between items-center">
-                        <span className="text-[10px] font-black text-brand/40 uppercase tracking-widest">Overall Stock:</span>
-                        <span className="text-sm font-bold text-brand">{newSizes.reduce((acc, s) => acc + s.stock, 0)}</span>
+                        <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Overall Stock:</span>
+                        <span className="text-sm font-bold text-black">{newSizes.reduce((acc, s) => acc + s.stock, 0)}</span>
                       </div>
                     </div>
                   ) : (
                     <div className="mt-4 p-4 bg-brand/5 rounded-2xl border border-dashed border-brand/10 text-center">
-                       <p className="text-[10px] font-black text-brand/20 uppercase tracking-widest">Default: Free Size (Stock: 10)</p>
+                       <p className="text-[10px] font-black text-black/20 uppercase tracking-widest">Default: Free Size (Stock: 10)</p>
                     </div>
                   )}
                 </div>
@@ -316,13 +316,13 @@ export default function ProductSelectorModal({
             {/* Search Bar */}
             <div className="p-4 bg-brand/5 border-b border-brand/5">
               <form onSubmit={handleSearch} className="relative max-w-md">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand/30" size={18} />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black/30" size={18} />
                 <input 
                   type="text" 
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search products by name or category..."
-                  className="w-full bg-white border border-brand/10 rounded-xl py-3 pl-12 pr-4 text-sm font-bold text-brand outline-none focus:border-[#C5A059]/30 transition-all shadow-sm"
+                  className="w-full bg-white border border-brand/10 rounded-xl py-3 pl-12 pr-4 text-sm font-bold text-black outline-none focus:border-[#C5A059]/30 transition-all shadow-sm"
                 />
               </form>
             </div>
@@ -330,7 +330,7 @@ export default function ProductSelectorModal({
             {/* Product List */}
             <div className="flex-1 overflow-y-auto p-4">
               {loading ? (
-                <div className="flex flex-col items-center justify-center py-20 text-brand/20">
+                <div className="flex flex-col items-center justify-center py-20 text-black/20">
                   <Loader2 className="w-10 h-10 animate-spin mb-4" />
                   <p className="text-xs font-black uppercase tracking-widest">Searching Inventory...</p>
                 </div>
@@ -356,8 +356,8 @@ export default function ProductSelectorModal({
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="text-sm font-bold text-brand truncate">{product.name}</h4>
-                          <p className="text-[10px] text-brand/40 uppercase font-black tracking-tighter mt-1">₹{(product.salePrice || 0).toLocaleString()}</p>
+                          <h4 className="text-sm font-bold text-black truncate">{product.name}</h4>
+                          <p className="text-[10px] text-black/40 uppercase font-black tracking-tighter mt-1">₹{(product.salePrice || 0).toLocaleString()}</p>
                         </div>
                         <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                           isSelected 
@@ -374,7 +374,7 @@ export default function ProductSelectorModal({
 
               {!loading && products.length === 0 && (
                 <div className="text-center py-20">
-                  <p className="text-brand/40 font-bold uppercase tracking-widest text-xs">No products found.</p>
+                  <p className="text-black/40 font-bold uppercase tracking-widest text-xs">No products found.</p>
                 </div>
               )}
             </div>
@@ -387,7 +387,7 @@ export default function ProductSelectorModal({
             <>
               <button 
                 onClick={() => setIsAdding(false)}
-                className="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs text-brand/40 hover:bg-brand/5 transition-all"
+                className="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs text-black/40 hover:bg-brand/5 transition-all"
               >
                 Back to Selection
               </button>
@@ -402,13 +402,13 @@ export default function ProductSelectorModal({
             </>
           ) : (
             <>
-              <div className="text-xs font-bold text-brand/40 uppercase tracking-widest">
+              <div className="text-xs font-bold text-black/40 uppercase tracking-widest">
                 {selectedIds.length} Products Selected
               </div>
               <div className="flex space-x-4">
                 <button 
                   onClick={onClose}
-                  className="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs text-brand/40 hover:bg-brand/5 transition-all"
+                  className="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs text-black/40 hover:bg-brand/5 transition-all"
                 >
                   Cancel
                 </button>

@@ -62,8 +62,8 @@ export default function ProductGrid() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center py-20">
-        <Loader2 className="animate-spin text-brand-accent mb-4" size={40} />
-        <p className="text-brand/40 font-bold uppercase tracking-widest text-xs">Curating Collections...</p>
+        <Loader2 className="animate-spin text-black-accent mb-4" size={40} />
+        <p className="text-black/40 font-bold uppercase tracking-widest text-xs">Curating Collections...</p>
       </div>
     );
   }

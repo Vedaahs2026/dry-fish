@@ -47,7 +47,7 @@ export default async function CategoryPage({ params }: PageProps) {
   if (!categoryName) {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center px-4">
-        <h1 className="text-4xl font-playfair font-bold text-brand mb-4">Category Not Found</h1>
+        <h1 className="text-4xl font-playfair font-bold text-black mb-4">Category Not Found</h1>
         <Link href="/" className="text-[#C5A059] font-bold uppercase tracking-widest text-xs hover:underline">Return Home</Link>
       </div>
     );

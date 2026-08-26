@@ -128,7 +128,7 @@ function EventMediaSlideshow({ mediaList }: { mediaList: string[] }) {
 
   if (mediaList.length === 0) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-brand/5 text-brand-accent/60 border border-brand/10 rounded-3xl">
+      <div className="w-full h-full flex items-center justify-center bg-brand/5 text-black-accent/60 border border-brand/10 rounded-3xl">
         <Sparkles size={48} className="animate-pulse" />
       </div>
     );
@@ -173,7 +173,7 @@ function EventMediaSlideshow({ mediaList }: { mediaList: string[] }) {
             e.stopPropagation();
             setIsLightboxOpen(true);
           }}
-          className="absolute top-4 right-4 z-20 p-2.5 bg-white/70 backdrop-blur-md border border-brand/10 rounded-xl text-brand hover:bg-brand hover:text-white hover:scale-105 transition-all shadow-md opacity-0 group-hover:opacity-100 duration-300 flex items-center justify-center cursor-pointer"
+          className="absolute top-4 right-4 z-20 p-2.5 bg-white/70 backdrop-blur-md border border-brand/10 rounded-xl text-black hover:bg-brand hover:text-white hover:scale-105 transition-all shadow-md opacity-0 group-hover:opacity-100 duration-300 flex items-center justify-center cursor-pointer"
           title="View Enlarged"
         >
           <Maximize2 size={14} className="font-bold" />
@@ -223,13 +223,13 @@ function EventMediaSlideshow({ mediaList }: { mediaList: string[] }) {
           onClick={() => setIsLightboxOpen(false)}
         >
           {/* Top Panel Controls */}
-          <div className="absolute top-6 left-6 right-6 flex items-center justify-between text-brand z-10">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand/60">
+          <div className="absolute top-6 left-6 right-6 flex items-center justify-between text-black z-10">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-black/60">
               Media Gallery ({slideIndex + 1} / {mediaList.length})
             </span>
             <button
               onClick={() => setIsLightboxOpen(false)}
-              className="p-3 bg-white hover:bg-brand/5 text-brand rounded-full border border-brand/10 transition-all hover:scale-105 active:scale-95 shadow-sm cursor-pointer"
+              className="p-3 bg-white hover:bg-brand/5 text-black rounded-full border border-brand/10 transition-all hover:scale-105 active:scale-95 shadow-sm cursor-pointer"
               title="Close Gallery"
             >
               <X size={20} />
@@ -262,14 +262,14 @@ function EventMediaSlideshow({ mediaList }: { mediaList: string[] }) {
               <>
                 <button
                   onClick={handlePrev}
-                  className="absolute -left-4 sm:left-4 top-1/2 -translate-y-1/2 p-3 bg-white hover:bg-brand/5 text-brand rounded-full border border-brand/10 transition-all hover:scale-105 active:scale-95 shadow-md cursor-pointer"
+                  className="absolute -left-4 sm:left-4 top-1/2 -translate-y-1/2 p-3 bg-white hover:bg-brand/5 text-black rounded-full border border-brand/10 transition-all hover:scale-105 active:scale-95 shadow-md cursor-pointer"
                   title="Previous Media"
                 >
                   <ChevronLeft size={24} />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="absolute -right-4 sm:right-4 top-1/2 -translate-y-1/2 p-3 bg-white hover:bg-brand/5 text-brand rounded-full border border-brand/10 transition-all hover:scale-105 active:scale-95 shadow-md cursor-pointer"
+                  className="absolute -right-4 sm:right-4 top-1/2 -translate-y-1/2 p-3 bg-white hover:bg-brand/5 text-black rounded-full border border-brand/10 transition-all hover:scale-105 active:scale-95 shadow-md cursor-pointer"
                   title="Next Media"
                 >
                   <ChevronRight size={24} />
@@ -331,17 +331,17 @@ function EventCard({ item, onRegisterClick }: { item: EventItem; onRegisterClick
             
             {/* Header / Category Badge */}
             <div className="flex items-center justify-between">
-              <span className="bg-brand/10 text-brand border border-brand/20 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+              <span className="bg-brand/10 text-black border border-brand/20 text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
                 {item.category.replace(/-/g, " ")}
               </span>
-              <span className="text-[10px] font-bold text-brand/40 uppercase tracking-[0.15em] flex items-center">
-                <Sparkles size={10} className="text-brand-accent mr-1" />
+              <span className="text-[10px] font-bold text-black/40 uppercase tracking-[0.15em] flex items-center">
+                <Sparkles size={10} className="text-black-accent mr-1" />
                 Featured Event
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="text-3xl sm:text-4xl font-playfair font-black text-brand leading-tight tracking-tight">
+            <h3 className="text-3xl sm:text-4xl font-playfair font-black text-black leading-tight tracking-tight">
               {item.title}
             </h3>
 
@@ -404,8 +404,8 @@ function EventCard({ item, onRegisterClick }: { item: EventItem; onRegisterClick
       {/* Lower footer: Disclaimer text */}
       {item.disclaimer && (
         <div className="bg-brand/5 px-8 py-3 border-t border-brand/10 flex items-start space-x-2">
-          <Info size={12} className="text-brand/30 mt-0.5 shrink-0" />
-          <p className="text-[10px] font-medium text-brand/60 uppercase tracking-wider leading-relaxed">
+          <Info size={12} className="text-black/30 mt-0.5 shrink-0" />
+          <p className="text-[10px] font-medium text-black/60 uppercase tracking-wider leading-relaxed">
             {item.disclaimer}
           </p>
         </div>
@@ -539,12 +539,12 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
       <section className="relative overflow-hidden pt-12 pb-2 md:pt-16 md:pb-4 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,78,59,0.15),rgba(0,0,0,0))]">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/hero-grid.svg')] bg-center opacity-5 pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4 text-center space-y-6 relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-brand/10 border border-brand/20 px-4 py-2 rounded-full text-[10px] font-black uppercase text-brand tracking-[0.25em] shadow-sm animate-fade-in">
-            <Sparkles size={12} className="animate-spin text-brand-accent" />
+          <div className="inline-flex items-center space-x-2 bg-brand/10 border border-brand/20 px-4 py-2 rounded-full text-[10px] font-black uppercase text-black tracking-[0.25em] shadow-sm animate-fade-in">
+            <Sparkles size={12} className="animate-spin text-black-accent" />
             <span>Exclusive Gatherings</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-playfair font-black text-brand tracking-tight leading-tight">
-            <span className="text-brand-accent">Dry Fish Basket</span> Events
+          <h1 className="text-5xl md:text-7xl font-playfair font-black text-black tracking-tight leading-tight">
+            <span className="text-black-accent">Dry Fish Basket</span> Events
           </h1>
           <p className="max-w-2xl mx-auto text-brand-dark/70 text-base md:text-lg font-medium leading-relaxed">
             Experience fashion runways, masterclass workshops, screening events, and vibrant outdoor gatherings designed to inspire network connection and creativity.
@@ -560,7 +560,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
             className={`flex-1 flex items-center justify-center py-2.5 px-4 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 ${
               activeTab === "all"
                 ? "bg-brand text-[#064e3b] shadow-md"
-                : "text-brand/60 hover:text-brand hover:bg-brand/5"
+                : "text-black/60 hover:text-black hover:bg-brand/5"
             }`}
           >
             All Events
@@ -570,7 +570,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
             className={`flex-1 flex items-center justify-center py-2.5 px-4 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 ${
               activeTab === "indoor"
                 ? "bg-brand text-[#064e3b] shadow-md"
-                : "text-brand/60 hover:text-brand hover:bg-brand/5"
+                : "text-black/60 hover:text-black hover:bg-brand/5"
             }`}
           >
             Indoor Events
@@ -580,7 +580,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
             className={`flex-1 flex items-center justify-center py-2.5 px-4 text-xs font-black uppercase tracking-wider rounded-xl transition-all duration-300 ${
               activeTab === "outdoor"
                 ? "bg-brand text-[#064e3b] shadow-md"
-                : "text-brand/60 hover:text-brand hover:bg-brand/5"
+                : "text-black/60 hover:text-black hover:bg-brand/5"
             }`}
           >
             Outdoor Events
@@ -592,12 +592,12 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
       <section className="max-w-6xl mx-auto px-4 mt-8">
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-20">
-            <Loader2 className="w-10 h-10 text-brand-accent animate-spin mb-4" />
-            <p className="text-xs font-bold text-brand/40 uppercase tracking-[0.2em]">Assembling events gallery...</p>
+            <Loader2 className="w-10 h-10 text-black-accent animate-spin mb-4" />
+            <p className="text-xs font-bold text-black/40 uppercase tracking-[0.2em]">Assembling events gallery...</p>
           </div>
         ) : error ? (
           <div className="flex flex-col items-center justify-center py-20 bg-white border border-brand/10 rounded-[2rem] text-center p-8 shadow-md">
-            <AlertCircle className="w-12 h-12 text-brand-accent mb-4" />
+            <AlertCircle className="w-12 h-12 text-black-accent mb-4" />
             <h3 className="text-xl font-bold font-playfair mb-2">Error Loading Events</h3>
             <p className="text-brand-dark/70 text-sm max-w-md">{error}</p>
           </div>
@@ -607,8 +607,8 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
             {/* If no events match the active tab view, render a premium general empty state */}
             {activeTab === "all" && events.length === 0 && (
               <div className="bg-white border border-brand/10 p-12 rounded-[2rem] text-center flex flex-col items-center justify-center shadow-lg py-20">
-                <Calendar className="w-16 h-16 text-brand/35 mb-6" />
-                <h3 className="text-xl font-bold font-playfair text-brand mb-2">No Scheduled Events</h3>
+                <Calendar className="w-16 h-16 text-black/35 mb-6" />
+                <h3 className="text-xl font-bold font-playfair text-black mb-2">No Scheduled Events</h3>
                 <p className="text-brand-dark/70 text-sm max-w-md">
                   There are no company events or outdoor activities scheduled at this moment. Please check back later.
                 </p>
@@ -617,8 +617,8 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
 
             {activeTab === "indoor" && events.filter(e => INDOOR_CATEGORIES.some(c => c.key === e.category)).length === 0 && (
               <div className="bg-white border border-brand/10 p-12 rounded-[2rem] text-center flex flex-col items-center justify-center shadow-lg py-20">
-                <Calendar className="w-16 h-16 text-brand/35 mb-6" />
-                <h3 className="text-xl font-bold font-playfair text-brand mb-2">No Scheduled Indoor Events</h3>
+                <Calendar className="w-16 h-16 text-black/35 mb-6" />
+                <h3 className="text-xl font-bold font-playfair text-black mb-2">No Scheduled Indoor Events</h3>
                 <p className="text-brand-dark/70 text-sm max-w-md">
                   There are no indoor events or workshops scheduled at this moment. Please check back later or browse Outdoor Events.
                 </p>
@@ -627,8 +627,8 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
 
             {activeTab === "outdoor" && events.filter(e => OUTDOOR_CATEGORIES.some(c => c.key === e.category)).length === 0 && (
               <div className="bg-white border border-brand/10 p-12 rounded-[2rem] text-center flex flex-col items-center justify-center shadow-lg py-20">
-                <Calendar className="w-16 h-16 text-brand/35 mb-6" />
-                <h3 className="text-xl font-bold font-playfair text-brand mb-2">No Scheduled Outdoor Events</h3>
+                <Calendar className="w-16 h-16 text-black/35 mb-6" />
+                <h3 className="text-xl font-bold font-playfair text-black mb-2">No Scheduled Outdoor Events</h3>
                 <p className="text-brand-dark/70 text-sm max-w-md">
                   There are no outdoor festivals or adventure activities scheduled at this moment. Please check back later or browse Indoor Events.
                 </p>
@@ -645,7 +645,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
                 <div key={cat.key} className="space-y-6">
                   {/* Category Header */}
                   <div className="space-y-1">
-                    <h2 className="text-2xl md:text-3xl font-playfair font-black text-brand tracking-tight">
+                    <h2 className="text-2xl md:text-3xl font-playfair font-black text-black tracking-tight">
                       {cat.label}
                     </h2>
                     {cat.description && (
@@ -675,7 +675,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
                 <div key={cat.key} className="space-y-6">
                   {/* Category Header */}
                   <div className="space-y-1">
-                    <h2 className="text-2xl md:text-3xl font-playfair font-black text-brand tracking-tight">
+                    <h2 className="text-2xl md:text-3xl font-playfair font-black text-black tracking-tight">
                       {cat.label}
                     </h2>
                     {cat.description && (
@@ -709,17 +709,17 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
             {/* Close Button */}
             <button 
               onClick={() => setSelectedEvent(null)}
-              className="absolute top-6 right-6 p-2 bg-white/60 hover:bg-white text-brand rounded-full border border-brand/5 transition-all cursor-pointer"
+              className="absolute top-6 right-6 p-2 bg-white/60 hover:bg-white text-black rounded-full border border-brand/5 transition-all cursor-pointer"
             >
               <X size={18} />
             </button>
 
             {/* Modal Header */}
             <div className="mb-6">
-              <span className="bg-brand/10 text-brand border border-brand/20 text-[10px] font-black uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full">
+              <span className="bg-brand/10 text-black border border-brand/20 text-[10px] font-black uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full">
                 {selectedEvent.category.replace(/-/g, " ")}
               </span>
-              <h3 className="text-2xl font-playfair font-black text-brand leading-tight mt-3">
+              <h3 className="text-2xl font-playfair font-black text-black leading-tight mt-3">
                 Register for {selectedEvent.title}
               </h3>
               <p className="text-xs text-brand-dark/60 mt-1">
@@ -730,7 +730,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
             {/* Form Fields */}
             <form onSubmit={handleRegisterSubmit} className="space-y-4">
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-brand/60 mb-1.5">
+                <label className="block text-[10px] font-black uppercase tracking-wider text-black/60 mb-1.5">
                   Full Name
                 </label>
                 <input
@@ -738,14 +738,14 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
                   required
                   value={regName}
                   onChange={(e) => setRegName(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-brand font-medium"
+                  className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-black font-medium"
                   placeholder="John Doe"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-wider text-brand/60 mb-1.5">
+                  <label className="block text-[10px] font-black uppercase tracking-wider text-black/60 mb-1.5">
                     Phone Number
                   </label>
                   <input
@@ -753,12 +753,12 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
                     required
                     value={regPhone}
                     onChange={(e) => setRegPhone(e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-brand font-medium"
+                    className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-black font-medium"
                     placeholder="6364936047"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-wider text-brand/60 mb-1.5">
+                  <label className="block text-[10px] font-black uppercase tracking-wider text-black/60 mb-1.5">
                     Email Address
                   </label>
                   <input
@@ -766,14 +766,14 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
                     required
                     value={regEmail}
                     onChange={(e) => setRegEmail(e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-brand font-medium"
+                    className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-black font-medium"
                     placeholder="johndoe@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-brand/60 mb-1.5">
+                <label className="block text-[10px] font-black uppercase tracking-wider text-black/60 mb-1.5">
                   Number of Tickets / Guests
                 </label>
                 <input
@@ -783,18 +783,18 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
                   required
                   value={regTickets}
                   onChange={(e) => setRegTickets(Number(e.target.value))}
-                  className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-brand font-medium"
+                  className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-black font-medium"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black uppercase tracking-wider text-brand/60 mb-1.5">
+                <label className="block text-[10px] font-black uppercase tracking-wider text-black/60 mb-1.5">
                   Additional Notes (Optional)
                 </label>
                 <textarea
                   value={regNotes}
                   onChange={(e) => setRegNotes(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-brand font-medium h-20 resize-none"
+                  className="w-full px-4 py-3 bg-white border border-brand/10 rounded-2xl text-sm focus:outline-none focus:border-brand text-black font-medium h-20 resize-none"
                   placeholder="Any comments, dietary needs, or preferences..."
                 />
               </div>
@@ -804,7 +804,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
                 <button
                   type="button"
                   onClick={() => setSelectedEvent(null)}
-                  className="px-5 py-3 border border-brand/10 text-brand/60 hover:bg-brand/5 rounded-xl text-xs font-black uppercase tracking-widest transition-all cursor-pointer"
+                  className="px-5 py-3 border border-brand/10 text-black/60 hover:bg-brand/5 rounded-xl text-xs font-black uppercase tracking-widest transition-all cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -831,7 +831,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
       {/* Floating Toast Notification */}
       {toast && (
         <div className="fixed bottom-8 right-8 z-[200] bg-brand text-[#064e3b] border border-brand-accent/25 px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3.5 animate-in fade-in slide-in-from-bottom-5 duration-350">
-          <Sparkles size={16} className="text-brand-accent animate-pulse" />
+          <Sparkles size={16} className="text-black-accent animate-pulse" />
           <span className="text-xs font-bold uppercase tracking-wider">{toast}</span>
         </div>
       )}

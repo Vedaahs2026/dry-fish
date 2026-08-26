@@ -62,7 +62,7 @@ function SortableSectionItem({
     >
       <div className="flex items-center justify-between mb-4 pb-4 border-b border-brand/5">
         <div className="flex items-center space-x-4">
-          <button {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing text-brand/20 hover:text-[#C5A059]">
+          <button {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing text-black/20 hover:text-[#C5A059]">
             <GripVertical size={20} />
           </button>
           <div className="flex items-center space-x-2">
@@ -73,14 +73,14 @@ function SortableSectionItem({
               type="text" 
               value={section.title}
               onChange={(e) => onUpdate(section.id, { title: e.target.value })}
-              className="text-sm font-bold text-brand bg-transparent focus:outline-none focus:underline"
+              className="text-sm font-bold text-black bg-transparent focus:outline-none focus:underline"
               placeholder="Section Title (e.g. New Arrivals)"
             />
           </div>
         </div>
         <button 
           onClick={() => onDelete(section.id)}
-          className="p-2 text-brand/20 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
+          className="p-2 text-black/20 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
         >
           <Trash2 size={16} />
         </button>
@@ -88,13 +88,13 @@ function SortableSectionItem({
 
       <div className="grid grid-cols-1 gap-4">
         <div>
-          <label className="block text-[10px] font-black text-brand/30 uppercase tracking-[0.2em] mb-2">Display Products (IDs)</label>
+          <label className="block text-[10px] font-black text-black/30 uppercase tracking-[0.2em] mb-2">Display Products (IDs)</label>
           <input 
             type="text"
             value={section.productIds}
             onChange={(e) => onUpdate(section.id, { productIds: e.target.value })}
             placeholder="e.g. 1, 2, 3 (Comma separated product IDs)"
-            className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/30 rounded-xl px-4 py-3 text-xs font-bold text-brand outline-none transition-all"
+            className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/30 rounded-xl px-4 py-3 text-xs font-bold text-black outline-none transition-all"
           />
         </div>
       </div>
@@ -198,11 +198,11 @@ export default function PageSectionEditor({ menuItem, onClose }: Props) {
               <Plus size={20} />
             </div>
             <div>
-              <h2 className="text-2xl font-playfair font-bold text-brand">Page Designer</h2>
+              <h2 className="text-2xl font-playfair font-bold text-black">Page Designer</h2>
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#C5A059]">{menuItem.label} Context</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 text-brand/20 hover:text-brand transition-colors">
+          <button onClick={onClose} className="p-2 text-black/20 hover:text-black transition-colors">
             <X size={24} />
           </button>
         </div>
@@ -215,7 +215,7 @@ export default function PageSectionEditor({ menuItem, onClose }: Props) {
           ) : (
             <>
               <div className="mb-8 flex items-center justify-between">
-                <h3 className="text-sm font-bold text-brand uppercase tracking-widest">Page Sections (Carousels)</h3>
+                <h3 className="text-sm font-bold text-black uppercase tracking-widest">Page Sections (Carousels)</h3>
                 <button 
                   onClick={handleAddSection}
                   className="flex items-center space-x-2 text-[10px] font-black text-[#064e3b] bg-brand px-4 py-2 rounded-full uppercase tracking-widest hover:bg-brand-hover transition-all shadow-md"
@@ -240,7 +240,7 @@ export default function PageSectionEditor({ menuItem, onClose }: Props) {
 
               {sections.length === 0 && (
                 <div className="text-center py-20 border-2 border-dashed border-brand/10 rounded-3xl">
-                  <p className="text-brand/30 text-xs font-bold uppercase tracking-widest">No sections added yet.</p>
+                  <p className="text-black/30 text-xs font-bold uppercase tracking-widest">No sections added yet.</p>
                 </div>
               )}
             </>
@@ -248,7 +248,7 @@ export default function PageSectionEditor({ menuItem, onClose }: Props) {
         </div>
 
         <div className="p-8 bg-white border-t border-brand/5 flex justify-end space-x-4">
-          <button onClick={onClose} className="px-6 py-4 rounded-2xl font-bold uppercase tracking-widest text-xs text-brand/40 hover:bg-brand/5">Discard</button>
+          <button onClick={onClose} className="px-6 py-4 rounded-2xl font-bold uppercase tracking-widest text-xs text-black/40 hover:bg-brand/5">Discard</button>
           <button 
             onClick={handleSaveAll}
             disabled={isSaving}

@@ -246,8 +246,8 @@ export default function CategorySettingsPage() {
   return (
     <div className="p-10">
       <div className="mb-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Category Banner Settings</h1>
-        <p className="mt-2 text-brand/60 font-medium tracking-tight flex items-center justify-center">
+        <h1 className="text-4xl font-playfair font-bold text-black">Category Banner Settings</h1>
+        <p className="mt-2 text-black/60 font-medium tracking-tight flex items-center justify-center">
           <Sparkles size={16} className="text-[#C5A059] mr-2" />
           Add and manage promo category grid blocks positioned on your storefront home page.
         </p>
@@ -271,13 +271,13 @@ export default function CategorySettingsPage() {
         
         {/* Editor Form - 5 Cols */}
         <div className="lg:col-span-5 bg-white rounded-[2.5rem] p-8 shadow-sm border border-brand/5 h-fit">
-          <h2 className="text-xl font-playfair font-bold text-brand mb-6 border-b border-brand/5 pb-4">
+          <h2 className="text-xl font-playfair font-bold text-black mb-6 border-b border-brand/5 pb-4">
             {editingId ? "Edit Category Card" : "Add New Category Card"}
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">
+              <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">
                 Category Name
               </label>
               <input
@@ -285,13 +285,13 @@ export default function CategorySettingsPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Ethnic Wear"
-                className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-sm font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-sm font-semibold text-black outline-none transition-all placeholder:text-black/20"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">
+              <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">
                 Category Image URL (Upload OR Paste URL)
               </label>
               <input
@@ -299,7 +299,7 @@ export default function CategorySettingsPage() {
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
                 placeholder="Paste direct Cloudinary URL OR upload local image below..."
-                className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-sm font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-sm font-semibold text-black outline-none transition-all placeholder:text-black/20"
                 required
               />
               <div className="relative border-2 border-dashed border-brand/10 hover:border-[#C5A059]/40 bg-brand-light/50 hover:bg-white rounded-2xl h-24 transition-all flex flex-col items-center justify-center cursor-pointer mt-3">
@@ -313,13 +313,13 @@ export default function CategorySettingsPage() {
                 {isUploadingImage ? (
                   <div className="flex flex-col items-center">
                     <Loader2 className="w-6 h-6 text-[#C5A059] animate-spin mb-1" />
-                    <span className="text-[9px] font-black text-brand/40 uppercase tracking-widest">Uploading image...</span>
+                    <span className="text-[9px] font-black text-black/40 uppercase tracking-widest">Uploading image...</span>
                   </div>
                 ) : (
                   <div className="flex flex-col items-center text-center p-3">
                     <Upload className="w-5 h-5 text-[#C5A059] mb-1" />
-                    <p className="text-xs font-bold text-brand/60">Click or Drag Files here</p>
-                    <p className="text-[10px] text-brand/35 font-medium mt-0.5">Supports Images (PNG, JPG, WEBP)</p>
+                    <p className="text-xs font-bold text-black/60">Click or Drag Files here</p>
+                    <p className="text-[10px] text-black/35 font-medium mt-0.5">Supports Images (PNG, JPG, WEBP)</p>
                   </div>
                 )}
               </div>
@@ -343,7 +343,7 @@ export default function CategorySettingsPage() {
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="px-6 py-4 border border-brand/10 text-brand/60 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-brand/5 transition-all"
+                  className="px-6 py-4 border border-brand/10 text-black/60 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-brand/5 transition-all"
                 >
                   Cancel
                 </button>
@@ -355,15 +355,15 @@ export default function CategorySettingsPage() {
         {/* Existing Grid List - 7 Cols */}
         <div className="lg:col-span-7 space-y-6">
           <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-brand/5">
-            <h2 className="text-xl font-playfair font-bold text-brand mb-6 border-b border-brand/5 pb-4">
+            <h2 className="text-xl font-playfair font-bold text-black mb-6 border-b border-brand/5 pb-4">
               Active Category Cards ({categories.length})
             </h2>
 
             {categories.length === 0 ? (
               <div className="text-center py-16 border border-dashed border-brand/10 rounded-[2rem] bg-brand-light flex flex-col items-center">
-                <ImageIcon className="w-10 h-10 text-brand/20 mb-4" />
-                <p className="text-sm font-bold text-brand">No Category Cards Added Yet</p>
-                <p className="text-xs text-brand/40 mt-1">Fill out the editor form on the left to add your first category banner block.</p>
+                <ImageIcon className="w-10 h-10 text-black/20 mb-4" />
+                <p className="text-sm font-bold text-black">No Category Cards Added Yet</p>
+                <p className="text-xs text-black/40 mt-1">Fill out the editor form on the left to add your first category banner block.</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -389,9 +389,9 @@ export default function CategorySettingsPage() {
                       {/* Info & Metadata */}
                       <div className="flex-1 flex flex-col justify-center py-1 min-w-0">
                         <div>
-                          <h3 className="font-playfair font-bold text-brand text-lg truncate leading-tight">{item.name}</h3>
-                          <span className="text-[10px] text-brand/40 uppercase tracking-widest font-black block mt-1">
-                            Link: <span className="text-brand/60 font-semibold lowercase tracking-normal truncate inline-block max-w-[120px] align-middle">{item.link || "none"}</span>
+                          <h3 className="font-playfair font-bold text-black text-lg truncate leading-tight">{item.name}</h3>
+                          <span className="text-[10px] text-black/40 uppercase tracking-widest font-black block mt-1">
+                            Link: <span className="text-black/60 font-semibold lowercase tracking-normal truncate inline-block max-w-[120px] align-middle">{item.link || "none"}</span>
                           </span>
                         </div>
 
@@ -401,7 +401,7 @@ export default function CategorySettingsPage() {
                           <div className="flex items-center space-x-2">
                             <button
                               onClick={() => handleEditClick(item)}
-                              className="p-2.5 bg-white text-brand hover:text-[#C5A059] rounded-xl shadow-sm border border-brand/5 hover:scale-105 transition-all flex items-center justify-center w-9 h-9"
+                              className="p-2.5 bg-white text-black hover:text-[#C5A059] rounded-xl shadow-sm border border-brand/5 hover:scale-105 transition-all flex items-center justify-center w-9 h-9"
                               title="Edit Card"
                             >
                               <Edit3 size={14} />
@@ -420,7 +420,7 @@ export default function CategorySettingsPage() {
                             <button
                               onClick={() => handleReorder(index, "up")}
                               disabled={index === 0}
-                              className="p-2.5 bg-white text-brand hover:text-[#C5A059] rounded-xl shadow-sm border border-brand/5 disabled:opacity-30 flex items-center justify-center w-9 h-9"
+                              className="p-2.5 bg-white text-black hover:text-[#C5A059] rounded-xl shadow-sm border border-brand/5 disabled:opacity-30 flex items-center justify-center w-9 h-9"
                               title="Move Up"
                             >
                               <ArrowUp size={14} />
@@ -428,7 +428,7 @@ export default function CategorySettingsPage() {
                             <button
                               onClick={() => handleReorder(index, "down")}
                               disabled={index === categories.length - 1}
-                              className="p-2.5 bg-white text-brand hover:text-[#C5A059] rounded-xl shadow-sm border border-brand/5 disabled:opacity-30 flex items-center justify-center w-9 h-9"
+                              className="p-2.5 bg-white text-black hover:text-[#C5A059] rounded-xl shadow-sm border border-brand/5 disabled:opacity-30 flex items-center justify-center w-9 h-9"
                               title="Move Down"
                             >
                               <ArrowDown size={14} />

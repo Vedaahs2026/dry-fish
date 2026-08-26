@@ -53,7 +53,7 @@ export default function AddressPage() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center">
         <Loader2 className="w-8 h-8 text-[#C5A059] animate-spin mb-4" />
-        <p className="text-[10px] font-black text-brand/40 uppercase tracking-widest">Loading Addresses...</p>
+        <p className="text-[10px] font-black text-black/40 uppercase tracking-widest">Loading Addresses...</p>
       </div>
     );
   }
@@ -61,12 +61,12 @@ export default function AddressPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 pt-10 pb-24">
       <div className="flex items-center space-x-4 mb-10">
-        <button onClick={() => router.back()} className="p-2 rounded-full bg-brand/5 text-brand hover:bg-brand/10 transition-colors">
+        <button onClick={() => router.back()} className="p-2 rounded-full bg-brand/5 text-black hover:bg-brand/10 transition-colors">
           <ChevronLeft size={20} />
         </button>
         <div>
-          <h1 className="text-4xl font-playfair font-bold text-brand">My Addresses</h1>
-          <p className="text-brand/40 text-xs font-bold uppercase tracking-widest mt-1">Manage your saved shipping destinations</p>
+          <h1 className="text-4xl font-playfair font-bold text-black">My Addresses</h1>
+          <p className="text-black/40 text-xs font-bold uppercase tracking-widest mt-1">Manage your saved shipping destinations</p>
         </div>
       </div>
 
@@ -77,7 +77,7 @@ export default function AddressPage() {
 
         {addresses.length > 0 ? (
           <div className="flex flex-col h-full flex-1 z-10">
-            <div className="flex items-center space-x-3 text-brand/40 mb-6">
+            <div className="flex items-center space-x-3 text-black/40 mb-6">
               <MapPin size={18} className="text-[#C5A059]" />
               <h2 className="text-xs font-black uppercase tracking-[0.2em]">Saved Delivery Addresses</h2>
             </div>
@@ -85,7 +85,7 @@ export default function AddressPage() {
             <div className="space-y-4">
               {addresses.map((addr, idx) => (
                 <div key={idx} className="bg-brand/5 border border-brand/10 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden transition-all hover:border-brand/20">
-                  <p className="text-brand font-medium leading-relaxed whitespace-pre-wrap text-sm md:text-base break-words flex-1">
+                  <p className="text-black font-medium leading-relaxed whitespace-pre-wrap text-sm md:text-base break-words flex-1">
                     {addr}
                   </p>
                   <button 
@@ -105,10 +105,10 @@ export default function AddressPage() {
         ) : (
           <div className="flex flex-col items-center justify-center text-center h-full flex-1 py-10 z-10">
             <div className="w-16 h-16 bg-brand/5 rounded-full flex items-center justify-center mb-6">
-              <MapPin size={24} className="text-brand/20" />
+              <MapPin size={24} className="text-black/20" />
             </div>
-            <h3 className="text-xl font-bold text-brand mb-2">No Addresses Saved</h3>
-            <p className="text-brand/60 text-sm max-w-sm mx-auto leading-relaxed mb-8">
+            <h3 className="text-xl font-bold text-black mb-2">No Addresses Saved</h3>
+            <p className="text-black/60 text-sm max-w-sm mx-auto leading-relaxed mb-8">
               You haven't saved any shipping destinations yet. You can easily add a new address during your next checkout.
             </p>
             <Link 

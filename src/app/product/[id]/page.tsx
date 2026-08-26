@@ -197,8 +197,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
     return (
       <div className="min-h-screen flex items-center justify-center bg-brand-light">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-brand mb-4">Product Not Found</h1>
-          <Link href="/" className="text-brand-accent hover:underline">Back to Home</Link>
+          <h1 className="text-2xl font-bold text-black mb-4">Product Not Found</h1>
+          <Link href="/" className="text-black-accent hover:underline">Back to Home</Link>
         </div>
       </div>
     );
@@ -274,9 +274,9 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   };
 
   return (
-    <div className="min-h-screen bg-brand-light text-brand font-sans selection:bg-brand-accent/30">
+    <div className="min-h-screen bg-brand-light text-black font-sans selection:bg-brand-accent/30">
       <main className="max-w-7xl mx-auto px-6 md:px-12 pt-6 pb-16">
-        <Link href="/" className="inline-flex items-center space-x-3 text-brand/60 hover:text-brand-accent transition-all mb-6 text-xs font-bold uppercase tracking-widest group">
+        <Link href="/" className="inline-flex items-center space-x-3 text-black/60 hover:text-black-accent transition-all mb-6 text-xs font-bold uppercase tracking-widest group">
           <div className="p-2 rounded-full bg-white shadow-sm border border-brand/5 group-hover:border-brand-accent/30 transition-all">
             <ArrowLeft size={14} />
           </div>
@@ -308,7 +308,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute top-6 right-6">
-                <div className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg border border-brand/5 text-brand-accent">
+                <div className="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg border border-brand/5 text-black-accent">
                   <Sparkles size={20} />
                 </div>
               </div>
@@ -318,7 +318,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
           {/* Right: Product Details (6 cols) */}
           <div className="lg:col-span-6 flex flex-col">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="bg-brand/5 text-brand px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Premium Collection</span>
+              <span className="bg-brand/5 text-black px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Premium Collection</span>
               {currentStock > 0 && currentStock < 5 && (
                 <span className="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter animate-pulse">
                   Only {currentStock} left!
@@ -326,29 +326,29 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               )}
             </div>
 
-            <h1 className="text-2xl md:text-3xl font-serif font-bold mb-3 leading-tight text-brand">
+            <h1 className="text-2xl md:text-3xl font-serif font-bold mb-3 leading-tight text-black">
               {product.name}
             </h1>
 
             <div className="flex items-baseline space-x-3 mb-6 gap-2">
-              <span className="text-2xl font-bold text-brand">₹{displayPrice.toLocaleString()}</span>
+              <span className="text-2xl font-bold text-black">₹{displayPrice.toLocaleString()}</span>
               {mrp > displayPrice && (
                 <>
-                  <span className="text-lg text-brand/40 line-through font-medium">₹{mrp.toLocaleString()}</span>
+                  <span className="text-lg text-black/40 line-through font-medium">₹{mrp.toLocaleString()}</span>
                   <span className="text-base font-bold text-[#cd5533]">({Math.round(((mrp - displayPrice) / mrp) * 100)}% OFF)</span>
                 </>
               )}
             </div>
 
-            <p className="text-brand/70 mb-8 text-sm leading-relaxed border-l-4 border-brand-accent/20 pl-5 italic">
+            <p className="text-black/70 mb-8 text-sm leading-relaxed border-l-4 border-brand-accent/20 pl-5 italic">
               {product.description}
             </p>
 
             {/* Color Selector */}
             <div className="mb-10">
               <div className="flex justify-between items-center mb-5">
-                <span className="text-sm font-bold text-brand uppercase tracking-widest flex items-center gap-2">
-                  1. Select Color <span className="text-brand/30">—</span> <span className="text-brand-accent">{getColorDisplayName(selectedColor)}</span>
+                <span className="text-sm font-bold text-black uppercase tracking-widest flex items-center gap-2">
+                  1. Select Color <span className="text-black/30">—</span> <span className="text-black-accent">{getColorDisplayName(selectedColor)}</span>
                 </span>
               </div>
               <div className="flex flex-wrap gap-4">
@@ -397,12 +397,12 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             {!isSingleSize && (
               <div className="mb-12">
                 <div className="flex justify-between items-center mb-5">
-                  <span className="text-sm font-bold text-brand uppercase tracking-widest flex items-center gap-2">
-                    2. Select Size <span className="text-brand/30">—</span> <span className="text-brand-accent">{selectedSize || "None"}</span>
+                  <span className="text-sm font-bold text-black uppercase tracking-widest flex items-center gap-2">
+                    2. Select Size <span className="text-black/30">—</span> <span className="text-black-accent">{selectedSize || "None"}</span>
                   </span>
                   <button
                     onClick={() => setIsSizeGuideOpen(true)}
-                    className="text-[10px] text-brand/40 hover:text-brand-accent font-bold uppercase tracking-widest transition-colors underline underline-offset-4"
+                    className="text-[10px] text-black/40 hover:text-black-accent font-bold uppercase tracking-widest transition-colors underline underline-offset-4"
                   >
                     Fit Guide
                   </button>
@@ -420,8 +420,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                         className={`min-w-[48px] h-12 rounded-xl flex items-center justify-center text-xs font-bold transition-all border-2 ${selectedSize === size
                             ? "bg-brand text-[#064e3b] border-brand scale-105 shadow-md"
                             : isOutOfStock
-                              ? "bg-brand/5 text-brand/20 border-transparent cursor-not-allowed line-through opacity-50"
-                              : "bg-white text-brand/70 border-brand/5 hover:border-brand-accent hover:text-brand shadow-sm"
+                              ? "bg-brand/5 text-black/20 border-transparent cursor-not-allowed line-through opacity-50"
+                              : "bg-white text-black/70 border-brand/5 hover:border-brand-accent hover:text-black shadow-sm"
                           }`}
                       >
                         {size}
@@ -460,11 +460,11 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                     <div className="grid grid-cols-2 gap-5 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                       {enabledMeasurementsList.map((m) => (
                         <div key={m} className="flex flex-col space-y-2">
-                          <label className="text-[10px] font-black text-brand/40 uppercase tracking-widest pl-1">{m}</label>
+                          <label className="text-[10px] font-black text-black/40 uppercase tracking-widest pl-1">{m}</label>
                           <select
                             value={measurements[m] || ""}
                             onChange={(e) => setMeasurements(prev => ({ ...prev, [m]: e.target.value }))}
-                            className="w-full bg-brand/5 border border-brand/10 rounded-xl px-4 py-3 text-xs font-bold text-brand outline-none focus:border-brand-accent transition-all hover:bg-brand/10"
+                            className="w-full bg-brand/5 border border-brand/10 rounded-xl px-4 py-3 text-xs font-bold text-black outline-none focus:border-brand-accent transition-all hover:bg-brand/10"
                           >
                             <option value="">Select</option>
                             {Array.from({ length: 991 }, (_, i) => (1.0 + i * 0.1).toFixed(1)).map(val => (
@@ -475,7 +475,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                       ))}
                     </div>
                     <div className="mt-6 pt-6 border-t border-brand/10 flex items-center justify-between">
-                      <p className="text-[9px] text-brand/40 font-medium italic">* Measurements are in inches (")</p>
+                      <p className="text-[9px] text-black/40 font-medium italic">* Measurements are in inches (")</p>
                       {Object.keys(measurements).length > 0 && (
                         <button
                           onClick={() => setMeasurements({})}
@@ -496,16 +496,16 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 disabled={!!(selectedColor && selectedSize && currentStock === 0)}
                 onClick={handleAddToCart}
                 className={`flex-1 flex items-center justify-center space-x-3 font-bold py-4 rounded-2xl transition-all text-base shadow-xl ${selectedColor && selectedSize && currentStock === 0
-                    ? "bg-brand/10 text-brand/30 cursor-not-allowed"
+                    ? "bg-brand/10 text-black/30 cursor-not-allowed"
                     : "bg-brand text-[#064e3b] hover:bg-brand-hover active:scale-[0.98] border border-transparent hover:border-brand-accent"
                   }`}
               >
                 {added ? (
-                  <Check size={22} className="text-brand-accent animate-in zoom-in duration-300" />
+                  <Check size={22} className="text-black-accent animate-in zoom-in duration-300" />
                 ) : (
                   <ShoppingBag size={22} className="transition-all" />
                 )}
-                <span className={added ? "text-brand-accent transition-colors duration-300" : ""}>
+                <span className={added ? "text-black-accent transition-colors duration-300" : ""}>
                   {selectedColor && selectedSize && currentStock === 0 ? "Out of Stock" : added ? "Added to Bag!" : "Add to Bag"}
                 </span>
               </button>
@@ -528,42 +528,42 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
           <div className="mt-6 pt-6 border-t border-brand/10 grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-6 hidden lg:block" />
             <div className="lg:col-span-6">
-              <h2 className="text-xl md:text-2xl font-serif font-bold text-brand mb-4">Product Specifications</h2>
+              <h2 className="text-xl md:text-2xl font-serif font-bold text-black mb-4">Product Specifications</h2>
               {/* Specifications List */}
               <div className="bg-brand/5 rounded-3xl p-8 border border-brand/5">
-                <h3 className="text-xs font-black text-brand uppercase tracking-widest mb-6">Details</h3>
+                <h3 className="text-xs font-black text-black uppercase tracking-widest mb-6">Details</h3>
                 <dl className="space-y-4">
                   {hasSpecs ? (
                     specDetailsList.map(([key, val]) => (
                       <div key={key} className="flex py-3 border-b border-brand/5 text-left items-start">
-                        <dt className="text-xs font-bold text-brand/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">{key}</dt>
-                        <dd className="text-xs font-bold text-brand pl-4">{val}</dd>
+                        <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">{key}</dt>
+                        <dd className="text-xs font-bold text-black pl-4">{val}</dd>
                       </div>
                     ))
                   ) : (
                     <>
                       {product.style && (
                         <div className="flex py-3 border-b border-brand/5 text-left items-start">
-                          <dt className="text-xs font-bold text-brand/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Style</dt>
-                          <dd className="text-xs font-bold text-brand pl-4">{product.style}</dd>
+                          <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Style</dt>
+                          <dd className="text-xs font-bold text-black pl-4">{product.style}</dd>
                         </div>
                       )}
                       {product.fabricComposition && (
                         <div className="flex py-3 border-b border-brand/5 text-left items-start">
-                          <dt className="text-xs font-bold text-brand/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Fabric Composition</dt>
-                          <dd className="text-xs font-bold text-brand pl-4">{product.fabricComposition}</dd>
+                          <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Fabric Composition</dt>
+                          <dd className="text-xs font-bold text-black pl-4">{product.fabricComposition}</dd>
                         </div>
                       )}
                       {product.weave && (
                         <div className="flex py-3 border-b border-brand/5 text-left items-start">
-                          <dt className="text-xs font-bold text-brand/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Weave</dt>
-                          <dd className="text-xs font-bold text-brand pl-4">{product.weave}</dd>
+                          <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Weave</dt>
+                          <dd className="text-xs font-bold text-black pl-4">{product.weave}</dd>
                         </div>
                       )}
                       {product.neckStyle && (
                         <div className="flex py-3 border-b border-brand/5 text-left items-start">
-                          <dt className="text-xs font-bold text-brand/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Neck Style</dt>
-                          <dd className="text-xs font-bold text-brand pl-4">{product.neckStyle}</dd>
+                          <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Neck Style</dt>
+                          <dd className="text-xs font-bold text-black pl-4">{product.neckStyle}</dd>
                         </div>
                       )}
                     </>
@@ -589,7 +589,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
           <div className="absolute inset-0 bg-brand/60 backdrop-blur-md" onClick={() => setIsSizeGuideOpen(false)} />
           <div className="relative bg-white w-full max-w-2xl max-h-[90vh] rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col">
             <div className="p-8 border-b border-brand/5 flex items-center justify-between bg-brand/5">
-              <h2 className="text-2xl font-serif font-bold text-brand">Size Guide</h2>
+              <h2 className="text-2xl font-serif font-bold text-black">Size Guide</h2>
               <button
                 onClick={() => setIsSizeGuideOpen(false)}
                 className="p-2 hover:bg-brand/10 rounded-full transition-all"
@@ -601,13 +601,13 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
               <div className="flex justify-center mb-8 bg-brand/5 p-2 rounded-2xl">
                 <button
-                  className={`flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${product.gender === 'men' ? 'bg-brand text-[#064e3b] shadow-lg' : 'text-brand/40 hover:text-brand'}`}
+                  className={`flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${product.gender === 'men' ? 'bg-brand text-[#064e3b] shadow-lg' : 'text-black/40 hover:text-black'}`}
                   onClick={() => setProduct(p => p ? { ...p, gender: 'men' } : null)}
                 >
                   Men's Guide
                 </button>
                 <button
-                  className={`flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${product.gender === 'women' ? 'bg-brand text-[#064e3b] shadow-lg' : 'text-brand/40 hover:text-brand'}`}
+                  className={`flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${product.gender === 'women' ? 'bg-brand text-[#064e3b] shadow-lg' : 'text-black/40 hover:text-black'}`}
                   onClick={() => setProduct(p => p ? { ...p, gender: 'women' } : null)}
                 >
                   Women's Guide
@@ -626,18 +626,18 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               </div>
 
               <div className="mt-8 space-y-4">
-                <h4 className="text-xs font-black text-brand uppercase tracking-widest">How to Measure?</h4>
-                <p className="text-xs text-brand/60 leading-relaxed">
+                <h4 className="text-xs font-black text-black uppercase tracking-widest">How to Measure?</h4>
+                <p className="text-xs text-black/60 leading-relaxed">
                   For the most accurate fit, we recommend having someone else measure you. Hold the tape measure snug, but not tight, against your body.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 bg-brand/5 rounded-2xl">
-                    <p className="text-[10px] font-black text-brand uppercase tracking-widest mb-1">Bust / Chest</p>
-                    <p className="text-[10px] text-brand/40">Measure around the fullest part of your chest.</p>
+                    <p className="text-[10px] font-black text-black uppercase tracking-widest mb-1">Bust / Chest</p>
+                    <p className="text-[10px] text-black/40">Measure around the fullest part of your chest.</p>
                   </div>
                   <div className="p-4 bg-brand/5 rounded-2xl">
-                    <p className="text-[10px] font-black text-brand uppercase tracking-widest mb-1">Waist</p>
-                    <p className="text-[10px] text-brand/40">Measure around your natural waistline.</p>
+                    <p className="text-[10px] font-black text-black uppercase tracking-widest mb-1">Waist</p>
+                    <p className="text-[10px] text-black/40">Measure around your natural waistline.</p>
                   </div>
                 </div>
               </div>

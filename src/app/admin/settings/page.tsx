@@ -346,8 +346,8 @@ export default function SettingsPage() {
   return (
     <div className="p-10">
       <div className="mb-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Site Settings</h1>
-        <p className="mt-2 text-brand/60 font-medium tracking-tight flex items-center justify-center">
+        <h1 className="text-4xl font-playfair font-bold text-black">Site Settings</h1>
+        <p className="mt-2 text-black/60 font-medium tracking-tight flex items-center justify-center">
           <Sparkles size={16} className="text-[#C5A059] mr-2" />
           Customize the aesthetic and layout options of your storefront.
         </p>
@@ -373,12 +373,12 @@ export default function SettingsPage() {
           
           {/* Banner Setting Form */}
           <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-brand/5">
-            <h2 className="text-xl font-playfair font-bold text-brand mb-6 border-b border-brand/5 pb-4">Homepage Hero Banner</h2>
+            <h2 className="text-xl font-playfair font-bold text-black mb-6 border-b border-brand/5 pb-4">Homepage Hero Banner</h2>
             
             <form onSubmit={handleSaveBanner} className="space-y-6">
               <div className="flex gap-3 items-end">
                 <div className="flex-grow">
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-3 ml-1">Banner Image URL</label>
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-3 ml-1">Banner Image URL</label>
                   <input
                     type="text"
                     value={tempBannerUrl}
@@ -390,7 +390,7 @@ export default function SettingsPage() {
                       }
                     }}
                     placeholder="Paste banner image URL here"
-                    className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                    className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-black outline-none transition-all placeholder:text-black/20"
                   />
                 </div>
                 <button
@@ -405,13 +405,13 @@ export default function SettingsPage() {
 
               {/* Single dropdown for banner click navigation link */}
               <div className="space-y-4 bg-brand/5 p-5 rounded-2xl border border-brand/10">
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] ml-1">Banner Click Navigation Link (Optional)</label>
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] ml-1">Banner Click Navigation Link (Optional)</label>
                 
                 <div>
                   <select
                     value={selectedBannerLink}
                     onChange={(e) => setSelectedBannerLink(e.target.value)}
-                    className="w-full bg-white border border-brand/20 rounded-xl px-4 py-3.5 text-xs font-semibold text-brand outline-none focus:border-[#C5A059]/50 transition-all cursor-pointer"
+                    className="w-full bg-white border border-brand/20 rounded-xl px-4 py-3.5 text-xs font-semibold text-black outline-none focus:border-[#C5A059]/50 transition-all cursor-pointer"
                   >
                     <option value="">No Navigation Link (Optional)</option>
                     {premadeLinks.map((option) => (
@@ -431,7 +431,7 @@ export default function SettingsPage() {
                       value={customLinkText}
                       onChange={(e) => setCustomLinkText(e.target.value)}
                       placeholder="e.g. /my-story or /product/12"
-                      className="w-full bg-white border border-brand/20 focus:border-[#C5A059]/50 rounded-xl px-4 py-3.5 text-xs font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                      className="w-full bg-white border border-brand/20 focus:border-[#C5A059]/50 rounded-xl px-4 py-3.5 text-xs font-semibold text-black outline-none transition-all placeholder:text-black/20"
                     />
                   </div>
                 )}
@@ -439,7 +439,7 @@ export default function SettingsPage() {
 
               {bannersList.length > 0 && (
                 <div className="space-y-3">
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] ml-1">Configured Banner Images ({bannersList.length})</label>
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] ml-1">Configured Banner Images ({bannersList.length})</label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {bannersList.map((banner, idx) => (
                       <div key={idx} className="relative group rounded-xl border border-brand/10 overflow-hidden bg-brand/5 aspect-[16/9] flex items-center justify-center">
@@ -481,7 +481,7 @@ export default function SettingsPage() {
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
                 <div className="flex flex-col items-center justify-center space-y-3">
-                  <div className="p-4 bg-white rounded-2xl shadow-sm text-brand">
+                  <div className="p-4 bg-white rounded-2xl shadow-sm text-black">
                     {isUploading ? (
                       <Loader2 className="w-6 h-6 animate-spin text-[#C5A059]" />
                     ) : (
@@ -489,8 +489,8 @@ export default function SettingsPage() {
                     )}
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-brand">Click to Upload Banner Image</p>
-                    <p className="text-xs text-brand/40 mt-1">PNG, JPG, JPEG or WEBP up to 5MB</p>
+                    <p className="text-sm font-bold text-black">Click to Upload Banner Image</p>
+                    <p className="text-xs text-black/40 mt-1">PNG, JPG, JPEG or WEBP up to 5MB</p>
                   </div>
                 </div>
               </div>
@@ -512,40 +512,40 @@ export default function SettingsPage() {
 
           {/* Offer Ticker Settings Form */}
           <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-brand/5">
-            <h2 className="text-xl font-playfair font-bold text-brand mb-6 border-b border-brand/5 pb-4">Offer Announcement Carousel</h2>
+            <h2 className="text-xl font-playfair font-bold text-black mb-6 border-b border-brand/5 pb-4">Offer Announcement Carousel</h2>
             
             <form onSubmit={handleAddOffer} className="space-y-4 mb-8">
               <div>
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">Add Offer Banner Text</label>
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">Add Offer Banner Text</label>
                 <input
                   type="text"
                   value={newOfferText}
                   onChange={(e) => setNewOfferText(e.target.value)}
                   placeholder="e.g. FLAT ₹500 OFF"
-                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-black outline-none transition-all placeholder:text-black/20"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">Add Offer Banner Subtext (Optional)</label>
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">Add Offer Banner Subtext (Optional)</label>
                 <input
                   type="text"
                   value={newOfferSubtext}
                   onChange={(e) => setNewOfferSubtext(e.target.value)}
                   placeholder="e.g. On First Purchase"
-                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-black outline-none transition-all placeholder:text-black/20"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">Link Target URL (Optional)</label>
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">Link Target URL (Optional)</label>
                 <input
                   type="text"
                   value={newOfferLink}
                   onChange={(e) => setNewOfferLink(e.target.value)}
                   placeholder="e.g. /category/mens"
-                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-black outline-none transition-all placeholder:text-black/20"
                 />
               </div>
 
@@ -565,11 +565,11 @@ export default function SettingsPage() {
 
             {/* List of current offers */}
             <div>
-              <p className="text-[10px] font-black text-brand/40 uppercase tracking-[0.25em] mb-4 border-b border-brand/5 pb-2">Active Slides ({offers.length})</p>
+              <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.25em] mb-4 border-b border-brand/5 pb-2">Active Slides ({offers.length})</p>
               
               {offers.length === 0 ? (
-                <div className="text-center py-6 border border-dashed border-brand/10 rounded-2xl text-brand/30">
-                  <Megaphone className="mx-auto mb-2 text-brand/20" size={24} />
+                <div className="text-center py-6 border border-dashed border-brand/10 rounded-2xl text-black/30">
+                  <Megaphone className="mx-auto mb-2 text-black/20" size={24} />
                   <p className="text-[10px] font-bold uppercase tracking-widest">No active offer slides</p>
                 </div>
               ) : (
@@ -580,10 +580,10 @@ export default function SettingsPage() {
                         {(() => {
                           const { title, subtitle } = parseOfferText(offer.text);
                           return (
-                            <p className="text-xs font-bold text-brand truncate">
+                            <p className="text-xs font-bold text-black truncate">
                               {title}
                               {subtitle && (
-                                <span className="text-brand/40 font-medium ml-2">
+                                <span className="text-black/40 font-medium ml-2">
                                   ({subtitle})
                                 </span>
                               )}
@@ -611,7 +611,7 @@ export default function SettingsPage() {
 
         {/* Live Preview Column */}
         <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-brand/5 flex flex-col h-fit">
-          <h2 className="text-xl font-playfair font-bold text-brand mb-6 border-b border-brand/5 pb-4">Aesthetic Offer & Banner Preview</h2>
+          <h2 className="text-xl font-playfair font-bold text-black mb-6 border-b border-brand/5 pb-4">Aesthetic Offer & Banner Preview</h2>
           
           <div className="rounded-2xl border border-brand/10 overflow-hidden relative flex flex-col p-0 bg-brand/5">
 
@@ -699,7 +699,7 @@ export default function SettingsPage() {
                           (prev) => (prev - 1 + bannersList.length) % bannersList.length
                         )
                       }
-                      className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white/80 hover:bg-white text-brand shadow-sm flex items-center justify-center z-10"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white/80 hover:bg-white text-black shadow-sm flex items-center justify-center z-10"
                     >
                       <ChevronLeft size={14} />
                     </button>
@@ -710,7 +710,7 @@ export default function SettingsPage() {
                           (prev) => (prev + 1) % bannersList.length
                         )
                       }
-                      className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white/80 hover:bg-white text-brand shadow-sm flex items-center justify-center z-10"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white/80 hover:bg-white text-black shadow-sm flex items-center justify-center z-10"
                     >
                       <ChevronRight size={14} />
                     </button>
@@ -732,7 +732,7 @@ export default function SettingsPage() {
                 <div className="absolute inset-0 bg-black/5 pointer-events-none"></div>
               </div>
             ) : (
-              <div className="h-32 flex flex-col items-center justify-center text-brand/30 border-dashed bg-white space-y-1">
+              <div className="h-32 flex flex-col items-center justify-center text-black/30 border-dashed bg-white space-y-1">
                 <ImageIcon size={20} />
                 <p className="text-[9px] font-bold uppercase tracking-widest">No Promo Banner Selected</p>
               </div>

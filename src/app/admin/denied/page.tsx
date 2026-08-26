@@ -11,8 +11,8 @@ export default function AccessDenied() {
           </div>
         </div>
         
-        <h1 className="text-4xl font-playfair font-bold text-brand mb-4">Access Denied</h1>
-        <p className="text-brand/60 mb-10 leading-relaxed font-medium">
+        <h1 className="text-4xl font-playfair font-bold text-black mb-4">Access Denied</h1>
+        <p className="text-black/60 mb-10 leading-relaxed font-medium">
           You do not have the required administrative permissions to access this area of Dry Fish Basket.
         </p>
 
@@ -26,7 +26,7 @@ export default function AccessDenied() {
           </Link>
           
           <div className="pt-4">
-            <p className="text-[10px] text-brand/30 uppercase tracking-[0.2em] font-bold">
+            <p className="text-[10px] text-black/30 uppercase tracking-[0.2em] font-bold">
               Secure Boutique Environment
             </p>
           </div>

@@ -163,7 +163,7 @@ export default function MyOrdersPage() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center">
         <Loader2 className="w-8 h-8 text-[#C5A059] animate-spin mb-4" />
-        <p className="text-[10px] font-black text-brand/40 uppercase tracking-[0.2em]">Loading your wardrobe...</p>
+        <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.2em]">Loading your wardrobe...</p>
       </div>
     );
   }
@@ -172,10 +172,10 @@ export default function MyOrdersPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24">
       <div className="flex items-center justify-between mb-10">
         <div>
-          <h1 className="text-4xl font-playfair font-bold text-brand mb-2">My Orders</h1>
-          <p className="text-brand/40 text-xs font-bold uppercase tracking-widest">Track your bespoke purchases</p>
+          <h1 className="text-4xl font-playfair font-bold text-black mb-2">My Orders</h1>
+          <p className="text-black/40 text-xs font-bold uppercase tracking-widest">Track your bespoke purchases</p>
         </div>
-        <Link href="/" className="p-3 rounded-full bg-brand/5 text-brand hover:bg-brand/10 transition-all border border-brand/5">
+        <Link href="/" className="p-3 rounded-full bg-brand/5 text-black hover:bg-brand/10 transition-all border border-brand/5">
           <ShoppingBag size={20} />
         </Link>
       </div>
@@ -183,10 +183,10 @@ export default function MyOrdersPage() {
       {orders.length === 0 ? (
         <div className="bg-white rounded-[2.5rem] p-20 shadow-sm border border-brand/5 text-center">
           <div className="w-20 h-20 bg-brand/5 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Package size={40} className="text-brand/20" />
+            <Package size={40} className="text-black/20" />
           </div>
-          <h3 className="text-xl font-bold text-brand mb-2">No orders yet</h3>
-          <p className="text-brand/60 text-sm mb-10 max-w-xs mx-auto">Your customized collection will appear here once you place your first order.</p>
+          <h3 className="text-xl font-bold text-black mb-2">No orders yet</h3>
+          <p className="text-black/60 text-sm mb-10 max-w-xs mx-auto">Your customized collection will appear here once you place your first order.</p>
           <Link href="/" className="inline-block bg-brand text-[#064e3b] px-8 py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-brand-hover shadow-lg">Start Shopping</Link>
         </div>
       ) : (
@@ -301,7 +301,7 @@ export default function MyOrdersPage() {
                                   : "bg-white border-brand/20"
                               } ${isCurrent ? "animate-pulse ring-4 ring-[#C5A059]/20" : ""}`} />
                               <span className={`absolute mt-6 text-[10px] font-bold uppercase tracking-[0.15em] text-center whitespace-nowrap transition-colors duration-500 ${
-                                isCompleted ? "text-brand" : "text-brand/20"
+                                isCompleted ? "text-black" : "text-black/20"
                               }`}>
                                 {m}
                               </span>
@@ -339,7 +339,7 @@ export default function MyOrdersPage() {
 
                             {/* Label */}
                             <span className={`text-[10px] font-black uppercase tracking-[0.15em] transition-colors duration-500 -mt-[1px] ${
-                              isCurrent ? "text-[#C5A059]" : isCompleted ? "text-brand" : "text-brand/25"
+                              isCurrent ? "text-[#C5A059]" : isCompleted ? "text-black" : "text-black/25"
                             }`}>
                               {m}
                             </span>
@@ -372,45 +372,45 @@ export default function MyOrdersPage() {
                                     }}
                                   />
                                 ) : (
-                                  <div className="w-full h-full flex items-center justify-center text-brand/20">
+                                  <div className="w-full h-full flex items-center justify-center text-black/20">
                                     <ImageIcon size={24} />
                                   </div>
                                 )}
-                                <div className="absolute inset-0 flex items-center justify-center text-brand/10 -z-10 bg-brand/5">
+                                <div className="absolute inset-0 flex items-center justify-center text-black/10 -z-10 bg-brand/5">
                                   <ImageIcon size={24} />
                                 </div>
                               </div>
                               <div className="flex-1 min-w-0">
                                 <div className="flex flex-col mb-1">
-                                  <h5 className="text-base font-bold text-brand">{item.productName}</h5>
+                                  <h5 className="text-base font-bold text-black">{item.productName}</h5>
                                   {isBespoke ? (
                                     <span className="bg-[#C5A059]/10 text-[#C5A059] border border-[#C5A059]/20 text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full inline-block w-fit mt-1">
                                       Bespoke / Custom Fit
                                     </span>
                                   ) : (
-                                    <span className="bg-brand/5 text-brand/40 border border-brand/5 text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full inline-block w-fit mt-1">
+                                    <span className="bg-brand/5 text-black/40 border border-brand/5 text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full inline-block w-fit mt-1">
                                       Standard Fit
                                     </span>
                                   )}
                                 </div>
 
                                 <div className="flex items-center space-x-3 mb-4 mt-2">
-                                  <span className="text-xs font-medium text-brand/40 uppercase tracking-widest">Size: {item.size}</span>
+                                  <span className="text-xs font-medium text-black/40 uppercase tracking-widest">Size: {item.size}</span>
                                   <div className="w-1.5 h-1.5 rounded-full bg-brand/10"></div>
-                                  <span className="text-xs font-medium text-brand/40 uppercase tracking-widest">Qty: {item.quantity}</span>
+                                  <span className="text-xs font-medium text-black/40 uppercase tracking-widest">Qty: {item.quantity}</span>
                                 </div>
                                 
                                 {isBespoke && (
                                   <div className="bg-brand/5 rounded-2xl p-4 border border-brand/5 mb-4">
                                     <div className="flex items-center space-x-2 mb-3">
                                       <Ruler size={12} className="text-[#C5A059]" />
-                                      <span className="text-[9px] font-black text-brand uppercase tracking-widest">Your Custom Fit (Inches)</span>
+                                      <span className="text-[9px] font-black text-black uppercase tracking-widest">Your Custom Fit (Inches)</span>
                                     </div>
                                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                                       {Object.entries(item.customizations!.measurements).map(([key, val]) => (
                                         <div key={key}>
-                                          <p className="text-[8px] font-bold text-brand/40 uppercase tracking-tighter mb-0.5">{key}</p>
-                                          <p className="text-[10px] font-black text-brand">{val}"</p>
+                                          <p className="text-[8px] font-bold text-black/40 uppercase tracking-tighter mb-0.5">{key}</p>
+                                          <p className="text-[10px] font-black text-black">{val}"</p>
                                         </div>
                                       ))}
                                     </div>
@@ -425,7 +425,7 @@ export default function MyOrdersPage() {
                                 )}
                               </div>
                               <div className="text-right self-center min-w-[80px]">
-                                <span className="text-sm font-black text-brand">₹{item.price.toLocaleString()}</span>
+                                <span className="text-sm font-black text-black">₹{item.price.toLocaleString()}</span>
                               </div>
                             </div>
                           );
@@ -433,9 +433,9 @@ export default function MyOrdersPage() {
                       </div>
 
                       {/* Pricing Summary (including coupon) */}
-                      <div className="bg-brand/5 border border-brand/10 rounded-2xl p-5 space-y-3 text-brand">
+                      <div className="bg-brand/5 border border-brand/10 rounded-2xl p-5 space-y-3 text-black">
                         <div className="flex justify-between items-center text-xs font-bold">
-                          <span className="text-brand/55">Actual Price (Subtotal)</span>
+                          <span className="text-black/55">Actual Price (Subtotal)</span>
                           <span>₹{(order.totalAmount + (order.discountAmount || 0)).toLocaleString()}</span>
                         </div>
                         
@@ -467,28 +467,28 @@ export default function MyOrdersPage() {
                             <h5 className="text-[9px] font-black uppercase tracking-widest text-[#C5A059] flex items-center gap-1.5">
                               🚚 Shipping Details
                             </h5>
-                            <div className="bg-[#1B3022]/5 border border-[#1B3022]/10 rounded-2xl p-4 space-y-3 text-brand">
+                            <div className="bg-[#1B3022]/5 border border-[#1B3022]/10 rounded-2xl p-4 space-y-3 text-black">
                               {order.courierServiceName && (
-                                <p className="text-xs text-brand/80">
-                                  <strong className="text-brand font-black uppercase tracking-wider text-[10px]">Courier:</strong>{" "}
+                                <p className="text-xs text-black/80">
+                                  <strong className="text-black font-black uppercase tracking-wider text-[10px]">Courier:</strong>{" "}
                                   {order.courierServiceName}
                                 </p>
                               )}
                               {order.courierId && (
-                                <p className="text-xs text-brand/80">
-                                  <strong className="text-brand font-black uppercase tracking-wider text-[10px]">Courier ID:</strong>{" "}
+                                <p className="text-xs text-black/80">
+                                  <strong className="text-black font-black uppercase tracking-wider text-[10px]">Courier ID:</strong>{" "}
                                   {order.courierId}
                                 </p>
                               )}
                               {order.trackingNumber && (
-                                <p className="text-xs text-brand/80">
-                                  <strong className="text-brand font-black uppercase tracking-wider text-[10px]">Tracking Number:</strong>{" "}
+                                <p className="text-xs text-black/80">
+                                  <strong className="text-black font-black uppercase tracking-wider text-[10px]">Tracking Number:</strong>{" "}
                                   {order.trackingNumber}
                                 </p>
                               )}
                               {order.trackingLink && (
                                 <p className="text-xs">
-                                  <strong className="text-brand font-black uppercase tracking-wider text-[10px] block mb-1">Track Shipment:</strong>
+                                  <strong className="text-black font-black uppercase tracking-wider text-[10px] block mb-1">Track Shipment:</strong>
                                   <a 
                                     href={order.trackingLink} 
                                     target="_blank" 
@@ -500,8 +500,8 @@ export default function MyOrdersPage() {
                                 </p>
                               )}
                               {order.estimatedDeliveryDate && (
-                                <p className="text-xs text-brand/80">
-                                  <strong className="text-brand font-black uppercase tracking-wider text-[10px]">Estimated Delivery:</strong>{" "}
+                                <p className="text-xs text-black/80">
+                                  <strong className="text-black font-black uppercase tracking-wider text-[10px]">Estimated Delivery:</strong>{" "}
                                   <span className="text-[#C5A059] font-bold">
                                     Arriving by {new Date(order.estimatedDeliveryDate).toLocaleDateString('en-US', {
                                       month: 'short',
@@ -513,8 +513,8 @@ export default function MyOrdersPage() {
                               )}
                               {order.shippingNotes && (
                                 <div className="border-t border-[#1B3022]/10 pt-2">
-                                  <p className="text-[10px] text-brand/50 font-bold uppercase tracking-wider mb-1">Notes</p>
-                                  <p className="text-[11px] italic text-brand/70">{order.shippingNotes}</p>
+                                  <p className="text-[10px] text-black/50 font-bold uppercase tracking-wider mb-1">Notes</p>
+                                  <p className="text-[11px] italic text-black/70">{order.shippingNotes}</p>
                                 </div>
                               )}
                             </div>
@@ -523,7 +523,7 @@ export default function MyOrdersPage() {
 
                         {/* Shipping Address */}
                         <div className="space-y-2">
-                          <h5 className="text-[9px] font-black uppercase tracking-widest text-brand/40 flex items-center gap-1.5">
+                          <h5 className="text-[9px] font-black uppercase tracking-widest text-black/40 flex items-center gap-1.5">
                             <MapPin size={12} className="text-[#C5A059]" /> Delivery Address
                           </h5>
                           <div className="bg-brand/5 border border-brand/5 rounded-2xl p-4">
@@ -531,18 +531,18 @@ export default function MyOrdersPage() {
                               const parsedAddr = parseAddress(order.shippingAddress);
                               if (parsedAddr) {
                                 return (
-                                  <div className="space-y-1.5 text-xs text-brand/80 leading-relaxed">
-                                    <p><strong className="text-brand font-black uppercase tracking-wider text-[10px]">Name:</strong> {parsedAddr.name}</p>
-                                    <p><strong className="text-brand font-black uppercase tracking-wider text-[10px]">Address:</strong> {parsedAddr.street}</p>
-                                    <p><strong className="text-brand font-black uppercase tracking-wider text-[10px]">City:</strong> {parsedAddr.city}</p>
-                                    <p><strong className="text-brand font-black uppercase tracking-wider text-[10px]">State:</strong> {parsedAddr.state}</p>
-                                    <p><strong className="text-brand font-black uppercase tracking-wider text-[10px]">Pincode:</strong> {parsedAddr.pincode}</p>
-                                    <p><strong className="text-brand font-black uppercase tracking-wider text-[10px]">Contact:</strong> {parsedAddr.contact}</p>
+                                  <div className="space-y-1.5 text-xs text-black/80 leading-relaxed">
+                                    <p><strong className="text-black font-black uppercase tracking-wider text-[10px]">Name:</strong> {parsedAddr.name}</p>
+                                    <p><strong className="text-black font-black uppercase tracking-wider text-[10px]">Address:</strong> {parsedAddr.street}</p>
+                                    <p><strong className="text-black font-black uppercase tracking-wider text-[10px]">City:</strong> {parsedAddr.city}</p>
+                                    <p><strong className="text-black font-black uppercase tracking-wider text-[10px]">State:</strong> {parsedAddr.state}</p>
+                                    <p><strong className="text-black font-black uppercase tracking-wider text-[10px]">Pincode:</strong> {parsedAddr.pincode}</p>
+                                    <p><strong className="text-black font-black uppercase tracking-wider text-[10px]">Contact:</strong> {parsedAddr.contact}</p>
                                   </div>
                                 );
                               }
                               return (
-                                <p className="text-xs font-semibold text-brand/80 leading-relaxed">
+                                <p className="text-xs font-semibold text-black/80 leading-relaxed">
                                   {order.shippingAddress || "No address provided"}
                                 </p>
                               );
@@ -553,7 +553,7 @@ export default function MyOrdersPage() {
                         {/* Cancel Order Action */}
                         {(order.status?.toLowerCase() === "pending" || order.status?.toLowerCase() === "confirmed") && (
                           <div className="space-y-2">
-                            <h5 className="text-[9px] font-black uppercase tracking-widest text-brand/40">Manage Order</h5>
+                            <h5 className="text-[9px] font-black uppercase tracking-widest text-black/40">Manage Order</h5>
                             <div className="bg-brand/5 border border-brand/5 rounded-2xl p-4">
                               {confirmingCancelId === order.id ? (
                                 <div className="space-y-3">
@@ -570,7 +570,7 @@ export default function MyOrdersPage() {
                                     <button 
                                       disabled={isCancelling}
                                       onClick={() => setConfirmingCancelId(null)}
-                                      className="flex-1 py-2 bg-brand/5 text-brand/70 font-bold rounded-xl hover:bg-brand/10 transition-all text-[10px] uppercase tracking-widest border border-brand/10"
+                                      className="flex-1 py-2 bg-brand/5 text-black/70 font-bold rounded-xl hover:bg-brand/10 transition-all text-[10px] uppercase tracking-widest border border-brand/10"
                                     >
                                       No, Keep
                                     </button>

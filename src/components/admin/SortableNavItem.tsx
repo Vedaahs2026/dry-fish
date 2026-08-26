@@ -47,13 +47,13 @@ export function SortableNavItem({ item, onEdit, onDelete }: Props) {
         <button 
           {...attributes} 
           {...listeners}
-          className="cursor-grab active:cursor-grabbing p-2 text-brand/20 hover:text-[#C5A059] transition-colors"
+          className="cursor-grab active:cursor-grabbing p-2 text-black/20 hover:text-[#C5A059] transition-colors"
         >
           <GripVertical size={20} />
         </button>
       </td>
       <td className="px-2 md:px-8 py-5">
-        <span className="font-bold text-brand">{item.label}</span>
+        <span className="font-bold text-black">{item.label}</span>
       </td>
       <td className="px-2 md:px-8 py-5">
         <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${
@@ -75,13 +75,13 @@ export function SortableNavItem({ item, onEdit, onDelete }: Props) {
           </Link>
           <button 
             onClick={() => onEdit(item)}
-            className="p-2 md:p-2.5 rounded-lg bg-brand/5 text-brand/60 hover:bg-brand-accent hover:text-white transition-all"
+            className="p-2 md:p-2.5 rounded-lg bg-brand/5 text-black/60 hover:bg-brand-accent hover:text-white transition-all"
           >
             <Edit2 size={14} />
           </button>
           <button 
             onClick={() => onDelete(item.id)}
-            className="p-2 md:p-2.5 rounded-lg bg-brand/5 text-brand/60 hover:bg-red-500 hover:text-white transition-all"
+            className="p-2 md:p-2.5 rounded-lg bg-brand/5 text-black/60 hover:bg-red-500 hover:text-white transition-all"
           >
             <Trash2 size={14} />
           </button>

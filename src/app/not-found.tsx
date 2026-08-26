@@ -6,17 +6,17 @@ export default function NotFound() {
     <div className="min-h-[80vh] flex items-center justify-center bg-brand-light px-6">
       <div className="max-w-md w-full text-center">
         <div className="inline-flex items-center justify-center p-4 bg-brand/5 rounded-full mb-8 relative">
-          <div className="text-brand-accent animate-pulse">
+          <div className="text-black-accent animate-pulse">
             <Sparkles size={40} />
           </div>
           <div className="absolute -top-1 -right-1 bg-brand text-[#064e3b] text-[10px] font-black px-2 py-1 rounded-lg shadow-lg">404</div>
         </div>
         
-        <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand mb-4 tracking-tighter">
+        <h1 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4 tracking-tighter">
           Lost in Transit?
         </h1>
         
-        <p className="text-brand/60 text-base mb-12 leading-relaxed">
+        <p className="text-black/60 text-base mb-12 leading-relaxed">
           The category or page you are looking for has been moved or doesn't exist. Let's get you back to our delicious selections.
         </p>
         
@@ -31,7 +31,7 @@ export default function NotFound() {
           
           <Link 
             href="/search" 
-            className="text-sm font-bold text-brand-accent uppercase tracking-[0.2em] hover:underline underline-offset-8 transition-all"
+            className="text-sm font-bold text-black-accent uppercase tracking-[0.2em] hover:underline underline-offset-8 transition-all"
           >
             Search Products
           </Link>

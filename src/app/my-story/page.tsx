@@ -51,7 +51,7 @@ export default function MyStory() {
 
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
           <div>
-            <h3 className="text-3xl font-playfair font-bold mb-8 flex items-center gap-3 text-brand">
+            <h3 className="text-3xl font-playfair font-bold mb-8 flex items-center gap-3 text-black">
               Contact Us <Sparkles size={24} className="text-[#C5A059]" />
             </h3>
             <div className="space-y-6">

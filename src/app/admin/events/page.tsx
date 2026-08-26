@@ -428,11 +428,11 @@ export default function AdminEventsPage() {
 
       {/* HEADER SECTION */}
       <div className="mb-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand flex items-center justify-center">
+        <h1 className="text-4xl font-playfair font-bold text-black flex items-center justify-center">
           <Calendar className="mr-3 text-[#C5A059]" size={36} />
           Manage Events
         </h1>
-        <p className="mt-2 text-brand/60 font-medium tracking-tight flex items-center justify-center">
+        <p className="mt-2 text-black/60 font-medium tracking-tight flex items-center justify-center">
           <Sparkles size={16} className="text-[#C5A059] mr-2" />
           Create, edit, and publish company gatherings, workshops, and outdoor festivals.
         </p>
@@ -451,16 +451,16 @@ export default function AdminEventsPage() {
       {/* QUICK STATS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <div className="bg-white p-6 rounded-2xl border border-brand/5 shadow-sm">
-          <span className="text-[10px] font-black text-brand/35 uppercase tracking-[0.2em] block mb-1">Total Events</span>
-          <span className="text-3xl font-bold text-brand">{events.length}</span>
+          <span className="text-[10px] font-black text-black/35 uppercase tracking-[0.2em] block mb-1">Total Events</span>
+          <span className="text-3xl font-bold text-black">{events.length}</span>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-brand/5 shadow-sm">
-          <span className="text-[10px] font-black text-brand/35 uppercase tracking-[0.2em] block mb-1">Indoor Events</span>
-          <span className="text-3xl font-bold text-brand">{indoorCount}</span>
+          <span className="text-[10px] font-black text-black/35 uppercase tracking-[0.2em] block mb-1">Indoor Events</span>
+          <span className="text-3xl font-bold text-black">{indoorCount}</span>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-brand/5 shadow-sm">
-          <span className="text-[10px] font-black text-brand/35 uppercase tracking-[0.2em] block mb-1">Outdoor Events</span>
-          <span className="text-3xl font-bold text-brand">{outdoorCount}</span>
+          <span className="text-[10px] font-black text-black/35 uppercase tracking-[0.2em] block mb-1">Outdoor Events</span>
+          <span className="text-3xl font-bold text-black">{outdoorCount}</span>
         </div>
       </div>
 
@@ -472,7 +472,7 @@ export default function AdminEventsPage() {
             placeholder="Search by event title or location..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1B3022]/10 focus:border-[#1B3022] text-sm text-brand"
+            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1B3022]/10 focus:border-[#1B3022] text-sm text-black"
           />
         </div>
         <div className="flex items-center space-x-2">
@@ -481,7 +481,7 @@ export default function AdminEventsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               filterType === "all"
                 ? "bg-[#1B3022] text-white"
-                : "bg-gray-100 text-brand/60 hover:bg-gray-200"
+                : "bg-gray-100 text-black/60 hover:bg-gray-200"
             }`}
           >
             All Events
@@ -491,7 +491,7 @@ export default function AdminEventsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               filterType === "indoor"
                 ? "bg-[#1B3022] text-white"
-                : "bg-gray-100 text-brand/60 hover:bg-gray-200"
+                : "bg-gray-100 text-black/60 hover:bg-gray-200"
             }`}
           >
             Indoor (Event Types)
@@ -501,7 +501,7 @@ export default function AdminEventsPage() {
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               filterType === "outdoor"
                 ? "bg-[#1B3022] text-white"
-                : "bg-gray-100 text-brand/60 hover:bg-gray-200"
+                : "bg-gray-100 text-black/60 hover:bg-gray-200"
             }`}
           >
             Outdoor Events
@@ -513,13 +513,13 @@ export default function AdminEventsPage() {
       {isLoading ? (
         <div className="flex flex-col items-center justify-center py-20 bg-white rounded-3xl border border-brand/5 shadow-sm">
           <Loader2 className="w-10 h-10 text-[#C5A059] animate-spin mb-4" />
-          <p className="text-sm font-bold text-brand/40 uppercase tracking-widest">Loading events...</p>
+          <p className="text-sm font-bold text-black/40 uppercase tracking-widest">Loading events...</p>
         </div>
       ) : filteredEvents.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 bg-white rounded-3xl border border-brand/5 shadow-sm text-center px-4">
           <Calendar className="w-16 h-16 text-[#C5A059]/30 mb-4" />
-          <h3 className="text-xl font-playfair font-bold text-brand mb-1">No Events Found</h3>
-          <p className="text-sm text-brand/60 max-w-sm">
+          <h3 className="text-xl font-playfair font-bold text-black mb-1">No Events Found</h3>
+          <p className="text-sm text-black/60 max-w-sm">
             {searchTerm || filterType !== "all" 
               ? "Try adjusting your search filters to find what you are looking for." 
               : "Click 'Add New Event' to publish your first company event."}
@@ -530,7 +530,7 @@ export default function AdminEventsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-brand/5 bg-brand/5 text-[10px] font-black text-brand/35 uppercase tracking-widest">
+                <tr className="border-b border-brand/5 bg-brand/5 text-[10px] font-black text-black/35 uppercase tracking-widest">
                   <th className="py-4 px-6">Media Preview</th>
                   <th className="py-4 px-6">Event Details</th>
                   <th className="py-4 px-6">Category</th>
@@ -561,7 +561,7 @@ export default function AdminEventsPage() {
                               />
                             )
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center text-brand/20">
+                            <div className="w-full h-full flex items-center justify-center text-black/20">
                               <ImageIcon size={20} />
                             </div>
                           )}
@@ -569,9 +569,9 @@ export default function AdminEventsPage() {
                       </td>
                       <td className="py-5 px-6">
                         <div>
-                          <h4 className="font-bold text-brand group-hover:text-[#C5A059] transition-colors line-clamp-1">{evt.title}</h4>
+                          <h4 className="font-bold text-black group-hover:text-[#C5A059] transition-colors line-clamp-1">{evt.title}</h4>
                           {evt.duration && (
-                            <p className="text-[10px] font-bold text-brand/40 uppercase tracking-widest mt-1">Duration: {evt.duration}</p>
+                            <p className="text-[10px] font-bold text-black/40 uppercase tracking-widest mt-1">Duration: {evt.duration}</p>
                           )}
                         </div>
                       </td>
@@ -586,12 +586,12 @@ export default function AdminEventsPage() {
                       </td>
                       <td className="py-5 px-6">
                         <div className="space-y-1">
-                          <p className="text-xs font-semibold text-brand/80 flex items-center">
-                            <Calendar size={12} className="mr-1.5 text-brand/40" />
+                          <p className="text-xs font-semibold text-black/80 flex items-center">
+                            <Calendar size={12} className="mr-1.5 text-black/40" />
                             {evt.date}
                           </p>
-                          <p className="text-[10px] font-medium text-brand/50 flex items-center">
-                            <MapPin size={10} className="mr-1.5 text-brand/40" />
+                          <p className="text-[10px] font-medium text-black/50 flex items-center">
+                            <MapPin size={10} className="mr-1.5 text-black/40" />
                             {evt.location}
                           </p>
                         </div>
@@ -600,14 +600,14 @@ export default function AdminEventsPage() {
                         <div className="flex items-center justify-center space-x-2">
                           <button
                             onClick={() => fetchAndShowRegistrations(evt)}
-                            className="p-2 hover:bg-brand/5 rounded-lg text-brand/70 hover:text-brand transition-all flex items-center justify-center"
+                            className="p-2 hover:bg-brand/5 rounded-lg text-black/70 hover:text-black transition-all flex items-center justify-center"
                             title="View Registrations"
                           >
                             <Users size={16} />
                           </button>
                           <button
                             onClick={() => openEditModal(evt)}
-                            className="p-2 hover:bg-brand/5 rounded-lg text-brand/70 hover:text-brand transition-all"
+                            className="p-2 hover:bg-brand/5 rounded-lg text-black/70 hover:text-black transition-all"
                             title="Edit Event"
                           >
                             <Edit3 size={16} />
@@ -641,10 +641,10 @@ export default function AdminEventsPage() {
             {/* Modal Header */}
             <div className="p-8 border-b border-brand/5 flex items-center justify-between bg-brand/5">
               <div>
-                <h2 className="text-2xl font-playfair font-bold text-brand">
+                <h2 className="text-2xl font-playfair font-bold text-black">
                   {editingEvent ? "Edit Event Details" : "Add New Event"}
                 </h2>
-                <p className="text-[10px] font-black text-brand/35 uppercase tracking-widest mt-1">
+                <p className="text-[10px] font-black text-black/35 uppercase tracking-widest mt-1">
                   {editingEvent ? "Modify details of an existing event" : "Create a new calendar entry"}
                 </p>
               </div>
@@ -653,7 +653,7 @@ export default function AdminEventsPage() {
                 className="p-2 hover:bg-brand/10 rounded-xl transition-all"
                 disabled={isSubmitting}
               >
-                <X size={20} className="text-brand/40" />
+                <X size={20} className="text-black/40" />
               </button>
             </div>
 
@@ -663,10 +663,10 @@ export default function AdminEventsPage() {
                 
                 {/* Section 1: Basic Information */}
                 <div className="bg-gray-50/50 p-6 rounded-2xl border border-brand/5 space-y-4">
-                  <h3 className="text-xs font-black text-brand/35 uppercase tracking-wider mb-2">Basic Info</h3>
+                  <h3 className="text-xs font-black text-black/35 uppercase tracking-wider mb-2">Basic Info</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-brand mb-1.5">Event Title *</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Event Title *</label>
                       <input
                         type="text"
                         required
@@ -677,11 +677,11 @@ export default function AdminEventsPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-brand mb-1.5">Category *</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Category *</label>
                       <select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="w-full px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand font-medium text-brand"
+                        className="w-full px-4 py-2 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand font-medium text-black"
                       >
                         <optgroup label="Event Types (Indoor)">
                           <option value="meetups">Meetups</option>
@@ -703,7 +703,7 @@ export default function AdminEventsPage() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-brand mb-1.5">Description</label>
+                    <label className="block text-xs font-bold text-black mb-1.5">Description</label>
                     <textarea
                       rows={3}
                       value={description}
@@ -716,10 +716,10 @@ export default function AdminEventsPage() {
 
                 {/* Section 2: Date & Location */}
                 <div className="bg-gray-50/50 p-6 rounded-2xl border border-brand/5 space-y-4">
-                  <h3 className="text-xs font-black text-brand/35 uppercase tracking-wider mb-2">Schedule & Location</h3>
+                  <h3 className="text-xs font-black text-black/35 uppercase tracking-wider mb-2">Schedule & Location</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-brand mb-1.5">Date *</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Date *</label>
                       <input
                         type="text"
                         required
@@ -730,7 +730,7 @@ export default function AdminEventsPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-brand mb-1.5">Time *</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Time *</label>
                       <input
                         type="text"
                         required
@@ -743,7 +743,7 @@ export default function AdminEventsPage() {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-brand mb-1.5">Location *</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Location *</label>
                       <input
                         type="text"
                         required
@@ -754,7 +754,7 @@ export default function AdminEventsPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold text-brand mb-1.5">Booking / RSVP URL</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Booking / RSVP URL</label>
                       <input
                         type="url"
                         value={bookingUrl}
@@ -768,10 +768,10 @@ export default function AdminEventsPage() {
 
                 {/* Section 3: Event Specifications (Metadata) */}
                 <div className="bg-gray-50/50 p-6 rounded-2xl border border-brand/5 space-y-4">
-                  <h3 className="text-xs font-black text-brand/35 uppercase tracking-wider mb-2">Event Specifications (Metadata)</h3>
+                  <h3 className="text-xs font-black text-black/35 uppercase tracking-wider mb-2">Event Specifications (Metadata)</h3>
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                     <div className="col-span-1">
-                      <label className="block text-xs font-bold text-brand mb-1.5">Duration</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Duration</label>
                       <input
                         type="text"
                         value={duration}
@@ -781,7 +781,7 @@ export default function AdminEventsPage() {
                       />
                     </div>
                     <div className="col-span-1">
-                      <label className="block text-xs font-bold text-brand mb-1.5">Age Limit</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Age Limit</label>
                       <input
                         type="text"
                         value={ageLimit}
@@ -791,7 +791,7 @@ export default function AdminEventsPage() {
                       />
                     </div>
                     <div className="col-span-1">
-                      <label className="block text-xs font-bold text-brand mb-1.5">Language</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Language</label>
                       <input
                         type="text"
                         value={language}
@@ -801,7 +801,7 @@ export default function AdminEventsPage() {
                       />
                     </div>
                     <div className="col-span-2">
-                      <label className="block text-xs font-bold text-brand mb-1.5">Genre</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Genre</label>
                       <input
                         type="text"
                         value={genre}
@@ -816,14 +816,14 @@ export default function AdminEventsPage() {
                 {/* Section 4: Media Uploads */}
                 <div className="bg-gray-50/50 p-6 rounded-2xl border border-brand/5 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-xs font-black text-brand/35 uppercase tracking-wider">Media Gallery (Images & Videos)</h3>
-                    <span className="text-[10px] font-bold text-brand/40 uppercase tracking-wider">{mediaList.length} item(s)</span>
+                    <h3 className="text-xs font-black text-black/35 uppercase tracking-wider">Media Gallery (Images & Videos)</h3>
+                    <span className="text-[10px] font-bold text-black/40 uppercase tracking-wider">{mediaList.length} item(s)</span>
                   </div>
 
                   {/* Upload Field */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold text-brand mb-1.5">Upload Local Media (Images / Videos)</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Upload Local Media (Images / Videos)</label>
                       <div className="relative border-2 border-dashed border-gray-200 hover:border-brand/40 bg-white rounded-2xl h-32 transition-all flex flex-col items-center justify-center cursor-pointer">
                         <input
                           type="file"
@@ -836,13 +836,13 @@ export default function AdminEventsPage() {
                         {isUploading ? (
                           <div className="flex flex-col items-center">
                             <Loader2 className="w-8 h-8 text-[#C5A059] animate-spin mb-2" />
-                            <span className="text-[10px] font-black text-brand/40 uppercase tracking-widest">Uploading files...</span>
+                            <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Uploading files...</span>
                           </div>
                         ) : (
                           <div className="flex flex-col items-center text-center p-4">
-                            <Upload className="w-6 h-6 text-brand/30 mb-2" />
-                            <p className="text-xs font-bold text-brand/60">Click or Drag Files here</p>
-                            <p className="text-[10px] text-brand/35 font-medium mt-1">Supports Images & MP4 Videos</p>
+                            <Upload className="w-6 h-6 text-black/30 mb-2" />
+                            <p className="text-xs font-bold text-black/60">Click or Drag Files here</p>
+                            <p className="text-[10px] text-black/35 font-medium mt-1">Supports Images & MP4 Videos</p>
                           </div>
                         )}
                       </div>
@@ -850,7 +850,7 @@ export default function AdminEventsPage() {
 
                     {/* Direct URL input */}
                     <div className="flex flex-col justify-end">
-                      <label className="block text-xs font-bold text-brand mb-1.5">Or Add Direct URL</label>
+                      <label className="block text-xs font-bold text-black mb-1.5">Or Add Direct URL</label>
                       <div className="flex space-x-2">
                         <input
                           type="text"
@@ -867,7 +867,7 @@ export default function AdminEventsPage() {
                           Add URL
                         </button>
                       </div>
-                      <p className="text-[10px] text-brand/35 font-medium mt-2">
+                      <p className="text-[10px] text-black/35 font-medium mt-2">
                         Type path manually and click Add URL if uploading from external sources.
                       </p>
                     </div>
@@ -876,7 +876,7 @@ export default function AdminEventsPage() {
                   {/* List of current media */}
                   {mediaList.length > 0 && (
                     <div className="mt-4 pt-4 border-t border-brand/5">
-                      <p className="text-xs font-bold text-brand/50 mb-3 uppercase tracking-wider">Current Media Items (Drag/Order list)</p>
+                      <p className="text-xs font-bold text-black/50 mb-3 uppercase tracking-wider">Current Media Items (Drag/Order list)</p>
                       <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
                         {mediaList.map((url, index) => {
                           const isVid = isVideo(url);
@@ -926,9 +926,9 @@ export default function AdminEventsPage() {
 
                 {/* Section 5: Disclaimer */}
                 <div className="bg-gray-50/50 p-6 rounded-2xl border border-brand/5 space-y-4">
-                  <h3 className="text-xs font-black text-brand/35 uppercase tracking-wider mb-2">Disclaimer</h3>
+                  <h3 className="text-xs font-black text-black/35 uppercase tracking-wider mb-2">Disclaimer</h3>
                   <div>
-                    <label className="block text-xs font-bold text-brand mb-1.5">Event Disclaimer / Notes</label>
+                    <label className="block text-xs font-bold text-black mb-1.5">Event Disclaimer / Notes</label>
                     <textarea
                       rows={2}
                       value={disclaimer}
@@ -947,7 +947,7 @@ export default function AdminEventsPage() {
                   type="button"
                   onClick={() => setIsModalOpen(false)}
                   disabled={isSubmitting}
-                  className="px-6 py-3 border border-gray-200 hover:bg-gray-50 text-brand font-bold rounded-2xl text-sm transition-all"
+                  className="px-6 py-3 border border-gray-200 hover:bg-gray-50 text-black font-bold rounded-2xl text-sm transition-all"
                 >
                   Cancel
                 </button>
@@ -990,16 +990,16 @@ export default function AdminEventsPage() {
                 <span className="bg-[#1B3022]/10 text-[#1B3022] text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full">
                   Registrations
                 </span>
-                <h3 className="text-2xl font-playfair font-black text-brand mt-2">
+                <h3 className="text-2xl font-playfair font-black text-black mt-2">
                   {selectedRegEvent.title}
                 </h3>
-                <p className="text-xs text-brand/50 font-medium mt-1">
+                <p className="text-xs text-black/50 font-medium mt-1">
                   List of customers registered for this event.
                 </p>
               </div>
               <button
                 onClick={() => setIsRegModalOpen(false)}
-                className="p-3 bg-white hover:bg-gray-100 rounded-full border border-brand/5 shadow-sm text-brand transition-all cursor-pointer"
+                className="p-3 bg-white hover:bg-gray-100 rounded-full border border-brand/5 shadow-sm text-black transition-all cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -1010,13 +1010,13 @@ export default function AdminEventsPage() {
               {isLoadingRegs ? (
                 <div className="flex flex-col items-center justify-center py-16">
                   <Loader2 className="w-10 h-10 text-[#C5A059] animate-spin mb-4" />
-                  <p className="text-xs font-bold text-brand/40 uppercase tracking-widest">Loading registrations...</p>
+                  <p className="text-xs font-bold text-black/40 uppercase tracking-widest">Loading registrations...</p>
                 </div>
               ) : registrations.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <Users className="w-16 h-16 text-[#C5A059]/30 mb-4 animate-pulse" />
-                  <h4 className="text-lg font-bold text-brand font-playfair mb-1">No Registrations Yet</h4>
-                  <p className="text-xs text-brand/60 max-w-xs">
+                  <h4 className="text-lg font-bold text-black font-playfair mb-1">No Registrations Yet</h4>
+                  <p className="text-xs text-black/60 max-w-xs">
                     Once users start registering for this event, their details will appear here.
                   </p>
                 </div>
@@ -1024,7 +1024,7 @@ export default function AdminEventsPage() {
                 <div className="overflow-x-auto border border-brand/5 rounded-2xl">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="bg-brand/5 border-b border-brand/5 text-[9px] font-black text-brand/35 uppercase tracking-widest">
+                      <tr className="bg-brand/5 border-b border-brand/5 text-[9px] font-black text-black/35 uppercase tracking-widest">
                         <th className="py-3.5 px-5">Name</th>
                         <th className="py-3.5 px-5">Contact Details</th>
                         <th className="py-3.5 px-5 text-center">Tickets</th>
@@ -1035,12 +1035,12 @@ export default function AdminEventsPage() {
                     </thead>
                     <tbody className="divide-y divide-brand/5">
                       {registrations.map((reg) => (
-                        <tr key={reg.id} className="hover:bg-brand/[0.005] transition-colors text-sm text-brand">
+                        <tr key={reg.id} className="hover:bg-brand/[0.005] transition-colors text-sm text-black">
                           <td className="py-4 px-5 font-bold">{reg.name}</td>
                           <td className="py-4 px-5">
                             <div className="space-y-0.5">
                               <p className="font-semibold">{reg.phone}</p>
-                              <p className="text-xs text-brand/50 font-normal">{reg.email}</p>
+                              <p className="text-xs text-black/50 font-normal">{reg.email}</p>
                             </div>
                           </td>
                           <td className="py-4 px-5 text-center">
@@ -1048,10 +1048,10 @@ export default function AdminEventsPage() {
                               {reg.ticketsCount}
                             </span>
                           </td>
-                          <td className="py-4 px-5 max-w-[200px] truncate text-xs text-brand/70" title={reg.additionalNotes || ""}>
-                            {reg.additionalNotes || <span className="text-brand/20 italic">None</span>}
+                          <td className="py-4 px-5 max-w-[200px] truncate text-xs text-black/70" title={reg.additionalNotes || ""}>
+                            {reg.additionalNotes || <span className="text-black/20 italic">None</span>}
                           </td>
-                          <td className="py-4 px-5 text-xs text-brand/60">
+                          <td className="py-4 px-5 text-xs text-black/60">
                             {reg.createdAt ? new Date(reg.createdAt).toLocaleDateString("en-IN", {
                               day: "2-digit",
                               month: "short",

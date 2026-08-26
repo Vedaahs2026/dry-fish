@@ -222,10 +222,10 @@ export default function CartPage() {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center px-4">
         <div className="w-24 h-24 bg-brand/5 rounded-full flex items-center justify-center mb-6">
-          <ShoppingBag className="text-brand/20" size={40} />
+          <ShoppingBag className="text-black/20" size={40} />
         </div>
-        <h1 className="text-3xl font-playfair font-bold text-brand mb-4">Your cart is empty</h1>
-        <p className="text-brand/60 mb-10 text-center max-w-md leading-relaxed">
+        <h1 className="text-3xl font-playfair font-bold text-black mb-4">Your cart is empty</h1>
+        <p className="text-black/60 mb-10 text-center max-w-md leading-relaxed">
           Looks like you haven't added any premium seafood items yet. Explore our latest collections and shop for authentic delicacies.
         </p>
         <Link
@@ -391,8 +391,8 @@ export default function CartPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-24">
       <div className="flex items-center space-x-4 mb-10">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Shopping Cart</h1>
-        <span className="bg-brand/5 text-brand/60 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+        <h1 className="text-4xl font-playfair font-bold text-black">Shopping Cart</h1>
+        <span className="bg-brand/5 text-black/60 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
           {getTotalItems()} Items
         </span>
       </div>
@@ -439,7 +439,7 @@ export default function CartPage() {
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
                     <div>
                       <div className="flex items-center space-x-2 mb-1">
-                        <h3 className="text-lg font-bold text-brand leading-tight uppercase">{item.name.toUpperCase()}</h3>
+                        <h3 className="text-lg font-bold text-black leading-tight uppercase">{item.name.toUpperCase()}</h3>
                         {isBespoke && (
                           <div className="flex items-center space-x-1 px-2 py-0.5 bg-[#C5A059] text-white rounded-full">
                             <Scissors size={10} />
@@ -450,14 +450,14 @@ export default function CartPage() {
                       <div className="flex flex-wrap justify-center sm:justify-start gap-3 mt-2">
                         <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full flex items-center gap-1 ${isBespoke
                           ? 'text-[#C5A059] bg-[#C5A059]/10 border border-[#C5A059]/20'
-                          : 'text-brand/40 bg-brand/5'
+                          : 'text-black/40 bg-brand/5'
                           }`}>
                           {isBespoke && <Sparkles size={10} />}
                           Customized: {item.customizations.type || "Standard"}
                         </span>
                       </div>
                     </div>
-                    <div className="mt-4 sm:mt-0 text-xl font-bold text-brand">
+                    <div className="mt-4 sm:mt-0 text-xl font-bold text-black">
                       ₹{item.price.toLocaleString()}
                     </div>
                   </div>
@@ -469,10 +469,10 @@ export default function CartPage() {
                         <button
                           type="button"
                           onClick={() => openSizeModal(item)}
-                          className="bg-brand/5 hover:bg-brand/10 text-brand text-xs font-bold py-2.5 px-4 rounded-xl cursor-pointer transition-colors outline-none border border-brand/10 flex items-center space-x-1"
+                          className="bg-brand/5 hover:bg-brand/10 text-black text-xs font-bold py-2.5 px-4 rounded-xl cursor-pointer transition-colors outline-none border border-brand/10 flex items-center space-x-1"
                         >
                           <span>Size: {item.size}</span>
-                          <ChevronDown size={14} className="text-brand/50" />
+                          <ChevronDown size={14} className="text-black/50" />
                         </button>
                       )}
 
@@ -485,10 +485,10 @@ export default function CartPage() {
                       <button
                         type="button"
                         onClick={() => openQtyModal(item)}
-                        className="bg-brand/5 hover:bg-brand/10 text-brand text-xs font-bold py-2.5 px-4 rounded-xl cursor-pointer transition-colors outline-none border border-brand/10 flex items-center space-x-1"
+                        className="bg-brand/5 hover:bg-brand/10 text-black text-xs font-bold py-2.5 px-4 rounded-xl cursor-pointer transition-colors outline-none border border-brand/10 flex items-center space-x-1"
                       >
                         <span>Qty: {item.quantity}</span>
-                        <ChevronDown size={14} className="text-brand/50" />
+                        <ChevronDown size={14} className="text-black/50" />
                       </button>
                     </div>
 
@@ -734,25 +734,25 @@ export default function CartPage() {
                 <div className="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mb-6 text-amber-500 mx-auto">
                   <AlertTriangle size={32} />
                 </div>
-                <h3 className="text-xl font-playfair font-bold text-brand text-center mb-4">Store Policy Agreement</h3>
+                <h3 className="text-xl font-playfair font-bold text-black text-center mb-4">Store Policy Agreement</h3>
 
                 <div className="space-y-4 bg-brand/5 p-6 rounded-3xl border border-brand/5 mb-8">
                   <div className="flex items-start space-x-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#C5A059] mt-2 flex-shrink-0" />
-                    <p className="text-xs font-bold text-brand/70 leading-relaxed">
-                      Orders cannot be cancelled once the <span className="text-brand font-black">packaging or dispatch process begins</span>.
+                    <p className="text-xs font-bold text-black/70 leading-relaxed">
+                      Orders cannot be cancelled once the <span className="text-black font-black">packaging or dispatch process begins</span>.
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#C5A059] mt-2 flex-shrink-0" />
-                    <p className="text-xs font-bold text-brand/70 leading-relaxed">
-                      Amounts paid are <span className="text-brand font-black">non-refundable for all items</span>.
+                    <p className="text-xs font-bold text-black/70 leading-relaxed">
+                      Amounts paid are <span className="text-black font-black">non-refundable for all items</span>.
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#C5A059] mt-2 flex-shrink-0" />
-                    <p className="text-xs font-bold text-brand/70 leading-relaxed">
-                      There is <span className="text-brand font-black">no exchange or return option</span> for any purchase.
+                    <p className="text-xs font-bold text-black/70 leading-relaxed">
+                      There is <span className="text-black font-black">no exchange or return option</span> for any purchase.
                     </p>
                   </div>
                 </div>
@@ -766,7 +766,7 @@ export default function CartPage() {
                   </button>
                   <button
                     onClick={() => setIsCheckoutModalOpen(false)}
-                    className="w-full py-4 text-[10px] font-black uppercase tracking-[0.2em] text-brand/40 hover:text-brand transition-colors"
+                    className="w-full py-4 text-[10px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
                   >
                     Go Back
                   </button>
@@ -777,12 +777,12 @@ export default function CartPage() {
             {paymentStep === "address" && (
               <div className="animate-in slide-in-from-right-5 duration-300">
                 <div className="flex items-center space-x-4 mb-8">
-                  <div className="p-3 bg-brand/5 rounded-2xl text-brand">
+                  <div className="p-3 bg-brand/5 rounded-2xl text-black">
                     {fetchingAddress ? <Loader2 size={24} className="animate-spin" /> : <MapPin size={24} />}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-brand">Delivery Address</h3>
-                    <p className="text-[10px] text-brand/40 font-black uppercase tracking-widest">
+                    <h3 className="text-xl font-bold text-black">Delivery Address</h3>
+                    <p className="text-[10px] text-black/40 font-black uppercase tracking-widest">
                       {fetchingAddress ? "Looking for your saved address..." : "Where should we send your order?"}
                     </p>
                   </div>
@@ -802,7 +802,7 @@ export default function CartPage() {
                               }`}
                           >
                             <div className="flex items-start justify-between gap-3">
-                              <p className="text-sm font-medium text-brand whitespace-pre-wrap break-words min-w-0">{addr}</p>
+                              <p className="text-sm font-medium text-black whitespace-pre-wrap break-words min-w-0">{addr}</p>
                               {selectedAddressIndex === idx && <CheckCircle2 size={18} className="text-[#C5A059] flex-shrink-0 mt-1" />}
                             </div>
                           </div>
@@ -810,7 +810,7 @@ export default function CartPage() {
                       </div>
                       <button
                         onClick={() => setShowNewAddressForm(true)}
-                        className="w-full py-4 border-2 border-dashed border-brand/20 rounded-xl text-xs font-bold text-brand hover:bg-brand/5 transition-colors flex items-center justify-center gap-2"
+                        className="w-full py-4 border-2 border-dashed border-brand/20 rounded-xl text-xs font-bold text-black hover:bg-brand/5 transition-colors flex items-center justify-center gap-2"
                       >
                         <Plus size={16} /> Add New Address
                       </button>
@@ -820,60 +820,60 @@ export default function CartPage() {
                       {savedAddresses.length > 0 && (
                         <button
                           onClick={() => setShowNewAddressForm(false)}
-                          className="text-xs font-bold text-brand hover:underline self-start mb-2 flex items-center gap-2"
+                          className="text-xs font-bold text-black hover:underline self-start mb-2 flex items-center gap-2"
                         >
                           &larr; Back to saved addresses
                         </button>
                       )}
                       <div className="space-y-1.5">
-                        <label className="text-[10px] font-black text-brand/40 uppercase tracking-widest ml-1">Full Name</label>
+                        <label className="text-[10px] font-black text-black/40 uppercase tracking-widest ml-1">Full Name</label>
                         <input
                           type="text"
                           required
                           value={address.fullName}
                           onChange={(e) => setAddress({ ...address, fullName: e.target.value })}
-                          className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                          className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
                           placeholder="John Doe"
                         />
                       </div>
                       <div className="space-y-1.5">
-                        <label className="text-[10px] font-black text-brand/40 uppercase tracking-widest ml-1">Street / Apartment / Landmark</label>
+                        <label className="text-[10px] font-black text-black/40 uppercase tracking-widest ml-1">Street / Apartment / Landmark</label>
                         <input
                           type="text"
                           required
                           value={address.street}
                           onChange={(e) => setAddress({ ...address, street: e.target.value })}
-                          className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                          className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
                           placeholder="123 Boutique Lane, Suite 4B"
                         />
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-black text-brand/40 uppercase tracking-widest ml-1">City</label>
+                          <label className="text-[10px] font-black text-black/40 uppercase tracking-widest ml-1">City</label>
                           <input
                             type="text"
                             required
                             value={address.city}
                             onChange={(e) => setAddress({ ...address, city: e.target.value })}
-                            className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                            className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
                             placeholder="Mumbai"
                           />
                         </div>
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-black text-brand/40 uppercase tracking-widest ml-1">State</label>
+                          <label className="text-[10px] font-black text-black/40 uppercase tracking-widest ml-1">State</label>
                           <input
                             type="text"
                             required
                             value={address.state}
                             onChange={(e) => setAddress({ ...address, state: e.target.value })}
-                            className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                            className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
                             placeholder="Maharashtra"
                           />
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-black text-brand/40 uppercase tracking-widest ml-1">Pincode</label>
+                          <label className="text-[10px] font-black text-black/40 uppercase tracking-widest ml-1">Pincode</label>
                           <input
                             type="text"
                             required
@@ -883,12 +883,12 @@ export default function CartPage() {
                               const val = e.target.value.replace(/\D/g, '').slice(0, 6);
                               setAddress({ ...address, pincode: val });
                             }}
-                            className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                            className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
                             placeholder="6 Digits"
                           />
                         </div>
                         <div className="space-y-1.5">
-                          <label className="text-[10px] font-black text-brand/40 uppercase tracking-widest ml-1">Contact Phone</label>
+                          <label className="text-[10px] font-black text-black/40 uppercase tracking-widest ml-1">Contact Phone</label>
                           <input
                             type="text"
                             required
@@ -898,7 +898,7 @@ export default function CartPage() {
                               const val = e.target.value.replace(/\D/g, '').slice(0, 10);
                               setAddress({ ...address, phone: val });
                             }}
-                            className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
+                            className="w-full bg-brand/5 border border-brand/5 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-brand-accent/20 transition-all"
                             placeholder="10 Digits"
                           />
                         </div>
@@ -909,7 +909,7 @@ export default function CartPage() {
                   <div className="flex gap-4 pt-4">
                     <button
                       onClick={() => setIsCheckoutModalOpen(false)}
-                      className="flex-1 py-4 border-2 border-brand/5 rounded-xl text-[10px] font-black uppercase tracking-widest text-brand/40 hover:bg-brand/5 transition-all"
+                      className="flex-1 py-4 border-2 border-brand/5 rounded-xl text-[10px] font-black uppercase tracking-widest text-black/40 hover:bg-brand/5 transition-all"
                     >
                       Cancel
                     </button>
@@ -932,18 +932,18 @@ export default function CartPage() {
             {paymentStep === "details" && (
               <div className="animate-in slide-in-from-right-5 duration-300">
                 <div className="flex items-center space-x-4 mb-8">
-                  <div className="p-3 bg-brand/5 rounded-2xl text-brand">
+                  <div className="p-3 bg-brand/5 rounded-2xl text-black">
                     <CreditCard size={24} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-brand">Secure Checkout</h3>
-                    <p className="text-[10px] text-brand/40 font-black uppercase tracking-widest">Only Online Prepaid Payments Accepted</p>
+                    <h3 className="text-xl font-bold text-black">Secure Checkout</h3>
+                    <p className="text-[10px] text-black/40 font-black uppercase tracking-widest">Only Online Prepaid Payments Accepted</p>
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   <div className="bg-brand/5 p-6 rounded-3xl border border-brand/5 space-y-4">
-                    <div className="flex justify-between items-center text-xs font-bold text-brand/60">
+                    <div className="flex justify-between items-center text-xs font-bold text-black/60">
                       <span>Subtotal</span>
                       <span>₹{subtotal.toLocaleString()}</span>
                     </div>
@@ -953,14 +953,14 @@ export default function CartPage() {
                         <span>- ₹{discountAmount.toLocaleString()}</span>
                       </div>
                     )}
-                    <div className="flex justify-between items-center text-xs font-bold text-brand/60">
+                    <div className="flex justify-between items-center text-xs font-bold text-black/60">
                       <span>Shipping</span>
                       <span>Free</span>
                     </div>
 
                     <div className="border-t border-brand/10 pt-4 flex justify-between items-center">
-                      <span className="text-[10px] font-black text-brand uppercase tracking-widest">Grand Total</span>
-                      <span className="text-xl font-black text-brand tracking-widest">₹{total.toLocaleString()}</span>
+                      <span className="text-[10px] font-black text-black uppercase tracking-widest">Grand Total</span>
+                      <span className="text-xl font-black text-black tracking-widest">₹{total.toLocaleString()}</span>
                     </div>
 
                     <div className="flex items-center space-x-2 text-[10px] font-bold text-green-600 bg-green-50 px-3 py-2 rounded-xl border border-green-100">
@@ -972,7 +972,7 @@ export default function CartPage() {
                   <div className="flex gap-4">
                     <button
                       onClick={() => setIsCheckoutModalOpen(false)}
-                      className="flex-1 py-4 border-2 border-brand/5 rounded-xl text-[10px] font-black uppercase tracking-widest text-brand/40 hover:bg-brand/5 transition-all"
+                      className="flex-1 py-4 border-2 border-brand/5 rounded-xl text-[10px] font-black uppercase tracking-widest text-black/40 hover:bg-brand/5 transition-all"
                     >
                       Cancel
                     </button>
@@ -993,11 +993,11 @@ export default function CartPage() {
                   <div className="w-24 h-24 border-4 border-brand-accent/20 rounded-full"></div>
                   <div className="absolute inset-0 w-24 h-24 border-4 border-brand-accent border-t-transparent rounded-full animate-spin"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <ShieldCheck size={32} className="text-brand-accent animate-pulse" />
+                    <ShieldCheck size={32} className="text-black-accent animate-pulse" />
                   </div>
                 </div>
-                <h3 className="text-2xl font-playfair font-bold text-brand mb-2">Processing Payment</h3>
-                <p className="text-[10px] text-brand/40 font-black uppercase tracking-widest">Verifying with your bank...</p>
+                <h3 className="text-2xl font-playfair font-bold text-black mb-2">Processing Payment</h3>
+                <p className="text-[10px] text-black/40 font-black uppercase tracking-widest">Verifying with your bank...</p>
               </div>
             )}
 
@@ -1028,7 +1028,7 @@ export default function CartPage() {
               {/* Close Button */}
               <button
                 onClick={() => setActiveSizeItemId(null)}
-                className="absolute top-4 right-4 p-1.5 text-brand/40 hover:text-brand hover:bg-brand/5 rounded-full transition-all"
+                className="absolute top-4 right-4 p-1.5 text-black/40 hover:text-black hover:bg-brand/5 rounded-full transition-all"
               >
                 <X size={20} />
               </button>
@@ -1039,15 +1039,15 @@ export default function CartPage() {
                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-sm font-bold text-brand mt-0.5 leading-snug line-clamp-2 uppercase">{item.name}</h4>
+                  <h4 className="text-sm font-bold text-black mt-0.5 leading-snug line-clamp-2 uppercase">{item.name}</h4>
                   <div className="flex items-center space-x-2 mt-2">
-                    <span className="text-sm font-bold text-brand">₹{item.price.toLocaleString()}</span>
+                    <span className="text-sm font-bold text-black">₹{item.price.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
 
               <div className="border-t border-brand/5 pt-4 mb-6">
-                <h4 className="text-xs font-black text-brand uppercase tracking-wider mb-4">Select Size</h4>
+                <h4 className="text-xs font-black text-black uppercase tracking-wider mb-4">Select Size</h4>
                 <div className="flex flex-wrap gap-2.5">
                   {availableSizes.map((sz) => {
                     const isSelected = tempSize === sz;
@@ -1057,8 +1057,8 @@ export default function CartPage() {
                         type="button"
                         onClick={() => setTempSize(sz)}
                         className={`px-5 py-2.5 rounded-full text-xs font-bold border transition-all ${isSelected
-                          ? "border-brand text-brand bg-brand/5 shadow-sm scale-105"
-                          : "border-brand/10 text-brand/60 hover:border-brand/30 hover:text-brand bg-white"
+                          ? "border-brand text-black bg-brand/5 shadow-sm scale-105"
+                          : "border-brand/10 text-black/60 hover:border-brand/30 hover:text-black bg-white"
                           }`}
                       >
                         {sz}
@@ -1111,12 +1111,12 @@ export default function CartPage() {
               {/* Close Button */}
               <button
                 onClick={() => setActiveQtyItemId(null)}
-                className="absolute top-6 right-6 p-1 text-brand/40 hover:text-brand hover:bg-brand/5 rounded-full transition-all"
+                className="absolute top-6 right-6 p-1 text-black/40 hover:text-black hover:bg-brand/5 rounded-full transition-all"
               >
                 <X size={20} />
               </button>
 
-              <h3 className="text-base font-bold text-brand mb-6">Select Quantity</h3>
+              <h3 className="text-base font-bold text-black mb-6">Select Quantity</h3>
 
               <div className="grid grid-cols-5 gap-3.5 mb-8">
                 {Array.from({ length: displayLimit }, (_, i) => i + 1).map((qty) => {
@@ -1130,10 +1130,10 @@ export default function CartPage() {
                       disabled={isOutOfStock}
                       onClick={() => setTempQty(qty)}
                       className={`w-11 h-11 rounded-full text-xs font-bold border flex items-center justify-center transition-all ${isSelected
-                        ? "border-brand text-brand bg-brand/5 shadow-sm scale-110"
+                        ? "border-brand text-black bg-brand/5 shadow-sm scale-110"
                         : isOutOfStock
-                          ? "border-brand/5 text-brand/10 cursor-not-allowed bg-brand/[0.02]"
-                          : "border-brand/10 text-brand/60 hover:border-brand/30 hover:text-brand bg-white"
+                          ? "border-brand/5 text-black/10 cursor-not-allowed bg-brand/[0.02]"
+                          : "border-brand/10 text-black/60 hover:border-brand/30 hover:text-black bg-white"
                         }`}
                     >
                       {qty}

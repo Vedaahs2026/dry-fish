@@ -492,9 +492,9 @@ export default function CategoryFilterSection({
       <div className="flex-grow min-w-0 px-4 py-4 md:py-6 max-w-lg mx-auto w-full flex flex-col justify-center">
         {/* Header Title & Description */}
         <div className="mb-4 text-center">
-          <h1 className="text-2xl md:text-3xl font-playfair font-bold text-brand mb-1 tracking-tight">{categoryName}</h1>
+          <h1 className="text-2xl md:text-3xl font-playfair font-bold text-black mb-1 tracking-tight">{categoryName}</h1>
           <div className="w-12 h-0.5 bg-[#C5A059] mx-auto rounded-full mb-2"></div>
-          <p className="text-brand/70 max-w-sm mx-auto font-inter leading-relaxed text-[11px]">
+          <p className="text-black/70 max-w-sm mx-auto font-inter leading-relaxed text-[11px]">
             Explore our curated selection of premium {categoryName.toLowerCase()} products, 
             prepared under strict hygienic standards to preserve authentic flavor and freshness.
           </p>
@@ -506,8 +506,8 @@ export default function CategoryFilterSection({
           <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
             <ShoppingBag className="text-[#C5A059]" size={16} />
           </div>
-          <h2 className="text-base font-playfair font-bold text-brand mb-0.5">Coming Soon</h2>
-          <p className="text-brand/60 max-w-xs mx-auto text-[10px] mb-4 leading-relaxed font-inter">
+          <h2 className="text-base font-playfair font-bold text-black mb-0.5">Coming Soon</h2>
+          <p className="text-black/60 max-w-xs mx-auto text-[10px] mb-4 leading-relaxed font-inter">
             No products have been added to this category yet. We are currently preparing fresh new batches for you.
           </p>
           <Link
@@ -527,7 +527,7 @@ export default function CategoryFilterSection({
         {/* Section 1: Categories / Types */}
         {availableTypes.length > 0 && (
           <div className="mb-6">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-brand/40 mb-3 ml-1">Categories</h3>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 mb-3 ml-1">Categories</h3>
             <div className="flex flex-col gap-2.5 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
               {availableTypes.map((type) => {
                 const count = typeCounts[type] || 0;
@@ -536,7 +536,7 @@ export default function CategoryFilterSection({
                 return (
                   <label
                     key={type}
-                    className="flex items-center gap-3 text-xs font-bold text-brand/75 cursor-pointer hover:text-brand transition-colors select-none"
+                    className="flex items-center gap-3 text-xs font-bold text-black/75 cursor-pointer hover:text-black transition-colors select-none"
                   >
                     <input
                       type="checkbox"
@@ -545,7 +545,7 @@ export default function CategoryFilterSection({
                       className="rounded border-brand/20 accent-brand w-4 h-4 cursor-pointer"
                     />
                     <span className="flex-1">{type}</span>
-                    <span className="text-brand/35 text-[10px] font-medium">({count})</span>
+                    <span className="text-black/35 text-[10px] font-medium">({count})</span>
                   </label>
                 );
               })}
@@ -556,7 +556,7 @@ export default function CategoryFilterSection({
         {/* Section 2: Colors */}
         {availableColors.length > 0 && (
           <div className="mb-6">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-brand/40 mb-3 ml-1">Color</h3>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 mb-3 ml-1">Color</h3>
             <div className="flex flex-col gap-2.5 max-h-56 overflow-y-auto pr-2 custom-scrollbar">
               {availableColors.map((color) => {
                 const count = colorCounts[color] || 0;
@@ -570,7 +570,7 @@ export default function CategoryFilterSection({
                 return (
                   <label
                     key={color}
-                    className="flex items-center gap-3 text-xs font-bold text-brand/75 cursor-pointer hover:text-brand transition-colors select-none"
+                    className="flex items-center gap-3 text-xs font-bold text-black/75 cursor-pointer hover:text-black transition-colors select-none"
                   >
                     <input
                       type="checkbox"
@@ -586,7 +586,7 @@ export default function CategoryFilterSection({
                       style={{ backgroundColor: hexCode }}
                     />
                     <span className="flex-1">{displayName}</span>
-                    <span className="text-brand/35 text-[10px] font-medium">({count})</span>
+                    <span className="text-black/35 text-[10px] font-medium">({count})</span>
                   </label>
                 );
               })}
@@ -597,7 +597,7 @@ export default function CategoryFilterSection({
         {/* Section 3: Sizes */}
         {availableSizes.length > 0 && (
           <div className="mb-6">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-brand/40 mb-3 ml-1">Sizes</h3>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 mb-3 ml-1">Sizes</h3>
             <div className="flex flex-wrap gap-2">
               {availableSizes.map((size) => {
                 const count = sizeCounts[size.toUpperCase()] || 0;
@@ -610,11 +610,11 @@ export default function CategoryFilterSection({
                     className={`h-9 min-w-[2.25rem] px-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
                       isChecked
                         ? "bg-[#eab308] border-[#064e3b] text-[#064e3b] shadow-sm"
-                        : "bg-white border-brand/10 text-brand hover:border-brand/30 hover:bg-brand/5"
+                        : "bg-white border-brand/10 text-black hover:border-brand/30 hover:bg-brand/5"
                     }`}
                   >
                     <span>{size}</span>
-                    <span className={`text-[9px] ${isChecked ? "text-[#064e3b]/60" : "text-brand/30"}`}>({count})</span>
+                    <span className={`text-[9px] ${isChecked ? "text-[#064e3b]/60" : "text-black/30"}`}>({count})</span>
                   </button>
                 );
               })}
@@ -625,8 +625,8 @@ export default function CategoryFilterSection({
         {/* Price Range Slider */}
         <div className="mb-4 pb-4 border-b border-brand/5">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-brand/40 ml-1">Price Range</h3>
-            <span className="text-xs font-bold text-brand/80">
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 ml-1">Price Range</h3>
+            <span className="text-xs font-bold text-black/80">
               ₹{priceRange[0].toLocaleString("en-IN")} - ₹{priceRange[1].toLocaleString("en-IN")}{priceRange[1] >= maxLimit ? "+" : ""}
             </span>
           </div>
@@ -675,18 +675,18 @@ export default function CategoryFilterSection({
 
         {/* Section 4: Sort By */}
         <div className="pt-2">
-          <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-brand/40 mb-3 ml-1">Sort Products</h3>
+          <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 mb-3 ml-1">Sort Products</h3>
           <div className="relative">
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="w-full bg-brand/5 border border-brand/10 hover:border-brand-accent/50 text-brand text-xs font-bold uppercase tracking-widest py-3 pl-4 pr-10 rounded-2xl outline-none appearance-none cursor-pointer transition-all shadow-sm"
+              className="w-full bg-brand/5 border border-brand/10 hover:border-brand-accent/50 text-black text-xs font-bold uppercase tracking-widest py-3 pl-4 pr-10 rounded-2xl outline-none appearance-none cursor-pointer transition-all shadow-sm"
             >
-              <option value="default" className="text-brand bg-[#FFFDF6]">Default</option>
-              <option value="price-asc" className="text-brand bg-[#FFFDF6]">Price: Low to High</option>
-              <option value="price-desc" className="text-brand bg-[#FFFDF6]">Price: High to Low</option>
+              <option value="default" className="text-black bg-[#FFFDF6]">Default</option>
+              <option value="price-asc" className="text-black bg-[#FFFDF6]">Price: Low to High</option>
+              <option value="price-desc" className="text-black bg-[#FFFDF6]">Price: High to Low</option>
             </select>
-            <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-brand/50 pointer-events-none" />
+            <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-black/50 pointer-events-none" />
           </div>
         </div>
       </>
@@ -700,7 +700,7 @@ export default function CategoryFilterSection({
       <div className="lg:hidden fixed top-16 left-4 z-40">
         <button
           onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-          className="flex items-center justify-center bg-white border border-brand/10 p-3.5 rounded-full text-brand shadow-lg active:scale-95 transition-all cursor-pointer relative"
+          className="flex items-center justify-center bg-white border border-brand/10 p-3.5 rounded-full text-black shadow-lg active:scale-95 transition-all cursor-pointer relative"
         >
           <SlidersHorizontal size={20} className="text-[#C5A059]" />
           {isFilterOrSortActive && (
@@ -734,10 +734,10 @@ export default function CategoryFilterSection({
             >
               {/* Drawer Header */}
               <div className="flex items-center justify-between pb-4 border-b border-brand/5 mb-6 flex-shrink-0">
-                <h2 className="text-sm font-black uppercase tracking-[0.2em] text-brand">Filters</h2>
+                <h2 className="text-sm font-black uppercase tracking-[0.2em] text-black">Filters</h2>
                 <button
                   onClick={() => setIsMobileFiltersOpen(false)}
-                  className="p-1 hover:bg-brand/5 rounded-lg transition-all text-brand/60 hover:text-brand cursor-pointer"
+                  className="p-1 hover:bg-brand/5 rounded-lg transition-all text-black/60 hover:text-black cursor-pointer"
                 >
                   <X size={20} />
                 </button>
@@ -753,13 +753,13 @@ export default function CategoryFilterSection({
                 <button
                   onClick={handleClearFilters}
                   disabled={!isFilterOrSortActive}
-                  className="flex-1 py-3.5 rounded-xl border border-brand/10 text-xs font-black uppercase tracking-widest text-brand disabled:opacity-40 transition-all cursor-pointer text-center"
+                  className="flex-1 py-3.5 rounded-xl border border-brand/10 text-xs font-black uppercase tracking-widest text-black disabled:opacity-40 transition-all cursor-pointer text-center"
                 >
                   Clear All
                 </button>
                 <button
                   onClick={() => setIsMobileFiltersOpen(false)}
-                  className="flex-[2] py-3.5 rounded-xl bg-brand text-brand-accent text-xs font-black uppercase tracking-widest shadow-lg active:scale-95 transition-all cursor-pointer text-center"
+                  className="flex-[2] py-3.5 rounded-xl bg-brand text-black-accent text-xs font-black uppercase tracking-widest shadow-lg active:scale-95 transition-all cursor-pointer text-center"
                 >
                   Apply & Close
                 </button>
@@ -776,7 +776,7 @@ export default function CategoryFilterSection({
         >
           {/* Sidebar Header */}
           <div className="flex items-center justify-between pb-4 border-b border-brand/5 mb-6">
-            <h2 className="text-sm font-black uppercase tracking-[0.2em] text-brand">Filters</h2>
+            <h2 className="text-sm font-black uppercase tracking-[0.2em] text-black">Filters</h2>
             {isFilterOrSortActive && (
               <button
                 onClick={handleClearFilters}
@@ -796,9 +796,9 @@ export default function CategoryFilterSection({
         {/* Header Title & Description & Desktop Toggle */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-10 text-center lg:text-left">
           <div className="flex-1">
-            <h1 className="text-4xl md:text-5xl font-playfair font-bold text-brand mb-3 tracking-tight">{categoryName}</h1>
+            <h1 className="text-4xl md:text-5xl font-playfair font-bold text-black mb-3 tracking-tight">{categoryName}</h1>
             <div className="w-20 h-1 bg-[#C5A059] lg:mx-0 mx-auto rounded-full mb-3"></div>
-            <p className="text-brand/70 max-w-2xl lg:mx-0 mx-auto font-inter leading-relaxed text-sm">
+            <p className="text-black/70 max-w-2xl lg:mx-0 mx-auto font-inter leading-relaxed text-sm">
               Explore our curated selection of premium {categoryName.toLowerCase()} products, 
               prepared under strict hygienic standards to preserve authentic flavor and freshness.
             </p>
@@ -837,8 +837,8 @@ export default function CategoryFilterSection({
                     disabled={currentPage === 1}
                     className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
                       currentPage === 1
-                        ? "bg-brand/5 text-brand/30 border border-brand/5 cursor-not-allowed opacity-60"
-                        : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                        ? "bg-brand/5 text-black/30 border border-brand/5 cursor-not-allowed opacity-60"
+                        : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
                     }`}
                   >
                     Prev
@@ -854,7 +854,7 @@ export default function CategoryFilterSection({
                         className={`w-10 h-10 rounded-2xl text-xs font-bold transition-all ${
                           isCurrent
                             ? "bg-brand text-[#C5A059] shadow-md scale-105"
-                            : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                            : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
                         }`}
                       >
                         {pageNum}
@@ -867,8 +867,8 @@ export default function CategoryFilterSection({
                     disabled={currentPage === totalSectionPages}
                     className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
                       currentPage === totalSectionPages
-                        ? "bg-brand/5 text-brand/30 border border-brand/5 cursor-not-allowed opacity-60"
-                        : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                        ? "bg-brand/5 text-black/30 border border-brand/5 cursor-not-allowed opacity-60"
+                        : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
                     }`}
                   >
                     Next
@@ -887,11 +887,11 @@ export default function CategoryFilterSection({
             >
               {isFilterOrSortActive && (
                 <div className="flex items-center justify-between border-b border-brand/5 pb-2">
-                  <span className="text-xs font-bold text-brand/60 uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-black/60 uppercase tracking-widest flex items-center gap-1.5">
                     <SlidersHorizontal size={12} />
                     Found {filteredAndSortedProducts.length} product{filteredAndSortedProducts.length !== 1 ? "s" : ""}
                   </span>
-                  <span className="text-xs font-bold text-brand/60 uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-black/60 uppercase tracking-widest flex items-center gap-1.5">
                     <LayoutGrid size={12} />
                     Grid View
                   </span>
@@ -926,8 +926,8 @@ export default function CategoryFilterSection({
                     disabled={currentPage === 1}
                     className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
                       currentPage === 1
-                        ? "bg-brand/5 text-brand/30 border border-brand/5 cursor-not-allowed opacity-60"
-                        : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                        ? "bg-brand/5 text-black/30 border border-brand/5 cursor-not-allowed opacity-60"
+                        : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
                     }`}
                   >
                     Prev
@@ -943,7 +943,7 @@ export default function CategoryFilterSection({
                         className={`w-10 h-10 rounded-2xl text-xs font-bold transition-all ${
                           isCurrent
                             ? "bg-brand text-[#C5A059] shadow-md scale-105"
-                            : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                            : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
                         }`}
                       >
                         {pageNum}
@@ -956,8 +956,8 @@ export default function CategoryFilterSection({
                     disabled={currentPage === totalPages}
                     className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
                       currentPage === totalPages
-                        ? "bg-brand/5 text-brand/30 border border-brand/5 cursor-not-allowed opacity-60"
-                        : "bg-brand/5 text-brand border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
+                        ? "bg-brand/5 text-black/30 border border-brand/5 cursor-not-allowed opacity-60"
+                        : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
                     }`}
                   >
                     Next
@@ -976,8 +976,8 @@ export default function CategoryFilterSection({
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
                 <SlidersHorizontal className="text-[#C5A059]" size={24} />
               </div>
-              <h2 className="text-xl font-playfair font-bold text-brand mb-2">No Matching Products</h2>
-              <p className="text-brand/60 max-w-sm mx-auto text-sm mb-6">
+              <h2 className="text-xl font-playfair font-bold text-black mb-2">No Matching Products</h2>
+              <p className="text-black/60 max-w-sm mx-auto text-sm mb-6">
                 We couldn't find any products matching your active filters. Try clearing your filters to see all available items.
               </p>
               <button

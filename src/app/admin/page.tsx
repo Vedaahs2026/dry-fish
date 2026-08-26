@@ -44,7 +44,7 @@ export default function AdminDashboard() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-10 h-10 text-brand-accent animate-spin" />
+        <Loader2 className="w-10 h-10 text-black-accent animate-spin" />
       </div>
     );
   }
@@ -87,8 +87,8 @@ export default function AdminDashboard() {
   return (
     <div className="p-10">
       <div className="mb-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Dashboard Overview</h1>
-        <p className="mt-2 text-brand/60 font-medium tracking-tight flex items-center justify-center">
+        <h1 className="text-4xl font-playfair font-bold text-black">Dashboard Overview</h1>
+        <p className="mt-2 text-black/60 font-medium tracking-tight flex items-center justify-center">
           <Sparkles size={16} className="text-[#C5A059] mr-2" />
           Welcome back to the Dry Fish Basket management hub.
         </p>
@@ -109,13 +109,13 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <div className="space-y-1">
-                <h3 className="text-[10px] font-black text-brand/30 uppercase tracking-[0.2em] mb-1">{stat.label}</h3>
+                <h3 className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em] mb-1">{stat.label}</h3>
                 <div className="flex items-baseline space-x-2">
-                  <span className="text-4xl font-bold text-brand tracking-tighter font-sans">{stat.value}</span>
+                  <span className="text-4xl font-bold text-black tracking-tighter font-sans">{stat.value}</span>
                   <ArrowUpRight size={16} className="text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
-              <p className="mt-4 text-[9px] font-black text-brand/20 uppercase tracking-[0.15em]">
+              <p className="mt-4 text-[9px] font-black text-black/20 uppercase tracking-[0.15em]">
                 {stat.trend}
               </p>
             </div>
@@ -125,17 +125,17 @@ export default function AdminDashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-brand/5">
-          <h3 className="text-xl font-playfair font-bold text-brand mb-6">System Status</h3>
+          <h3 className="text-xl font-playfair font-bold text-black mb-6">System Status</h3>
           <div className="space-y-4">
             <div className="flex items-center justify-between p-4 bg-brand/5 rounded-2xl">
-              <span className="text-sm font-bold text-brand/60 uppercase tracking-widest">Database</span>
+              <span className="text-sm font-bold text-black/60 uppercase tracking-widest">Database</span>
               <span className="flex items-center text-xs font-bold text-green-600 bg-white px-3 py-1 rounded-full shadow-sm">
                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
                 Healthy
               </span>
             </div>
             <div className="flex items-center justify-between p-4 bg-brand/5 rounded-2xl">
-              <span className="text-sm font-bold text-brand/60 uppercase tracking-widest">Auth Service</span>
+              <span className="text-sm font-bold text-black/60 uppercase tracking-widest">Auth Service</span>
               <span className="flex items-center text-xs font-bold text-green-600 bg-white px-3 py-1 rounded-full shadow-sm">
                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
                 Healthy

@@ -215,8 +215,8 @@ export default function AdminNavigation() {
   return (
     <div className="p-4 md:p-10">
       <div className="mb-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Navigation & Pages</h1>
-        <p className="mt-2 text-brand/60 font-medium">Manage primary menu links and their page sections.</p>
+        <h1 className="text-4xl font-playfair font-bold text-black">Navigation & Pages</h1>
+        <p className="mt-2 text-black/60 font-medium">Manage primary menu links and their page sections.</p>
       </div>
 
       <div className="mb-10 flex justify-center">
@@ -246,21 +246,21 @@ export default function AdminNavigation() {
         {/* Add/Edit Form */}
         {editingId !== null && (
           <div className="mb-12 bg-white rounded-3xl p-8 shadow-sm border border-brand/5 animate-in zoom-in-95 duration-200">
-            <h2 className="text-xl font-playfair font-bold text-brand mb-6">
+            <h2 className="text-xl font-playfair font-bold text-black mb-6">
               {editingId === 0 ? "Add New Navigation Link" : "Edit Navigation Link"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-[10px] font-bold text-brand/40 uppercase tracking-widest mb-2 ml-1">Menu Label</label>
+                <label className="block text-[10px] font-bold text-black/40 uppercase tracking-widest mb-2 ml-1">Menu Label</label>
                 <input 
                   type="text" 
                   value={formData.label}
                   onChange={(e) => setFormData({ ...formData, label: e.target.value })}
                   placeholder="e.g. New Arrivals"
-                  className="w-full bg-brand/5 border border-brand/10 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:border-[#C5A059]/30 focus:ring-4 focus:ring-[#C5A059]/10 transition-all mb-4"
+                  className="w-full bg-brand/5 border border-brand/10 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:border-[#C5A059]/30 focus:ring-4 focus:ring-[#C5A059]/10 transition-all mb-4"
                   required
                 />
-                <label className="block text-[10px] font-bold text-brand/40 uppercase tracking-widest mb-2 ml-1">Category Image URL</label>
+                <label className="block text-[10px] font-bold text-black/40 uppercase tracking-widest mb-2 ml-1">Category Image URL</label>
                 <div className="flex gap-4 items-center">
                   {formData.imageUrl && (
                     <div className="w-12 h-12 rounded-xl overflow-hidden border border-brand/10 shrink-0">
@@ -281,7 +281,7 @@ export default function AdminNavigation() {
                       value={formData.imageUrl}
                       onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
                       placeholder="https://example.com/image.jpg"
-                      className="flex-1 bg-brand/5 border border-brand/10 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:border-[#C5A059]/30 focus:ring-4 focus:ring-[#C5A059]/10 transition-all"
+                      className="flex-1 bg-brand/5 border border-brand/10 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:border-[#C5A059]/30 focus:ring-4 focus:ring-[#C5A059]/10 transition-all"
                     />
                     <label className="cursor-pointer bg-[#C5A059] text-white px-5 py-3 rounded-xl font-bold text-xs hover:bg-[#B38E46] transition-all whitespace-nowrap flex items-center justify-center gap-1.5 shadow-sm">
                       {isUploadingImage ? (
@@ -307,7 +307,7 @@ export default function AdminNavigation() {
                 </div>
               </div>
               <div className="flex flex-col">
-                <label className="block text-[10px] font-bold text-brand/40 uppercase tracking-widest mb-2 ml-1">Status</label>
+                <label className="block text-[10px] font-bold text-black/40 uppercase tracking-widest mb-2 ml-1">Status</label>
                 <button 
                   onClick={() => setFormData({ ...formData, isActive: !formData.isActive })}
                   className={`flex-1 flex items-center justify-center space-x-2 rounded-xl border-2 transition-all font-bold text-xs uppercase tracking-widest ${
@@ -323,15 +323,15 @@ export default function AdminNavigation() {
 
               {/* Type Filter Options */}
               <div className="md:col-span-2">
-                <label className="block text-[10px] font-bold text-brand/40 uppercase tracking-widest mb-2 ml-1">Type Filter Options</label>
+                <label className="block text-[10px] font-bold text-black/40 uppercase tracking-widest mb-2 ml-1">Type Filter Options</label>
                 <input 
                   type="text" 
                   value={formData.filterTypes}
                   onChange={(e) => setFormData({ ...formData, filterTypes: e.target.value })}
                   placeholder="e.g. T-Shirt, Shirt, Workwear, Ethnic Wear, Pants & Joggers"
-                  className="w-full bg-brand/5 border border-brand/10 rounded-xl py-3 px-4 text-sm font-bold text-brand focus:outline-none focus:border-[#C5A059]/30 focus:ring-4 focus:ring-[#C5A059]/10 transition-all"
+                  className="w-full bg-brand/5 border border-brand/10 rounded-xl py-3 px-4 text-sm font-bold text-black focus:outline-none focus:border-[#C5A059]/30 focus:ring-4 focus:ring-[#C5A059]/10 transition-all"
                 />
-                <p className="mt-1.5 text-[10px] text-brand/50 font-medium leading-relaxed">
+                <p className="mt-1.5 text-[10px] text-black/50 font-medium leading-relaxed">
                   Enter comma-separated product types to display in the sidebar filter for this category. Leave blank to default classification to the products' main categories.
                 </p>
               </div>
@@ -339,7 +339,7 @@ export default function AdminNavigation() {
             <div className="mt-8 flex justify-end space-x-4">
               <button 
                 onClick={handleCancel}
-                className="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs text-brand/40 hover:bg-brand/5 transition-all"
+                className="px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs text-black/40 hover:bg-brand/5 transition-all"
               >
                 Cancel
               </button>
@@ -368,9 +368,9 @@ export default function AdminNavigation() {
                 <thead>
                   <tr className="bg-brand/5 border-b border-brand/10">
                     <th className="w-12 px-2 md:px-8 py-6"></th>
-                    <th className="px-2 md:px-8 py-6 text-[10px] font-black text-brand/40 uppercase tracking-[0.2em]">Menu Label</th>
-                    <th className="px-2 md:px-8 py-6 text-[10px] font-black text-brand/40 uppercase tracking-[0.2em]">Status</th>
-                    <th className="px-2 md:px-8 py-6 text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] text-right">Manage</th>
+                    <th className="px-2 md:px-8 py-6 text-[10px] font-black text-black/40 uppercase tracking-[0.2em]">Menu Label</th>
+                    <th className="px-2 md:px-8 py-6 text-[10px] font-black text-black/40 uppercase tracking-[0.2em]">Status</th>
+                    <th className="px-2 md:px-8 py-6 text-[10px] font-black text-black/40 uppercase tracking-[0.2em] text-right">Manage</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-brand/5 relative">
@@ -388,7 +388,7 @@ export default function AdminNavigation() {
           </DndContext>
           {items.length === 0 && (
             <div className="p-20 text-center">
-              <p className="text-brand/40 font-bold uppercase tracking-widest text-xs">No navigation items found.</p>
+              <p className="text-black/40 font-bold uppercase tracking-widest text-xs">No navigation items found.</p>
             </div>
           )}
         </div>

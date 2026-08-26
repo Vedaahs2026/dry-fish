@@ -199,8 +199,8 @@ export default function AdminOrders() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center py-40">
-        <Loader2 className="animate-spin text-brand-accent mb-4" size={40} />
-        <p className="text-brand/40 font-bold uppercase tracking-widest text-xs">Loading Orders...</p>
+        <Loader2 className="animate-spin text-black-accent mb-4" size={40} />
+        <p className="text-black/40 font-bold uppercase tracking-widest text-xs">Loading Orders...</p>
       </div>
     );
   }
@@ -208,19 +208,19 @@ export default function AdminOrders() {
   return (
     <div className="pb-20 px-8 pt-8 font-inter">
       <div className="mb-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Order Fulfillment</h1>
-        <p className="mt-2 text-brand/60 font-medium">Track and manage customer purchases and custom fits.</p>
+        <h1 className="text-4xl font-playfair font-bold text-black">Order Fulfillment</h1>
+        <p className="mt-2 text-black/60 font-medium">Track and manage customer purchases and custom fits.</p>
       </div>
 
       <div className="mb-10 flex justify-center">
         <div className="relative group min-w-[300px] max-w-md w-full">
-          <ShoppingBag className="absolute left-4 top-1/2 -translate-y-1/2 text-brand/30 group-focus-within:text-[#C5A059] transition-colors" size={18} />
+          <ShoppingBag className="absolute left-4 top-1/2 -translate-y-1/2 text-black/30 group-focus-within:text-[#C5A059] transition-colors" size={18} />
           <input 
             type="text" 
             placeholder="Search by order # or mobile..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-white border border-brand/10 rounded-2xl py-4 pl-12 pr-6 text-sm font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+            className="w-full bg-white border border-brand/10 rounded-2xl py-4 pl-12 pr-6 text-sm font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
           />
         </div>
       </div>
@@ -240,8 +240,8 @@ export default function AdminOrders() {
               <s.icon size={16} />
             </div>
             <div className="min-w-0">
-              <p className="text-[8px] font-black text-brand/40 uppercase tracking-widest truncate">{s.label}</p>
-              <p className="text-base font-bold text-brand">{s.count}</p>
+              <p className="text-[8px] font-black text-black/40 uppercase tracking-widest truncate">{s.label}</p>
+              <p className="text-base font-bold text-black">{s.count}</p>
             </div>
           </div>
         ))}
@@ -251,19 +251,19 @@ export default function AdminOrders() {
       <div className="bg-white rounded-3xl p-6 border border-brand/5 shadow-sm mb-10">
         <div className="flex items-center space-x-2 mb-6">
           <div className="w-1.5 h-4 bg-brand rounded-full"></div>
-          <h3 className="text-xs font-black text-brand uppercase tracking-widest flex items-center gap-2">
+          <h3 className="text-xs font-black text-black uppercase tracking-widest flex items-center gap-2">
             Filter Orders
           </h3>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
           <div>
-            <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">Status</label>
+            <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">Status</label>
             <div className="relative">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full bg-white border border-brand/10 rounded-2xl py-3 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm appearance-none pr-10"
+                className="w-full bg-white border border-brand/10 rounded-2xl py-3 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm appearance-none pr-10"
               >
                 <option value="all">All Statuses</option>
                 <option value="pending">Pending</option>
@@ -274,27 +274,27 @@ export default function AdminOrders() {
                 <option value="delivered">Delivered</option>
                 <option value="cancelled">Cancelled</option>
               </select>
-              <ChevronDown size={12} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none opacity-40 text-brand" />
+              <ChevronDown size={12} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none opacity-40 text-black" />
             </div>
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">From Date</label>
+            <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">From Date</label>
             <input
               type="date"
               value={fromDate}
               onChange={(e) => setFromDate(e.target.value)}
-              className="w-full bg-white border border-brand/10 rounded-2xl py-3 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+              className="w-full bg-white border border-brand/10 rounded-2xl py-3 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
             />
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">To Date</label>
+            <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">To Date</label>
             <input
               type="date"
               value={toDate}
               onChange={(e) => setToDate(e.target.value)}
-              className="w-full bg-white border border-[#064e3b]/10 rounded-2xl py-3 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+              className="w-full bg-white border border-[#064e3b]/10 rounded-2xl py-3 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
             />
           </div>
 
@@ -317,10 +317,10 @@ export default function AdminOrders() {
       {filteredOrders.length === 0 ? (
         <div className="bg-white rounded-[2.5rem] p-20 shadow-sm border border-brand/5 text-center">
           <div className="w-20 h-20 bg-brand/5 rounded-full flex items-center justify-center mx-auto mb-6">
-            <ShoppingBag size={40} className="text-brand/20" />
+            <ShoppingBag size={40} className="text-black/20" />
           </div>
-          <h3 className="text-2xl font-playfair font-bold text-brand mb-2">{searchTerm ? "No matching orders" : "No orders to display"}</h3>
-          <p className="text-brand/60 font-medium max-w-sm mx-auto">
+          <h3 className="text-2xl font-playfair font-bold text-black mb-2">{searchTerm ? "No matching orders" : "No orders to display"}</h3>
+          <p className="text-black/60 font-medium max-w-sm mx-auto">
             {searchTerm ? "Adjust your search filters to find what you are looking for." : "When customers start placing orders for their custom-fit apparel, they will appear here."}
           </p>
         </div>
@@ -338,11 +338,11 @@ export default function AdminOrders() {
               >
           <div className="flex items-center space-x-6">
             <div className="bg-brand/5 p-4 rounded-2xl">
-              <ShoppingBag className="text-brand" size={24} />
+              <ShoppingBag className="text-black" size={24} />
             </div>
             <div>
               <div className="flex items-center space-x-3">
-                <span className="text-lg font-bold text-brand">Order #{order.id}</span>
+                <span className="text-lg font-bold text-black">Order #{order.id}</span>
                 {hasBespokeItems && (
                   <div className="flex items-center space-x-1 px-3 py-1 bg-[#C5A059] text-white rounded-full">
                     <Scissors size={10} />
@@ -373,7 +373,7 @@ export default function AdminOrders() {
                   <ChevronDown size={10} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-40" />
                 </div>
               </div>
-                    <p className="text-xs text-brand/40 font-medium mt-1">
+                    <p className="text-xs text-black/40 font-medium mt-1">
                       Placed on {new Date(order.createdAt).toLocaleDateString()}
                     </p>
                   </div>
@@ -381,10 +381,10 @@ export default function AdminOrders() {
 
                 <div className="flex items-center space-x-10 mt-4 md:mt-0">
                   <div className="text-right">
-                    <p className="text-[10px] font-black text-brand/40 uppercase tracking-widest mb-1">Amount</p>
-                    <p className="text-xl font-bold text-brand">₹{order.totalAmount.toLocaleString()}</p>
+                    <p className="text-[10px] font-black text-black/40 uppercase tracking-widest mb-1">Amount</p>
+                    <p className="text-xl font-bold text-black">₹{order.totalAmount.toLocaleString()}</p>
                   </div>
-                  <div className="p-2 rounded-full bg-brand/5 text-brand/40">
+                  <div className="p-2 rounded-full bg-brand/5 text-black/40">
                     {expandedOrder === order.id ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                   </div>
                 </div>
@@ -396,17 +396,17 @@ export default function AdminOrders() {
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                     {/* Customer Info */}
                     <div className="space-y-6">
-                      <h4 className="text-xs font-black text-brand uppercase tracking-widest flex items-center gap-2">
-                        <User size={14} className="text-brand-accent" /> Customer Details
+                      <h4 className="text-xs font-black text-black uppercase tracking-widest flex items-center gap-2">
+                        <User size={14} className="text-black-accent" /> Customer Details
                       </h4>
                       <div className="bg-white p-5 rounded-2xl border border-brand/5 space-y-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-bold text-brand/40 uppercase">Name</span>
-                          <span className="text-xs font-black text-brand">{order.customerName || "Guest User"}</span>
+                          <span className="text-[10px] font-bold text-black/40 uppercase">Name</span>
+                          <span className="text-xs font-black text-black">{order.customerName || "Guest User"}</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-bold text-brand/40 uppercase">Phone</span>
-                          <span className="text-xs font-black text-brand flex items-center gap-1">
+                          <span className="text-[10px] font-bold text-black/40 uppercase">Phone</span>
+                          <span className="text-xs font-black text-black flex items-center gap-1">
                             <Phone size={10} /> {order.customerPhone}
                           </span>
                         </div>
@@ -414,11 +414,11 @@ export default function AdminOrders() {
 
                       {/* Shipping Address */}
                       <div className="space-y-6 pt-4">
-                        <h4 className="text-xs font-black text-brand uppercase tracking-widest flex items-center gap-2">
-                          <MapPin size={14} className="text-brand-accent" /> Delivery Address
+                        <h4 className="text-xs font-black text-black uppercase tracking-widest flex items-center gap-2">
+                          <MapPin size={14} className="text-black-accent" /> Delivery Address
                         </h4>
                         <div className="bg-white p-5 rounded-2xl border border-brand/5">
-                          <p className="text-xs font-bold text-brand/70 leading-relaxed">
+                          <p className="text-xs font-bold text-black/70 leading-relaxed">
                             {order.shippingAddress || "No address provided"}
                           </p>
                         </div>
@@ -426,12 +426,12 @@ export default function AdminOrders() {
 
                       {/* Payment Details */}
                       <div className="space-y-6 pt-4">
-                        <h4 className="text-xs font-black text-brand uppercase tracking-widest flex items-center gap-2">
-                          <CreditCard size={14} className="text-brand-accent" /> Payment Details
+                        <h4 className="text-xs font-black text-black uppercase tracking-widest flex items-center gap-2">
+                          <CreditCard size={14} className="text-black-accent" /> Payment Details
                         </h4>
                         <div className="bg-white p-5 rounded-2xl border border-brand/5 space-y-4">
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-bold text-brand/40 uppercase">Payment Status</span>
+                            <span className="text-[10px] font-bold text-black/40 uppercase">Payment Status</span>
                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-widest border ${
                               order.paymentStatus === 'paid' 
                                 ? 'bg-green-500/10 text-green-600 border-green-500/20' 
@@ -442,22 +442,22 @@ export default function AdminOrders() {
                           </div>
                           
                           <div className="flex items-center justify-between gap-4">
-                            <span className="text-[10px] font-bold text-brand/40 uppercase whitespace-nowrap">Razorpay Order ID</span>
-                            <span className="text-[10px] font-mono font-bold text-brand/70 truncate max-w-[150px]" title={order.razorpayOrderId || "N/A"}>
+                            <span className="text-[10px] font-bold text-black/40 uppercase whitespace-nowrap">Razorpay Order ID</span>
+                            <span className="text-[10px] font-mono font-bold text-black/70 truncate max-w-[150px]" title={order.razorpayOrderId || "N/A"}>
                               {order.razorpayOrderId || "N/A"}
                             </span>
                           </div>
 
                           <div className="flex items-center justify-between gap-4">
-                            <span className="text-[10px] font-bold text-brand/40 uppercase whitespace-nowrap">Payment ID</span>
-                            <span className="text-[10px] font-mono font-bold text-brand/70 truncate max-w-[150px]" title={order.razorpayPaymentId || "N/A"}>
+                            <span className="text-[10px] font-bold text-black/40 uppercase whitespace-nowrap">Payment ID</span>
+                            <span className="text-[10px] font-mono font-bold text-black/70 truncate max-w-[150px]" title={order.razorpayPaymentId || "N/A"}>
                               {order.razorpayPaymentId || "N/A"}
                             </span>
                           </div>
 
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-bold text-brand/40 uppercase">Amount Received</span>
-                            <span className="text-xs font-black text-brand">
+                            <span className="text-[10px] font-bold text-black/40 uppercase">Amount Received</span>
+                            <span className="text-xs font-black text-black">
                               {order.paymentStatus === 'paid' ? `₹${order.totalAmount.toLocaleString()}` : '₹0'}
                             </span>
                           </div>
@@ -477,10 +477,10 @@ export default function AdminOrders() {
                                 <span>Update Payment Status</span>
                               </button>
                               
-                              <div className="group relative flex items-center justify-center gap-1.5 text-[9px] font-medium text-brand/50 hover:text-brand/80 cursor-help mt-1 transition-colors">
+                              <div className="group relative flex items-center justify-center gap-1.5 text-[9px] font-medium text-black/50 hover:text-black/80 cursor-help mt-1 transition-colors">
                                 <span>⚠️ Verification Required</span>
                                 <div className="absolute bottom-full mb-2 hidden group-hover:block w-48 bg-brand text-[#064e3b] text-[9px] font-bold leading-normal p-3 rounded-xl shadow-xl z-20 border border-white/10 text-center">
-                                  Check your Razorpay dashboard under Order ID <span className="font-mono text-brand-accent">{order.razorpayOrderId}</span> to verify the payment status before updating here.
+                                  Check your Razorpay dashboard under Order ID <span className="font-mono text-black-accent">{order.razorpayOrderId}</span> to verify the payment status before updating here.
                                 </div>
                               </div>
                             </div>
@@ -491,8 +491,8 @@ export default function AdminOrders() {
 
                     {/* Order Items */}
                     <div className="lg:col-span-2 space-y-6">
-                      <h4 className="text-xs font-black text-brand uppercase tracking-widest flex items-center gap-2">
-                        <Ruler size={14} className="text-brand-accent" /> Customizations & Items
+                      <h4 className="text-xs font-black text-black uppercase tracking-widest flex items-center gap-2">
+                        <Ruler size={14} className="text-black-accent" /> Customizations & Items
                       </h4>
                       <div className="space-y-4">
                         {order.items.map((item) => {
@@ -514,12 +514,12 @@ export default function AdminOrders() {
                                 <div className="flex-1 min-w-0">
                                   <div className="flex justify-between items-start">
                                     <div>
-                                      <h5 className="text-sm font-black text-brand line-clamp-1">{item.productName}</h5>
-                                      <p className="text-[10px] text-brand/40 font-bold mt-1 uppercase tracking-widest">
+                                      <h5 className="text-sm font-black text-black line-clamp-1">{item.productName}</h5>
+                                      <p className="text-[10px] text-black/40 font-bold mt-1 uppercase tracking-widest">
                                         {item.size} / {item.color} — Qty: {item.quantity}
                                       </p>
                                     </div>
-                                    <span className="text-sm font-bold text-brand flex-shrink-0">₹{item.price.toLocaleString()}</span>
+                                    <span className="text-sm font-bold text-black flex-shrink-0">₹{item.price.toLocaleString()}</span>
                                   </div>
                                 </div>
                               </div>
@@ -533,8 +533,8 @@ export default function AdminOrders() {
                                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     {Object.entries(item.customizations.measurements).map(([key, val]) => (
                                       <div key={key} className="bg-white/80 p-3 rounded-xl border border-[#1B3022]/5">
-                                        <p className="text-[8px] font-black text-brand/40 uppercase tracking-widest mb-1">{key}</p>
-                                        <p className="text-xs font-black text-brand">{val}"</p>
+                                        <p className="text-[8px] font-black text-black/40 uppercase tracking-widest mb-1">{key}</p>
+                                        <p className="text-xs font-black text-black">{val}"</p>
                                       </div>
                                     ))}
                                   </div>
@@ -543,7 +543,7 @@ export default function AdminOrders() {
                               
                               {!item.customizations?.measurements && (
                                 <div className="py-2 px-4 bg-brand/5 rounded-full inline-block">
-                                  <p className="text-[10px] font-bold text-brand/40 uppercase tracking-widest">Standard Fit — No Customizations</p>
+                                  <p className="text-[10px] font-bold text-black/40 uppercase tracking-widest">Standard Fit — No Customizations</p>
                                 </div>
                               )}
                             </div>
@@ -551,14 +551,14 @@ export default function AdminOrders() {
                         })}
 
                         {/* Order Summary / Pricing Breakdown */}
-                        <div className="bg-brand/5 border border-brand/10 rounded-3xl p-6 mt-4 space-y-4 text-brand">
+                        <div className="bg-brand/5 border border-brand/10 rounded-3xl p-6 mt-4 space-y-4 text-black">
                           <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 flex items-center gap-1.5">
-                            <ShoppingBag size={12} className="text-brand-accent" /> Order Summary
+                            <ShoppingBag size={12} className="text-black-accent" /> Order Summary
                           </h5>
                           <div className="space-y-2">
                             <div className="flex justify-between items-center text-xs">
-                              <span className="font-semibold text-brand/60">Actual Price (Subtotal)</span>
-                              <span className="font-bold text-brand">₹{(order.totalAmount + (order.discountAmount || 0)).toLocaleString()}</span>
+                              <span className="font-semibold text-black/60">Actual Price (Subtotal)</span>
+                              <span className="font-bold text-black">₹{(order.totalAmount + (order.discountAmount || 0)).toLocaleString()}</span>
                             </div>
                             
                             {order.couponCode && (
@@ -572,7 +572,7 @@ export default function AdminOrders() {
 
                             <div className="border-t border-brand/10 pt-2 flex justify-between items-center text-sm font-black mt-2">
                               <span>Grand Total</span>
-                              <span className="text-brand-accent">₹{order.totalAmount.toLocaleString()}</span>
+                              <span className="text-black-accent">₹{order.totalAmount.toLocaleString()}</span>
                             </div>
 
                             {/* Shipping Info Action Button */}
@@ -594,7 +594,7 @@ export default function AdminOrders() {
                                   });
                                   setShowShippingModal(true);
                                 }}
-                                className="w-full bg-[#1B3022] hover:bg-[#1B3022]/90 disabled:bg-[#1B3022]/20 disabled:text-brand/40 disabled:cursor-not-allowed text-[#C5A059] hover:text-[#C5A059]/90 disabled:text-[#C5A059]/30 font-black text-[10px] uppercase tracking-widest rounded-2xl py-3 px-6 transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-sm border border-[#C5A059]/20"
+                                className="w-full bg-[#1B3022] hover:bg-[#1B3022]/90 disabled:bg-[#1B3022]/20 disabled:text-black/40 disabled:cursor-not-allowed text-[#C5A059] hover:text-[#C5A059]/90 disabled:text-[#C5A059]/30 font-black text-[10px] uppercase tracking-widest rounded-2xl py-3 px-6 transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-sm border border-[#C5A059]/20"
                               >
                                 <Truck size={14} />
                                 <span>Add shipping Info</span>
@@ -605,28 +605,28 @@ export default function AdminOrders() {
 
                         {/* Shipping Details (Admin view) */}
                         {order.courierServiceName && order.trackingNumber && (
-                          <div className="bg-[#1B3022]/5 border border-[#1B3022]/10 rounded-3xl p-6 mt-4 space-y-4 text-brand">
+                          <div className="bg-[#1B3022]/5 border border-[#1B3022]/10 rounded-3xl p-6 mt-4 space-y-4 text-black">
                             <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 flex items-center gap-1.5 text-[#C5A059]">
                               🚚 Shipping Details
                             </h5>
                              <div className="grid grid-cols-2 gap-4 text-xs">
                               <div>
-                                <span className="font-semibold text-brand/60 uppercase text-[9px] tracking-wider block">Courier Service</span>
-                                <span className="font-bold text-brand">{order.courierServiceName}</span>
+                                <span className="font-semibold text-black/60 uppercase text-[9px] tracking-wider block">Courier Service</span>
+                                <span className="font-bold text-black">{order.courierServiceName}</span>
                               </div>
                               {order.courierId && (
                                 <div>
-                                  <span className="font-semibold text-brand/60 uppercase text-[9px] tracking-wider block">Courier ID</span>
-                                  <span className="font-bold text-brand">{order.courierId}</span>
+                                  <span className="font-semibold text-black/60 uppercase text-[9px] tracking-wider block">Courier ID</span>
+                                  <span className="font-bold text-black">{order.courierId}</span>
                                 </div>
                               )}
                               <div>
-                                <span className="font-semibold text-brand/60 uppercase text-[9px] tracking-wider block">Tracking Number</span>
-                                <span className="font-bold text-brand">{order.trackingNumber}</span>
+                                <span className="font-semibold text-black/60 uppercase text-[9px] tracking-wider block">Tracking Number</span>
+                                <span className="font-bold text-black">{order.trackingNumber}</span>
                               </div>
                               {order.trackingLink && (
                                 <div>
-                                  <span className="font-semibold text-brand/60 uppercase text-[9px] tracking-wider block mb-1">Tracking Link</span>
+                                  <span className="font-semibold text-black/60 uppercase text-[9px] tracking-wider block mb-1">Tracking Link</span>
                                   <a 
                                     href={order.trackingLink} 
                                     target="_blank" 
@@ -639,7 +639,7 @@ export default function AdminOrders() {
                               )}
                               {order.estimatedDeliveryDate && (
                                 <div>
-                                  <span className="font-semibold text-brand/60 uppercase text-[9px] tracking-wider block">Estimated Delivery</span>
+                                  <span className="font-semibold text-black/60 uppercase text-[9px] tracking-wider block">Estimated Delivery</span>
                                   <span className="font-bold text-[#C5A059]">
                                     {new Date(order.estimatedDeliveryDate).toLocaleDateString('en-US', {
                                       month: 'short',
@@ -651,8 +651,8 @@ export default function AdminOrders() {
                               )}
                               {order.shippingNotes && (
                                 <div className="col-span-2 border-t border-[#1B3022]/10 pt-2">
-                                  <span className="font-semibold text-brand/40 uppercase text-[9px] tracking-wider block mb-1">Shipping Notes</span>
-                                  <span className="italic text-brand/70">{order.shippingNotes}</span>
+                                  <span className="font-semibold text-black/40 uppercase text-[9px] tracking-wider block mb-1">Shipping Notes</span>
+                                  <span className="italic text-black/70">{order.shippingNotes}</span>
                                 </div>
                               )}
                             </div>
@@ -686,18 +686,18 @@ export default function AdminOrders() {
             {/* Header */}
             <div className="p-8 border-b border-brand/5 flex items-center justify-between bg-brand/5">
               <div>
-                <h3 className="text-xl font-playfair font-bold text-brand flex items-center gap-2">
+                <h3 className="text-xl font-playfair font-bold text-black flex items-center gap-2">
                   <Truck className="text-[#C5A059]" size={20} />
                   Add Shipping Info
                 </h3>
-                <p className="text-[10px] text-brand/40 font-bold uppercase tracking-widest mt-1">
+                <p className="text-[10px] text-black/40 font-bold uppercase tracking-widest mt-1">
                   Order #AS-{selectedOrderForShipping.id}
                 </p>
               </div>
               <button 
                 onClick={() => setShowShippingModal(false)}
                 disabled={isSubmittingShipping}
-                className="p-2 rounded-full hover:bg-brand/5 text-brand/40 hover:text-brand transition-colors cursor-pointer"
+                className="p-2 rounded-full hover:bg-brand/5 text-black/40 hover:text-black transition-colors cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -742,7 +742,7 @@ export default function AdminOrders() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Courier Service Name */}
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">
                     Courier Service Name <span className="text-red-500">*</span>
                   </label>
                   <input 
@@ -751,13 +751,13 @@ export default function AdminOrders() {
                     value={shippingForm.courierServiceName}
                     onChange={(e) => setShippingForm(prev => ({ ...prev, courierServiceName: e.target.value }))}
                     placeholder="e.g. Blue Dart, Delhivery"
-                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
                   />
                 </div>
 
                 {/* Courier ID */}
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">
                     Courier ID / Code
                   </label>
                   <input 
@@ -765,13 +765,13 @@ export default function AdminOrders() {
                     value={shippingForm.courierId}
                     onChange={(e) => setShippingForm(prev => ({ ...prev, courierId: e.target.value }))}
                     placeholder="e.g. BD_EXP"
-                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
                   />
                 </div>
 
                 {/* Tracking Number */}
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">
                     Tracking Number <span className="text-red-500">*</span>
                   </label>
                   <input 
@@ -780,13 +780,13 @@ export default function AdminOrders() {
                     value={shippingForm.trackingNumber}
                     onChange={(e) => setShippingForm(prev => ({ ...prev, trackingNumber: e.target.value }))}
                     placeholder="e.g. 1234567890"
-                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
                   />
                 </div>
 
                 {/* Tracking Link */}
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">
                     Tracking Link
                   </label>
                   <input 
@@ -794,13 +794,13 @@ export default function AdminOrders() {
                     value={shippingForm.trackingLink}
                     onChange={(e) => setShippingForm(prev => ({ ...prev, trackingLink: e.target.value }))}
                     placeholder="e.g. https://track.bluedart.com/..."
-                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
                   />
                 </div>
 
                 {/* Estimated Delivery Date */}
                 <div className="md:col-span-2">
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">
                     Estimated Delivery Date <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -809,14 +809,14 @@ export default function AdminOrders() {
                       required
                       value={shippingForm.estimatedDeliveryDate}
                       onChange={(e) => setShippingForm(prev => ({ ...prev, estimatedDeliveryDate: e.target.value }))}
-                      className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+                      className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
                     />
                   </div>
                 </div>
 
                 {/* Shipping Notes */}
                 <div className="md:col-span-2">
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">
                     Shipping Notes / Dispatch Notes
                   </label>
                   <textarea 
@@ -824,7 +824,7 @@ export default function AdminOrders() {
                     value={shippingForm.shippingNotes}
                     onChange={(e) => setShippingForm(prev => ({ ...prev, shippingNotes: e.target.value }))}
                     placeholder="e.g. Signature required, deliver after 2 PM..."
-                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm resize-none"
+                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm resize-none"
                   />
                 </div>
               </div>
@@ -835,7 +835,7 @@ export default function AdminOrders() {
                   type="button"
                   disabled={isSubmittingShipping}
                   onClick={() => setShowShippingModal(false)}
-                  className="flex-1 py-3.5 bg-brand/5 text-brand/60 hover:text-brand disabled:opacity-40 font-black text-[10px] uppercase tracking-widest rounded-2xl cursor-pointer border border-brand/5 hover:bg-brand/10 transition-all text-center"
+                  className="flex-1 py-3.5 bg-brand/5 text-black/60 hover:text-black disabled:opacity-40 font-black text-[10px] uppercase tracking-widest rounded-2xl cursor-pointer border border-brand/5 hover:bg-brand/10 transition-all text-center"
                 >
                   Cancel
                 </button>
@@ -873,18 +873,18 @@ export default function AdminOrders() {
             {/* Header */}
             <div className="p-8 border-b border-brand/5 flex items-center justify-between bg-brand/5">
               <div>
-                <h3 className="text-xl font-playfair font-bold text-brand flex items-center gap-2">
+                <h3 className="text-xl font-playfair font-bold text-black flex items-center gap-2">
                   <CreditCard className="text-[#C5A059]" size={20} />
                   Update Payment Status
                 </h3>
-                <p className="text-[10px] text-brand/40 font-bold uppercase tracking-widest mt-1">
+                <p className="text-[10px] text-black/40 font-bold uppercase tracking-widest mt-1">
                   Order #AS-{selectedOrderForPayment.id}
                 </p>
               </div>
               <button 
                 onClick={() => setShowPaymentModal(false)}
                 disabled={isSubmittingPayment}
-                className="p-2 rounded-full hover:bg-brand/5 text-brand/40 hover:text-brand transition-colors cursor-pointer"
+                className="p-2 rounded-full hover:bg-brand/5 text-black/40 hover:text-black transition-colors cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -929,7 +929,7 @@ export default function AdminOrders() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-black text-brand/40 uppercase tracking-widest mb-2">
+                  <label className="block text-[10px] font-black text-black/40 uppercase tracking-widest mb-2">
                     Razorpay Payment ID <span className="text-red-500">*</span>
                   </label>
                   <input 
@@ -938,9 +938,9 @@ export default function AdminOrders() {
                     value={paymentForm.razorpayPaymentId}
                     onChange={(e) => setPaymentForm({ razorpayPaymentId: e.target.value })}
                     placeholder="e.g. pay_N1A2B3C4D5E6F7"
-                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-brand focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
+                    className="w-full bg-white border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#C5A059]/5 transition-all shadow-sm"
                   />
-                  <p className="text-[9px] text-brand/40 font-medium mt-2 leading-relaxed">
+                  <p className="text-[9px] text-black/40 font-medium mt-2 leading-relaxed">
                     Verify the payment status on your Razorpay dashboard for order <span className="font-mono font-bold">{selectedOrderForPayment.razorpayOrderId}</span>, copy the Payment ID, and paste it here.
                   </p>
                 </div>
@@ -952,7 +952,7 @@ export default function AdminOrders() {
                   type="button"
                   disabled={isSubmittingPayment}
                   onClick={() => setShowPaymentModal(false)}
-                  className="flex-1 py-3.5 bg-brand/5 text-brand/60 hover:text-brand disabled:opacity-40 font-black text-[10px] uppercase tracking-widest rounded-2xl cursor-pointer border border-brand/5 hover:bg-brand/10 transition-all text-center"
+                  className="flex-1 py-3.5 bg-brand/5 text-black/60 hover:text-black disabled:opacity-40 font-black text-[10px] uppercase tracking-widest rounded-2xl cursor-pointer border border-brand/5 hover:bg-brand/10 transition-all text-center"
                 >
                   Cancel
                 </button>

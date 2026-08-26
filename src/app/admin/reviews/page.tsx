@@ -118,8 +118,8 @@ export default function AdminReviewsPage() {
   return (
     <div className="p-10">
       <div className="mb-10 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Customer Reviews</h1>
-        <p className="mt-2 text-brand/60 font-medium tracking-tight flex items-center justify-center">
+        <h1 className="text-4xl font-playfair font-bold text-black">Customer Reviews</h1>
+        <p className="mt-2 text-black/60 font-medium tracking-tight flex items-center justify-center">
           <MessageSquare size={16} className="text-[#C5A059] mr-2" />
           Manage reviews displayed on the website homepage.
         </p>
@@ -143,45 +143,45 @@ export default function AdminReviewsPage() {
         {/* Form Column */}
         <div className="lg:col-span-1">
           <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-brand/5">
-            <h2 className="text-xl font-playfair font-bold text-brand mb-6 border-b border-brand/5 pb-4">Add Customer Review</h2>
+            <h2 className="text-xl font-playfair font-bold text-black mb-6 border-b border-brand/5 pb-4">Add Customer Review</h2>
             
             <form onSubmit={handleAddReview} className="space-y-4">
               <div>
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">Customer Name</label>
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">Customer Name</label>
                 <input
                   type="text"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                   placeholder="e.g. Ramesh Kumar"
-                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-black outline-none transition-all placeholder:text-black/20"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">Designation / Subtext</label>
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">Designation / Subtext</label>
                 <input
                   type="text"
                   value={designation}
                   onChange={(e) => setDesignation(e.target.value)}
                   placeholder="e.g. Verified Buyer"
-                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-brand outline-none transition-all placeholder:text-brand/20"
+                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-black outline-none transition-all placeholder:text-black/20"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">Rating</label>
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">Rating</label>
                 <div className="flex items-center gap-1.5 ml-1 my-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
                       key={star}
                       type="button"
                       onClick={() => setRating(star)}
-                      className="p-1 text-brand hover:scale-110 transition-transform"
+                      className="p-1 text-black hover:scale-110 transition-transform"
                     >
                       <Star
                         size={20}
-                        className={star <= rating ? "fill-[#C5A059] text-[#C5A059]" : "text-brand/20"}
+                        className={star <= rating ? "fill-[#C5A059] text-[#C5A059]" : "text-black/20"}
                       />
                     </button>
                   ))}
@@ -189,13 +189,13 @@ export default function AdminReviewsPage() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2 ml-1">Customer Feedback / Comment</label>
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">Customer Feedback / Comment</label>
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   placeholder="Paste the customer review comment here..."
                   rows={4}
-                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-brand outline-none transition-all placeholder:text-brand/20 resize-none"
+                  className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-xs font-semibold text-black outline-none transition-all placeholder:text-black/20 resize-none"
                   required
                 />
               </div>
@@ -219,13 +219,13 @@ export default function AdminReviewsPage() {
         {/* List Column */}
         <div className="lg:col-span-2">
           <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-brand/5">
-            <h2 className="text-xl font-playfair font-bold text-brand mb-6 border-b border-brand/5 pb-4">Configured Reviews ({reviews.length})</h2>
+            <h2 className="text-xl font-playfair font-bold text-black mb-6 border-b border-brand/5 pb-4">Configured Reviews ({reviews.length})</h2>
 
             {reviews.length === 0 ? (
-              <div className="text-center py-20 border border-dashed border-brand/10 rounded-[2rem] text-brand/30">
-                <MessageSquare className="mx-auto mb-4 text-brand/20 animate-bounce" size={40} />
+              <div className="text-center py-20 border border-dashed border-brand/10 rounded-[2rem] text-black/30">
+                <MessageSquare className="mx-auto mb-4 text-black/20 animate-bounce" size={40} />
                 <p className="text-sm font-bold uppercase tracking-widest">No customer reviews configured yet</p>
-                <p className="text-xs mt-2 text-brand/40">Use the form on the left to add your first customer review.</p>
+                <p className="text-xs mt-2 text-black/40">Use the form on the left to add your first customer review.</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -234,7 +234,7 @@ export default function AdminReviewsPage() {
                     <div>
                       <div className="flex items-center justify-between mb-3">
                         <div>
-                          <h4 className="text-sm font-bold text-brand">{review.userName}</h4>
+                          <h4 className="text-sm font-bold text-black">{review.userName}</h4>
                           {review.designation && (
                             <p className="text-[10px] font-black text-[#C5A059] uppercase tracking-widest mt-0.5">{review.designation}</p>
                           )}
@@ -254,12 +254,12 @@ export default function AdminReviewsPage() {
                           <Star
                             key={i}
                             size={12}
-                            className={i < review.rating ? "fill-[#C5A059] text-[#C5A059]" : "text-brand/10"}
+                            className={i < review.rating ? "fill-[#C5A059] text-[#C5A059]" : "text-black/10"}
                           />
                         ))}
                       </div>
 
-                      <p className="text-xs text-brand/75 italic leading-relaxed">
+                      <p className="text-xs text-black/75 italic leading-relaxed">
                         "{review.comment}"
                       </p>
                     </div>

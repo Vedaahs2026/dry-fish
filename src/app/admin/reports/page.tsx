@@ -48,8 +48,8 @@ export default function ReportsPage() {
   if (loading || !data) {
     return (
       <div className="flex flex-col items-center justify-center py-40">
-        <Loader2 className="animate-spin text-brand-accent mb-4" size={40} />
-        <p className="text-brand/40 font-bold uppercase tracking-widest text-xs">Generating Business Insights...</p>
+        <Loader2 className="animate-spin text-black-accent mb-4" size={40} />
+        <p className="text-black/40 font-bold uppercase tracking-widest text-xs">Generating Business Insights...</p>
       </div>
     );
   }
@@ -70,13 +70,13 @@ export default function ReportsPage() {
     <div className="pb-20 px-8 pt-8 font-inter">
       {/* Header section */}
       <div className="mb-12 text-center flex flex-col items-center">
-        <h1 className="text-4xl font-playfair font-bold text-brand">Business Analytics</h1>
-        <p className="mt-2 text-brand/60 font-medium">Deep dive into your shop's performance and growth metrics.</p>
+        <h1 className="text-4xl font-playfair font-bold text-black">Business Analytics</h1>
+        <p className="mt-2 text-black/60 font-medium">Deep dive into your shop's performance and growth metrics.</p>
       </div>
 
       <div className="mb-10 flex justify-center">
         <button className="flex items-center space-x-3 bg-brand text-[#064e3b] px-8 py-4 rounded-2xl font-bold uppercase tracking-widest text-[10px] hover:bg-brand-hover shadow-xl transition-all active:scale-95">
-          <Download size={16} className="text-brand-accent" />
+          <Download size={16} className="text-black-accent" />
           <span>Export Full Report</span>
         </button>
       </div>
@@ -102,12 +102,12 @@ export default function ReportsPage() {
               </div>
             </div>
 
-            <p className="text-[10px] font-black text-brand/30 uppercase tracking-[0.2em] mb-2">{stat.label}</p>
-            <h3 className="text-3xl font-black text-brand tracking-tighter mb-4">{stat.value}</h3>
+            <p className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em] mb-2">{stat.label}</p>
+            <h3 className="text-3xl font-black text-black tracking-tighter mb-4">{stat.value}</h3>
             
             <div className="pt-4 border-t border-brand/5 flex items-center justify-between">
-              <span className="text-[9px] font-bold text-brand/40 uppercase tracking-widest">Last Month</span>
-              <span className="text-[10px] font-black text-brand/60">{stat.lastValue}</span>
+              <span className="text-[9px] font-bold text-black/40 uppercase tracking-widest">Last Month</span>
+              <span className="text-[10px] font-black text-black/60">{stat.lastValue}</span>
             </div>
           </div>
         ))}
@@ -117,12 +117,12 @@ export default function ReportsPage() {
       <div className="bg-white rounded-[3rem] shadow-sm border border-brand/5 overflow-hidden">
         <div className="p-10 border-b border-brand/5 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-brand/5 rounded-2xl flex items-center justify-center text-brand">
+            <div className="w-12 h-12 bg-brand/5 rounded-2xl flex items-center justify-center text-black">
               <Calendar size={24} />
             </div>
             <div>
-              <h2 className="text-xl font-playfair font-bold text-brand">Monthly Performance History</h2>
-              <p className="text-sm text-brand/40 font-medium tracking-tight">Comparison of last 6 months metrics.</p>
+              <h2 className="text-xl font-playfair font-bold text-black">Monthly Performance History</h2>
+              <p className="text-sm text-black/40 font-medium tracking-tight">Comparison of last 6 months metrics.</p>
             </div>
           </div>
         </div>
@@ -131,33 +131,33 @@ export default function ReportsPage() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-brand/[0.02]">
-                <th className="px-10 py-6 text-[10px] font-black text-brand/30 uppercase tracking-[0.2em]">Month</th>
-                <th className="px-10 py-6 text-[10px] font-black text-brand/30 uppercase tracking-[0.2em]">Revenue</th>
-                <th className="px-10 py-6 text-[10px] font-black text-brand/30 uppercase tracking-[0.2em]">Orders</th>
-                <th className="px-10 py-6 text-[10px] font-black text-brand/30 uppercase tracking-[0.2em]">Items Sold</th>
-                <th className="px-10 py-6 text-[10px] font-black text-brand/30 uppercase tracking-[0.2em]">New Users</th>
+                <th className="px-10 py-6 text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Month</th>
+                <th className="px-10 py-6 text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Revenue</th>
+                <th className="px-10 py-6 text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Orders</th>
+                <th className="px-10 py-6 text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Items Sold</th>
+                <th className="px-10 py-6 text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">New Users</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-brand/5">
               {data.history.map((month, idx) => (
                 <tr key={idx} className="hover:bg-brand/[0.01] transition-colors group">
                   <td className="px-10 py-6">
-                    <span className="text-sm font-black text-brand uppercase tracking-widest">{month.month}</span>
+                    <span className="text-sm font-black text-black uppercase tracking-widest">{month.month}</span>
                   </td>
-                  <td className="px-10 py-6 font-bold text-brand">₹{month.revenue.toLocaleString()}</td>
+                  <td className="px-10 py-6 font-bold text-black">₹{month.revenue.toLocaleString()}</td>
                   <td className="px-10 py-6">
                     <div className="flex items-center space-x-3">
-                      <span className="text-sm font-bold text-brand/60">{month.orders}</span>
+                      <span className="text-sm font-bold text-black/60">{month.orders}</span>
                       <div className="w-20 h-1.5 bg-brand/5 rounded-full overflow-hidden">
                         <div className="h-full bg-[#C5A059] rounded-full" style={{ width: `${Math.min(100, (month.orders / 50) * 100)}%` }} />
                       </div>
                     </div>
                   </td>
-                  <td className="px-10 py-6 font-bold text-brand/60">{month.itemsSold}</td>
+                  <td className="px-10 py-6 font-bold text-black/60">{month.itemsSold}</td>
                   <td className="px-10 py-6">
                     <div className="flex items-center space-x-2">
                       <Users size={14} className="text-blue-400" />
-                      <span className="text-sm font-bold text-brand/60">{month.users}</span>
+                      <span className="text-sm font-bold text-black/60">{month.users}</span>
                     </div>
                   </td>
                 </tr>

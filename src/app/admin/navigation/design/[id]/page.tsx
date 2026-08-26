@@ -107,7 +107,7 @@ function SortableSectionItem({
     >
       <div className="flex items-center justify-between mb-4 pb-4 border-b border-brand/5">
         <div className="flex items-center space-x-4">
-          <button {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing text-brand/20 hover:text-[#C5A059] transition-colors p-1">
+          <button {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing text-black/20 hover:text-[#C5A059] transition-colors p-1">
             <GripVertical size={20} />
           </button>
           <div className="flex items-center space-x-3">
@@ -118,14 +118,14 @@ function SortableSectionItem({
               type="text" 
               value={section.title}
               onChange={(e) => onUpdate(section.id, { title: e.target.value })}
-              className="text-lg font-playfair font-bold text-brand bg-transparent focus:outline-none focus:border-b border-[#C5A059] transition-all"
+              className="text-lg font-playfair font-bold text-black bg-transparent focus:outline-none focus:border-b border-[#C5A059] transition-all"
               placeholder="Section Title (e.g. New Arrivals)"
             />
           </div>
         </div>
         <button 
           onClick={() => onDelete(section.id)}
-          className="p-2 text-brand/20 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
+          className="p-2 text-black/20 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
           title="Delete Section"
         >
           <Trash2 size={16} />
@@ -134,7 +134,7 @@ function SortableSectionItem({
 
       <div className="grid grid-cols-1 gap-4 pl-12">
         <div>
-          <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-4">Display Products (IDS)</label>
+          <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-4">Display Products (IDS)</label>
           
           <div className="flex flex-wrap gap-3 mb-6">
             {selectedProducts.map((product) => (
@@ -149,10 +149,10 @@ function SortableSectionItem({
                     className="w-full h-full object-cover" 
                   />
                 </div>
-                <span className="text-[10px] font-bold text-brand uppercase tracking-tight">{product.name}</span>
+                <span className="text-[10px] font-bold text-black uppercase tracking-tight">{product.name}</span>
                 <button 
                   onClick={() => removeProduct(product.id)}
-                  className="p-1 hover:bg-red-50 hover:text-red-500 rounded-md transition-colors text-brand/20"
+                  className="p-1 hover:bg-red-50 hover:text-red-500 rounded-md transition-colors text-black/20"
                 >
                   <X size={12} />
                 </button>
@@ -168,7 +168,7 @@ function SortableSectionItem({
             </button>
           </div>
           
-          <p className="text-[10px] text-brand/30 font-medium">Use the product selector to add items to this carousel. They will appear on the site in the order you select them.</p>
+          <p className="text-[10px] text-black/30 font-medium">Use the product selector to add items to this carousel. They will appear on the site in the order you select them.</p>
         </div>
       </div>
 
@@ -335,7 +335,7 @@ export default function DesignWorkspace() {
         <div className="flex justify-start mb-6">
           <Link 
             href="/admin/navigation" 
-            className="inline-flex items-center space-x-2 text-brand/40 hover:text-brand transition-colors text-sm font-bold"
+            className="inline-flex items-center space-x-2 text-black/40 hover:text-black transition-colors text-sm font-bold"
           >
             <ArrowLeft size={16} />
             <span>Back to List</span>
@@ -346,16 +346,16 @@ export default function DesignWorkspace() {
           <div className="flex flex-col items-center">
             <div className="flex items-center space-x-3 mb-2 justify-center">
               <Layout className="text-[#C5A059]" size={24} />
-              <h1 className="text-3xl font-playfair font-bold text-brand">Designing Page: {menuItem?.label}</h1>
+              <h1 className="text-3xl font-playfair font-bold text-black">Designing Page: {menuItem?.label}</h1>
             </div>
-            <p className="text-brand/60 font-medium">Manage and reorder the product carousels displayed on this page.</p>
+            <p className="text-black/60 font-medium">Manage and reorder the product carousels displayed on this page.</p>
           </div>
 
           <div className="flex items-center space-x-4 justify-center">
             <button 
               onClick={handleAddSection}
               disabled={isAddingSection}
-              className="flex items-center space-x-2 bg-brand/5 text-brand px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-brand/10 transition-all disabled:opacity-50"
+              className="flex items-center space-x-2 bg-brand/5 text-black px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-brand/10 transition-all disabled:opacity-50"
             >
               {isAddingSection ? <Loader2 size={16} className="animate-spin" /> : <Plus size={16} />}
               <span>Add Section</span>
@@ -404,8 +404,8 @@ export default function DesignWorkspace() {
 
         {sections.length === 0 && (
           <div className="text-center py-20 border-2 border-dashed border-brand/10 rounded-3xl">
-            <Layout size={48} className="text-brand/10 mx-auto mb-4" />
-            <p className="text-brand/40 text-sm font-bold uppercase tracking-widest">No sections found</p>
+            <Layout size={48} className="text-black/10 mx-auto mb-4" />
+            <p className="text-black/40 text-sm font-bold uppercase tracking-widest">No sections found</p>
             <button 
               onClick={handleAddSection}
               disabled={isAddingSection}

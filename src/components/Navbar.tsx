@@ -435,8 +435,8 @@ export default function Navbar() {
               <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center mb-4">
                 <AlertCircle className="text-red-500 h-6 w-6" />
               </div>
-              <h3 className="text-xl font-playfair font-bold text-brand mb-2">Log out</h3>
-              <p className="text-brand/60 text-sm mb-8 leading-relaxed">
+              <h3 className="text-xl font-playfair font-bold text-black mb-2">Log out</h3>
+              <p className="text-black/60 text-sm mb-8 leading-relaxed">
                 Are you sure you want to log out from Dry Fish Basket? You'll need to verify your phone number to sign in again.
               </p>
 
@@ -490,13 +490,13 @@ export default function Navbar() {
             >
               {/* Header */}
               <div className="p-6 border-b border-brand/5 flex items-center justify-between bg-brand/5">
-                <div className="flex items-center space-x-2 text-brand">
+                <div className="flex items-center space-x-2 text-black">
                   <Heart className="h-5 w-5 fill-[#064e3b] text-[#064e3b]" />
                   <span className="font-playfair text-lg font-bold">My Wishlist ({wishlistItems.length})</span>
                 </div>
                 <button
                   onClick={() => setIsWishlistOpen(false)}
-                  className="p-2 hover:bg-brand/10 rounded-full transition-all text-brand cursor-pointer"
+                  className="p-2 hover:bg-brand/10 rounded-full transition-all text-black cursor-pointer"
                 >
                   <X size={20} />
                 </button>
@@ -505,8 +505,8 @@ export default function Navbar() {
               {/* Content */}
               <div className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
                 {wishlistItems.length === 0 ? (
-                  <div className="text-center py-20 text-brand/35">
-                    <Heart className="mx-auto mb-4 opacity-20 text-brand animate-pulse" size={48} />
+                  <div className="text-center py-20 text-black/35">
+                    <Heart className="mx-auto mb-4 opacity-20 text-black animate-pulse" size={48} />
                     <p className="text-xs font-black uppercase tracking-[0.25em] mb-4">Your wishlist is empty</p>
                     <button
                       onClick={() => {
@@ -538,7 +538,7 @@ export default function Navbar() {
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-xs font-black text-brand uppercase tracking-wider truncate mb-0.5">
+                          <p className="text-xs font-black text-black uppercase tracking-wider truncate mb-0.5">
                             {item.name}
                           </p>
                           <p className="text-[10px] text-[#064e3b] font-bold uppercase tracking-widest mb-1">

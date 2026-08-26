@@ -76,8 +76,8 @@ interface Product {
   specifications?: string | null;
 }
 
-const LABEL = "block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-3";
-const INPUT = "w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-brand outline-none transition-all placeholder:text-brand/20";
+const LABEL = "block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-3";
+const INPUT = "w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 text-sm font-semibold text-black outline-none transition-all placeholder:text-black/20";
 
 export default function ProductManagement() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -788,19 +788,19 @@ export default function ProductManagement() {
                   <img src={getFirstImage(stockEditingProduct.images)} alt="" className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-playfair font-bold text-brand">Quick Stock Update</h2>
-                  <p className="text-[10px] font-black text-brand/30 uppercase tracking-widest">{stockEditingProduct.name}</p>
+                  <h2 className="text-xl font-playfair font-bold text-black">Quick Stock Update</h2>
+                  <p className="text-[10px] font-black text-black/30 uppercase tracking-widest">{stockEditingProduct.name}</p>
                 </div>
               </div>
               <button onClick={() => setStockModalOpen(false)} className="p-2 hover:bg-brand/10 rounded-xl transition-all">
-                <X size={20} className="text-brand/40" />
+                <X size={20} className="text-black/40" />
               </button>
             </div>
 
             <form onSubmit={handleStockUpdate} className="p-8">
               <div className="max-h-[50vh] overflow-y-auto custom-scrollbar pr-2 mb-8">
                 <table className="w-full text-left">
-                  <thead className="text-[10px] font-black text-brand/30 uppercase tracking-widest">
+                  <thead className="text-[10px] font-black text-black/30 uppercase tracking-widest">
                     <tr>
                       <th className="pb-4 px-2">Variation</th>
                       <th className="pb-4 px-2">Current Stock</th>
@@ -812,17 +812,17 @@ export default function ProductManagement() {
                       <tr key={idx} className="group">
                         <td className="py-4 px-2">
                           <div className="flex items-center space-x-2">
-                            <span className="text-xs font-bold text-brand">{v.size}</span>
+                            <span className="text-xs font-bold text-black">{v.size}</span>
                             {v.color && v.color !== "Default" && (
                               <div className="flex items-center space-x-1.5 bg-brand/5 px-2 py-0.5 rounded-full">
                                 <div className="w-2 h-2 rounded-full border border-white" style={{ backgroundColor: v.color.includes("::") ? v.color.split("::")[1] : (v.color.startsWith("#") ? v.color : PRESET_COLORS.find(c => c.name === v.color)?.hex) }} />
-                                <span className="text-[9px] font-bold text-brand/60 uppercase">{v.color.includes("::") ? v.color.split("::")[0] : v.color}</span>
+                                <span className="text-[9px] font-bold text-black/60 uppercase">{v.color.includes("::") ? v.color.split("::")[0] : v.color}</span>
                               </div>
                             )}
                           </div>
                         </td>
                         <td className="py-4 px-2">
-                          <span className={`text-xs font-black ${v.stock < 10 ? "text-red-500" : "text-brand/40"}`}>{v.stock}</span>
+                          <span className={`text-xs font-black ${v.stock < 10 ? "text-red-500" : "text-black/40"}`}>{v.stock}</span>
                         </td>
                         <td className="py-4 px-2">
                           <input 
@@ -833,7 +833,7 @@ export default function ProductManagement() {
                               const newVal = parseInt(e.target.value) || 0;
                               setStockVariations(prev => prev.map((item, i) => i === idx ? { ...item, stock: newVal } : item));
                             }}
-                            className="w-24 bg-brand/5 border-2 border-transparent focus:border-brand-accent/30 rounded-xl px-4 py-2 text-xs font-black text-brand outline-none transition-all"
+                            className="w-24 bg-brand/5 border-2 border-transparent focus:border-brand-accent/30 rounded-xl px-4 py-2 text-xs font-black text-black outline-none transition-all"
                           />
                         </td>
                       </tr>
@@ -846,14 +846,14 @@ export default function ProductManagement() {
                 <button 
                   type="button" 
                   onClick={() => setStockModalOpen(false)}
-                  className="flex-1 px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-brand/40 hover:bg-brand/5 transition-all"
+                  className="flex-1 px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest text-black/40 hover:bg-brand/5 transition-all"
                 >
                   Cancel
                 </button>
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="flex-[2] bg-brand text-brand-accent px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl hover:shadow-brand/20 transition-all flex items-center justify-center space-x-2"
+                  className="flex-[2] bg-brand text-black-accent px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest shadow-xl hover:shadow-brand/20 transition-all flex items-center justify-center space-x-2"
                 >
                   {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <Check size={16} />}
                   <span>Save Stock Levels</span>
@@ -874,14 +874,14 @@ export default function ProductManagement() {
                 {editingId ? <Edit3 className="text-[#C5A059]" size={22} /> : <Plus className="text-[#C5A059]" size={22} />}
               </div>
               <div>
-                <h1 className="text-3xl font-playfair font-bold text-brand">{editingId ? "Edit Product" : "Add New Product"}</h1>
-                <p className="text-brand/40 text-xs font-medium mt-1">
+                <h1 className="text-3xl font-playfair font-bold text-black">{editingId ? "Edit Product" : "Add New Product"}</h1>
+                <p className="text-black/40 text-xs font-medium mt-1">
                   {editingId ? `Updating product ID: ${editingId}` : "Fill in the details below to list a new item"}
                 </p>
               </div>
             </div>
             {editingId && (
-              <button onClick={resetForm} className="mt-4 px-4 py-2 bg-brand/5 text-brand/40 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand/10 transition-all">
+              <button onClick={resetForm} className="mt-4 px-4 py-2 bg-brand/5 text-black/40 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand/10 transition-all">
                 Cancel Edit
               </button>
             )}
@@ -891,13 +891,13 @@ export default function ProductManagement() {
 
             {/* ── Section 1: Identity ── */}
             <div>
-              <h3 className="text-xs font-black text-brand/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">1</span> Product Identity</h3>
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">1</span> Product Identity</h3>
               <div className="space-y-5">
                 <div>
                   <label className={LABEL}>Product Name *</label>
                   <input value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Kerala Cotton Kasavu Nighty" className={`${INPUT} ${nameError ? 'border-red-500 focus:border-red-500' : ''}`} required />
                   {isNameChecking && (
-                    <span className="text-[10px] text-brand/40 mt-1 block">Checking name availability...</span>
+                    <span className="text-[10px] text-black/40 mt-1 block">Checking name availability...</span>
                   )}
                   {nameError && (
                     <span className="text-[10px] font-bold text-red-500 mt-1 block">{nameError}</span>
@@ -946,7 +946,7 @@ export default function ProductManagement() {
                     placeholder="e.g. Shirts, Blazers & Coats, Trousers"
                     className={INPUT}
                   />
-                  <p className="mt-1.5 text-[10px] text-brand/50 font-medium leading-relaxed">
+                  <p className="mt-1.5 text-[10px] text-black/50 font-medium leading-relaxed">
                     Determines which checkbox option in the storefront's sidebar categories filter this product belongs to. Type any custom category (e.g. Blazers & Coats).
                   </p>
                 </div>
@@ -955,8 +955,8 @@ export default function ProductManagement() {
                 <div className="border-t border-brand/10 pt-6">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-4">
                     <div>
-                      <h4 className="text-xs font-black text-brand uppercase tracking-wider">Product Specifications</h4>
-                      <p className="text-[10px] text-brand/40 font-medium mt-0.5">Optional properties and custom specifications for this product.</p>
+                      <h4 className="text-xs font-black text-black uppercase tracking-wider">Product Specifications</h4>
+                      <p className="text-[10px] text-black/40 font-medium mt-0.5">Optional properties and custom specifications for this product.</p>
                     </div>
                     
                     <div className="flex flex-wrap gap-2">
@@ -968,7 +968,7 @@ export default function ProductManagement() {
                               e.target.value = "";
                             }
                           }}
-                          className="bg-brand/5 border border-brand/10 hover:border-[#C5A059]/40 rounded-xl px-3 py-1.5 text-xs font-bold text-brand outline-none transition-all cursor-pointer"
+                          className="bg-brand/5 border border-brand/10 hover:border-[#C5A059]/40 rounded-xl px-3 py-1.5 text-xs font-bold text-black outline-none transition-all cursor-pointer"
                         >
                           <option value="">+ Add Preset Specification...</option>
                           {PRESET_SPEC_KEYS
@@ -983,7 +983,7 @@ export default function ProductManagement() {
                       <button
                         type="button"
                         onClick={handleAddCustom}
-                        className="bg-brand/5 border border-brand/10 hover:border-[#C5A059]/40 hover:bg-[#C5A059]/10 rounded-xl px-3 py-1.5 text-xs font-bold text-brand transition-all flex items-center gap-1"
+                        className="bg-brand/5 border border-brand/10 hover:border-[#C5A059]/40 hover:bg-[#C5A059]/10 rounded-xl px-3 py-1.5 text-xs font-bold text-black transition-all flex items-center gap-1"
                       >
                         <Plus size={12} /> Add Custom Attribute
                       </button>
@@ -992,7 +992,7 @@ export default function ProductManagement() {
                   
                   {specRows.length === 0 ? (
                     <div className="bg-brand/5 rounded-2xl p-6 text-center border border-dashed border-brand/10">
-                      <p className="text-xs text-brand/40 font-medium">No specifications added yet. Add style, fabric, or other attributes above.</p>
+                      <p className="text-xs text-black/40 font-medium">No specifications added yet. Add style, fabric, or other attributes above.</p>
                     </div>
                   ) : (
                     <div className="space-y-3">
@@ -1005,7 +1005,7 @@ export default function ProductManagement() {
                               onChange={(e) => handleUpdateRow(row.id, { key: e.target.value })}
                               placeholder="Attribute Name"
                               disabled={!row.isCustom}
-                              className={`w-full bg-brand/5 border border-transparent rounded-xl px-3 py-2 text-xs font-bold text-brand outline-none ${
+                              className={`w-full bg-brand/5 border border-transparent rounded-xl px-3 py-2 text-xs font-bold text-black outline-none ${
                                 !row.isCustom ? "opacity-60 cursor-not-allowed bg-transparent" : "focus:border-[#C5A059]/30"
                               }`}
                             />
@@ -1016,13 +1016,13 @@ export default function ProductManagement() {
                               value={row.value}
                               onChange={(e) => handleUpdateRow(row.id, { value: e.target.value })}
                               placeholder={`Value for ${row.key || "attribute"}`}
-                              className="w-full bg-[#FFFDF6] border border-brand/10 focus:border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs font-semibold text-brand outline-none"
+                              className="w-full bg-[#FFFDF6] border border-brand/10 focus:border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs font-semibold text-black outline-none"
                             />
                           </div>
                           <button
                             type="button"
                             onClick={() => handleRemoveRow(row.id)}
-                            className="p-2 text-brand/40 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
+                            className="p-2 text-black/40 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
                             title="Remove attribute"
                           >
                             <Trash2 size={14} />
@@ -1034,12 +1034,12 @@ export default function ProductManagement() {
                 </div>
                 <div className="flex items-center justify-between p-6 bg-brand/5 rounded-[2.5rem] border border-brand/10 transition-all hover:bg-brand/[0.08]">
                   <div className="flex items-center space-x-4">
-                    <div className={`p-3 rounded-2xl transition-all ${isFeatured ? "bg-brand-accent/20 text-brand-accent" : "bg-brand/10 text-brand/30"}`}>
+                    <div className={`p-3 rounded-2xl transition-all ${isFeatured ? "bg-brand-accent/20 text-black-accent" : "bg-brand/10 text-black/30"}`}>
                       <Sparkles size={20} className={isFeatured ? "animate-pulse" : ""} />
                     </div>
                     <div>
-                      <p className="text-xs font-black text-brand uppercase tracking-widest">Featured Product</p>
-                      <p className="text-[10px] text-brand/40 font-medium">Spotlight this item on the homepage</p>
+                      <p className="text-xs font-black text-black uppercase tracking-widest">Featured Product</p>
+                      <p className="text-[10px] text-black/40 font-medium">Spotlight this item on the homepage</p>
                     </div>
                   </div>
                   <button 
@@ -1055,19 +1055,19 @@ export default function ProductManagement() {
 
             {/* ── Section 2: Customization Settings ── */}
             <div>
-              <h3 className="text-xs font-black text-brand/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
                 <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">2</span> 
                 Customization Settings
               </h3>
               <div className="bg-brand/5 rounded-[2.5rem] p-8 border border-brand/10">
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-brand/10 rounded-2xl text-brand">
+                    <div className="p-3 bg-brand/10 rounded-2xl text-black">
                       <Scissors size={20} />
                     </div>
                     <div>
-                      <p className="text-xs font-black text-brand uppercase tracking-widest">Enable Custom Fit</p>
-                      <p className="text-[10px] text-brand/40 font-medium">Allow users to provide bespoke measurements for this product</p>
+                      <p className="text-xs font-black text-black uppercase tracking-widest">Enable Custom Fit</p>
+                      <p className="text-[10px] text-black/40 font-medium">Allow users to provide bespoke measurements for this product</p>
                     </div>
                   </div>
                   <button 
@@ -1082,10 +1082,10 @@ export default function ProductManagement() {
                 {isCustomizable && (
                   <div className="animate-in fade-in slide-in-from-top-4 duration-500">
                     <div className="mb-4">
-                      <p className="text-[10px] font-black text-brand/40 uppercase tracking-widest mb-4 border-b border-brand/5 pb-2">Select measurements to capture from user</p>
+                      <p className="text-[10px] font-black text-black/40 uppercase tracking-widest mb-4 border-b border-brand/5 pb-2">Select measurements to capture from user</p>
                     </div>
                     {gender === "unisex" ? (
-                      <div className="py-8 text-center text-brand/30 bg-white/50 rounded-2xl border border-dashed border-brand/10">
+                      <div className="py-8 text-center text-black/30 bg-white/50 rounded-2xl border border-dashed border-brand/10">
                         <p className="text-[10px] font-bold uppercase tracking-widest">Please select Men or Women gender to configure measurements</p>
                       </div>
                     ) : (
@@ -1102,11 +1102,11 @@ export default function ProductManagement() {
                               className={`flex items-center space-x-3 p-4 rounded-2xl border transition-all ${
                                 enabledMeasurements.includes(m)
                                   ? "bg-brand text-[#064e3b] border-brand shadow-lg"
-                                  : "bg-white text-brand/60 border-brand/5 hover:border-brand/20"
+                                  : "bg-white text-black/60 border-brand/5 hover:border-brand/20"
                               }`}
                             >
                               <div className={`w-5 h-5 rounded-md flex items-center justify-center border transition-all ${
-                                enabledMeasurements.includes(m) ? "bg-white border-white text-brand" : "bg-brand/5 border-brand/10"
+                                enabledMeasurements.includes(m) ? "bg-white border-white text-black" : "bg-brand/5 border-brand/10"
                               }`}>
                                 {enabledMeasurements.includes(m) && <Check size={12} strokeWidth={4} />}
                               </div>
@@ -1122,7 +1122,7 @@ export default function ProductManagement() {
                             value={newMeasurementInput}
                             onChange={(e) => setNewMeasurementInput(e.target.value)}
                             placeholder="Add custom measurement (e.g. Belt Size)..."
-                            className="flex-1 bg-transparent border-none text-[10px] font-bold uppercase tracking-widest outline-none placeholder:text-brand/20"
+                            className="flex-1 bg-transparent border-none text-[10px] font-bold uppercase tracking-widest outline-none placeholder:text-black/20"
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
                                 e.preventDefault();
@@ -1153,7 +1153,7 @@ export default function ProductManagement() {
                     
                     {enabledMeasurements.length > 0 && (
                       <div className="mt-6 pt-6 border-t border-brand/10 flex items-center justify-between">
-                        <span className="text-[10px] font-black text-brand/40 uppercase tracking-widest">Total Enabled: {enabledMeasurements.length}</span>
+                        <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Total Enabled: {enabledMeasurements.length}</span>
                         <button type="button" onClick={() => setEnabledMeasurements([])} className="text-[10px] font-black text-red-400 uppercase tracking-widest hover:text-red-600 transition-colors">Clear All</button>
                       </div>
                     )}
@@ -1164,22 +1164,22 @@ export default function ProductManagement() {
 
             {/* ── Section 3: Inventory Overview ── */}
             <div>
-              <h3 className="text-xs font-black text-brand/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">3</span> Inventory Overview</h3>
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">3</span> Inventory Overview</h3>
               <div className="p-5 bg-brand/5 rounded-2xl flex items-center justify-between">
-                <span className="text-[10px] font-black text-brand/40 uppercase tracking-widest">Total Combined Stock (All variations)</span>
-                <span className="text-2xl font-black text-brand">{totalStock}</span>
+                <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Total Combined Stock (All variations)</span>
+                <span className="text-2xl font-black text-black">{totalStock}</span>
               </div>
             </div>
 
             {/* ── Section 4: Available Sizes ── */}
             <div className="space-y-4">
-              <h3 className="text-xs font-black text-brand/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
                 <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">4</span> 
                 Available Sizes
               </h3>
               
               <div>
-                <label className="block text-[10px] font-black text-brand/40 uppercase tracking-[0.2em] mb-2">
+                <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2">
                   Select Size Chart System
                 </label>
                 <select
@@ -1195,7 +1195,7 @@ export default function ProductManagement() {
                       setSelectedSizes([]);
                     }
                   }}
-                  className="bg-brand/5 border border-transparent focus:border-[#C5A059]/40 rounded-xl px-4 py-3 text-xs font-semibold text-brand outline-none transition-all w-full max-w-xs cursor-pointer"
+                  className="bg-brand/5 border border-transparent focus:border-[#C5A059]/40 rounded-xl px-4 py-3 text-xs font-semibold text-black outline-none transition-all w-full max-w-xs cursor-pointer"
                 >
                   {Object.entries(SIZE_SYSTEMS).map(([key, system]) => (
                     <option key={key} value={key}>
@@ -1222,7 +1222,7 @@ export default function ProductManagement() {
                       className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border select-none cursor-grab active:cursor-grabbing ${
                         selectedSizes.includes(size) 
                           ? "bg-[#1B3022] text-white border-[#1B3022]" 
-                          : "bg-brand/5 text-brand/50 border-transparent hover:border-brand/20"
+                          : "bg-brand/5 text-black/50 border-transparent hover:border-brand/20"
                       } ${draggedSizeIndex === idx ? "opacity-40 scale-95 border-brand-accent" : ""}`}
                       title="Drag to rearrange size order"
                     >
@@ -1238,7 +1238,7 @@ export default function ProductManagement() {
                     value={customSizeInput}
                     onChange={(e) => setCustomSizeInput(e.target.value)}
                     placeholder="Add custom (e.g. XXS)..."
-                    className="flex-1 bg-transparent border-none text-[10px] font-bold uppercase tracking-widest outline-none placeholder:text-brand/20 text-brand"
+                    className="flex-1 bg-transparent border-none text-[10px] font-bold uppercase tracking-widest outline-none placeholder:text-black/20 text-black"
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
@@ -1259,7 +1259,7 @@ export default function ProductManagement() {
 
             {/* ── Section 5: Available Colors ── */}
             <div>
-              <h3 className="text-xs font-black text-brand/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
                 <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">5</span> 
                 Available Colors
               </h3>
@@ -1281,7 +1281,7 @@ export default function ProductManagement() {
                         className={`w-8 h-8 rounded-full border border-black/5 shadow-inner transition-transform group-hover:scale-110 ${selectedColors.includes(color.name) ? "ring-2 ring-white ring-offset-2 ring-offset-brand" : ""}`}
                         style={{ backgroundColor: color.hex }}
                       />
-                      <span className={`text-[8px] font-black uppercase tracking-tighter text-center line-clamp-1 ${selectedColors.includes(color.name) ? "text-white" : "text-brand/40"}`}>
+                      <span className={`text-[8px] font-black uppercase tracking-tighter text-center line-clamp-1 ${selectedColors.includes(color.name) ? "text-white" : "text-black/40"}`}>
                         {color.name}
                       </span>
                       {selectedColors.includes(color.name) && (
@@ -1296,7 +1296,7 @@ export default function ProductManagement() {
                 {/* Selected Custom Colors */}
                 {selectedColors.filter(c => !PRESET_COLORS.some(p => p.name === c)).length > 0 && (
                   <div className="space-y-3 mt-4">
-                    <p className="text-[10px] font-black text-brand uppercase tracking-widest">Selected Custom Colors</p>
+                    <p className="text-[10px] font-black text-black uppercase tracking-widest">Selected Custom Colors</p>
                     <div className="flex flex-wrap gap-3">
                       {selectedColors.filter(c => !PRESET_COLORS.some(p => p.name === c)).map(color => {
                         const name = color.includes("::") ? color.split("::")[0] : color;
@@ -1313,7 +1313,7 @@ export default function ProductManagement() {
                               style={{ backgroundColor: hex }}
                             />
                             <span className="text-[10px] font-black uppercase tracking-wider">{name}</span>
-                            <span className="text-[8px] text-brand/35 group-hover:text-red-400 font-bold">✕</span>
+                            <span className="text-[8px] text-black/35 group-hover:text-red-400 font-bold">✕</span>
                           </div>
                         );
                       })}
@@ -1324,7 +1324,7 @@ export default function ProductManagement() {
                 {/* Custom Color Input */}
                 <div className="flex items-center space-x-6 p-6 bg-brand/5 rounded-[2rem] border border-brand/10">
                   <div className="flex-1">
-                    <p className="text-[10px] font-black text-brand uppercase tracking-widest mb-3">Custom Color Picker</p>
+                    <p className="text-[10px] font-black text-black uppercase tracking-widest mb-3">Custom Color Picker</p>
                     <div className="flex items-center gap-4">
                       <div className="relative">
                         <input 
@@ -1342,14 +1342,14 @@ export default function ProductManagement() {
                           value={pendingColorName}
                           onChange={(e) => setPendingColorName(e.target.value)}
                           placeholder="Color Name (e.g. Rust Brown)" 
-                          className="w-full bg-white border border-brand/10 rounded-xl px-4 py-2 text-xs font-black text-brand uppercase tracking-widest focus:border-brand-accent outline-none transition-all placeholder:text-brand/20"
+                          className="w-full bg-white border border-brand/10 rounded-xl px-4 py-2 text-xs font-black text-black uppercase tracking-widest focus:border-brand-accent outline-none transition-all placeholder:text-black/20"
                         />
                         <input 
                           type="text" 
                           value={pendingColor}
                           onChange={(e) => setPendingColor(e.target.value.toUpperCase())}
                           placeholder="#C5A059" 
-                          className="w-full bg-white border border-brand/10 rounded-xl px-4 py-2 text-xs font-black text-brand uppercase tracking-widest focus:border-brand-accent outline-none transition-all"
+                          className="w-full bg-white border border-brand/10 rounded-xl px-4 py-2 text-xs font-black text-black uppercase tracking-widest focus:border-brand-accent outline-none transition-all"
                         />
                         <button 
                           type="button"
@@ -1383,7 +1383,7 @@ export default function ProductManagement() {
                   </div>
                   <div className="hidden md:block w-px h-24 bg-brand/10" />
                   <div className="hidden md:block flex-1">
-                    <p className="text-[9px] text-brand/30 font-medium leading-relaxed italic">
+                    <p className="text-[9px] text-black/30 font-medium leading-relaxed italic">
                       Pick a color from the swatch or enter a custom hex code, type a color name, and click "Add Color to Matrix" to generate size variations.
                     </p>
                   </div>
@@ -1393,7 +1393,7 @@ export default function ProductManagement() {
 
             {/* ── Section 6: Color-Specific Images ── */}
             <div>
-              <h3 className="text-xs font-black text-brand/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
                 <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">6</span> 
                 Color-Specific Images
               </h3>
@@ -1413,7 +1413,7 @@ export default function ProductManagement() {
                             style={{ backgroundColor: color.includes("::") ? color.split("::")[1] : (color.startsWith("#") ? color : colorPreset?.hex) }}
                           />
                         )}
-                        <span className="text-xs font-black text-brand uppercase tracking-wider">
+                        <span className="text-xs font-black text-black uppercase tracking-wider">
                           {color === "Default" ? "Default Images" : `${color.includes("::") ? color.split("::")[0] : color} Images`} ({currentImages.length})
                         </span>
                       </div>
@@ -1488,7 +1488,7 @@ export default function ProductManagement() {
                           ))}
                         </div>
                       ) : (
-                        <div className="border border-dashed border-brand/10 bg-white/50 rounded-2xl py-6 text-center text-brand/30">
+                        <div className="border border-dashed border-brand/10 bg-white/50 rounded-2xl py-6 text-center text-black/30">
                           <p className="text-[10px] font-black uppercase tracking-widest">No images added for this color</p>
                         </div>
                       )}
@@ -1501,7 +1501,7 @@ export default function ProductManagement() {
 
             {/* ── Section 7: Variation Matrix ── */}
             <div>
-              <h3 className="text-xs font-black text-brand/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">7</span> Variation Matrix (Stock & SKU)</h3>
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">7</span> Variation Matrix (Stock & SKU)</h3>
               {variations.length > 0 ? (
                 <div className="overflow-hidden rounded-[2rem] border border-brand/5 shadow-sm">
                   <div className="overflow-x-auto">
@@ -1520,11 +1520,11 @@ export default function ProductManagement() {
                     <tbody className="divide-y divide-brand/5">
                       {variations.map((v, idx) => (
                         <tr key={`${v.size}-${v.color}-${idx}`} className="hover:bg-brand/5 transition-colors">
-                          <td className="px-5 py-3 font-bold text-brand">{v.size}</td>
+                          <td className="px-5 py-3 font-bold text-black">{v.size}</td>
                           <td className="px-5 py-3">
                             <div className="flex items-center space-x-2">
                               {v.color && v.color !== "Default" && <span className="w-3 h-3 rounded-full border border-white shadow" style={{ backgroundColor: v.color.includes("::") ? v.color.split("::")[1] : (v.color.startsWith("#") ? v.color : PRESET_COLORS.find(c => c.name === v.color)?.hex) }} />}
-                              <span className="text-brand/60 font-medium">{v.color && v.color !== "Default" ? (v.color.includes("::") ? v.color.split("::")[0] : v.color) : "—"}</span>
+                              <span className="text-black/60 font-medium">{v.color && v.color !== "Default" ? (v.color.includes("::") ? v.color.split("::")[0] : v.color) : "—"}</span>
                             </div>
                           </td>
                           <td className="px-5 py-3">
@@ -1577,14 +1577,14 @@ export default function ProductManagement() {
               </div>
               ) : (
                 <div className="py-10 text-center border-2 border-dashed border-brand/10 rounded-2xl">
-                  <p className="text-[10px] font-black text-brand/30 uppercase tracking-[0.2em]">Select sizes and/or colors above to generate the variation matrix</p>
+                  <p className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Select sizes and/or colors above to generate the variation matrix</p>
                 </div>
               )}
             </div>
 
             {/* Submit */}
             <button disabled={isSubmitting || !!nameError}
-              className="w-full bg-brand text-brand-accent py-6 rounded-[2rem] font-black uppercase tracking-[0.4em] text-xs hover:bg-brand-hover hover:shadow-[0_20px_40px_rgba(27,48,34,0.2)] transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center space-x-4 shadow-2xl relative overflow-hidden group">
+              className="w-full bg-brand text-black-accent py-6 rounded-[2rem] font-black uppercase tracking-[0.4em] text-xs hover:bg-brand-hover hover:shadow-[0_20px_40px_rgba(27,48,34,0.2)] transition-all active:scale-[0.98] disabled:opacity-50 flex items-center justify-center space-x-4 shadow-2xl relative overflow-hidden group">
               <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
               <div className="relative flex items-center space-x-3">
                 {isSubmitting ? <Loader2 size={20} className="animate-spin" /> : editingId ? <Check size={20} /> : <Plus size={20} />}
@@ -1600,34 +1600,34 @@ export default function ProductManagement() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <Package className="text-[#C5A059]" size={22} />
-                <h2 className="text-2xl font-playfair font-bold text-brand">Inventory</h2>
+                <h2 className="text-2xl font-playfair font-bold text-black">Inventory</h2>
               </div>
-              <span className="text-[10px] font-black text-brand/30 uppercase tracking-widest bg-brand/5 px-3 py-1.5 rounded-full">{products.length} total</span>
+              <span className="text-[10px] font-black text-black/30 uppercase tracking-widest bg-brand/5 px-3 py-1.5 rounded-full">{products.length} total</span>
             </div>
 
             {/* Search Bar */}
             <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-brand/20 group-focus-within:text-[#C5A059] transition-colors" size={16} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20 group-focus-within:text-[#C5A059] transition-colors" size={16} />
               <input 
                 type="text" 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search inventory..."
-                className="w-full bg-white border border-brand/5 focus:border-[#C5A059]/30 rounded-2xl py-4 pl-12 pr-4 text-sm font-bold text-brand outline-none transition-all shadow-sm"
+                className="w-full bg-white border border-brand/5 focus:border-[#C5A059]/30 rounded-2xl py-4 pl-12 pr-4 text-sm font-bold text-black outline-none transition-all shadow-sm"
               />
             </div>
 
             <div className="space-y-2 pr-1">
               {isLoading ? (
-                <div className="flex flex-col items-center justify-center py-20 text-brand/20">
+                <div className="flex flex-col items-center justify-center py-20 text-black/20">
                   <Loader2 size={36} className="animate-spin mb-3" />
                   <p className="text-[10px] font-black uppercase tracking-widest">Loading…</p>
                 </div>
               ) : filteredProducts.length === 0 ? (
                 <div className="text-center py-20 border-2 border-dashed border-brand/10 rounded-3xl">
-                  <Package size={40} className="text-brand/10 mx-auto mb-3" />
-                  <p className="text-[10px] font-black text-brand/30 uppercase tracking-widest">No products found</p>
-                  <p className="text-[10px] text-brand/20 mt-2">Try a different search term</p>
+                  <Package size={40} className="text-black/10 mx-auto mb-3" />
+                  <p className="text-[10px] font-black text-black/30 uppercase tracking-widest">No products found</p>
+                  <p className="text-[10px] text-black/20 mt-2">Try a different search term</p>
                 </div>
               ) : filteredProducts.map(product => {
                 const firstImg = getFirstImage(product.images);
@@ -1650,11 +1650,11 @@ export default function ProductManagement() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-2">
-                          <h3 className="text-[11px] font-bold text-brand truncate">{product.name}</h3>
-                          {product.isFeatured && <Sparkles size={8} className="text-brand-accent" />}
+                          <h3 className="text-[11px] font-bold text-black truncate">{product.name}</h3>
+                          {product.isFeatured && <Sparkles size={8} className="text-black-accent" />}
                         </div>
                         <div className="flex items-center space-x-2 mt-0.5">
-                          <span className="text-[10px] font-black text-brand">₹{product.salePrice?.toLocaleString()}</span>
+                          <span className="text-[10px] font-black text-black">₹{product.salePrice?.toLocaleString()}</span>
                           {off > 0 && <span className="text-[8px] text-green-600 font-bold">{off}% OFF</span>}
                         </div>
                         <div className="flex items-center justify-between mt-2">
@@ -1669,7 +1669,7 @@ export default function ProductManagement() {
                             {product.totalStock || 0} STOCK
                           </button>
                           <div className="flex space-x-1">
-                            <button onClick={() => handleEdit(product.id)} className={`p-1.5 rounded-lg transition-all ${isCurrentlyEditing ? "bg-brand text-[#064e3b]" : "bg-brand/5 text-brand hover:bg-brand hover:text-white"}`}><Edit3 size={10} /></button>
+                            <button onClick={() => handleEdit(product.id)} className={`p-1.5 rounded-lg transition-all ${isCurrentlyEditing ? "bg-brand text-[#064e3b]" : "bg-brand/5 text-black hover:bg-brand hover:text-white"}`}><Edit3 size={10} /></button>
                             <button onClick={() => handleDelete(product.id)} className="p-1.5 bg-red-50 text-red-400 hover:bg-red-500 hover:text-white rounded-lg transition-all"><Trash2 size={10} /></button>
                           </div>
                         </div>
