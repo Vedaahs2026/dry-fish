@@ -8,7 +8,6 @@ export async function POST(request: Request) {
     // Dynamically import database and firebase-admin modules to catch initialization errors
     const { db } = await import("@/db");
     const { users } = await import("@/db/schema");
-    const { adminAuth } = await import("@/db/firebase-admin");
 
     const body = await request.json();
     const { phone: rawPhone, idToken } = body;
@@ -19,8 +18,8 @@ export async function POST(request: Request) {
     if (idToken) {
       // 1. Firebase Token Verification
       try {
+        const { adminAuth, firebaseInitError } = await import("@/db/firebase-admin");
         if (!adminAuth) {
-          const { firebaseInitError } = await import("@/db/firebase-admin");
           throw new Error(`Firebase adminAuth is null. Reason: ${firebaseInitError || "Unknown error during initialization"}`);
         }
         const decoded = await adminAuth.verifyIdToken(idToken);

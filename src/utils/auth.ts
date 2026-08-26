@@ -1,5 +1,4 @@
 import { cookies } from "next/headers";
-import { adminAuth } from "@/db/firebase-admin";
 import { isAdminPhone } from "@/utils/admin-helper";
 
 export interface DecodedAdminToken {
@@ -38,9 +37,8 @@ export async function verifyAdminRequest(request?: Request): Promise<DecodedAdmi
 
     // Support local developer mock mode (10-digit number)
     const isRawPhone = /^\d{10}$/.test(token);
-    const isMock = !adminAuth || isRawPhone;
 
-    if (isMock) {
+    if (isRawPhone) {
       if (isAdminPhone(token)) {
         return {
           uid: "mock-admin-uid",
@@ -51,6 +49,11 @@ export async function verifyAdminRequest(request?: Request): Promise<DecodedAdmi
     }
 
     // Verify ID token or Session Cookie using Firebase Admin SDK
+    const { adminAuth } = await import("@/db/firebase-admin");
+    if (!adminAuth) {
+      return null;
+    }
+
     let decodedToken: any;
     try {
       decodedToken = await adminAuth.verifySessionCookie(token);

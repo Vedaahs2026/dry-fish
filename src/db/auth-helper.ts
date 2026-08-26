@@ -1,5 +1,4 @@
 import { cookies } from "next/headers";
-import { adminAuth } from "./firebase-admin";
 
 /**
  * Verifies the Firebase ID Token from a session cookie and returns the normalized 10-digit phone number.
@@ -18,6 +17,8 @@ export async function getVerifiedPhoneFromCookie(cookieName: "auth_session" | "a
     }
 
     // Securely verify session cookie using Firebase Admin SDK
+    const { adminAuth } = await import("./firebase-admin");
+    if (!adminAuth) return null;
     const decoded = await adminAuth.verifySessionCookie(token);
     const phone = decoded.phone_number;
     if (!phone) return null;
