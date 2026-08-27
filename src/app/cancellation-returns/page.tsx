@@ -139,11 +139,11 @@ export default function CancellationReturns() {
             <ul className="space-y-2 pl-1 font-semibold text-black/90">
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-[#8c6239]" />
-                <span>Email: dryfishbasket2627@gmail.com</span>
+                <span>Email: info@vkdryfishbasket.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={14} className="text-[#8c6239]" />
-                <span>Phone / WhatsApp: 9676344465</span>
+                <span>Phone / WhatsApp: +91 98483 57279</span>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin size={14} className="text-[#8c6239]" />

@@ -177,9 +177,9 @@ export default function PrivacyPolicy() {
           </div>
           <div className="pt-4 border-t border-[#8c6239]/10 flex flex-col sm:flex-row items-start sm:items-center gap-2">
             <span className="text-sm text-[#8c6239]/60 font-semibold">To exercise these rights, contact us at:</span>
-            <a href="mailto:dryfishbasket2627@gmail.com" className="inline-flex items-center gap-2 text-[#C5A059] font-bold hover:underline">
+            <a href="mailto:info@vkdryfishbasket.com" className="inline-flex items-center gap-2 text-[#C5A059] font-bold hover:underline">
               <Mail size={16} />
-              dryfishbasket2627@gmail.com
+              info@vkdryfishbasket.com
             </a>
           </div>
         </div>
@@ -264,8 +264,8 @@ export default function PrivacyPolicy() {
           <p className="text-sm text-[#8c6239]/60 font-semibold mb-2">Have questions about our privacy practices?</p>
           <p className="text-lg font-bold text-[#8c6239]">
             Contact us at{" "}
-            <a href="mailto:dryfishbasket2627@gmail.com" className="text-[#C5A059] hover:underline">
-              dryfishbasket2627@gmail.com
+            <a href="mailto:info@vkdryfishbasket.com" className="text-[#C5A059] hover:underline">
+              info@vkdryfishbasket.com
             </a>
           </p>
         </div>

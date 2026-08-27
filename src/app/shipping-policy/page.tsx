@@ -127,7 +127,7 @@ export default function ShippingPolicyPage() {
             <p>If your order is delayed:</p>
             <ul className="list-disc pl-5 space-y-1.5">
               <li>
-                Contact our support team at <strong>dryfishbasket2627@gmail.com / 9676344465</strong>. We will coordinate with the courier partner and update you.
+                Contact our support team at <strong>info@vkdryfishbasket.com / +91 98483 57279</strong>. We will coordinate with the courier partner and update you.
               </li>
             </ul>
           </div>

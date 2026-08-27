@@ -166,9 +166,9 @@ export default function ShippingPayment() {
         <div className="mt-16 text-center bg-[#FFFDF6] p-8 rounded-[2rem] border border-[#8c6239]/5 shadow-sm max-w-xl mx-auto">
           <p className="text-sm text-[#8c6239]/60 font-semibold mb-2">Need help with ordering or weight options?</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-base font-bold text-[#8c6239]">
-            <a href="mailto:dryfishbasket2627@gmail.com" className="inline-flex items-center gap-2 text-[#C5A059] hover:underline">
+            <a href="mailto:info@vkdryfishbasket.com" className="inline-flex items-center gap-2 text-[#C5A059] hover:underline">
               <Mail size={18} />
-              dryfishbasket2627@gmail.com
+              info@vkdryfishbasket.com
             </a>
             <span className="hidden sm:inline text-[#8c6239]/20">|</span>
             <div className="inline-flex items-center gap-2 text-[#8c6239]">

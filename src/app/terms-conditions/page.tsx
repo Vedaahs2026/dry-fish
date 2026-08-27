@@ -336,9 +336,9 @@ export default function TermsConditions() {
         <div className="bg-[#8c6239]/5 p-5 md:p-8 rounded-2xl border border-brand/5 space-y-4">
           <p className="font-semibold text-lg text-[#8c6239]">Dry Fish Basket</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm md:text-base">
-            <a href="mailto:dryfishbasket2627@gmail.com" className="flex items-center gap-3 text-[#8c6239]/80 hover:text-[#C5A059] transition">
+            <a href="mailto:info@vkdryfishbasket.com" className="flex items-center gap-3 text-[#8c6239]/80 hover:text-[#C5A059] transition">
               <Mail size={18} className="text-[#C5A059]" />
-              <span>dryfishbasket2627@gmail.com</span>
+              <span>info@vkdryfishbasket.com</span>
             </a>
             <div className="flex items-center gap-3 text-[#8c6239]/80">
               <Phone size={18} className="text-[#C5A059]" />
