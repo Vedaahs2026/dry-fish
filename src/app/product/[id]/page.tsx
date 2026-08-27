@@ -7,7 +7,8 @@ import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
 import { usePathname } from "next/navigation";
 import RefineDrawer from "@/components/RefineDrawer";
-import { getProductImageUrls } from "@/utils/product";
+import { getProductImageUrls, getFirstProductImageUrl } from "@/utils/product";
+import ProductCard from "@/components/ProductCard";
 
 
 interface Variation {
@@ -83,6 +84,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [mainImage, setMainImage] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
+  const [similarProducts, setSimilarProducts] = useState<any[]>([]);
 
   const [added, setAdded] = useState(false);
   const [toast, setToast] = useState("");
@@ -175,6 +177,24 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             }
           } catch {}
           setMainImage(initialImage);
+
+          // Fetch similar products in the same category
+          try {
+            const allRes = await fetch("/api/products");
+            if (allRes.ok) {
+              const allData = await allRes.json();
+              if (allData.success && Array.isArray(allData.data)) {
+                const category = data.category;
+                const currentId = data.id;
+                const filtered = allData.data
+                  .filter((p: any) => p.category === category && p.id !== currentId)
+                  .slice(0, 4);
+                setSimilarProducts(filtered);
+              }
+            }
+          } catch (err) {
+            console.error("Failed to fetch similar products", err);
+          }
         }
       } catch (error) {
         console.error("Failed to fetch product", error);
@@ -528,6 +548,43 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             <Check size={18} />
             <span>{toast}</span>
           </div>
+        )}
+
+        {/* You May Also Like Section */}
+        {similarProducts.length > 0 && (
+          <section className="mt-16 pt-12 border-t border-[#8c6239]/10">
+            <h2 className="text-2xl md:text-3xl font-serif font-black text-[#3b2314] text-center mb-8">
+              You May Also Like
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {similarProducts.map((p) => {
+                const parsedImages = getProductImageUrls(p.images, p.colors);
+                const firstImage = getFirstProductImageUrl(p.images, p.colors);
+                return (
+                  <ProductCard
+                    key={p.id}
+                    product={{
+                      id: p.id.toString(),
+                      name: p.name,
+                      description: p.description || "",
+                      price: p.salePrice || p.basePrice,
+                      basePrice: p.basePrice,
+                      salePrice: p.salePrice,
+                      imageUrl: firstImage,
+                      images: parsedImages,
+                      categorySlug: p.category || "all",
+                      isCustomizable: p.isCustomizable === true || p.isCustomizable === 1,
+                      style: p.style,
+                      neckStyle: p.neckStyle,
+                      keyWords: p.keyWords,
+                      avgRating: p.avgRating,
+                      numReviews: p.numReviews,
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </section>
         )}
       </main>
 
