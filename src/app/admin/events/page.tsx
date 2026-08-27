@@ -420,7 +420,7 @@ export default function AdminEventsPage() {
   return (
     <div className="p-10 min-h-screen bg-gray-50/50">
       {toast && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#1B3022] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm border border-[#C5A059]/20 animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm border border-[#C5A059]/20 animate-in fade-in slide-in-from-bottom-5 duration-300">
           <Check size={18} />
           <span>{toast}</span>
         </div>
@@ -441,7 +441,7 @@ export default function AdminEventsPage() {
       <div className="flex justify-center mb-10">
         <button
           onClick={openAddModal}
-          className="flex items-center justify-center bg-[#1B3022] hover:bg-[#1B3022]/90 text-white font-bold px-6 py-3.5 rounded-2xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
+          className="flex items-center justify-center bg-[#8c6239] hover:bg-[#8c6239]/90 text-white font-bold px-6 py-3.5 rounded-2xl transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
         >
           <Plus size={18} className="mr-2" />
           Add New Event
@@ -472,7 +472,7 @@ export default function AdminEventsPage() {
             placeholder="Search by event title or location..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1B3022]/10 focus:border-[#1B3022] text-sm text-black"
+            className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8c6239]/10 focus:border-[#8c6239] text-sm text-black"
           />
         </div>
         <div className="flex items-center space-x-2">
@@ -480,7 +480,7 @@ export default function AdminEventsPage() {
             onClick={() => setFilterType("all")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               filterType === "all"
-                ? "bg-[#1B3022] text-white"
+                ? "bg-[#8c6239] text-white"
                 : "bg-gray-100 text-black/60 hover:bg-gray-200"
             }`}
           >
@@ -490,7 +490,7 @@ export default function AdminEventsPage() {
             onClick={() => setFilterType("indoor")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               filterType === "indoor"
-                ? "bg-[#1B3022] text-white"
+                ? "bg-[#8c6239] text-white"
                 : "bg-gray-100 text-black/60 hover:bg-gray-200"
             }`}
           >
@@ -500,7 +500,7 @@ export default function AdminEventsPage() {
             onClick={() => setFilterType("outdoor")}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               filterType === "outdoor"
-                ? "bg-[#1B3022] text-white"
+                ? "bg-[#8c6239] text-white"
                 : "bg-gray-100 text-black/60 hover:bg-gray-200"
             }`}
           >
@@ -578,7 +578,7 @@ export default function AdminEventsPage() {
                       <td className="py-5 px-6">
                         <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                           CATEGORIES_MAP[evt.category]?.type === "indoor" 
-                            ? "bg-[#1B3022]/10 text-[#1B3022]" 
+                            ? "bg-[#8c6239]/10 text-[#8c6239]" 
                             : "bg-[#C5A059]/10 text-[#C5A059]"
                         }`}>
                           {categoryName}
@@ -862,7 +862,7 @@ export default function AdminEventsPage() {
                         <button
                           type="button"
                           onClick={addCustomMediaUrl}
-                          className="bg-[#1B3022] hover:bg-[#1B3022]/90 text-white font-bold px-4 rounded-xl text-sm transition-all"
+                          className="bg-[#8c6239] hover:bg-[#8c6239]/90 text-white font-bold px-4 rounded-xl text-sm transition-all"
                         >
                           Add URL
                         </button>
@@ -883,7 +883,7 @@ export default function AdminEventsPage() {
                           return (
                             <div key={index} className="relative group/item aspect-square rounded-xl overflow-hidden border border-brand/10 bg-black/5 flex items-center justify-center">
                               {isVid ? (
-                                <div className="w-full h-full flex flex-col items-center justify-center bg-[#1B3022] p-2 text-center text-white">
+                                <div className="w-full h-full flex flex-col items-center justify-center bg-[#8c6239] p-2 text-center text-white">
                                   <Video size={24} className="text-[#C5A059] mb-1" />
                                   <span className="text-[8px] font-bold tracking-tight text-[#C5A059] truncate w-full">{url.split('/').pop()}</span>
                                 </div>
@@ -954,7 +954,7 @@ export default function AdminEventsPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || isUploading}
-                  className="flex items-center bg-[#1B3022] hover:bg-[#1B3022]/90 text-white font-bold px-8 py-3.5 rounded-2xl text-sm transition-all shadow-md"
+                  className="flex items-center bg-[#8c6239] hover:bg-[#8c6239]/90 text-white font-bold px-8 py-3.5 rounded-2xl text-sm transition-all shadow-md"
                 >
                   {isSubmitting ? (
                     <>
@@ -977,7 +977,7 @@ export default function AdminEventsPage() {
       {/* REGISTRATIONS VIEW MODAL */}
       {isRegModalOpen && selectedRegEvent && (
         <div 
-          className="fixed inset-0 z-50 bg-[#1B3022]/40 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-[#8c6239]/40 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-200"
           onClick={() => setIsRegModalOpen(false)}
         >
           <div 
@@ -987,7 +987,7 @@ export default function AdminEventsPage() {
             {/* Modal Header */}
             <div className="p-8 border-b border-brand/5 flex items-center justify-between bg-brand/5">
               <div>
-                <span className="bg-[#1B3022]/10 text-[#1B3022] text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                <span className="bg-[#8c6239]/10 text-[#8c6239] text-[10px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full">
                   Registrations
                 </span>
                 <h3 className="text-2xl font-playfair font-black text-black mt-2">
@@ -1082,7 +1082,7 @@ export default function AdminEventsPage() {
             <div className="p-6 border-t border-brand/5 bg-gray-50 flex justify-end">
               <button
                 onClick={() => setIsRegModalOpen(false)}
-                className="px-6 py-2.5 bg-[#1B3022] hover:bg-[#1B3022]/90 text-white font-bold rounded-2xl text-xs uppercase tracking-widest transition-all cursor-pointer shadow-md"
+                className="px-6 py-2.5 bg-[#8c6239] hover:bg-[#8c6239]/90 text-white font-bold rounded-2xl text-xs uppercase tracking-widest transition-all cursor-pointer shadow-md"
               >
                 Close
               </button>

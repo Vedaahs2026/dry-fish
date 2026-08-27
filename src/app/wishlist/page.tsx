@@ -43,7 +43,7 @@ const COLOR_MAP: Record<string, string> = {
   pink: "#EC4899",
   beige: "#EADED2",
   gold: "#C5A059",
-  "forest green": "#1B3022",
+  "forest green": "#8c6239",
   green: "#22C55E",
   yellow: "#EAB308",
 };
@@ -230,7 +230,7 @@ export default function WishlistPage() {
   );
 
   return (
-    <div className="min-h-screen bg-[#F5EBE0] text-[#1B3022] font-sans">
+    <div className="min-h-screen bg-[#F5EBE0] text-[#8c6239] font-sans">
       <main className="max-w-7xl mx-auto px-6 md:px-12 py-16">
         
         {/* Header */}
@@ -245,8 +245,8 @@ export default function WishlistPage() {
         {wishlistItems.length === 0 ? (
           <div className="text-center py-20 bg-[#FFFDF6] rounded-[2.5rem] border border-brand/5 shadow-sm max-w-xl mx-auto px-8">
             <Heart className="mx-auto mb-6 opacity-20 text-[#064e3b] animate-pulse" size={56} />
-            <h2 className="text-xl font-playfair font-bold text-[#1B3022] mb-3">Your wishlist is empty</h2>
-            <p className="text-sm text-[#1B3022]/60 mb-8 max-w-sm mx-auto leading-relaxed">
+            <h2 className="text-xl font-playfair font-bold text-[#8c6239] mb-3">Your wishlist is empty</h2>
+            <p className="text-sm text-[#8c6239]/60 mb-8 max-w-sm mx-auto leading-relaxed">
               Explore our premium collections and save your favorite delicacies here.
             </p>
             <Link
@@ -270,7 +270,7 @@ export default function WishlistPage() {
                   {/* Delete Button */}
                   <button
                     onClick={() => removeItem(item.productId)}
-                    className="absolute top-3 right-3 z-10 p-2 bg-[#FFFDF6] hover:bg-red-50 text-[#1B3022]/60 hover:text-red-500 rounded-full border border-brand/5 transition-all shadow-sm cursor-pointer"
+                    className="absolute top-3 right-3 z-10 p-2 bg-[#FFFDF6] hover:bg-red-50 text-[#8c6239]/60 hover:text-red-500 rounded-full border border-brand/5 transition-all shadow-sm cursor-pointer"
                     aria-label="Remove from Wishlist"
                   >
                     <X size={14} />
@@ -297,13 +297,13 @@ export default function WishlistPage() {
 
                   {/* Card Info */}
                   <div className="pt-3 pb-3 px-3 flex flex-col flex-1">
-                    <h3 className="text-xs md:text-sm font-black tracking-widest text-[#1B3022] uppercase line-clamp-1 mb-0.5">
+                    <h3 className="text-xs md:text-sm font-black tracking-widest text-[#8c6239] uppercase line-clamp-1 mb-0.5">
                       {item.name}
                     </h3>
                     <p className="text-[10px] md:text-xs text-[#064e3b] font-bold uppercase tracking-widest mb-1.5">
                       {item.category}
                     </p>
-                    <p className="text-xs md:text-sm font-black text-[#1B3022] mb-3">
+                    <p className="text-xs md:text-sm font-black text-[#8c6239] mb-3">
                       ₹{item.price.toLocaleString()}
                     </p>
 
@@ -359,7 +359,7 @@ export default function WishlistPage() {
               {/* Close Icon */}
               <button
                 onClick={() => setModalOpen(false)}
-                className="absolute top-4 right-4 p-2 hover:bg-brand/5 rounded-full transition-all text-[#1B3022]/60 hover:text-[#1B3022] cursor-pointer"
+                className="absolute top-4 right-4 p-2 hover:bg-brand/5 rounded-full transition-all text-[#8c6239]/60 hover:text-[#8c6239] cursor-pointer"
                 aria-label="Close"
               >
                 <X size={20} />
@@ -377,7 +377,7 @@ export default function WishlistPage() {
                     />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h2 className="text-base font-bold text-[#1B3022] leading-tight mb-1 truncate">
+                    <h2 className="text-base font-bold text-[#8c6239] leading-tight mb-1 truncate">
                       {selectedItem.name}
                     </h2>
                     <p className="text-sm font-black text-[#064e3b]">
@@ -392,7 +392,7 @@ export default function WishlistPage() {
                 {loadingDetails ? (
                   <div className="py-12 flex flex-col items-center justify-center">
                     <Loader2 className="w-8 h-8 animate-spin text-[#064e3b] mb-3" />
-                    <p className="text-[10px] font-black uppercase tracking-widest text-[#1B3022]/40">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-[#8c6239]/40">
                       Loading available options...
                     </p>
                   </div>
@@ -403,7 +403,7 @@ export default function WishlistPage() {
                       {/* Color Selector */}
                       {availableColors.length > 0 && (
                         <div>
-                          <span className="block text-xs font-black uppercase tracking-widest text-[#1B3022]/50 mb-3">
+                          <span className="block text-xs font-black uppercase tracking-widest text-[#8c6239]/50 mb-3">
                             Select Color: <span className="text-[#064e3b] font-black">{getColorDisplayName(selectedColor || "")}</span>
                           </span>
                           <div className="flex flex-wrap gap-3">
@@ -431,7 +431,7 @@ export default function WishlistPage() {
                                 className={`relative w-8 h-8 rounded-full border p-0.5 transition-all ${
                                   selectedColor === color
                                     ? "border-[#064e3b] scale-110 shadow-sm"
-                                    : "border-transparent hover:border-[#1B3022]/20"
+                                    : "border-transparent hover:border-[#8c6239]/20"
                                 }`}
                                 title={getColorDisplayName(color)}
                               >
@@ -453,7 +453,7 @@ export default function WishlistPage() {
                       {/* Size Selector */}
                       {!isSingleSize && availableSizes.length > 0 && (
                         <div>
-                          <span className="block text-xs font-black uppercase tracking-widest text-[#1B3022]/50 mb-3">
+                          <span className="block text-xs font-black uppercase tracking-widest text-[#8c6239]/50 mb-3">
                             Select Size: <span className="text-[#064e3b] font-black">{selectedSize || "None"}</span>
                           </span>
                           <div className="flex flex-wrap gap-2.5">
@@ -473,7 +473,7 @@ export default function WishlistPage() {
                                       ? "border-brand/5 bg-brand/5 text-black/20 cursor-not-allowed line-through"
                                       : selectedSize === size
                                       ? "bg-[#eab308] text-[#064e3b] border-transparent scale-105 shadow-sm"
-                                      : "border-[#1B3022]/10 bg-white text-[#1B3022] hover:border-[#064e3b]/50 hover:bg-[#eab308]/5"
+                                      : "border-[#8c6239]/10 bg-white text-[#8c6239] hover:border-[#064e3b]/50 hover:bg-[#eab308]/5"
                                   }`}
                                 >
                                   {size}
@@ -490,7 +490,7 @@ export default function WishlistPage() {
                         disabled={!selectedColor || !selectedSize}
                         className={`w-full py-4 rounded-2xl font-bold text-sm tracking-wider uppercase transition-all shadow-lg mt-8 flex items-center justify-center space-x-2 ${
                           !selectedColor || !selectedSize
-                            ? "bg-[#1B3022]/15 text-[#1B3022]/30 cursor-not-allowed"
+                            ? "bg-[#8c6239]/15 text-[#8c6239]/30 cursor-not-allowed"
                             : "bg-[#eab308] text-[#064e3b] hover:bg-[#ca8a04] active:scale-[0.98] cursor-pointer"
                         }`}
                       >
@@ -509,7 +509,7 @@ export default function WishlistPage() {
 
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[150] bg-[#1B3022] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[150] bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm animate-in fade-in slide-in-from-bottom-5 duration-300">
           <Check size={18} />
           <span>{toast}</span>
         </div>

@@ -21,11 +21,11 @@ export default function ShippingPayment() {
       icon: Truck,
       content: (
         <div className="space-y-4">
-          <p className="text-sm md:text-base leading-relaxed text-[#1B3022]/80">
+          <p className="text-sm md:text-base leading-relaxed text-[#8c6239]/80">
             Orders are processed and prepared for shipping after successful payment confirmation.
           </p>
-          <div className="bg-[#1B3022]/5 p-5 rounded-2xl border border-brand/5">
-            <h3 className="font-bold text-[#1B3022] mb-3 text-sm uppercase tracking-wider">Delivery timelines may vary based on:</h3>
+          <div className="bg-[#8c6239]/5 p-5 rounded-2xl border border-brand/5">
+            <h3 className="font-bold text-[#8c6239] mb-3 text-sm uppercase tracking-wider">Delivery timelines may vary based on:</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
               {[
                 "Customer location",
@@ -36,12 +36,12 @@ export default function ShippingPayment() {
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] shrink-0" />
-                  <span className="text-[#1B3022]/90 font-medium">{item}</span>
+                  <span className="text-[#8c6239]/90 font-medium">{item}</span>
                 </div>
               ))}
             </div>
           </div>
-          <p className="text-sm md:text-base leading-relaxed text-[#1B3022]/80">
+          <p className="text-sm md:text-base leading-relaxed text-[#8c6239]/80">
             Once the order is shipped, tracking details will be shared with the customer. While we strive to deliver within the estimated timeframe, delivery dates are not guaranteed.
           </p>
         </div>
@@ -52,19 +52,19 @@ export default function ShippingPayment() {
       icon: CreditCard,
       content: (
         <div className="space-y-4">
-          <p className="text-sm md:text-base leading-relaxed text-[#1B3022]/80">
-            We accept <strong className="text-[#1B3022]">prepaid payments only</strong> through secure payment gateways.
+          <p className="text-sm md:text-base leading-relaxed text-[#8c6239]/80">
+            We accept <strong className="text-[#8c6239]">prepaid payments only</strong> through secure payment gateways.
           </p>
-          <div className="bg-[#1B3022]/5 p-5 rounded-2xl border border-brand/5 space-y-3">
-            <h3 className="font-bold text-[#1B3022] text-sm uppercase tracking-wider">Accepted Payment Methods:</h3>
+          <div className="bg-[#8c6239]/5 p-5 rounded-2xl border border-brand/5 space-y-3">
+            <h3 className="font-bold text-[#8c6239] text-sm uppercase tracking-wider">Accepted Payment Methods:</h3>
             <div className="flex flex-wrap gap-2 text-xs md:text-sm font-semibold">
               {["UPI", "Credit Cards", "Debit Cards", "Net Banking", "Digital Wallets"].map((method, idx) => (
-                <span key={idx} className="bg-[#FFFDF6] border border-[#1B3022]/10 text-[#1B3022] px-3.5 py-1.5 rounded-xl shadow-xs">
+                <span key={idx} className="bg-[#FFFDF6] border border-[#8c6239]/10 text-[#8c6239] px-3.5 py-1.5 rounded-xl shadow-xs">
                   {method}
                 </span>
               ))}
             </div>
-            <p className="text-xs text-[#1B3022]/60 mt-1">
+            <p className="text-xs text-[#8c6239]/60 mt-1">
               All online payments are securely processed by trusted third-party payment providers. We do not store your card or banking details.
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function ShippingPayment() {
       title: "Order Processing & Quality Preparation",
       icon: Clock,
       content: (
-        <div className="space-y-3 text-sm md:text-base leading-relaxed text-[#1B3022]/80">
+        <div className="space-y-3 text-sm md:text-base leading-relaxed text-[#8c6239]/80">
           <p>
             Because we specialize in premium-grade sun-dried fish sourced directly from verified coastal partners, each batch goes through a strict preparation and packaging cycle:
           </p>
@@ -90,8 +90,8 @@ export default function ShippingPayment() {
               "Final weight check & batch coding before dispatch"
             ].map((step, idx) => (
               <li key={idx} className="flex items-center gap-3">
-                <span className="w-5 h-5 rounded-full bg-[#1B3022]/5 text-[#C5A059] flex items-center justify-center font-bold text-xs shrink-0">{idx + 1}</span>
-                <span className="text-[#1B3022]/90 font-medium">{step}</span>
+                <span className="w-5 h-5 rounded-full bg-[#8c6239]/5 text-[#C5A059] flex items-center justify-center font-bold text-xs shrink-0">{idx + 1}</span>
+                <span className="text-[#8c6239]/90 font-medium">{step}</span>
               </li>
             ))}
           </ul>
@@ -102,11 +102,11 @@ export default function ShippingPayment() {
       title: "Cancellation & Refund Window",
       icon: ShieldCheck,
       content: (
-        <div className="space-y-3 text-sm md:text-base leading-relaxed text-[#1B3022]/80">
+        <div className="space-y-3 text-sm md:text-base leading-relaxed text-[#8c6239]/80">
           <p>
-            Cancellations are accepted <strong className="text-[#1B3022]">only before</strong> the packing or dispatch process begins.
+            Cancellations are accepted <strong className="text-[#8c6239]">only before</strong> the packing or dispatch process begins.
           </p>
-          <p className="text-sm bg-[#C5A059]/10 p-4 rounded-xl border-l-4 border-[#C5A059] font-medium italic text-[#1B3022]/90">
+          <p className="text-sm bg-[#C5A059]/10 p-4 rounded-xl border-l-4 border-[#C5A059] font-medium italic text-[#8c6239]/90">
             Once packaging or dispatch has commenced, orders cannot be cancelled, modified, or refunded due to the perishable nature of these food items.
           </p>
           <p>
@@ -118,21 +118,21 @@ export default function ShippingPayment() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#FCFBF8] via-[#FDFBF7] to-[#F7F3EB] text-[#1B3022] py-16 px-6 relative overflow-hidden">
+    <main className="min-h-screen bg-gradient-to-br from-[#FCFBF8] via-[#FDFBF7] to-[#F7F3EB] text-[#8c6239] py-16 px-6 relative overflow-hidden">
       {/* Decorative background blurs */}
       <div className="absolute -left-40 top-40 w-96 h-96 bg-[#C5A059]/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute -right-40 bottom-40 w-96 h-96 bg-[#1B3022]/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute -right-40 bottom-40 w-96 h-96 bg-[#8c6239]/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <span className="text-[#C5A059] font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Store Policies</span>
-          <h1 className="text-4xl md:text-5xl font-playfair font-bold text-[#1B3022] leading-tight mb-4 flex items-center justify-center gap-3">
+          <h1 className="text-4xl md:text-5xl font-playfair font-bold text-[#8c6239] leading-tight mb-4 flex items-center justify-center gap-3">
             Shipping & Payment <Sparkles size={24} className="text-[#C5A059] shrink-0" />
           </h1>
           <div className="w-20 h-1 bg-[#C5A059] mx-auto rounded-full mb-8"></div>
           
-          <p className="text-lg text-[#1B3022]/70 font-medium leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-[#8c6239]/70 font-medium leading-relaxed max-w-2xl mx-auto">
             Find everything you need to know about our quality preparation timelines, domestic shipping details, and secure online payment methods.
           </p>
         </div>
@@ -144,13 +144,13 @@ export default function ShippingPayment() {
             return (
               <div 
                 key={idx} 
-                className="bg-[#FFFDF6] p-6 md:p-10 rounded-[2rem] border border-[#1B3022]/5 shadow-sm hover:shadow-md transition-all duration-300"
+                className="bg-[#FFFDF6] p-6 md:p-10 rounded-[2rem] border border-[#8c6239]/5 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#1B3022]/5 flex items-center justify-center text-[#C5A059]">
+                  <div className="w-12 h-12 rounded-2xl bg-[#8c6239]/5 flex items-center justify-center text-[#C5A059]">
                     <Icon size={22} />
                   </div>
-                  <h2 className="text-xl md:text-2xl font-playfair font-bold text-[#1B3022]">
+                  <h2 className="text-xl md:text-2xl font-playfair font-bold text-[#8c6239]">
                     {section.title}
                   </h2>
                 </div>
@@ -163,15 +163,15 @@ export default function ShippingPayment() {
         </div>
 
         {/* Footer contact note */}
-        <div className="mt-16 text-center bg-[#FFFDF6] p-8 rounded-[2rem] border border-[#1B3022]/5 shadow-sm max-w-xl mx-auto">
-          <p className="text-sm text-[#1B3022]/60 font-semibold mb-2">Need help with ordering or weight options?</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-base font-bold text-[#1B3022]">
+        <div className="mt-16 text-center bg-[#FFFDF6] p-8 rounded-[2rem] border border-[#8c6239]/5 shadow-sm max-w-xl mx-auto">
+          <p className="text-sm text-[#8c6239]/60 font-semibold mb-2">Need help with ordering or weight options?</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-base font-bold text-[#8c6239]">
             <a href="mailto:dryfishbasket2627@gmail.com" className="inline-flex items-center gap-2 text-[#C5A059] hover:underline">
               <Mail size={18} />
               dryfishbasket2627@gmail.com
             </a>
-            <span className="hidden sm:inline text-[#1B3022]/20">|</span>
-            <div className="inline-flex items-center gap-2 text-[#1B3022]">
+            <span className="hidden sm:inline text-[#8c6239]/20">|</span>
+            <div className="inline-flex items-center gap-2 text-[#8c6239]">
               <Phone size={18} className="text-[#C5A059]" />
               <span>+91 96115 26047</span>
             </div>

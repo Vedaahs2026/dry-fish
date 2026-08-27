@@ -57,7 +57,7 @@ const COLOR_MAP: Record<string, string> = {
   pink: "#EC4899",
   beige: "#EADED2",
   gold: "#C5A059",
-  "forest green": "#1B3022",
+  "forest green": "#8c6239",
   green: "#22C55E",
   yellow: "#EAB308",
 };
@@ -656,7 +656,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
         {/* Floating Toast Notification */}
         {toast && (
-          <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#1B3022] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm animate-in fade-in slide-in-from-bottom-5 duration-300">
+          <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm animate-in fade-in slide-in-from-bottom-5 duration-300">
             <Check size={18} />
             <span>{toast}</span>
           </div>

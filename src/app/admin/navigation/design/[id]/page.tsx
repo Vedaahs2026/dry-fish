@@ -161,7 +161,7 @@ function SortableSectionItem({
             
             <button 
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center space-x-2 bg-[#1B3022] text-white px-4 py-2 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-[#2c4d37] transition-all shadow-sm"
+              className="flex items-center space-x-2 bg-[#8c6239] text-white px-4 py-2 rounded-xl font-bold uppercase tracking-widest text-[10px] hover:bg-[#734f2d] transition-all shadow-sm"
             >
               <Plus size={14} />
               <span>Add Products</span>
@@ -363,7 +363,7 @@ export default function DesignWorkspace() {
             <button 
               onClick={handleSaveAll}
               disabled={isSaving}
-              className="flex items-center space-x-2 bg-[#C5A059] text-[#1B3022] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#b39150] transition-all shadow-lg disabled:opacity-50"
+              className="flex items-center space-x-2 bg-[#C5A059] text-[#8c6239] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#b39150] transition-all shadow-lg disabled:opacity-50"
             >
               {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save size={16} />}
               <span>Save Changes</span>

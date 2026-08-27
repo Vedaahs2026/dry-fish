@@ -394,7 +394,7 @@ export default function ProductSelectorModal({
               <button 
                 onClick={handleAddProduct}
                 disabled={isSaving}
-                className="bg-[#1B3022] text-[#C5A059] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#2c4d37] transition-all shadow-lg shadow-brand/10 disabled:opacity-50 flex items-center space-x-2"
+                className="bg-[#8c6239] text-[#C5A059] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg shadow-brand/10 disabled:opacity-50 flex items-center space-x-2"
               >
                 {isSaving && <Loader2 size={14} className="animate-spin" />}
                 <span>Save & Select</span>
@@ -414,7 +414,7 @@ export default function ProductSelectorModal({
                 </button>
                 <button 
                   onClick={() => onConfirm(selectedIds)}
-                  className="bg-[#1B3022] text-[#C5A059] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#2c4d37] transition-all shadow-lg shadow-brand/10"
+                  className="bg-[#8c6239] text-[#C5A059] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg shadow-brand/10"
                 >
                   Confirm Selection
                 </button>

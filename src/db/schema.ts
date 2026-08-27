@@ -215,6 +215,10 @@ export const reviews = sqliteTable("reviews", {
   designation: text("designation").default("Verified Buyer"),
   createdAt: text("created_at").$defaultFn(() => new Date().toISOString()),
 });
-
-
-
+export const faqs = sqliteTable("faqs", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  question: text("question").notNull(),
+  answer: text("answer").notNull(),
+  displayOrder: integer("display_order").notNull().default(0),
+  createdAt: text("created_at").$defaultFn(() => new Date().toISOString()),
+});

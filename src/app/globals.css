@@ -18,7 +18,7 @@ body {
 
 /* Optional custom classes */
 .btn-primary {
-  @apply bg-brand text-[#064e3b] hover:bg-brand-hover transition-all font-bold rounded-xl py-3.5 px-6 shadow-md border border-transparent hover:border-brand-accent;
+  @apply bg-brand text-[#FAF6ED] hover:bg-brand-hover transition-all font-bold rounded-xl py-3.5 px-6 shadow-md border border-transparent hover:border-brand-accent;
 }
 .input-field {
   @apply w-full bg-white border border-brand/20 rounded-xl py-3 px-4 text-black placeholder-brand/50 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all shadow-sm;

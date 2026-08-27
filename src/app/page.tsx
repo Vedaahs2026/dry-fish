@@ -52,6 +52,7 @@ export default function Home() {
   const [offers, setOffers] = useState<any[]>([]);
   const [homepageCatCards, setHomepageCatCards] = useState<any[]>([]);
   const [reviews, setReviews] = useState<any[]>([]);
+  const [faqs, setFaqs] = useState<any[]>([]);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
 
 
@@ -99,8 +100,14 @@ export default function Home() {
         if (dataCatCards.success) {
           setHomepageCatCards(dataCatCards.data);
         }
+
+        const resFaqs = await fetch("/api/admin/faqs");
+        const dataFaqs = await resFaqs.json();
+        if (dataFaqs.success) {
+          setFaqs(dataFaqs.data || []);
+        }
       } catch (err) {
-        console.error("Failed to fetch settings/offers/categories/reviews", err);
+        console.error("Failed to fetch settings/offers/categories/reviews/faqs", err);
       }
     }
     fetchData();
@@ -385,7 +392,60 @@ export default function Home() {
             </div>
           </section>
         )}
+
+        {/* 5. FAQs Section */}
+        {faqs.length > 0 && (
+          <section className="w-full mx-auto my-16 border-t border-brand-dark/10 pt-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-serif font-black text-[#3b2314]">Frequently asked questions</h2>
+            </motion.div>
+
+            <div className="max-w-4xl mx-auto space-y-4">
+              {faqs.map((faq, idx) => (
+                <FAQItem key={faq.id || idx} faq={faq} />
+              ))}
+            </div>
+          </section>
+        )}
       </main>
+    </div>
+  );
+}
+
+function FAQItem({ faq }: { faq: any }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-[#3b2314]/10 py-4 transition-all duration-300">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left text-black/85 hover:text-[#8c6239] transition-colors focus:outline-none py-2 group cursor-pointer"
+      >
+        <span className="text-xs md:text-sm font-semibold tracking-wide">{faq.question}</span>
+        <svg 
+          className={`w-3.5 h-3.5 text-black/50 group-hover:text-[#8c6239] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      
+      {/* Accordion Answer Content */}
+      <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0"}`}>
+        <div className="overflow-hidden">
+          <p className="text-xs md:text-sm text-black/60 font-medium leading-relaxed pb-2 pr-6">
+            {faq.answer}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -34,7 +34,7 @@ const PRESET_COLORS = [
   { name: "Black", hex: "#000000" },
   { name: "White", hex: "#FFFFFF" },
   { name: "Navy", hex: "#1B2A4A" },
-  { name: "Forest Green", hex: "#1B3022" },
+  { name: "Forest Green", hex: "#8c6239" },
   { name: "Maroon", hex: "#800000" },
   { name: "Beige", hex: "#F5F0E8" },
   { name: "Gold", hex: "#C5A059" },
@@ -765,7 +765,7 @@ export default function ProductManagement() {
   return (
     <div className="h-full w-full overflow-hidden">
       {toast && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#1B3022] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm">
           <Check size={18} /><span>{toast}</span>
         </div>
       )}
@@ -1024,7 +1024,7 @@ export default function ProductManagement() {
                       }}
                       className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border select-none cursor-grab active:cursor-grabbing ${
                         selectedSizes.includes(size) 
-                          ? "bg-[#1B3022] text-white border-[#1B3022]" 
+                          ? "bg-[#8c6239] text-white border-[#8c6239]" 
                           : "bg-brand/5 text-black/50 border-transparent hover:border-brand/20"
                       } ${draggedSizeIndex === idx ? "opacity-40 scale-95 border-brand-accent" : ""}`}
                       title="Drag to rearrange size order"
@@ -1098,7 +1098,7 @@ export default function ProductManagement() {
                           <button 
                             type="button" 
                             onClick={() => addColorImage(color)} 
-                            className="bg-[#1B3022] text-[#C5A059] px-5 py-2 rounded-2xl font-bold text-xs hover:bg-[#2c4d37] transition-all whitespace-nowrap"
+                            className="bg-[#8c6239] text-[#C5A059] px-5 py-2 rounded-2xl font-bold text-xs hover:bg-[#734f2d] transition-all whitespace-nowrap"
                           >
                             Add URL
                           </button>

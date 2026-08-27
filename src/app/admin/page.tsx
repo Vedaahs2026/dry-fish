@@ -144,7 +144,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="bg-[#1B3022] rounded-[2rem] p-8 shadow-2xl relative overflow-hidden group">
+        <div className="bg-[#8c6239] rounded-[2rem] p-8 shadow-2xl relative overflow-hidden group">
           <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#C5A059]/10 rounded-full blur-3xl group-hover:bg-[#C5A059]/20 transition-colors"></div>
           <h3 className="text-xl font-playfair font-bold text-white mb-6 relative z-10">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-4 relative z-10">

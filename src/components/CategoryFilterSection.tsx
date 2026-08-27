@@ -64,7 +64,7 @@ const COLOR_MAP: Record<string, string> = {
   pink: "#EC4899",
   beige: "#EADED2",
   gold: "#C5A059",
-  "forest green": "#1B3022",
+  "forest green": "#8c6239",
   green: "#22C55E",
   yellow: "#EAB308",
 };
@@ -734,7 +734,7 @@ export default function CategoryFilterSection({
               }}
             />
           ) : (
-            <div className="w-full h-full bg-[#1b3022] flex items-center justify-center">
+            <div className="w-full h-full bg-[#8c6239] flex items-center justify-center">
               <span className="text-[#C5A059] opacity-25 text-7xl font-serif">🌾</span>
             </div>
           )}

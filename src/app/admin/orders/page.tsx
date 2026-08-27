@@ -525,14 +525,14 @@ export default function AdminOrders() {
                               </div>
 
                               {item.customizations && item.customizations.measurements && Object.keys(item.customizations.measurements).length > 0 && (
-                                <div className="bg-[#1B3022]/5 rounded-2xl p-5 border border-[#1B3022]/10">
+                                <div className="bg-[#8c6239]/5 rounded-2xl p-5 border border-[#8c6239]/10">
                                   <div className="flex items-center space-x-2 mb-4">
                                     <Sparkles size={12} className="text-[#C5A059]" />
-                                    <span className="text-[10px] font-black text-[#1B3022] uppercase tracking-[0.2em]">Bespoke Measurements (Inches)</span>
+                                    <span className="text-[10px] font-black text-[#8c6239] uppercase tracking-[0.2em]">Bespoke Measurements (Inches)</span>
                                   </div>
                                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     {Object.entries(item.customizations.measurements).map(([key, val]) => (
-                                      <div key={key} className="bg-white/80 p-3 rounded-xl border border-[#1B3022]/5">
+                                      <div key={key} className="bg-white/80 p-3 rounded-xl border border-[#8c6239]/5">
                                         <p className="text-[8px] font-black text-black/40 uppercase tracking-widest mb-1">{key}</p>
                                         <p className="text-xs font-black text-black">{val}"</p>
                                       </div>
@@ -594,7 +594,7 @@ export default function AdminOrders() {
                                   });
                                   setShowShippingModal(true);
                                 }}
-                                className="w-full bg-[#1B3022] hover:bg-[#1B3022]/90 disabled:bg-[#1B3022]/20 disabled:text-black/40 disabled:cursor-not-allowed text-[#C5A059] hover:text-[#C5A059]/90 disabled:text-[#C5A059]/30 font-black text-[10px] uppercase tracking-widest rounded-2xl py-3 px-6 transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-sm border border-[#C5A059]/20"
+                                className="w-full bg-[#8c6239] hover:bg-[#8c6239]/90 disabled:bg-[#8c6239]/20 disabled:text-black/40 disabled:cursor-not-allowed text-[#C5A059] hover:text-[#C5A059]/90 disabled:text-[#C5A059]/30 font-black text-[10px] uppercase tracking-widest rounded-2xl py-3 px-6 transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-sm border border-[#C5A059]/20"
                               >
                                 <Truck size={14} />
                                 <span>Add shipping Info</span>
@@ -605,7 +605,7 @@ export default function AdminOrders() {
 
                         {/* Shipping Details (Admin view) */}
                         {order.courierServiceName && order.trackingNumber && (
-                          <div className="bg-[#1B3022]/5 border border-[#1B3022]/10 rounded-3xl p-6 mt-4 space-y-4 text-black">
+                          <div className="bg-[#8c6239]/5 border border-[#8c6239]/10 rounded-3xl p-6 mt-4 space-y-4 text-black">
                             <h5 className="text-[10px] font-black uppercase tracking-[0.2em] mb-2 flex items-center gap-1.5 text-[#C5A059]">
                               🚚 Shipping Details
                             </h5>
@@ -650,7 +650,7 @@ export default function AdminOrders() {
                                 </div>
                               )}
                               {order.shippingNotes && (
-                                <div className="col-span-2 border-t border-[#1B3022]/10 pt-2">
+                                <div className="col-span-2 border-t border-[#8c6239]/10 pt-2">
                                   <span className="font-semibold text-black/40 uppercase text-[9px] tracking-wider block mb-1">Shipping Notes</span>
                                   <span className="italic text-black/70">{order.shippingNotes}</span>
                                 </div>
@@ -670,7 +670,7 @@ export default function AdminOrders() {
       )}
 
       {toast && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#1B3022] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm border border-[#C5A059]/20 animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm border border-[#C5A059]/20 animate-in fade-in slide-in-from-bottom-5 duration-300">
           <CheckCircle2 size={18} /><span>{toast}</span>
         </div>
       )}

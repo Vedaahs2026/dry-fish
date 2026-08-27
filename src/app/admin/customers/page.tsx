@@ -264,7 +264,7 @@ export default function CustomerManagement() {
 
                 <div className="flex items-center space-x-4">
                   <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest ${
-                    details.customer.role === "admin" ? "bg-[#1B3022] text-[#C5A059]" : "bg-brand/5 text-black/60"
+                    details.customer.role === "admin" ? "bg-[#8c6239] text-[#C5A059]" : "bg-brand/5 text-black/60"
                   }`}>
                     {details.customer.role}
                   </span>
@@ -520,7 +520,7 @@ export default function CustomerManagement() {
                     </td>
                     <td className="px-4 md:px-8 py-6">
                       <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${
-                        customer.role === "admin" ? "bg-[#1B3022] text-[#C5A059]" : "bg-brand/5 text-black/60"
+                        customer.role === "admin" ? "bg-[#8c6239] text-[#C5A059]" : "bg-brand/5 text-black/60"
                       }`}>
                         {customer.role}
                       </span>

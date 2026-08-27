@@ -201,7 +201,7 @@ export default function MyOrdersPage() {
 
             return (
               <div key={order.id} className="bg-white rounded-[2rem] border border-brand/5 shadow-lg overflow-hidden hover:shadow-xl transition-all group">
-                <div className="p-4 md:p-6 bg-[#1B3022] flex flex-col md:flex-row md:items-center justify-between border-b border-brand/5 gap-4 text-white">
+                <div className="p-4 md:p-6 bg-[#8c6239] flex flex-col md:flex-row md:items-center justify-between border-b border-brand/5 gap-4 text-white">
                   <div className="flex items-center space-x-4">
                     <div className="p-3 bg-white/10 backdrop-blur-md border border-white/10 rounded-xl text-white group-hover:scale-110 transition-transform">
                       <Package size={20} />
@@ -467,7 +467,7 @@ export default function MyOrdersPage() {
                             <h5 className="text-[9px] font-black uppercase tracking-widest text-[#C5A059] flex items-center gap-1.5">
                               🚚 Shipping Details
                             </h5>
-                            <div className="bg-[#1B3022]/5 border border-[#1B3022]/10 rounded-2xl p-4 space-y-3 text-black">
+                            <div className="bg-[#8c6239]/5 border border-[#8c6239]/10 rounded-2xl p-4 space-y-3 text-black">
                               {order.courierServiceName && (
                                 <p className="text-xs text-black/80">
                                   <strong className="text-black font-black uppercase tracking-wider text-[10px]">Courier:</strong>{" "}
@@ -512,7 +512,7 @@ export default function MyOrdersPage() {
                                 </p>
                               )}
                               {order.shippingNotes && (
-                                <div className="border-t border-[#1B3022]/10 pt-2">
+                                <div className="border-t border-[#8c6239]/10 pt-2">
                                   <p className="text-[10px] text-black/50 font-bold uppercase tracking-wider mb-1">Notes</p>
                                   <p className="text-[11px] italic text-black/70">{order.shippingNotes}</p>
                                 </div>
@@ -609,7 +609,7 @@ export default function MyOrdersPage() {
       )}
       {/* Floating Toast Notification */}
       {toastMsg && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#1B3022] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-xs animate-in fade-in slide-in-from-bottom-5 duration-300 border border-[#C5A059]/20">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-xs animate-in fade-in slide-in-from-bottom-5 duration-300 border border-[#C5A059]/20">
           <CheckCircle2 size={16} />
           <span className="uppercase tracking-widest">{toastMsg}</span>
         </div>

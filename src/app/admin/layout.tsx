@@ -21,7 +21,8 @@ import {
   Calendar,
   Ticket,
   Menu,
-  MessageSquare
+  MessageSquare,
+  HelpCircle
 } from "lucide-react";
 
 const sidebarLinks = [
@@ -34,6 +35,7 @@ const sidebarLinks = [
   { name: "Category Settings", href: "/admin/categories", icon: LayoutGrid },
   { name: "Customers", href: "/admin/customers", icon: Users },
   { name: "Reviews", href: "/admin/reviews", icon: MessageSquare },
+  { name: "FAQs Settings", href: "/admin/faqs", icon: HelpCircle },
   { name: "Coupons", href: "/admin/coupons", icon: Ticket },
   { name: "Site Settings", href: "/admin/settings", icon: Settings },
 ];
@@ -59,13 +61,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Sidebar Mobile Backdrop Overlay */}
       {isMobileSidebarOpen && (
         <div 
-          className="md:hidden fixed inset-0 z-40 bg-[#1B3022]/60 backdrop-blur-sm animate-in fade-in duration-300"
+          className="md:hidden fixed inset-0 z-40 bg-[#8c6239]/60 backdrop-blur-sm animate-in fade-in duration-300"
           onClick={() => setIsMobileSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
-      <aside className={`w-60 bg-[#1B3022] text-white flex flex-col shadow-2xl fixed inset-y-0 z-50 transition-transform duration-300 ${
+      <aside className={`w-60 bg-[#8c6239] text-white flex flex-col shadow-2xl fixed inset-y-0 z-50 transition-transform duration-300 ${
         isMobileSidebarOpen 
           ? "translate-x-0" 
           : isDesktopSidebarOpen 
@@ -104,12 +106,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 href={link.href}
                 onClick={() => setIsMobileSidebarOpen(false)}
                 className={`flex items-center justify-between px-3 py-3 rounded-xl transition-all group ${isActive
-                    ? "bg-[#C5A059] text-[#1B3022] shadow-lg translate-x-1"
+                    ? "bg-[#C5A059] text-[#8c6239] shadow-lg translate-x-1"
                     : "text-white/60 hover:text-white hover:bg-white/5"
                   }`}
               >
                 <div className="flex items-center space-x-4">
-                  <Icon size={18} className={isActive ? "text-[#1B3022]" : "text-[#C5A059]/60 group-hover:text-[#C5A059]"} />
+                  <Icon size={18} className={isActive ? "text-[#8c6239]" : "text-[#C5A059]/60 group-hover:text-[#C5A059]"} />
                   <span className="text-sm font-bold tracking-tight">{link.name}</span>
                 </div>
                 {isActive && <ChevronRight size={14} className="opacity-50" />}
@@ -137,7 +139,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {!isDesktopSidebarOpen && (
           <button
             onClick={() => setIsDesktopSidebarOpen(true)}
-            className="hidden md:flex absolute top-4 left-6 z-40 p-1 hover:bg-[#1B3022]/10 rounded-xl transition-all text-[#C5A059] cursor-pointer items-center justify-center animate-in fade-in duration-300"
+            className="hidden md:flex absolute top-4 left-6 z-40 p-1 hover:bg-[#8c6239]/10 rounded-xl transition-all text-[#C5A059] cursor-pointer items-center justify-center animate-in fade-in duration-300"
           >
             <div className="relative w-8 h-8 group">
               {/* Dry Fish Basket Logo Icon */}
@@ -145,7 +147,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <img src="/images/logo.png" alt="Dry Fish Basket Logo" className="w-full h-full rounded-md object-cover" />
               </div>
               {/* Dashboard Icon on hover */}
-              <div className="absolute inset-0 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 flex items-center justify-center bg-[#1B3022] text-[#C5A059] rounded-lg transition-all duration-200">
+              <div className="absolute inset-0 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 flex items-center justify-center bg-[#8c6239] text-[#C5A059] rounded-lg transition-all duration-200">
                 <LayoutDashboard size={20} />
               </div>
             </div>
@@ -156,7 +158,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {!isMobileSidebarOpen && (
           <button
             onClick={() => setIsMobileSidebarOpen(true)}
-            className="flex md:hidden absolute top-4 left-6 z-40 p-2 bg-[#1B3022] text-[#C5A059] rounded-xl transition-all shadow-md items-center justify-center animate-in fade-in duration-300 active:scale-95"
+            className="flex md:hidden absolute top-4 left-6 z-40 p-2 bg-[#8c6239] text-[#C5A059] rounded-xl transition-all shadow-md items-center justify-center animate-in fade-in duration-300 active:scale-95"
           >
             <LayoutDashboard size={20} />
           </button>
@@ -173,7 +175,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {showLogoutConfirm && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-[#1B3022]/80 backdrop-blur-sm animate-in fade-in duration-300"
+            className="absolute inset-0 bg-[#8c6239]/80 backdrop-blur-sm animate-in fade-in duration-300"
             onClick={() => setShowLogoutConfirm(false)}
           />
           <div className="relative bg-white w-full max-w-sm rounded-[2rem] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
@@ -181,13 +183,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <div className="w-16 h-16 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <AlertTriangle size={32} />
               </div>
-              <h3 className="text-xl font-bold text-[#1B3022] mb-2">Confirm Logout</h3>
-              <p className="text-[#1B3022]/60 text-sm mb-8">Are you sure you want to exit the admin panel? You will need to login again to access these settings.</p>
+              <h3 className="text-xl font-bold text-[#8c6239] mb-2">Confirm Logout</h3>
+              <p className="text-[#8c6239]/60 text-sm mb-8">Are you sure you want to exit the admin panel? You will need to login again to access these settings.</p>
 
               <div className="grid grid-cols-2 gap-4">
                 <button
                   onClick={() => setShowLogoutConfirm(false)}
-                  className="px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-widest text-[#1B3022]/40 hover:text-[#1B3022] hover:bg-brand-light transition-all"
+                  className="px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-widest text-[#8c6239]/40 hover:text-[#8c6239] hover:bg-brand-light transition-all"
                 >
                   Cancel
                 </button>
@@ -202,7 +204,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
             <button
               onClick={() => setShowLogoutConfirm(false)}
-              className="absolute top-4 right-4 p-2 text-[#1B3022]/20 hover:text-[#1B3022] transition-all"
+              className="absolute top-4 right-4 p-2 text-[#8c6239]/20 hover:text-[#8c6239] transition-all"
             >
               <X size={20} />
             </button>

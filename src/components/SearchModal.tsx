@@ -62,7 +62,7 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex flex-col bg-[#1B3022]/95 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex flex-col bg-[#8c6239]/95 backdrop-blur-md animate-in fade-in duration-200">
       <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
         <div className="flex-1 max-w-4xl mx-auto flex items-center relative">
           <Search className="absolute left-4 text-[#C5A059] h-5 w-5" />

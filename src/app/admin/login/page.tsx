@@ -127,7 +127,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1B3022] flex flex-col justify-center items-center p-4 font-inter">
+    <div className="min-h-screen bg-[#8c6239] flex flex-col justify-center items-center p-4 font-inter">
       {/* Hidden container for Firebase Recaptcha */}
       <div id="recaptcha-container"></div>
 
@@ -136,16 +136,16 @@ export default function AdminLogin() {
         <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#C5A059]/5 rounded-full blur-3xl"></div>
 
         <div className="text-center mb-10">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-[#1B3022] flex items-center justify-center shadow-2xl relative">
+          <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-[#8c6239] flex items-center justify-center shadow-2xl relative">
             <Lock className="text-[#C5A059]" size={32} />
             <div className="absolute -bottom-2 -right-2 bg-[#C5A059] p-1.5 rounded-lg shadow-lg">
-              <ShieldCheck size={16} className="text-[#1B3022]" />
+              <ShieldCheck size={16} className="text-[#8c6239]" />
             </div>
           </div>
-          <h2 className="text-3xl font-playfair font-bold text-[#1B3022] mb-3">
+          <h2 className="text-3xl font-playfair font-bold text-[#8c6239] mb-3">
             Admin Portal
           </h2>
-          <p className="text-[#1B3022]/60 text-sm font-medium uppercase tracking-widest">
+          <p className="text-[#8c6239]/60 text-sm font-medium uppercase tracking-widest">
             {step === "phone" ? "Authorization Required" : "Security Verification"}
           </p>
         </div>
@@ -160,18 +160,18 @@ export default function AdminLogin() {
         {step === "phone" && (
           <form onSubmit={handleSendOTP} className="space-y-6">
             <div>
-              <label className="block text-[10px] font-black text-[#1B3022]/40 uppercase mb-2 tracking-[0.2em] ml-1">Admin Phone</label>
+              <label className="block text-[10px] font-black text-[#8c6239]/40 uppercase mb-2 tracking-[0.2em] ml-1">Admin Phone</label>
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center space-x-2 border-r border-[#1B3022]/10 pr-3">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center space-x-2 border-r border-[#8c6239]/10 pr-3">
                   <Phone size={14} className="text-[#C5A059]" />
-                  <span className="text-[#1B3022] font-bold text-sm">+91</span>
+                  <span className="text-[#8c6239] font-bold text-sm">+91</span>
                 </div>
                 <input
                   type="tel"
                   value={phone}
                   onChange={handlePhoneChange}
                   placeholder="9999999999"
-                  className="w-full bg-[#1B3022]/5 border-2 border-transparent focus:border-[#C5A059]/30 focus:bg-white rounded-xl py-4 pl-20 pr-4 text-[#1B3022] font-bold tracking-widest transition-all outline-none"
+                  className="w-full bg-[#8c6239]/5 border-2 border-transparent focus:border-[#C5A059]/30 focus:bg-white rounded-xl py-4 pl-20 pr-4 text-[#8c6239] font-bold tracking-widest transition-all outline-none"
                   required
                 />
               </div>
@@ -179,7 +179,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading || phone.length !== 10}
-              className="w-full bg-[#1B3022] text-white font-bold py-5 rounded-2xl shadow-xl hover:bg-[#2c4d37] disabled:opacity-50 transition-all active:scale-95 flex justify-center items-center space-x-2 group"
+              className="w-full bg-[#8c6239] text-white font-bold py-5 rounded-2xl shadow-xl hover:bg-[#734f2d] disabled:opacity-50 transition-all active:scale-95 flex justify-center items-center space-x-2 group"
             >
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -196,7 +196,7 @@ export default function AdminLogin() {
         {step === "otp" && (
           <form onSubmit={handleVerifyOTP} className="space-y-6">
             <div>
-              <label className="block text-[10px] font-black text-[#1B3022]/40 uppercase mb-2 tracking-[0.2em] ml-1">Security Code</label>
+              <label className="block text-[10px] font-black text-[#8c6239]/40 uppercase mb-2 tracking-[0.2em] ml-1">Security Code</label>
               <div className="relative">
                 <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 text-[#C5A059]" size={18} />
                 <input
@@ -205,12 +205,12 @@ export default function AdminLogin() {
                   value={otp}
                   onChange={handleOtpChange}
                   placeholder="123456"
-                  className="w-full bg-[#1B3022]/5 border-2 border-transparent focus:border-[#C5A059]/30 focus:bg-white rounded-xl py-4 px-12 text-[#1B3022] font-mono font-bold text-center text-2xl tracking-[0.5em] transition-all outline-none"
+                  className="w-full bg-[#8c6239]/5 border-2 border-transparent focus:border-[#C5A059]/30 focus:bg-white rounded-xl py-4 px-12 text-[#8c6239] font-mono font-bold text-center text-2xl tracking-[0.5em] transition-all outline-none"
                   required
                 />
               </div>
               <div className="flex justify-center mt-4">
-                <button type="button" onClick={() => setStep("phone")} className="text-[10px] text-[#1B3022]/40 hover:text-[#1B3022] font-black uppercase tracking-widest transition-colors">Use different account</button>
+                <button type="button" onClick={() => setStep("phone")} className="text-[10px] text-[#8c6239]/40 hover:text-[#8c6239] font-black uppercase tracking-widest transition-colors">Use different account</button>
               </div>
             </div>
             <button

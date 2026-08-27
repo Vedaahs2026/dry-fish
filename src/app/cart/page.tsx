@@ -536,7 +536,7 @@ export default function CartPage() {
 
         {/* Right: Price Summary */}
         <div className="lg:col-span-4">
-          <div className="bg-[#1B3022] rounded-3xl p-6 shadow-2xl text-white sticky top-28">
+          <div className="bg-[#8c6239] rounded-3xl p-6 shadow-2xl text-white sticky top-28">
             <h2 className="text-lg font-bold mb-6 tracking-tight uppercase border-b border-white/5 pb-4">Price Summary</h2>
 
             <div className="space-y-3 mb-6">
@@ -613,7 +613,7 @@ export default function CartPage() {
                     <button
                       onClick={handleApplyCoupon}
                       disabled={isValidatingCoupon || !couponInput.trim()}
-                      className="bg-[#C5A059] hover:bg-[#C5A059]/90 disabled:opacity-50 text-[#1B3022] font-black text-[9px] uppercase tracking-widest px-4 py-2 rounded-xl transition-all flex items-center justify-center min-w-[70px]"
+                      className="bg-[#C5A059] hover:bg-[#C5A059]/90 disabled:opacity-50 text-[#8c6239] font-black text-[9px] uppercase tracking-widest px-4 py-2 rounded-xl transition-all flex items-center justify-center min-w-[70px]"
                     >
                       {isValidatingCoupon ? <Loader2 size={12} className="animate-spin" /> : "Apply"}
                     </button>
@@ -732,7 +732,7 @@ export default function CartPage() {
 
             <button
               onClick={handleCheckout}
-              className="w-full bg-[#FFFDF6] text-[#1B3022] py-4 rounded-2xl font-bold tracking-[0.2em] uppercase text-[10px] hover:bg-[#FFFDF6]/90 transition-all shadow-xl flex items-center justify-center group active:scale-[0.98]"
+              className="w-full bg-[#FFFDF6] text-[#8c6239] py-4 rounded-2xl font-bold tracking-[0.2em] uppercase text-[10px] hover:bg-[#FFFDF6]/90 transition-all shadow-xl flex items-center justify-center group active:scale-[0.98]"
             >
               Proceed to Checkout
               <ArrowRight size={14} className="ml-3 group-hover:translate-x-1 transition-transform" />
