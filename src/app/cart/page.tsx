@@ -230,7 +230,7 @@ export default function CartPage() {
         </p>
         <Link
           href="/"
-          className="bg-brand text-[#064e3b] px-10 py-4 rounded-2xl font-bold tracking-widest uppercase text-sm hover:bg-brand-hover transition-all shadow-xl active:scale-95"
+          className="bg-brand text-white px-10 py-4 rounded-2xl font-bold tracking-widest uppercase text-sm hover:bg-brand-hover transition-all shadow-xl active:scale-95"
         >
           Continue Shopping
         </Link>
@@ -785,7 +785,7 @@ export default function CartPage() {
                 <div className="flex flex-col gap-4">
                   <button
                     onClick={() => setPaymentStep("address")}
-                    className="w-full py-4 bg-brand text-[#064e3b] rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-hover shadow-xl transition-all active:scale-95"
+                    className="w-full py-4 bg-brand text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-hover shadow-xl transition-all active:scale-95"
                   >
                     I Agree & Proceed
                   </button>
@@ -945,7 +945,7 @@ export default function CartPage() {
                           : selectedAddressIndex === null
                       }
                       onClick={() => setPaymentStep("details")}
-                      className="flex-[2] py-4 bg-brand text-[#064e3b] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-hover shadow-lg transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-[2] py-4 bg-brand text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-hover shadow-lg transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Proceed to Payment
                     </button>
@@ -1003,7 +1003,7 @@ export default function CartPage() {
                     </button>
                     <button
                       onClick={processRazorpayPayment}
-                      className="flex-[2] py-4 bg-brand text-[#064e3b] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-hover shadow-lg transition-all active:scale-95"
+                      className="flex-[2] py-4 bg-brand text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-hover shadow-lg transition-all active:scale-95"
                     >
                       Pay Now
                     </button>

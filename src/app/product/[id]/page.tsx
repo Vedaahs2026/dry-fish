@@ -544,7 +544,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
         {/* Floating Toast Notification */}
         {toast && (
-          <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm animate-in fade-in slide-in-from-bottom-5 duration-300">
+          <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm animate-in fade-in slide-in-from-bottom-5 duration-300">
             <Check size={18} />
             <span>{toast}</span>
           </div>
@@ -679,7 +679,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             <div className="p-6 bg-brand/5 border-t border-brand/5 flex justify-center">
               <button
                 onClick={() => setIsSizeGuideOpen(false)}
-                className="bg-brand text-[#064e3b] px-10 py-4 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-brand-hover transition-all shadow-xl"
+                className="bg-brand text-white px-10 py-4 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-brand-hover transition-all shadow-xl"
               >
                 Got it
               </button>

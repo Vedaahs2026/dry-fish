@@ -188,7 +188,7 @@ export default function MyOrdersPage() {
           </div>
           <h3 className="text-xl font-bold text-black mb-2">No orders yet</h3>
           <p className="text-black/60 text-sm mb-10 max-w-xs mx-auto">Your customized collection will appear here once you place your first order.</p>
-          <Link href="/" className="inline-block bg-brand text-[#064e3b] px-8 py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-brand-hover shadow-lg">Start Shopping</Link>
+          <Link href="/" className="inline-block bg-brand text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest hover:bg-brand-hover shadow-lg">Start Shopping</Link>
         </div>
       ) : (
         <div className="space-y-6">
@@ -614,7 +614,7 @@ export default function MyOrdersPage() {
       )}
       {/* Floating Toast Notification */}
       {toastMsg && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-xs animate-in fade-in slide-in-from-bottom-5 duration-300 border border-[#C5A059]/20">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-xs animate-in fade-in slide-in-from-bottom-5 duration-300 border border-[#C5A059]/20">
           <CheckCircle2 size={16} />
           <span className="uppercase tracking-widest">{toastMsg}</span>
         </div>

@@ -19,7 +19,7 @@ export default function AccessDenied() {
         <div className="space-y-4">
           <Link 
             href="/" 
-            className="w-full flex items-center justify-center space-x-3 bg-brand text-[#064e3b] px-8 py-4 rounded-2xl font-bold tracking-widest uppercase text-sm hover:bg-brand-hover transition-all shadow-xl active:scale-95"
+            className="w-full flex items-center justify-center space-x-3 bg-brand text-white px-8 py-4 rounded-2xl font-bold tracking-widest uppercase text-sm hover:bg-brand-hover transition-all shadow-xl active:scale-95"
           >
             <ArrowLeft size={18} />
             <span>Return to Home</span>

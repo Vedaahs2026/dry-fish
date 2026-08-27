@@ -453,7 +453,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setIsLogoutModalOpen(false)}
                   disabled={isLoggingOut}
-                  className="w-full px-4 py-3.5 rounded-xl bg-brand text-[#064e3b] font-bold text-sm tracking-widest uppercase hover:bg-brand-hover transition-colors disabled:opacity-50"
+                  className="w-full px-4 py-3.5 rounded-xl bg-brand text-white font-bold text-sm tracking-widest uppercase hover:bg-brand-hover transition-colors disabled:opacity-50"
                 >
                   Cancel
                 </button>

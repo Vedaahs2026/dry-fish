@@ -442,7 +442,7 @@ export default function AdminNavigation() {
               <button 
                 onClick={() => handleSave(editingId === 0 ? null : editingId)}
                 disabled={isSaving || !formData.label.trim()}
-                className="flex items-center space-x-2 bg-[#8c6239] text-[#C5A059] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg disabled:opacity-50"
+                className="flex items-center space-x-2 bg-[#8c6239] text-white px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg disabled:opacity-50"
               >
                 {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save size={16} />}
                 <span>{editingId === 0 ? "Create Link" : "Save Changes"}</span>

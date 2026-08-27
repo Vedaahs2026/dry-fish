@@ -194,7 +194,7 @@ export default function PageSectionEditor({ menuItem, onClose }: Props) {
       <div className="bg-brand-light w-full max-w-3xl h-[85vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
         <div className="p-8 bg-white border-b border-brand/5 flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="bg-[#8c6239] p-3 rounded-2xl text-[#C5A059] shadow-lg">
+            <div className="bg-[#8c6239] p-3 rounded-2xl text-white shadow-lg">
               <Plus size={20} />
             </div>
             <div>

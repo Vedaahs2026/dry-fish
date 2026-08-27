@@ -516,7 +516,7 @@ export default function AdminOrders() {
                               
                               <div className="group relative flex items-center justify-center gap-1.5 text-[9px] font-medium text-black/50 hover:text-black/80 cursor-help mt-1 transition-colors">
                                 <span>⚠️ Verification Required</span>
-                                <div className="absolute bottom-full mb-2 hidden group-hover:block w-48 bg-brand text-[#064e3b] text-[9px] font-bold leading-normal p-3 rounded-xl shadow-xl z-20 border border-white/10 text-center">
+                                <div className="absolute bottom-full mb-2 hidden group-hover:block w-48 bg-brand text-white text-[9px] font-bold leading-normal p-3 rounded-xl shadow-xl z-20 border border-white/10 text-center">
                                   Check your Razorpay dashboard under Order ID <span className="font-mono text-black-accent">{order.razorpayOrderId}</span> to verify the payment status before updating here.
                                 </div>
                               </div>
@@ -626,7 +626,7 @@ export default function AdminOrders() {
                                   });
                                   setShowShippingModal(true);
                                 }}
-                                className="w-full bg-[#8c6239] hover:bg-[#8c6239]/90 disabled:bg-[#8c6239]/20 disabled:text-black/40 disabled:cursor-not-allowed text-[#C5A059] hover:text-[#C5A059]/90 disabled:text-[#C5A059]/30 font-black text-[10px] uppercase tracking-widest rounded-2xl py-3 px-6 transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-sm border border-[#C5A059]/20"
+                                className="w-full bg-[#8c6239] hover:bg-[#8c6239]/90 disabled:bg-[#8c6239]/20 disabled:text-black/40 disabled:cursor-not-allowed text-white hover:text-[#C5A059]/90 disabled:text-[#C5A059]/30 font-black text-[10px] uppercase tracking-widest rounded-2xl py-3 px-6 transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-sm border border-[#C5A059]/20"
                               >
                                 <Truck size={14} />
                                 <span>Add shipping Info</span>
@@ -702,7 +702,7 @@ export default function AdminOrders() {
       )}
 
       {toast && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm border border-[#C5A059]/20 animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm border border-[#C5A059]/20 animate-in fade-in slide-in-from-bottom-5 duration-300">
           <CheckCircle2 size={18} /><span>{toast}</span>
         </div>
       )}
@@ -874,7 +874,7 @@ export default function AdminOrders() {
                 <button
                   type="submit"
                   disabled={isSubmittingShipping}
-                  className="flex-1 py-3.5 bg-brand text-[#064e3b] hover:bg-brand/90 disabled:opacity-40 font-black text-[10px] uppercase tracking-widest rounded-2xl cursor-pointer shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-2"
+                  className="flex-1 py-3.5 bg-brand text-white hover:bg-brand/90 disabled:opacity-40 font-black text-[10px] uppercase tracking-widest rounded-2xl cursor-pointer shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-2"
                 >
                   {isSubmittingShipping ? (
                     <>
@@ -991,7 +991,7 @@ export default function AdminOrders() {
                 <button
                   type="submit"
                   disabled={isSubmittingPayment}
-                  className="flex-1 py-3.5 bg-brand text-[#064e3b] hover:bg-brand/90 disabled:opacity-40 font-black text-[10px] uppercase tracking-widest rounded-2xl cursor-pointer shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-2"
+                  className="flex-1 py-3.5 bg-brand text-white hover:bg-brand/90 disabled:opacity-40 font-black text-[10px] uppercase tracking-widest rounded-2xl cursor-pointer shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-2"
                 >
                   {isSubmittingPayment ? (
                     <>

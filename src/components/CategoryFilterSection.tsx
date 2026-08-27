@@ -574,7 +574,7 @@ export default function CategoryFilterSection({
           </p>
           <Link
             href="/"
-            className="inline-block bg-brand text-[#064e3b] text-[9px] font-black uppercase tracking-widest px-5 py-2.5 rounded-lg hover:bg-brand-hover shadow-md transition-all duration-300 cursor-pointer"
+            className="inline-block bg-brand text-white text-[9px] font-black uppercase tracking-widest px-5 py-2.5 rounded-lg hover:bg-brand-hover shadow-md transition-all duration-300 cursor-pointer"
           >
             Browse Other Collections
           </Link>

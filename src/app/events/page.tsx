@@ -830,7 +830,7 @@ ${regNotes ? `*Notes:* ${regNotes}` : ""}`;
 
       {/* Floating Toast Notification */}
       {toast && (
-        <div className="fixed bottom-8 right-8 z-[200] bg-brand text-[#064e3b] border border-brand-accent/25 px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3.5 animate-in fade-in slide-in-from-bottom-5 duration-350">
+        <div className="fixed bottom-8 right-8 z-[200] bg-brand text-white border border-brand-accent/25 px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3.5 animate-in fade-in slide-in-from-bottom-5 duration-350">
           <Sparkles size={16} className="text-black-accent animate-pulse" />
           <span className="text-xs font-bold uppercase tracking-wider">{toast}</span>
         </div>

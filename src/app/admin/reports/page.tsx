@@ -75,7 +75,7 @@ export default function ReportsPage() {
       </div>
 
       <div className="mb-10 flex justify-center">
-        <button className="flex items-center space-x-3 bg-brand text-[#064e3b] px-8 py-4 rounded-2xl font-bold uppercase tracking-widest text-[10px] hover:bg-brand-hover shadow-xl transition-all active:scale-95">
+        <button className="flex items-center space-x-3 bg-brand text-white px-8 py-4 rounded-2xl font-bold uppercase tracking-widest text-[10px] hover:bg-brand-hover shadow-xl transition-all active:scale-95">
           <Download size={16} className="text-black-accent" />
           <span>Export Full Report</span>
         </button>

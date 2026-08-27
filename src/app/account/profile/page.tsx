@@ -134,7 +134,7 @@ export default function ProfilePage() {
             <button
               type="submit"
               disabled={isSaving}
-              className="flex items-center justify-center space-x-3 bg-brand text-[#064e3b] px-10 py-4 rounded-2xl font-bold tracking-widest uppercase text-sm hover:bg-brand-hover transition-all shadow-xl disabled:opacity-50"
+              className="flex items-center justify-center space-x-3 bg-brand text-white px-10 py-4 rounded-2xl font-bold tracking-widest uppercase text-sm hover:bg-brand-hover transition-all shadow-xl disabled:opacity-50"
             >
               {isSaving ? (
                 <Loader2 className="w-5 h-5 animate-spin" />

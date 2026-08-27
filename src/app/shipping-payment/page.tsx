@@ -90,7 +90,7 @@ export default function ShippingPayment() {
               "Final weight check & batch coding before dispatch"
             ].map((step, idx) => (
               <li key={idx} className="flex items-center gap-3">
-                <span className="w-5 h-5 rounded-full bg-[#8c6239]/5 text-[#C5A059] flex items-center justify-center font-bold text-xs shrink-0">{idx + 1}</span>
+                <span className="w-5 h-5 rounded-full bg-[#8c6239]/5 text-white flex items-center justify-center font-bold text-xs shrink-0">{idx + 1}</span>
                 <span className="text-[#8c6239]/90 font-medium">{step}</span>
               </li>
             ))}
@@ -147,7 +147,7 @@ export default function ShippingPayment() {
                 className="bg-[#FFFDF6] p-6 md:p-10 rounded-[2rem] border border-[#8c6239]/5 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#8c6239]/5 flex items-center justify-center text-[#C5A059]">
+                  <div className="w-12 h-12 rounded-2xl bg-[#8c6239]/5 flex items-center justify-center text-white">
                     <Icon size={22} />
                   </div>
                   <h2 className="text-xl md:text-2xl font-playfair font-bold text-[#8c6239]">

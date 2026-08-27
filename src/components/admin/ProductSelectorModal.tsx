@@ -161,7 +161,7 @@ export default function ProductSelectorModal({
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-dark/40 backdrop-blur-sm animate-in fade-in duration-200">
       <div className="bg-white rounded-[2rem] w-[95%] max-w-6xl h-[85vh] max-h-[90vh] overflow-hidden shadow-2xl flex flex-col animate-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="p-8 border-b border-brand/5 flex items-center justify-between bg-brand text-[#064e3b]">
+        <div className="p-8 border-b border-brand/5 flex items-center justify-between bg-brand text-white">
           <div className="flex items-center space-x-4">
             <div className="bg-[#C5A059] p-3 rounded-2xl">
               <Package size={24} className="text-white" />
@@ -394,7 +394,7 @@ export default function ProductSelectorModal({
               <button 
                 onClick={handleAddProduct}
                 disabled={isSaving}
-                className="bg-[#8c6239] text-[#C5A059] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg shadow-brand/10 disabled:opacity-50 flex items-center space-x-2"
+                className="bg-[#8c6239] text-white px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg shadow-brand/10 disabled:opacity-50 flex items-center space-x-2"
               >
                 {isSaving && <Loader2 size={14} className="animate-spin" />}
                 <span>Save & Select</span>
@@ -414,7 +414,7 @@ export default function ProductSelectorModal({
                 </button>
                 <button 
                   onClick={() => onConfirm(selectedIds)}
-                  className="bg-[#8c6239] text-[#C5A059] px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg shadow-brand/10"
+                  className="bg-[#8c6239] text-white px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg shadow-brand/10"
                 >
                   Confirm Selection
                 </button>

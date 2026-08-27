@@ -765,7 +765,7 @@ export default function ProductManagement() {
   return (
     <div className="h-full w-full overflow-hidden">
       {toast && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm">
           <Check size={18} /><span>{toast}</span>
         </div>
       )}
@@ -884,7 +884,7 @@ export default function ProductManagement() {
 
             {/* ── Section 1: Identity ── */}
             <div>
-              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">1</span> Product Identity</h3>
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-white text-[8px] flex items-center justify-center font-black">1</span> Product Identity</h3>
               <div className="space-y-5">
                 <div>
                   <label className={LABEL}>Product Name *</label>
@@ -940,7 +940,7 @@ export default function ProductManagement() {
 
             {/* ── Section 2: Inventory Overview ── */}
             <div>
-              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">2</span> Inventory Overview</h3>
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-white text-[8px] flex items-center justify-center font-black">2</span> Inventory Overview</h3>
               <div className="p-5 bg-brand/5 rounded-2xl flex items-center justify-between">
                 <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Total Combined Stock (All variations)</span>
                 <span className="text-2xl font-black text-black">{totalStock}</span>
@@ -950,7 +950,7 @@ export default function ProductManagement() {
             {/* ── Section 3: Available Weights / Pack Sizes ── */}
             <div className="space-y-4">
               <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">3</span> 
+                <span className="w-5 h-5 rounded-full bg-brand text-white text-[8px] flex items-center justify-center font-black">3</span> 
                 Available Weights / Pack Sizes
               </h3>
               
@@ -1034,7 +1034,7 @@ export default function ProductManagement() {
             {/* ── Section 4: Product Images ── */}
             <div>
               <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">4</span> 
+                <span className="w-5 h-5 rounded-full bg-brand text-white text-[8px] flex items-center justify-center font-black">4</span> 
                 Product Images
               </h3>
               
@@ -1069,7 +1069,7 @@ export default function ProductManagement() {
                           <button 
                             type="button" 
                             onClick={() => addColorImage(color)} 
-                            className="bg-[#8c6239] text-[#C5A059] px-5 py-2 rounded-2xl font-bold text-xs hover:bg-[#734f2d] transition-all whitespace-nowrap"
+                            className="bg-[#8c6239] text-white px-5 py-2 rounded-2xl font-bold text-xs hover:bg-[#734f2d] transition-all whitespace-nowrap"
                           >
                             Add URL
                           </button>
@@ -1135,12 +1135,12 @@ export default function ProductManagement() {
 
             {/* ── Section 5: Variation Matrix ── */}
             <div>
-              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">5</span> Variation Matrix (Stock & SKU)</h3>
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-white text-[8px] flex items-center justify-center font-black">5</span> Variation Matrix (Stock & SKU)</h3>
               {variations.length > 0 ? (
                 <div className="overflow-hidden rounded-[2rem] border border-brand/5 shadow-sm">
                   <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-brand text-[#064e3b]/60 font-black uppercase tracking-widest">
+                    <thead className="bg-brand text-white/60 font-black uppercase tracking-widest">
                       <tr>
                         <th className="px-5 py-4">Weight / Pack Size</th>
                         <th className="px-5 py-4">Base Price (₹)</th>

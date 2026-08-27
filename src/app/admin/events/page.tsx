@@ -420,7 +420,7 @@ export default function AdminEventsPage() {
   return (
     <div className="p-10 min-h-screen bg-gray-50/50">
       {toast && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-[#C5A059] px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm border border-[#C5A059]/20 animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-[#8c6239] text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 font-bold text-sm border border-[#C5A059]/20 animate-in fade-in slide-in-from-bottom-5 duration-300">
           <Check size={18} />
           <span>{toast}</span>
         </div>
@@ -550,7 +550,7 @@ export default function AdminEventsPage() {
                         <div className="w-16 h-16 rounded-xl overflow-hidden border border-brand/5 bg-gray-100 relative">
                           {mediaPreview ? (
                             isVid ? (
-                              <div className="w-full h-full flex items-center justify-center bg-brand text-[#064e3b]">
+                              <div className="w-full h-full flex items-center justify-center bg-brand text-white">
                                 <Video size={20} className="text-[#C5A059]" />
                               </div>
                             ) : (

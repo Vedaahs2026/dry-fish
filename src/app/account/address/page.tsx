@@ -113,7 +113,7 @@ export default function AddressPage() {
             </p>
             <Link 
               href="/" 
-              className="flex items-center space-x-2 bg-brand text-[#064e3b] px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-brand-hover shadow-lg transition-all"
+              className="flex items-center space-x-2 bg-brand text-white px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-brand-hover shadow-lg transition-all"
             >
               <ShoppingBag size={16} />
               <span>Continue Shopping</span>

@@ -142,7 +142,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {!isDesktopSidebarOpen && (
           <button
             onClick={() => setIsDesktopSidebarOpen(true)}
-            className="hidden md:flex absolute top-4 left-6 z-40 p-1 hover:bg-[#8c6239]/10 rounded-xl transition-all text-[#C5A059] cursor-pointer items-center justify-center animate-in fade-in duration-300"
+            className="hidden md:flex absolute top-4 left-6 z-40 p-1 hover:bg-[#8c6239]/10 rounded-xl transition-all text-white cursor-pointer items-center justify-center animate-in fade-in duration-300"
           >
             <div className="relative w-8 h-8 group">
               {/* Dry Fish Basket Logo Icon */}
@@ -150,7 +150,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <img src="/images/logo.png" alt="Dry Fish Basket Logo" className="w-full h-full rounded-md object-cover" />
               </div>
               {/* Dashboard Icon on hover */}
-              <div className="absolute inset-0 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 flex items-center justify-center bg-[#8c6239] text-[#C5A059] rounded-lg transition-all duration-200">
+              <div className="absolute inset-0 scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 flex items-center justify-center bg-[#8c6239] text-white rounded-lg transition-all duration-200">
                 <LayoutDashboard size={20} />
               </div>
             </div>
@@ -161,7 +161,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {!isMobileSidebarOpen && (
           <button
             onClick={() => setIsMobileSidebarOpen(true)}
-            className="flex md:hidden absolute top-4 left-6 z-40 p-2 bg-[#8c6239] text-[#C5A059] rounded-xl transition-all shadow-md items-center justify-center animate-in fade-in duration-300 active:scale-95"
+            className="flex md:hidden absolute top-4 left-6 z-40 p-2 bg-[#8c6239] text-white rounded-xl transition-all shadow-md items-center justify-center animate-in fade-in duration-300 active:scale-95"
           >
             <LayoutDashboard size={20} />
           </button>

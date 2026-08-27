@@ -232,7 +232,7 @@ export default function CustomerManagement() {
               <p className="text-red-500 font-bold mb-4">{detailsError}</p>
               <button 
                 onClick={() => handleCustomerClick(selectedCustomerId)}
-                className="px-6 py-3 bg-brand text-[#064e3b] rounded-xl text-xs font-black uppercase tracking-widest"
+                className="px-6 py-3 bg-brand text-white rounded-xl text-xs font-black uppercase tracking-widest"
               >
                 Retry
               </button>
@@ -535,7 +535,7 @@ export default function CustomerManagement() {
                     <td className="px-4 md:px-8 py-6 text-right">
                       <button 
                         onClick={() => handleCustomerClick(customer.id)}
-                        className="p-2 bg-brand-light border border-brand/5 rounded-xl hover:bg-[#C5A059]/10 hover:text-[#C5A059] transition-all text-black"
+                        className="p-2 bg-brand-light border border-brand/5 rounded-xl hover:bg-[#C5A059]/10 hover:text-white transition-all text-black"
                         title="View Details"
                       >
                         <ChevronRight size={16} />

@@ -391,7 +391,7 @@ export default function TermsConditions() {
                 className="bg-[#FFFDF6] p-6 md:p-10 rounded-[2rem] border border-[#8c6239]/5 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#8c6239]/5 flex items-center justify-center text-[#C5A059]">
+                  <div className="w-12 h-12 rounded-2xl bg-[#8c6239]/5 flex items-center justify-center text-white">
                     <Icon size={22} />
                   </div>
                   <h2 className="text-xl md:text-2xl font-playfair font-bold text-[#8c6239]">

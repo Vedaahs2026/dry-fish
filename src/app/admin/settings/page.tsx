@@ -442,7 +442,7 @@ export default function SettingsPage() {
                 <button
                   type="button"
                   onClick={handleAddBannerUrl}
-                  className="flex items-center gap-1.5 bg-[#8c6239] hover:bg-[#734f2d] text-[#C5A059] px-6 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-md h-fit mb-[1px]"
+                  className="flex items-center gap-1.5 bg-[#8c6239] hover:bg-[#734f2d] text-white px-6 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-md h-fit mb-[1px]"
                 >
                   <Plus size={14} />
                   <span>Add</span>
@@ -544,7 +544,7 @@ export default function SettingsPage() {
               <button
                 type="submit"
                 disabled={isSubmitting || isUploading}
-                className="w-full flex items-center justify-center space-x-2 bg-[#8c6239] text-[#C5A059] py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg disabled:opacity-50"
+                className="w-full flex items-center justify-center space-x-2 bg-[#8c6239] text-white py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <Loader2 className="w-4 h-4 animate-spin" />

@@ -9,7 +9,7 @@ export default function NotFound() {
           <div className="text-black-accent animate-pulse">
             <Sparkles size={40} />
           </div>
-          <div className="absolute -top-1 -right-1 bg-brand text-[#064e3b] text-[10px] font-black px-2 py-1 rounded-lg shadow-lg">404</div>
+          <div className="absolute -top-1 -right-1 bg-brand text-white text-[10px] font-black px-2 py-1 rounded-lg shadow-lg">404</div>
         </div>
         
         <h1 className="text-4xl md:text-5xl font-serif font-bold text-black mb-4 tracking-tighter">
@@ -23,7 +23,7 @@ export default function NotFound() {
         <div className="flex flex-col space-y-4">
           <Link 
             href="/" 
-            className="flex items-center justify-center space-x-3 bg-brand text-[#064e3b] font-bold py-4 rounded-2xl hover:bg-brand-hover transition-all shadow-xl"
+            className="flex items-center justify-center space-x-3 bg-brand text-white font-bold py-4 rounded-2xl hover:bg-brand-hover transition-all shadow-xl"
           >
             <ArrowLeft size={18} />
             <span>Back to Homepage</span>
