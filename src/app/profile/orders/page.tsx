@@ -287,8 +287,7 @@ export default function MyOrdersPage() {
                           };
                           const milestoneIndex = getMilestoneIndex(order.status);
                           const isCompleted = milestoneIndex >= idx;
-                          const isCurrent = (order.status?.toLowerCase() === m.toLowerCase()) || 
-                            (m.toLowerCase() === "processing" && order.status?.toLowerCase() === "ready to ship");
+                          const isCurrent = order.status?.toLowerCase() === m.toLowerCase();
                           return (
                             <div key={m} className="flex flex-col items-center">
                               <div className={`w-2 h-2 rounded-full border-2 transition-all duration-500 ${
@@ -310,10 +309,19 @@ export default function MyOrdersPage() {
                     {/* Vertical Stepper for Mobile */}
                     <div className="md:hidden space-y-0 pl-2">
                       {MILESTONES.map((m, idx) => {
-                        const isCompleted = MILESTONES.indexOf(order.status) >= idx;
-                        const isCurrent = order.status === m;
+                        const getMilestoneIndex = (status: string) => {
+                          const s = status?.toLowerCase() || "";
+                          if (s === "confirmed") return 0;
+                          if (s === "processing" || s === "ready to ship") return 1;
+                          if (s === "shipped") return 2;
+                          if (s === "delivered") return 3;
+                          return -1;
+                        };
+                        const milestoneIndex = getMilestoneIndex(order.status);
+                        const isCompleted = milestoneIndex >= idx;
+                        const isCurrent = order.status?.toLowerCase() === m.toLowerCase();
                         const isLast = idx === MILESTONES.length - 1;
-                        const isLineActive = MILESTONES.indexOf(order.status) > idx;
+                        const isLineActive = milestoneIndex > idx;
 
                         return (
                           <div key={m} className="flex items-start space-x-4 relative pb-6 last:pb-0">

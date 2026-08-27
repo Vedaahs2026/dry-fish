@@ -105,7 +105,6 @@ export default function AdminOrders() {
     "pending",
     "Confirmed",
     "Processing",
-    "Ready to Ship",
     "Shipped",
     "Delivered",
     "Cancelled"
@@ -258,12 +257,11 @@ export default function AdminOrders() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
         {[
           { label: "Pending", count: statusCounts.pending, icon: Clock, color: "text-amber-500", bg: "bg-amber-50" },
           { label: "Confirmed", count: statusCounts.confirmed, icon: CheckCircle2, color: "text-blue-500", bg: "bg-blue-50" },
           { label: "Processing", count: statusCounts.processing, icon: Scissors, color: "text-indigo-500", bg: "bg-indigo-50" },
-          { label: "Ready to Ship", count: statusCounts.readyToShip, icon: Sparkles, color: "text-pink-500", bg: "bg-pink-50" },
           { label: "Shipped", count: statusCounts.shipped, icon: Truck, color: "text-purple-500", bg: "bg-purple-50" },
           { label: "Delivered", count: statusCounts.delivered, icon: ShoppingBag, color: "text-green-500", bg: "bg-green-50" },
           { label: "Cancelled", count: statusCounts.cancelled, icon: X, color: "text-red-500", bg: "bg-red-50" },
@@ -302,7 +300,6 @@ export default function AdminOrders() {
                 <option value="pending">Pending</option>
                 <option value="confirmed">Confirmed</option>
                 <option value="processing">Processing</option>
-                <option value="ready to ship">Ready to Ship</option>
                 <option value="shipped">Shipped</option>
                 <option value="delivered">Delivered</option>
                 <option value="cancelled">Cancelled</option>
@@ -613,7 +610,7 @@ export default function AdminOrders() {
                             {/* Shipping Info Action Button */}
                             <div className="pt-4 border-t border-brand/10 mt-4">
                               <button
-                                disabled={order.status?.toLowerCase() !== "ready to ship"}
+                                disabled={order.status?.toLowerCase() !== "processing"}
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   setSelectedOrderForShipping(order);

@@ -159,7 +159,7 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6 ml-4">
-              <Link href="/" className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors">
+              <Link href="/" className="text-[#3b2314] hover:text-[#8c6239] text-sm font-bold tracking-wide transition-colors">
                 Home
               </Link>
               
@@ -167,7 +167,7 @@ export default function Navbar() {
                 <Link
                   key={cat.id}
                   href={cat.link || `/category/${cat.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
-                  className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors capitalize"
+                  className="text-[#3b2314] hover:text-[#8c6239] text-sm font-bold tracking-wide transition-colors capitalize"
                 >
                   {cat.name}
                 </Link>
@@ -184,14 +184,14 @@ export default function Navbar() {
                     router.push("/#contact-us");
                   }
                 }}
-                className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors"
+                className="text-[#3b2314] hover:text-[#8c6239] text-sm font-bold tracking-wide transition-colors"
               >
                 Contact
               </Link>
-              <Link href="/my-story" className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors">
+              <Link href="/my-story" className="text-[#3b2314] hover:text-[#8c6239] text-sm font-bold tracking-wide transition-colors">
                 About us
               </Link>
-              <Link href="/blogs" className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors">
+              <Link href="/blogs" className="text-[#3b2314] hover:text-[#8c6239] text-sm font-bold tracking-wide transition-colors">
                 Blog
               </Link>
             </nav>
