@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, Suspense, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import { getFirstProductImageUrl, getProductImageUrls } from "@/utils/product";
 
@@ -51,9 +51,51 @@ const COLOR_MAP: Record<string, string> = {
 function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
-  
+  const router = useRouter();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState(query);
+
+  // Sync search input with query parameter on load/change
+  useEffect(() => {
+    setSearchInput(query);
+  }, [query]);
+
+  // Debounce search effect (5 seconds of inactivity)
+  useEffect(() => {
+    if (searchInput.trim() === query.trim()) return;
+
+    const timer = setTimeout(() => {
+      executeSearch(searchInput);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [searchInput, query]);
+
+  const executeSearch = (searchTerm: string) => {
+    const params = new URLSearchParams(window.location.search);
+    if (searchTerm.trim()) {
+      params.set("q", searchTerm.trim());
+    } else {
+      params.delete("q");
+    }
+    router.push(`/search?${params.toString()}`);
+  };
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    executeSearch(searchInput);
+  };
+
+  const handleClearSearchInput = () => {
+    setSearchInput("");
+    executeSearch("");
+  };
 
   // Dynamic Price Limits Computation
   const [minLimit, maxLimit] = useMemo(() => {
@@ -514,6 +556,39 @@ function SearchResults() {
       
       {/* Right Column: Products Grid & Header */}
       <div className="flex-grow min-w-0 px-6 sm:px-8 lg:px-12 py-8 lg:py-10 max-w-7xl mx-auto w-full">
+        
+        {/* Search Bar Input Block */}
+        <div className="mb-8 max-w-2xl">
+          <form onSubmit={handleSearchSubmit} className="flex gap-2">
+            <div className="relative flex-grow">
+              <input
+                type="text"
+                value={searchInput}
+                onChange={handleSearchInputChange}
+                placeholder="Search products, descriptions, or tags..."
+                className="w-full bg-[#FFFDF6] border border-[#8c6239]/10 focus:border-[#C5A059]/50 rounded-2xl px-5 py-4 pl-12 text-xs font-semibold text-black outline-none transition-all placeholder:text-black/30 shadow-sm"
+              />
+              <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8c6239]/40" size={18} />
+              {searchInput && (
+                <button
+                  type="button"
+                  onClick={handleClearSearchInput}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8c6239]/40 hover:text-black transition-all cursor-pointer p-1"
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+            <button
+              type="submit"
+              className="bg-[#8c6239] hover:bg-[#734f2d] text-[#FAF6ED] px-8 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-md active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+            >
+              <SearchIcon size={12} />
+              <span>Search</span>
+            </button>
+          </form>
+        </div>
+
         {/* Header Title & Description */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8 md:mb-10 text-left border-b border-[#064e3b]/5 pb-6">
           <div className="flex-1">
