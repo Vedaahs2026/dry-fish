@@ -53,6 +53,7 @@ export default function Home() {
   const [homepageCatCards, setHomepageCatCards] = useState<any[]>([]);
   const [reviews, setReviews] = useState<any[]>([]);
   const [faqs, setFaqs] = useState<any[]>([]);
+  const [founderPromoList, setFounderPromoList] = useState<any[]>([]);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
 
 
@@ -106,8 +107,19 @@ export default function Home() {
         if (dataFaqs.success) {
           setFaqs(dataFaqs.data || []);
         }
+
+        const resFounder = await fetch("/api/admin/settings?key=founder_promo");
+        const dataFounder = await resFounder.json();
+        if (dataFounder.success && dataFounder.data) {
+          try {
+            const parsed = JSON.parse(dataFounder.data.value);
+            if (Array.isArray(parsed)) {
+              setFounderPromoList(parsed);
+            }
+          } catch {}
+        }
       } catch (err) {
-        console.error("Failed to fetch settings/offers/categories/reviews/faqs", err);
+        console.error("Failed to fetch settings/offers/categories/reviews/faqs/founder_promo", err);
       }
     }
     fetchData();
@@ -343,6 +355,44 @@ export default function Home() {
       {/* 3. Main Content Section */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <ProductGrid />
+
+        {/* Founder Promotion Section */}
+        {founderPromoList.length > 0 && (
+          <section className="w-full mx-auto my-16 border-t border-[#8c6239]/10 pt-16 animate-in fade-in duration-500">
+            <div className="flex flex-col items-center text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-black text-[#3b2314]">Our Mission &amp; Purpose</h2>
+              <p className="text-xs text-black/50 font-bold tracking-tight mt-2 uppercase tracking-[0.15em]">Delivering authentic dry fish traditions</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {founderPromoList.map((card, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white border border-[#8c6239]/10 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center"
+                >
+                  {card.imageUrl && (
+                    <div className="w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-5">
+                      <img
+                        src={card.imageUrl}
+                        alt={`Founder promotion feature ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                        onError={e => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = "/images/placeholder.png";
+                        }}
+                      />
+                    </div>
+                  )}
+                  {card.text && (
+                    <p
+                      className="text-xs md:text-sm text-black/85 leading-relaxed font-medium"
+                      dangerouslySetInnerHTML={{ __html: card.text }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
 
 
