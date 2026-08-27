@@ -378,15 +378,6 @@ export default function MyOrdersPage() {
                               <div className="flex-1 min-w-0">
                                 <div className="flex flex-col mb-1">
                                   <h5 className="text-base font-bold text-black">{item.productName}</h5>
-                                  {isBespoke ? (
-                                    <span className="bg-[#C5A059]/10 text-[#C5A059] border border-[#C5A059]/20 text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full inline-block w-fit mt-1">
-                                      Bespoke / Custom Fit
-                                    </span>
-                                  ) : (
-                                    <span className="bg-brand/5 text-black/40 border border-brand/5 text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full inline-block w-fit mt-1">
-                                      Standard Fit
-                                    </span>
-                                  )}
                                 </div>
 
                                 <div className="flex items-center space-x-3 mb-4 mt-2">

@@ -540,12 +540,7 @@ export default function AdminOrders() {
                                   </div>
                                 </div>
                               )}
-                              
-                              {!item.customizations?.measurements && (
-                                <div className="py-2 px-4 bg-brand/5 rounded-full inline-block">
-                                  <p className="text-[10px] font-bold text-black/40 uppercase tracking-widest">Standard Fit — No Customizations</p>
-                                </div>
-                              )}
+                              {/* Customization fit info removed */}
                             </div>
                           );
                         })}
