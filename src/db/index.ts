@@ -2,6 +2,9 @@ import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
 import * as schema from "./schema";
 
+// Disable SSL certificate verification check to allow local connections through firewalls/proxies
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const url = process.env.DATABASE_URL || process.env.DATABASE_URI;
 const authToken = process.env.DATABASE_AUTH_TOKEN;
 
