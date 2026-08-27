@@ -9,7 +9,8 @@ export async function GET(request: Request) {
     const q = searchParams.get("q");
 
     if (!q || q.trim() === "") {
-      return NextResponse.json({ success: true, data: [] });
+      const allProducts = await db.select().from(products).limit(100);
+      return NextResponse.json({ success: true, data: allProducts });
     }
 
     // Clean and split the query into search tokens

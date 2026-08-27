@@ -91,15 +91,10 @@ function SearchResults() {
 
   useEffect(() => {
     async function performSearch() {
-      if (!query) {
-        setProducts([]);
-        setLoading(false);
-        return;
-      }
-
       setLoading(true);
       try {
-        const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        const fetchUrl = query ? `/api/search?q=${encodeURIComponent(query)}` : `/api/search`;
+        const res = await fetch(fetchUrl);
         const data = await res.json();
         if (data.success) {
           setProducts(data.data);
@@ -525,11 +520,13 @@ function SearchResults() {
             <div className="flex items-center gap-3 mb-2">
               <SearchIcon className="text-[#C5A059]" size={24} />
               <h1 className="text-3xl md:text-4xl font-playfair font-black text-[#064e3b] tracking-wide">
-                Search Results
+                {query ? "Search Results" : "All Products"}
               </h1>
             </div>
             <p className="text-[#064e3b]/60 italic text-sm">
-              Found {filteredAndSortedProducts.length} elegant {filteredAndSortedProducts.length === 1 ? "piece" : "pieces"} for "{query}"
+              {query 
+                ? `Found ${filteredAndSortedProducts.length} elegant ${filteredAndSortedProducts.length === 1 ? "piece" : "pieces"} for "${query}"`
+                : `Found ${filteredAndSortedProducts.length} authentic delicacies`}
             </p>
           </div>
         </div>
