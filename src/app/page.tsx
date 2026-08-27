@@ -367,10 +367,10 @@ export default function Home() {
               {founderPromoList.map((card, idx) => (
                 <div
                   key={idx}
-                  className="bg-white border border-[#8c6239]/10 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-md transition-all p-6 flex flex-col items-center text-center"
+                  className="flex flex-col items-center text-center space-y-4"
                 >
                   {card.imageUrl && (
-                    <div className="w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-5">
+                    <div className="w-full aspect-[4/3] rounded-[2rem] overflow-hidden shadow-sm border border-[#8c6239]/10">
                       <img
                         src={card.imageUrl}
                         alt={`Founder promotion feature ${idx + 1}`}
@@ -384,7 +384,7 @@ export default function Home() {
                   )}
                   {card.text && (
                     <p
-                      className="text-xs md:text-sm text-black/85 leading-relaxed font-medium"
+                      className="text-xs md:text-sm text-[#3b2314] leading-relaxed font-semibold px-2"
                       dangerouslySetInnerHTML={{ __html: card.text }}
                     />
                   )}
