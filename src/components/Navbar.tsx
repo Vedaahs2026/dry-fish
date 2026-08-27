@@ -181,17 +181,10 @@ export default function Navbar() {
               ))}
 
               <Link
-                href="/#contact-us"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const footer = document.getElementById("contact-us");
-                  if (footer) {
-                    footer.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    router.push("/#contact-us");
-                  }
-                }}
-                className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors"
+                href="/contact"
+                className={`hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors ${
+                  pathname === "/contact" ? "text-[#8c6239] font-bold" : "text-[#3b2314]"
+                }`}
               >
                 Contact
               </Link>
@@ -340,16 +333,11 @@ export default function Navbar() {
                 </div>
 
                 <Link
-                  href="/#contact-us"
-                  onClick={(e) => {
-                    setIsMobileMenuOpen(false);
-                    const footer = document.getElementById("contact-us");
-                    if (footer) {
-                      e.preventDefault();
-                      footer.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
-                  className="block text-white hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2"
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2 ${
+                    pathname === "/contact" ? "text-[#eab308]" : "text-white"
+                  }`}
                 >
                   Contact Us
                 </Link>
