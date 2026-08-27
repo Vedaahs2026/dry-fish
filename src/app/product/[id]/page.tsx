@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, use, useMemo } from "react";
-import { Sparkles, ArrowLeft, ShoppingBag, Check, X, Heart } from "lucide-react";
+import { Sparkles, ArrowLeft, ShoppingBag, Check, X, Heart, Truck, ClipboardList, Package, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
@@ -31,6 +31,9 @@ interface Product {
   isCustomizable: boolean | number | null;
   enabledMeasurements: string | null; // JSON string array
   gender: string | null;
+  avgRating?: number | string | null;
+  numReviews?: number | string | null;
+  tags?: string | null;
   style?: string | null;
   fabricComposition?: string | null;
   weave?: string | null;
@@ -79,11 +82,14 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [mainImage, setMainImage] = useState<string>("");
-  const [isCustomOpen, setIsCustomOpen] = useState(false);
-  const [measurements, setMeasurements] = useState<Record<string, string>>({});
+
   const [added, setAdded] = useState(false);
   const [toast, setToast] = useState("");
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+  const [isDetailsExpanded, setIsDetailsExpanded] = useState(true);
+  const [isShippingExpanded, setIsShippingExpanded] = useState(false);
+  const [isQualityExpanded, setIsQualityExpanded] = useState(false);
+  const [isStorageExpanded, setIsStorageExpanded] = useState(false);
 
   const addItem = useCartStore((state) => state.addItem);
 
@@ -105,7 +111,14 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   }, [product?.specifications]);
 
   const hasSpecs = parsedSpecs ? Object.keys(parsedSpecs).length > 0 : false;
-  const legacySpecsExist = !!(product?.style || product?.fabricComposition || product?.weave || product?.neckStyle || product?.keyWords);
+
+  const topBadges = useMemo(() => {
+    if (!product?.weave) return [];
+    return product.weave.split(",").map(b => b.trim()).filter(Boolean);
+  }, [product?.weave]);
+
+  const taglines = product?.neckStyle ? product.neckStyle.trim() : "";
+  const soldCount = product?.keyWords ? product.keyWords.trim() : "";
 
   const specDetailsList = useMemo(() => {
     if (!parsedSpecs) return [];
@@ -245,13 +258,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
       return;
     }
 
-    // Create a unique ID/hash for this item including customizations
-    const customHash = Object.keys(measurements).length > 0
-      ? `_custom_${btoa(JSON.stringify(measurements)).slice(0, 10)}`
-      : "";
-
     addItem({
-      id: `prod_${product.id}_${selectedColor}_${selectedSize}${customHash}`,
+      id: `prod_${product.id}_${selectedColor}_${selectedSize}`,
       productId: product.id,
       name: product.name,
       price: displayPrice,
@@ -259,10 +267,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
       quantity: 1,
       size: selectedSize,
       color: selectedColor,
-      customizations: {
-        type: Object.keys(measurements).length > 0 ? "Bespoke" : "Standard",
-        measurements: measurements
-      },
+      customizations: null
     });
 
     setAdded(true);
@@ -275,7 +280,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
   return (
     <div className="min-h-screen bg-brand-light text-black font-sans selection:bg-brand-accent/30">
-      <main className="max-w-7xl mx-auto px-6 md:px-12 pt-6 pb-16">
+      <main className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 pt-6 pb-16">
         <Link href="/" className="inline-flex items-center space-x-3 text-black/60 hover:text-black-accent transition-all mb-6 text-xs font-bold uppercase tracking-widest group">
           <div className="p-2 rounded-full bg-white shadow-sm border border-brand/5 group-hover:border-brand-accent/30 transition-all">
             <ArrowLeft size={14} />
@@ -317,8 +322,18 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
           {/* Right: Product Details (6 cols) */}
           <div className="lg:col-span-6 flex flex-col">
-            <div className="flex items-center space-x-2 mb-4">
-              <span className="bg-brand/5 text-black px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Premium Collection</span>
+            {/* Top Badges */}
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              {topBadges.length > 0 ? (
+                topBadges.map((badge, idx) => (
+                  <span key={idx} className="bg-[#FFFDF6] border border-[#eab308] text-black px-2.5 py-1 rounded text-[10px] font-black uppercase tracking-wider flex items-center gap-1 shadow-sm">
+                    {badge.toLowerCase().includes("shipping") || badge.toLowerCase().includes("delivery") ? "🚚" : badge.toLowerCase().includes("support") ? "🎧" : "📦"}
+                    {badge}
+                  </span>
+                ))
+              ) : (
+                <span className="bg-brand/5 text-black px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Premium Collection</span>
+              )}
               {currentStock > 0 && currentStock < 5 && (
                 <span className="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter animate-pulse">
                   Only {currentStock} left!
@@ -326,87 +341,128 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               )}
             </div>
 
-            <h1 className="text-2xl md:text-3xl font-serif font-bold mb-3 leading-tight text-black">
-              {product.name}
-            </h1>
-
-            <div className="flex items-baseline space-x-3 mb-6 gap-2">
-              <span className="text-2xl font-bold text-black">₹{displayPrice.toLocaleString()}</span>
-              {mrp > displayPrice && (
-                <>
-                  <span className="text-lg text-black/40 line-through font-medium">₹{mrp.toLocaleString()}</span>
-                  <span className="text-base font-bold text-[#cd5533]">({Math.round(((mrp - displayPrice) / mrp) * 100)}% OFF)</span>
-                </>
-              )}
+            {/* Title & Share Button */}
+            <div className="flex items-start justify-between gap-4 mb-3">
+              <h1 className="text-2xl md:text-3xl font-serif font-bold leading-tight text-black flex-1">
+                {product.name}
+              </h1>
+              <button 
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                  setToast("Link copied to clipboard!");
+                  setTimeout(() => setToast(""), 2000);
+                }}
+                className="bg-white border border-[#eab308] text-[#eab308] rounded-xl px-4 py-2 hover:bg-brand/5 font-bold text-xs flex items-center gap-1.5 transition-all shadow-sm cursor-pointer shrink-0"
+              >
+                <span>🔗</span> Share
+              </button>
             </div>
 
-            <p className="text-black/70 mb-8 text-sm leading-relaxed border-l-4 border-brand-accent/20 pl-5 italic">
-              {product.description}
-            </p>
-
-            {/* Color Selector */}
-            <div className="mb-10">
-              <div className="flex justify-between items-center mb-5">
-                <span className="text-sm font-bold text-black uppercase tracking-widest flex items-center gap-2">
-                  1. Select Color <span className="text-black/30">—</span> <span className="text-black-accent">{getColorDisplayName(selectedColor)}</span>
+            {/* Key Attributes */}
+            {soldCount && (
+              <div className="flex items-center text-xs mb-4">
+                <span className="bg-[#991b1b] text-white px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider flex items-center gap-1 shadow-sm animate-pulse">
+                  🔥 {soldCount}
                 </span>
               </div>
-              <div className="flex flex-wrap gap-4">
-                {availableColors.map((color) => (
-                  <button
-                    key={color}
-                    onClick={() => {
-                      setSelectedColor(color);
-                      const colorSizes = variations.filter(v => v.color === color).map(v => v.size);
-                      const isSingle = colorSizes.length === 1 && (
-                        colorSizes[0] === "Standard" || 
-                        colorSizes[0] === "One Size" || 
-                        colorSizes[0] === "No Size" || 
-                        colorSizes[0] === "Default"
-                      );
-                      if (selectedSize && colorSizes.includes(selectedSize)) {
-                        // Keep selected size if available in the newly selected color
-                      } else if (isSingle) {
-                        setSelectedSize(colorSizes[0]);
-                      } else {
-                        setSelectedSize(null);
-                      }
-                    }}
-                    className={`relative w-12 h-12 rounded-full border-2 p-1 transition-all ${selectedColor === color
-                        ? "border-brand-accent scale-110 shadow-lg"
-                        : "border-transparent hover:border-brand/20"
-                      }`}
-                    title={getColorDisplayName(color)}
-                  >
-                    <div
-                      className="w-full h-full rounded-full border border-black/5"
-                      style={{ backgroundColor: getColorHex(color) }}
-                    >
-                      {selectedColor === color && (
-                        <div className="absolute inset-0 flex items-center justify-center text-white">
-                          <Check size={16} className="drop-shadow-md" />
-                        </div>
-                      )}
-                    </div>
-                  </button>
-                ))}
+            )}
+
+            {/* Product Description */}
+            {product.description && (
+              <p className="text-black/80 font-medium text-sm leading-relaxed mb-6 whitespace-pre-wrap">
+                {product.description}
+              </p>
+            )}
+
+            {/* Pricing Box with red border and countdown */}
+            <div className="bg-[#FFFDF6] border-2 border-red-500/25 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 shadow-sm">
+              <div>
+                <div className="flex items-baseline space-x-3 gap-2">
+                  <span className="text-3xl font-black text-black">₹{displayPrice.toLocaleString()}</span>
+                  {mrp > displayPrice && (
+                    <>
+                      <span className="text-lg text-black/40 line-through font-medium">₹{mrp.toLocaleString()}</span>
+                      <span className="bg-[#22c55e] text-white px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider">
+                        Save {Math.round(((mrp - displayPrice) / mrp) * 100)}%
+                      </span>
+                    </>
+                  )}
+                </div>
+                <p className="text-[10px] text-black/40 font-bold uppercase tracking-wider mt-1.5">MRP incl. of all taxes</p>
               </div>
             </div>
 
-            {/* Size Selector */}
-            {!isSingleSize && (
-              <div className="mb-12">
+            {/* Outline Tags List (product.tags) */}
+            {product.tags && (
+              <div className="flex flex-wrap gap-2.5 mb-6">
+                {product.tags.split(",").map(t => t.trim()).filter(Boolean).map((tag, idx) => (
+                  <span key={idx} className="bg-white border-2 border-black/15 text-black px-3.5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider flex items-center gap-1.5 shadow-sm">
+                    {tag.toLowerCase().includes("natural") ? "🌱" : tag.toLowerCase().includes("preservat") ? "🚫" : tag.toLowerCase().includes("sustain") ? "🌱" : tag.toLowerCase().includes("fresh") ? "🐟" : "✓"}
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
+
+
+            {/* Color Selector */}
+            {availableColors.length > 1 && availableColors.some(c => c !== "Default") && (
+              <div className="mb-10">
                 <div className="flex justify-between items-center mb-5">
                   <span className="text-sm font-bold text-black uppercase tracking-widest flex items-center gap-2">
-                    2. Select Size <span className="text-black/30">—</span> <span className="text-black-accent">{selectedSize || "None"}</span>
+                    1. Select Color <span className="text-black/30">—</span> <span className="text-black-accent">{getColorDisplayName(selectedColor)}</span>
                   </span>
-                  <button
-                    onClick={() => setIsSizeGuideOpen(true)}
-                    className="text-[10px] text-black/40 hover:text-black-accent font-bold uppercase tracking-widest transition-colors underline underline-offset-4"
-                  >
-                    Fit Guide
-                  </button>
                 </div>
+                <div className="flex flex-wrap gap-4">
+                  {availableColors.map((color) => (
+                    <button
+                      key={color}
+                      onClick={() => {
+                        setSelectedColor(color);
+                        const colorSizes = variations.filter(v => v.color === color).map(v => v.size);
+                        const isSingle = colorSizes.length === 1 && (
+                          colorSizes[0] === "Standard" || 
+                          colorSizes[0] === "One Size" || 
+                          colorSizes[0] === "No Size" || 
+                          colorSizes[0] === "Default"
+                        );
+                        if (selectedSize && colorSizes.includes(selectedSize)) {
+                          // Keep selected size if available in the newly selected color
+                        } else if (isSingle) {
+                          setSelectedSize(colorSizes[0]);
+                        } else {
+                          setSelectedSize(null);
+                        }
+                      }}
+                      className={`relative w-12 h-12 rounded-full border-2 p-1 transition-all ${selectedColor === color
+                          ? "border-brand-accent scale-110 shadow-lg"
+                          : "border-transparent hover:border-brand/20"
+                        }`}
+                      title={getColorDisplayName(color)}
+                    >
+                      <div
+                        className="w-full h-full rounded-full border border-black/5"
+                        style={{ backgroundColor: getColorHex(color) }}
+                      >
+                        {selectedColor === color && (
+                          <div className="absolute inset-0 flex items-center justify-center text-white">
+                            <Check size={16} className="drop-shadow-md" />
+                          </div>
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Weight / Pack Size Selector */}
+            {!isSingleSize && (
+              <div className="mb-8">
+                <span className="text-sm font-black text-black uppercase tracking-wider block mb-4">
+                  Weight
+                </span>
                 <div className="flex flex-wrap gap-3">
                   {availableSizes.map((size) => {
                     const variation = variations.find(v => v.color === selectedColor && v.size === size);
@@ -417,11 +473,11 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                         key={size}
                         disabled={isOutOfStock}
                         onClick={() => setSelectedSize(size)}
-                        className={`min-w-[48px] h-12 rounded-xl flex items-center justify-center text-xs font-bold transition-all border-2 ${selectedSize === size
-                            ? "bg-brand text-[#064e3b] border-brand scale-105 shadow-md"
+                        className={`px-6 py-2.5 rounded-lg flex items-center justify-center text-xs font-black transition-all border-2 ${selectedSize === size
+                            ? "bg-black text-[#FFFDF6] border-black scale-105 shadow-md"
                             : isOutOfStock
                               ? "bg-brand/5 text-black/20 border-transparent cursor-not-allowed line-through opacity-50"
-                              : "bg-white text-black/70 border-brand/5 hover:border-brand-accent hover:text-black shadow-sm"
+                              : "bg-white text-black border-black hover:bg-black/5 shadow-sm"
                           }`}
                       >
                         {size}
@@ -432,61 +488,30 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               </div>
             )}
 
-            {/* Custom Fit Section - Interactive Dropdown */}
-            {product.isCustomizable && enabledMeasurementsList.length > 0 && (
-              <div className="mb-12">
-                <button 
-                  onClick={() => setIsCustomOpen(!isCustomOpen)}
-                  className="w-full flex items-center justify-between p-6 rounded-3xl transition-all border-2 shadow-sm bg-brand text-[#064e3b] border-brand hover:bg-brand-hover"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div className="p-3 rounded-2xl bg-white/20 text-white transition-all">
-                      <Sparkles size={20} />
-                    </div>
-                    <div className="text-left">
-                      <span className="text-sm font-black uppercase tracking-widest block text-white">3. Customize My Fit (Inches)</span>
-                      <p className="text-[10px] font-medium mt-1 text-white/70">
-                        {isCustomOpen ? "Refining your bespoke measurements" : "Click to provide your exact measurements"}
-                      </p>
-                    </div>
-                  </div>
-                  <div className={`transition-transform duration-500 ${isCustomOpen ? "rotate-180" : "rotate-0"}`}>
-                    <ArrowLeft size={20} className="-rotate-90 text-white" />
-                  </div>
-                </button>
 
-                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isCustomOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"}`}>
-                  <div className="bg-white rounded-3xl p-6 border-2 border-brand/10 shadow-lg">
-                    <div className="grid grid-cols-2 gap-5 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
-                      {enabledMeasurementsList.map((m) => (
-                        <div key={m} className="flex flex-col space-y-2">
-                          <label className="text-[10px] font-black text-black/40 uppercase tracking-widest pl-1">{m}</label>
-                          <select
-                            value={measurements[m] || ""}
-                            onChange={(e) => setMeasurements(prev => ({ ...prev, [m]: e.target.value }))}
-                            className="w-full bg-brand/5 border border-brand/10 rounded-xl px-4 py-3 text-xs font-bold text-black outline-none focus:border-brand-accent transition-all hover:bg-brand/10"
-                          >
-                            <option value="">Select</option>
-                            {Array.from({ length: 991 }, (_, i) => (1.0 + i * 0.1).toFixed(1)).map(val => (
-                              <option key={val} value={val}>{val}"</option>
-                            ))}
-                          </select>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-6 pt-6 border-t border-brand/10 flex items-center justify-between">
-                      <p className="text-[9px] text-black/40 font-medium italic">* Measurements are in inches (")</p>
-                      {Object.keys(measurements).length > 0 && (
-                        <button
-                          onClick={() => setMeasurements({})}
-                          className="text-[9px] font-black text-red-400 uppercase tracking-widest hover:text-red-600 transition-colors"
-                        >
-                          Reset All
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
+
+            {/* Characteristics / Badges */}
+            {product.style && (
+              <div className="mb-8 flex flex-wrap gap-2.5">
+                {product.style.split(",").map(c => c.trim()).filter(Boolean).map((char) => {
+                  let icon = "✨";
+                  const lower = char.toLowerCase();
+                  if (lower.includes("natural")) icon = "🍃";
+                  else if (lower.includes("preservative")) icon = "🚫";
+                  else if (lower.includes("sustainable") || lower.includes("source")) icon = "🌱";
+                  else if (lower.includes("coastal") || lower.includes("fresh") || lower.includes("fish")) icon = "🐟";
+                  else if (lower.includes("sun-dried") || lower.includes("dried") || lower.includes("traditional")) icon = "🔥";
+                  
+                  return (
+                    <span 
+                      key={char} 
+                      className="px-4 py-2 rounded-full border border-black flex items-center gap-2 text-xs font-semibold text-[#991b1b] bg-white shadow-sm"
+                    >
+                      <span>{icon}</span>
+                      <span>{char}</span>
+                    </span>
+                  );
+                })}
               </div>
             )}
 
@@ -495,84 +520,139 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               <button
                 disabled={!!(selectedColor && selectedSize && currentStock === 0)}
                 onClick={handleAddToCart}
-                className={`flex-1 flex items-center justify-center space-x-3 font-bold py-4 rounded-2xl transition-all text-base shadow-xl ${selectedColor && selectedSize && currentStock === 0
+                className={`flex-1 flex items-center justify-center space-x-3 font-black py-4 rounded-2xl transition-all text-base shadow-xl ${selectedColor && selectedSize && currentStock === 0
                     ? "bg-brand/10 text-black/30 cursor-not-allowed"
-                    : "bg-brand text-[#064e3b] hover:bg-brand-hover active:scale-[0.98] border border-transparent hover:border-brand-accent"
+                    : "bg-[#991b1b] text-white hover:bg-[#801414] active:scale-[0.98] border border-transparent shadow-red-900/10"
                   }`}
               >
                 {added ? (
-                  <Check size={22} className="text-black-accent animate-in zoom-in duration-300" />
+                  <Check size={22} className="text-white animate-in zoom-in duration-300" />
                 ) : (
-                  <ShoppingBag size={22} className="transition-all" />
+                  <ShoppingBag size={22} className="transition-all text-white" />
                 )}
-                <span className={added ? "text-black-accent transition-colors duration-300" : ""}>
-                  {selectedColor && selectedSize && currentStock === 0 ? "Out of Stock" : added ? "Added to Bag!" : "Add to Bag"}
+                <span>
+                  {selectedColor && selectedSize && currentStock === 0 ? "Out of Stock" : added ? "Added!" : "Add to cart"}
                 </span>
               </button>
-              
               <button
                 type="button"
                 onClick={handleWishlistClick}
-                className="flex-1 flex items-center justify-center space-x-3 font-bold py-4 rounded-2xl transition-all text-base shadow-xl bg-brand text-[#064e3b] hover:bg-brand-hover active:scale-[0.98] border border-transparent hover:border-brand-accent cursor-pointer"
+                className="flex-1 flex items-center justify-center space-x-3 font-black py-4 rounded-2xl transition-all text-base shadow-xl bg-black text-white hover:bg-black/90 active:scale-[0.98] border border-transparent cursor-pointer"
                 title={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
               >
                 <Heart className={`w-5 h-5 transition-colors ${isWishlisted ? "fill-red-500 text-red-500 animate-pulse" : "text-white"}`} />
                 <span>{isWishlisted ? "Wishlisted" : "Add to Wishlist"}</span>
               </button>
             </div>
-          </div>
-        </div>
 
-        {/* Product Details & Specifications Section */}
-        {(hasSpecs || legacySpecsExist) && (
-          <div className="mt-6 pt-6 border-t border-brand/10 grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-6 hidden lg:block" />
-            <div className="lg:col-span-6">
-              <h2 className="text-xl md:text-2xl font-serif font-bold text-black mb-4">Product Specifications</h2>
-              {/* Specifications List */}
-              <div className="bg-brand/5 rounded-3xl p-8 border border-brand/5">
-                <h3 className="text-xs font-black text-black uppercase tracking-widest mb-6">Details</h3>
-                <dl className="space-y-4">
-                  {hasSpecs ? (
-                    specDetailsList.map(([key, val]) => (
-                      <div key={key} className="flex py-3 border-b border-brand/5 text-left items-start">
-                        <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">{key}</dt>
-                        <dd className="text-xs font-bold text-black pl-4">{val}</dd>
-                      </div>
-                    ))
-                  ) : (
-                    <>
-                      {product.style && (
-                        <div className="flex py-3 border-b border-brand/5 text-left items-start">
-                          <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Style</dt>
-                          <dd className="text-xs font-bold text-black pl-4">{product.style}</dd>
-                        </div>
-                      )}
-                      {product.fabricComposition && (
-                        <div className="flex py-3 border-b border-brand/5 text-left items-start">
-                          <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Fabric Composition</dt>
-                          <dd className="text-xs font-bold text-black pl-4">{product.fabricComposition}</dd>
-                        </div>
-                      )}
-                      {product.weave && (
-                        <div className="flex py-3 border-b border-brand/5 text-left items-start">
-                          <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Weave</dt>
-                          <dd className="text-xs font-bold text-black pl-4">{product.weave}</dd>
-                        </div>
-                      )}
-                      {product.neckStyle && (
-                        <div className="flex py-3 border-b border-brand/5 text-left items-start">
-                          <dt className="text-xs font-bold text-black/50 uppercase tracking-wider w-28 sm:w-36 shrink-0">Neck Style</dt>
-                          <dd className="text-xs font-bold text-black pl-4">{product.neckStyle}</dd>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </dl>
+            {/* 4 Dropdowns Section (Details, Shipping, Quality, Storage) */}
+            <div className="mt-8 space-y-4 border-t border-black/10 pt-6">
+              {/* Accordion 1: Product Details */}
+              <div className="border-b border-black/10 pb-4">
+                <button 
+                  type="button"
+                  onClick={() => setIsDetailsExpanded(!isDetailsExpanded)}
+                  className="w-full flex items-center justify-between text-left text-sm font-black uppercase tracking-wider text-black py-2 cursor-pointer focus:outline-none select-none"
+                >
+                  <span className="flex items-center gap-2">
+                    📄 Product Details
+                  </span>
+                  <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${isDetailsExpanded ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                
+                {isDetailsExpanded && (
+                  <div className="pt-4 pb-2 text-sm text-black/85 leading-relaxed transition-all duration-300 animate-in fade-in duration-300">
+                    <div className="whitespace-pre-wrap font-medium text-black/85">
+                      {product.fabricComposition || product.description}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Accordion 2: Shipping Information */}
+              <div className="border-b border-black/10 pb-4">
+                <button 
+                  type="button"
+                  onClick={() => setIsShippingExpanded(!isShippingExpanded)}
+                  className="w-full flex items-center justify-between text-left text-sm font-black uppercase tracking-wider text-black py-2 cursor-pointer focus:outline-none select-none"
+                >
+                  <span className="flex items-center gap-2">
+                    <Truck size={16} className="text-black/75" /> Shipping Information
+                  </span>
+                  <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${isShippingExpanded ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                
+                {isShippingExpanded && (
+                  <div className="pt-4 pb-2 space-y-4 text-sm text-black/85 leading-relaxed transition-all duration-300 animate-in fade-in duration-300">
+                    <p className="font-medium text-black/85">
+                      We offer fast and reliable shipping on all orders. Processing time is 1-2 business days. Standard delivery typically takes 3-7 business days, depending on your location. You'll receive a tracking number once your order ships. If you need super fast or same day delivery contact our customer support agent +91 9790131444
+                    </p>
+                    <div>
+                      <Link href="/shipping-payment" className="inline-block bg-[#FEE2E2] hover:bg-[#FCA5A5] text-[#991B1B] text-[10px] font-black uppercase tracking-wider px-4 py-2 rounded-lg transition-colors">
+                        Learn more
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Accordion 3: Certified Quality */}
+              <div className="border-b border-black/10 pb-4">
+                <button 
+                  type="button"
+                  onClick={() => setIsQualityExpanded(!isQualityExpanded)}
+                  className="w-full flex items-center justify-between text-left text-sm font-black uppercase tracking-wider text-black py-2 cursor-pointer focus:outline-none select-none"
+                >
+                  <span className="flex items-center gap-2">
+                    <ClipboardList size={16} className="text-black/75" /> Certified Quality
+                  </span>
+                  <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${isQualityExpanded ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                
+                {isQualityExpanded && (
+                  <div className="pt-4 pb-2 space-y-4 text-sm text-black/85 leading-relaxed transition-all duration-300 animate-in fade-in duration-300">
+                    <p className="font-medium text-black/85">
+                      We take pride in delivering premium dry fish products that meet the highest standards of quality and safety. Our facility is FSSAI-certified and rated 5 stars for food hygiene and processing standards. Each batch is sourced from trusted fisheries, hygienically dried, and quality-checked to ensure freshness, purity, and great taste. Shop with confidence—you're getting the best.
+                    </p>
+                    <div>
+                      <Link href="/terms-conditions" className="inline-block bg-[#FEE2E2] hover:bg-[#FCA5A5] text-[#991B1B] text-[10px] font-black uppercase tracking-wider px-4 py-2 rounded-lg transition-colors">
+                        Learn more
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Accordion 4: Storage Information */}
+              <div className="border-b border-black/10 pb-4">
+                <button 
+                  type="button"
+                  onClick={() => setIsStorageExpanded(!isStorageExpanded)}
+                  className="w-full flex items-center justify-between text-left text-sm font-black uppercase tracking-wider text-black py-2 cursor-pointer focus:outline-none select-none"
+                >
+                  <span className="flex items-center gap-2">
+                    <Package size={16} className="text-black/75" /> Storage Information
+                  </span>
+                  <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${isStorageExpanded ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                
+                {isStorageExpanded && (
+                  <div className="pt-4 pb-2 space-y-4 text-sm text-black/85 leading-relaxed transition-all duration-300 animate-in fade-in duration-300">
+                    <p className="font-medium text-black/85">
+                      For best quality, store dry fish in a cool, dry, and well-ventilated area. In humid or warm climates, it's recommended to refrigerate the fish to preserve freshness and prevent spoilage. Always keep the product in an airtight container and away from moisture, direct sunlight, or strong odors.
+                    </p>
+                    <div>
+                      <Link href="/cancellation-returns" className="inline-block bg-[#FEE2E2] hover:bg-[#FCA5A5] text-[#991B1B] text-[10px] font-black uppercase tracking-wider px-4 py-2 rounded-lg transition-colors">
+                        Learn more
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-        )}
+        </div>
+
 
         {/* Floating Toast Notification */}
         {toast && (
@@ -582,6 +662,34 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
           </div>
         )}
       </main>
+
+      {/* Sticky Bottom Bar for Mobile/Tablet */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-black/10 py-3.5 px-6 shadow-[0_-10px_25px_rgba(0,0,0,0.06)] flex items-center justify-between gap-4 md:hidden">
+        <div className="flex-1">
+          <select 
+            value={selectedSize || ""} 
+            onChange={e => setSelectedSize(e.target.value)}
+            className="w-full bg-brand/5 border border-black/10 rounded-xl px-3 py-3 text-xs font-black text-black uppercase tracking-wider outline-none cursor-pointer"
+          >
+            {availableSizes.map(size => {
+              const varItem = variations.find(v => v.color === selectedColor && v.size === size);
+              const price = varItem?.salePrice || displayPrice;
+              return (
+                <option key={size} value={size}>
+                  {size} - ₹{price.toLocaleString()}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        
+        <button 
+          onClick={handleAddToCart}
+          className="flex-1 bg-[#991b1b] hover:bg-[#801414] text-white text-xs font-black uppercase tracking-[0.2em] py-3.5 rounded-xl transition-all shadow-md active:scale-95 text-center cursor-pointer"
+        >
+          {added ? "Added!" : "Add to cart"}
+        </button>
+      </div>
 
       {/* Size Guide Modal */}
       {isSizeGuideOpen && (

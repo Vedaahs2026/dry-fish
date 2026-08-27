@@ -10,6 +10,15 @@ interface Product {
   description: string | null;
   basePrice: number;
   imageUrl: string | null;
+  salePrice?: number | null;
+  images?: string | null;
+  colors?: string | null;
+  category?: string | null;
+  style?: string | null;
+  neckStyle?: string | null;
+  keyWords?: string | null;
+  avgRating?: number | string | null;
+  numReviews?: number | string | null;
 }
 
 interface ProductCarouselProps {
@@ -54,7 +63,12 @@ export default function ProductCarousel({ title, products }: ProductCarouselProp
                 salePrice: product.salePrice,
                 imageUrl: firstImage,
                 images: parsedImages,
-                categorySlug: product.category || ""
+                categorySlug: product.category || "",
+                style: product.style,
+                neckStyle: product.neckStyle,
+                keyWords: product.keyWords,
+                avgRating: product.avgRating,
+                numReviews: product.numReviews,
               }} 
             />
           );

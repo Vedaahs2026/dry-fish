@@ -22,25 +22,26 @@ export default async function CategoryPage({ params }: PageProps) {
   let isFromNav = false;
   let filterTypes: string | null = null;
 
+  const homeCatResult = await db.select()
+    .from(homepageCategories)
+    .limit(100);
+
+  let matchingHomeCat = homeCatResult.find(
+    (item) => item.name.toLowerCase().trim().replace(/\s+/g, "-") === slug || item.link === href
+  );
+
   if (menuResult.length > 0) {
     categoryName = menuResult[0].label;
     isFromNav = true;
     filterTypes = menuResult[0].filterTypes;
-  } else {
-    // Check homepage category grid cards
-    const homeCatResult = await db.select()
-      .from(homepageCategories)
-      .limit(100);
-      
-    // Find item matching the slug
-    const matchingHomeCat = homeCatResult.find(
-      (item) => item.name.toLowerCase().trim().replace(/\s+/g, "-") === slug || item.link === href
-    );
-
-    if (matchingHomeCat) {
-      categoryName = matchingHomeCat.name;
-      filterTypes = matchingHomeCat.filterTypes;
+    if (!matchingHomeCat) {
+      matchingHomeCat = homeCatResult.find(
+        (item) => item.name.toLowerCase() === categoryName.toLowerCase()
+      );
     }
+  } else if (matchingHomeCat) {
+    categoryName = matchingHomeCat.name;
+    filterTypes = matchingHomeCat.filterTypes;
   }
 
   // 2. If not found in either, show Not Found
@@ -147,6 +148,7 @@ export default async function CategoryPage({ params }: PageProps) {
         categoryName={categoryName}
         slug={slug}
         filterTypes={filterTypes}
+        categoryImages={matchingHomeCat?.imageUrl || null}
       />
     </div>
   );

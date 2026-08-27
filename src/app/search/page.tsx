@@ -22,6 +22,11 @@ interface Product {
   isFeatured: boolean | number | null;
   isCustomizable: boolean | number | null;
   sizes?: string[];
+  style?: string | null;
+  neckStyle?: string | null;
+  keyWords?: string | null;
+  avgRating?: number | string | null;
+  numReviews?: number | string | null;
 }
 
 const COLOR_MAP: Record<string, string> = {
@@ -71,7 +76,7 @@ function SearchResults() {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<"default" | "price-asc" | "price-desc">("default");
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
-  const [isDesktopFiltersOpen, setIsDesktopFiltersOpen] = useState(true);
+  const [isDesktopFiltersOpen, setIsDesktopFiltersOpen] = useState(false);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [activeThumb, setActiveThumb] = useState<"min" | "max">("min");
   const [currentPage, setCurrentPage] = useState(1);
@@ -512,104 +517,9 @@ function SearchResults() {
   return (
     <div className="w-full flex flex-col lg:flex-row items-stretch relative z-30">
       
-      {/* Mobile Show Filters Toggle Button */}
-      <div className="lg:hidden fixed top-16 left-4 z-40">
-        <button
-          onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
-          className="flex items-center justify-center bg-white border border-[#064e3b]/10 p-3.5 rounded-full text-[#064e3b] shadow-lg active:scale-95 transition-all cursor-pointer relative"
-        >
-          <SlidersHorizontal size={20} className="text-[#C5A059]" />
-          {isFilterOrSortActive && (
-            <span className="absolute -top-1.5 -right-1.5 bg-[#C5A059] text-white font-bold text-[9px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
-              {(selectedGender ? 1 : 0) + selectedColors.length + selectedSizes.length + (isPriceFilterActive ? 1 : 0)}
-            </span>
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Filter Drawer Overlay using Framer Motion */}
-      <AnimatePresence>
-        {isMobileFiltersOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden fixed inset-0 z-50 bg-[#1B3022]/60 backdrop-blur-sm"
-              onClick={() => setIsMobileFiltersOpen(false)}
-            />
-            {/* Drawer */}
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="lg:hidden fixed inset-y-0 left-0 z-[60] w-80 max-w-[85vw] bg-[#FFFDF6] shadow-2xl p-6 flex flex-col"
-            >
-              {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#064e3b]/5 mb-6 flex-shrink-0">
-                <h2 className="text-sm font-black uppercase tracking-[0.2em] text-[#064e3b]">Filters</h2>
-                <button
-                  onClick={() => setIsMobileFiltersOpen(false)}
-                  className="p-1 hover:bg-brand/5 rounded-lg transition-all text-[#064e3b]/60 hover:text-[#064e3b] cursor-pointer"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-
-              {/* Filter Content */}
-              <div className="flex-grow overflow-y-auto pr-1 pb-4 custom-scrollbar">
-                {renderFilters()}
-              </div>
-
-              {/* Drawer Footer */}
-              <div className="pt-4 border-t border-[#064e3b]/5 mt-auto flex gap-4 flex-shrink-0 bg-[#FFFDF6]">
-                <button
-                  onClick={handleClearFilters}
-                  disabled={!isFilterOrSortActive}
-                  className="flex-1 py-3.5 rounded-xl border border-[#064e3b]/10 text-xs font-black uppercase tracking-widest text-[#064e3b] disabled:opacity-40 transition-all cursor-pointer text-center"
-                >
-                  Clear All
-                </button>
-                <button
-                  onClick={() => setIsMobileFiltersOpen(false)}
-                  className="flex-[2] py-3.5 rounded-xl bg-[#eab308] text-[#064e3b] text-xs font-black uppercase tracking-widest shadow-lg active:scale-95 transition-all cursor-pointer text-center"
-                >
-                  Apply & Close
-                </button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-      {/* Left Column: Desktop Filter Sidebar Panel */}
-      {isDesktopFiltersOpen && (
-        <aside
-          className="hidden lg:block w-60 flex-shrink-0 bg-[#FFFDF6] border-r border-[#064e3b]/10 p-4 lg:px-4 lg:py-6 rounded-none lg:sticky lg:top-12 lg:h-[calc(100vh-48px)] lg:overflow-y-auto custom-scrollbar"
-        >
-          {/* Sidebar Header */}
-          <div className="flex items-center justify-between pb-4 border-b border-[#064e3b]/5 mb-6">
-            <h2 className="text-sm font-black uppercase tracking-[0.2em] text-[#064e3b]">Filters</h2>
-            {isFilterOrSortActive && (
-              <button
-                onClick={handleClearFilters}
-                className="text-[10px] font-black uppercase text-red-600 hover:text-red-700 transition-colors cursor-pointer"
-              >
-                Clear All
-              </button>
-            )}
-          </div>
-
-          {renderFilters()}
-        </aside>
-      )}
-
       {/* Right Column: Products Grid & Header */}
       <div className="flex-grow min-w-0 px-6 sm:px-8 lg:px-12 py-8 lg:py-10 max-w-7xl mx-auto w-full">
-        {/* Header Title & Description & Desktop Toggle */}
+        {/* Header Title & Description */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8 md:mb-10 text-left border-b border-[#064e3b]/5 pb-6">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
@@ -622,13 +532,6 @@ function SearchResults() {
               Found {filteredAndSortedProducts.length} elegant {filteredAndSortedProducts.length === 1 ? "piece" : "pieces"} for "{query}"
             </p>
           </div>
-          <button
-            onClick={() => setIsDesktopFiltersOpen(!isDesktopFiltersOpen)}
-            className="hidden lg:flex items-center gap-2 bg-white border border-[#064e3b]/10 hover:border-[#064e3b]/30 px-5 py-3 rounded-2xl text-xs font-black uppercase tracking-widest text-[#064e3b] shadow-sm hover:bg-[#eab308]/5 transition-all flex-shrink-0 cursor-pointer"
-          >
-            <SlidersHorizontal size={14} className="text-[#C5A059]" />
-            {isDesktopFiltersOpen ? "Hide Filters" : "Show Filters"}
-          </button>
         </div>
 
         {/* Product Grid / Empty Filter State */}
@@ -667,7 +570,12 @@ function SearchResults() {
                       salePrice: product.salePrice,
                       imageUrl: firstImage,
                       images: parsedImages,
-                      categorySlug: product.category || "all"
+                      categorySlug: product.category || "all",
+                      style: product.style,
+                      neckStyle: product.neckStyle,
+                      keyWords: product.keyWords,
+                      avgRating: product.avgRating,
+                      numReviews: product.numReviews,
                     }} 
                   />
                 );

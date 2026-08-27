@@ -43,12 +43,14 @@ export default function CategorySettingsPage() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [bannerImageUrl, setBannerImageUrl] = useState("");
   const [promoText, setPromoText] = useState("");
   const [actionText, setActionText] = useState("Shop Now");
   const [link, setLink] = useState("");
   const [order, setOrder] = useState(0);
   const [filterTypes, setFilterTypes] = useState("");
   const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [isUploadingBanner, setIsUploadingBanner] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -78,6 +80,7 @@ export default function CategorySettingsPage() {
     setEditingId(null);
     setName("");
     setImageUrl("");
+    setBannerImageUrl("");
     setPromoText("");
     setActionText("Shop Now");
     setLink("");
@@ -116,6 +119,37 @@ export default function CategorySettingsPage() {
     }
   };
 
+  const handleBannerUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploadingBanner(true);
+    setError("");
+    setSuccess("");
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setBannerImageUrl(data.url);
+        setSuccess("Banner image uploaded to Cloudinary!");
+      } else {
+        setError(data.error || "Banner upload failed.");
+      }
+    } catch (err) {
+      setError("Error uploading banner image.");
+    } finally {
+      setIsUploadingBanner(false);
+      e.target.value = "";
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !imageUrl.trim()) return;
@@ -125,10 +159,11 @@ export default function CategorySettingsPage() {
     setSuccess("");
 
     const defaultLink = `/category/${name.toLowerCase().trim().replace(/\s+/g, "-")}`;
+    const combinedImages = `${imageUrl.trim()},${(bannerImageUrl || imageUrl).trim()}`;
     const payload = {
       id: editingId,
       name: name.trim(),
-      imageUrl: imageUrl.trim(),
+      imageUrl: combinedImages,
       promoText: name.trim(), // Defaulting to category name
       actionText: "Shop Now", // Default button text
       link: defaultLink,
@@ -165,7 +200,14 @@ export default function CategorySettingsPage() {
   const handleEditClick = (item: HomepageCategory) => {
     setEditingId(item.id);
     setName(item.name);
-    setImageUrl(item.imageUrl);
+    if (item.imageUrl && item.imageUrl.includes(",")) {
+      const parts = item.imageUrl.split(",");
+      setImageUrl(parts[0] || "");
+      setBannerImageUrl(parts[1] || "");
+    } else {
+      setImageUrl(item.imageUrl || "");
+      setBannerImageUrl(item.imageUrl || "");
+    }
     setPromoText(item.promoText);
     setActionText(item.actionText);
     setLink(item.link || "");
@@ -290,19 +332,19 @@ export default function CategorySettingsPage() {
               />
             </div>
 
-            <div>
+             <div>
               <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">
-                Category Image URL (Upload OR Paste URL)
+                Category Card Image (First Image)
               </label>
               <input
                 type="text"
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
-                placeholder="Paste direct Cloudinary URL OR upload local image below..."
+                placeholder="Paste direct URL OR upload local image below..."
                 className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-sm font-semibold text-black outline-none transition-all placeholder:text-black/20"
                 required
               />
-              <div className="relative border-2 border-dashed border-brand/10 hover:border-[#C5A059]/40 bg-brand-light/50 hover:bg-white rounded-2xl h-24 transition-all flex flex-col items-center justify-center cursor-pointer mt-3">
+              <div className="relative border-2 border-dashed border-brand/10 hover:border-[#C5A059]/40 bg-brand-light/50 hover:bg-white rounded-2xl h-20 transition-all flex flex-col items-center justify-center cursor-pointer mt-3">
                 <input
                   type="file"
                   accept="image/*"
@@ -312,14 +354,47 @@ export default function CategorySettingsPage() {
                 />
                 {isUploadingImage ? (
                   <div className="flex flex-col items-center">
-                    <Loader2 className="w-6 h-6 text-[#C5A059] animate-spin mb-1" />
-                    <span className="text-[9px] font-black text-black/40 uppercase tracking-widest">Uploading image...</span>
+                    <Loader2 className="w-5 h-5 text-[#C5A059] animate-spin mb-1" />
+                    <span className="text-[9px] font-black text-black/40 uppercase tracking-widest">Uploading card image...</span>
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center text-center p-3">
-                    <Upload className="w-5 h-5 text-[#C5A059] mb-1" />
+                  <div className="flex flex-col items-center text-center p-2">
+                    <Upload className="w-4 h-4 text-[#C5A059] mb-1" />
                     <p className="text-xs font-bold text-black/60">Click or Drag Files here</p>
-                    <p className="text-[10px] text-black/35 font-medium mt-0.5">Supports Images (PNG, JPG, WEBP)</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">
+                Category Page Banner Image (Second Image)
+              </label>
+              <input
+                type="text"
+                value={bannerImageUrl}
+                onChange={(e) => setBannerImageUrl(e.target.value)}
+                placeholder="Paste direct URL OR upload banner image below..."
+                className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-sm font-semibold text-black outline-none transition-all placeholder:text-black/20"
+                required
+              />
+              <div className="relative border-2 border-dashed border-brand/10 hover:border-[#C5A059]/40 bg-brand-light/50 hover:bg-white rounded-2xl h-20 transition-all flex flex-col items-center justify-center cursor-pointer mt-3">
+                <input
+                  type="file"
+                  accept="image/*"
+                  disabled={isUploadingBanner}
+                  onChange={handleBannerUpload}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+                {isUploadingBanner ? (
+                  <div className="flex flex-col items-center">
+                    <Loader2 className="w-5 h-5 text-[#C5A059] animate-spin mb-1" />
+                    <span className="text-[9px] font-black text-black/40 uppercase tracking-widest">Uploading banner...</span>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center text-center p-2">
+                    <Upload className="w-4 h-4 text-[#C5A059] mb-1" />
+                    <p className="text-xs font-bold text-black/60">Click or Drag Files here</p>
                   </div>
                 )}
               </div>
@@ -376,7 +451,7 @@ export default function CategorySettingsPage() {
                     <div className="flex gap-4 items-center">
                       <div className="w-20 h-20 bg-white rounded-full overflow-hidden shadow-sm border-[3px] border-[#064e3b]/20 relative flex-shrink-0">
                         <img 
-                          src={item.imageUrl} 
+                          src={item.imageUrl && item.imageUrl.includes(",") ? item.imageUrl.split(",")[0] : item.imageUrl} 
                           alt={item.name} 
                           className="w-full h-full object-cover" 
                           onError={e => {

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Offer = {
   id: number;
@@ -25,8 +26,13 @@ function parseOfferText(text: string) {
 }
 
 export default function AnnouncementBar() {
+  const pathname = usePathname();
   const [offers, setOffers] = useState<Offer[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   useEffect(() => {
     async function fetchOffers() {

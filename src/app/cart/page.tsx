@@ -453,7 +453,7 @@ export default function CartPage() {
                           : 'text-black/40 bg-brand/5'
                           }`}>
                           {isBespoke && <Sparkles size={10} />}
-                          Customized: {item.customizations.type || "Standard"}
+                          Customized: {item.customizations?.type || "Standard"}
                         </span>
                       </div>
                     </div>
@@ -482,14 +482,31 @@ export default function CartPage() {
                         </span>
                       )}
 
-                      <button
-                        type="button"
-                        onClick={() => openQtyModal(item)}
-                        className="bg-brand/5 hover:bg-brand/10 text-black text-xs font-bold py-2.5 px-4 rounded-xl cursor-pointer transition-colors outline-none border border-brand/10 flex items-center space-x-1"
-                      >
-                        <span>Qty: {item.quantity}</span>
-                        <ChevronDown size={14} className="text-black/50" />
-                      </button>
+                      <div className="flex items-center border border-brand/20 bg-brand/5 rounded-xl overflow-hidden h-9">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (item.quantity > 1) {
+                              setQuantity(item.id, item.quantity - 1);
+                            }
+                          }}
+                          className="px-3 h-full hover:bg-brand/10 transition-colors flex items-center justify-center text-black/50 hover:text-black cursor-pointer"
+                        >
+                          <Minus size={12} className="stroke-[3]" />
+                        </button>
+                        <span className="px-3 text-xs font-black text-black select-none text-center min-w-[2.5rem]">
+                          {item.quantity}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setQuantity(item.id, item.quantity + 1);
+                          }}
+                          className="px-3 h-full hover:bg-brand/10 transition-colors flex items-center justify-center text-black/50 hover:text-black cursor-pointer"
+                        >
+                          <Plus size={12} className="stroke-[3]" />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Remove Button */}

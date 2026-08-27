@@ -5,34 +5,29 @@ import { Plus, Package, Trash2, Edit3, X, Star, Loader2, Check, Tag, Sparkles, S
 import { MALE_MEASUREMENTS, FEMALE_MEASUREMENTS } from "@/constants/measurements";
 
 const SIZE_SYSTEMS = {
-  apparel: {
-    label: "Standard Apparel (S/M/L)",
-    sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"]
+  weight: {
+    label: "Weight Variations (e.g. 100g, 250g, 500g, 1kg)",
+    sizes: ["100g", "200g", "250g", "500g", "1kg"]
   },
-  waist: {
-    label: "Pants / Waist (Numeric)",
-    sizes: ["28", "30", "32", "34", "36", "38", "40"]
+  pack: {
+    label: "Pack Quantity (e.g. Pack of 1, Pack of 3)",
+    sizes: ["Pack of 1", "Pack of 2", "Pack of 5", "Pack of 10"]
   },
-  footwear: {
-    label: "Footwear UK Sizes (Shoes/Flip Flops)",
-    sizes: ["5", "6", "7", "8", "9", "10", "11", "12"]
-  },
-  oneSize: {
-    label: "Free Size (One Size)",
-    sizes: ["One Size"]
+  fishSize: {
+    label: "Fish Size (e.g. Small, Medium, Large)",
+    sizes: ["Small", "Medium", "Large"]
   },
   standard: {
-    label: "No Size (Watches, Bags, Accessories)",
+    label: "No Weight/Size Variations (Standard)",
     sizes: ["Standard"]
   }
 };
 
 const inferSizeSystem = (sizes: string[]): keyof typeof SIZE_SYSTEMS => {
-  if (sizes.includes("One Size")) return "oneSize";
   if (sizes.includes("Standard")) return "standard";
-  if (sizes.some(s => SIZE_SYSTEMS.waist.sizes.includes(s))) return "waist";
-  if (sizes.some(s => SIZE_SYSTEMS.footwear.sizes.includes(s))) return "footwear";
-  return "apparel";
+  if (sizes.some(s => SIZE_SYSTEMS.pack.sizes.includes(s))) return "pack";
+  if (sizes.some(s => SIZE_SYSTEMS.fishSize.sizes.includes(s))) return "fishSize";
+  return "weight";
 };
 
 const PRESET_COLORS = [
@@ -51,10 +46,7 @@ const PRESET_COLORS = [
 ];
 
 const DEFAULT_SUGGESTIONS: Record<string, string[]> = {
-  men: ["Shirt", "T-Shirt", "Pants & Joggers", "Suits & Blazers", "Ethnic Wear"],
-  women: ["Dresses", "Tops & Tees", "Shirts", "Trousers", "Sarees", "Kurtas & Kurtis", "Blazers & Coats"],
-  kids: ["T-Shirts", "Shirts", "Pants", "Dresses"],
-  unisex: ["Shirt", "T-Shirt", "Pants & Joggers", "Suits & Blazers", "Ethnic Wear"]
+  unisex: ["Anchovies", "Sardines", "Tuna", "Prawns", "Ribbon Fish"]
 };
 
 interface Variation { size: string; color: string; stock: number; sku: string; basePrice: number; salePrice: number; }
@@ -110,13 +102,13 @@ export default function ProductManagement() {
   const [keyWords, setKeyWords] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
   const [specRows, setSpecRows] = useState<{ id: string; key: string; value: string; isCustom: boolean }[]>(() => [
-    { id: "style-init", key: "Style", value: "", isCustom: false },
-    { id: "fabric-init", key: "Fabric", value: "", isCustom: false },
-    { id: "weave-init", key: "Weave", value: "", isCustom: false },
-    { id: "neck-style-init", key: "Neck Style", value: "", isCustom: false },
+    { id: "weight-init", key: "Weight", value: "", isCustom: false },
+    { id: "shelflife-init", key: "Shelf Life", value: "", isCustom: false },
+    { id: "ingredients-init", key: "Ingredients", value: "", isCustom: false },
+    { id: "origin-init", key: "Origin", value: "", isCustom: false },
   ]);
 
-  const PRESET_SPEC_KEYS = ["Style", "Fabric", "Weave", "Neck Style"];
+  const PRESET_SPEC_KEYS = ["Weight", "Shelf Life", "Ingredients", "Origin"];
 
   const handleAddPreset = (key: string) => {
     setSpecRows(prev => [
@@ -175,12 +167,11 @@ export default function ProductManagement() {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [variations, setVariations] = useState<Variation[]>([]);
-  const [sizeSystem, setSizeSystem] = useState<keyof typeof SIZE_SYSTEMS>("apparel");
+  const [sizeSystem, setSizeSystem] = useState<keyof typeof SIZE_SYSTEMS>("weight");
   const [customSizes, setCustomSizes] = useState<Record<string, string[]>>({
-    apparel: [],
-    waist: [],
-    footwear: [],
-    oneSize: [],
+    weight: [],
+    pack: [],
+    fishSize: [],
     standard: []
   });
   const [customSizeInput, setCustomSizeInput] = useState("");
@@ -476,20 +467,19 @@ export default function ProductManagement() {
     setIsFeatured(false); setIsCustomizable(false); setTags("");
     setStyle(""); setFabricComposition(""); setWeave(""); setNeckStyle(""); setKeyWords(""); setFilterCategory("");
     setSpecRows([
-      { id: Math.random().toString(), key: "Style", value: "", isCustom: false },
-      { id: Math.random().toString(), key: "Fabric", value: "", isCustom: false },
-      { id: Math.random().toString(), key: "Weave", value: "", isCustom: false },
-      { id: Math.random().toString(), key: "Neck Style", value: "", isCustom: false },
+      { id: Math.random().toString(), key: "Weight", value: "", isCustom: false },
+      { id: Math.random().toString(), key: "Shelf Life", value: "", isCustom: false },
+      { id: Math.random().toString(), key: "Ingredients", value: "", isCustom: false },
+      { id: Math.random().toString(), key: "Origin", value: "", isCustom: false },
     ]);
     setColorImages({});
     setColorImageInputs({});
     setSelectedSizes([]); setSelectedColors([]); setVariations([]);
-    setSizeSystem("apparel");
+    setSizeSystem("weight");
     setCustomSizes({
-      apparel: [],
-      waist: [],
-      footwear: [],
-      oneSize: [],
+      weight: [],
+      pack: [],
+      fishSize: [],
       standard: []
     });
     setCustomSizeInput("");
@@ -509,10 +499,9 @@ export default function ProductManagement() {
         
         // Clear previous custom sizes
         setCustomSizes({
-          apparel: [],
-          waist: [],
-          footwear: [],
-          oneSize: [],
+          weight: [],
+          pack: [],
+          fishSize: [],
           standard: []
         });
 
@@ -684,11 +673,15 @@ export default function ProductManagement() {
       const payload = { 
         id: editingId, name, description, images: imagesToSave, variations, 
         avgRating, numReviews, category, gender, colors: selectedColors, tags, isFeatured,
-        isCustomizable,
-        enabledMeasurements: JSON.stringify(enabledMeasurements),
-        style: null, fabricComposition: null, weave: null, neckStyle: null, keyWords: null,
-        filterCategory: filterCategory ? filterCategory.trim() : null,
-        specifications: specsObj
+        isCustomizable: false,
+        enabledMeasurements: null,
+        style: style ? style.trim() : null,
+        fabricComposition: fabricComposition ? fabricComposition.trim() : null,
+        weave: weave ? weave.trim() : null,
+        neckStyle: neckStyle ? neckStyle.trim() : null,
+        keyWords: keyWords ? keyWords.trim() : null,
+        filterCategory: null,
+        specifications: null
       };
       
       const res = await fetch("/api/admin/products", {
@@ -895,7 +888,7 @@ export default function ProductManagement() {
               <div className="space-y-5">
                 <div>
                   <label className={LABEL}>Product Name *</label>
-                  <input value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Kerala Cotton Kasavu Nighty" className={`${INPUT} ${nameError ? 'border-red-500 focus:border-red-500' : ''}`} required />
+                  <input value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Premium Sun-Dried Anchovies" className={`${INPUT} ${nameError ? 'border-red-500 focus:border-red-500' : ''}`} required />
                   {isNameChecking && (
                     <span className="text-[10px] text-black/40 mt-1 block">Checking name availability...</span>
                   )}
@@ -903,134 +896,55 @@ export default function ProductManagement() {
                     <span className="text-[10px] font-bold text-red-500 mt-1 block">{nameError}</span>
                   )}
                 </div>
-                <div className="grid grid-cols-2 gap-5">
-                  <div>
-                    <label className={LABEL}>Gender *</label>
-                    <select value={gender} onChange={e => setGender(e.target.value)} className={INPUT}>
-                      <option value="unisex">Unisex</option>
-                      <option value="men">Men</option>
-                      <option value="women">Women</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className={LABEL}>Category *</label>
-                    <select
-                      value={category}
-                      onChange={e => setCategory(e.target.value)}
-                      className={INPUT}
-                      required
-                    >
-                      <option value="">Select Category...</option>
-                      {availableCategories.map((catName) => (
-                        <option key={catName} value={catName}>
-                          {catName}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                <div>
+                  <label className={LABEL}>Category *</label>
+                  <select
+                    value={category}
+                    onChange={e => setCategory(e.target.value)}
+                    className={INPUT}
+                    required
+                  >
+                    <option value="">Select Category...</option>
+                    {availableCategories.map((catName) => (
+                      <option key={catName} value={catName}>
+                        {catName}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div>
-                  <label className={LABEL}>Description</label>
-                  <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Fabric, style, size details…" rows={3} className={`${INPUT} resize-none`} />
+                  <label className={LABEL}>Description (Displays at the bottom of the page)</label>
+                  <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Enter general description, stories, or recipe information for this product..." rows={4} className={`${INPUT} resize-y min-h-[80px]`} />
+                </div>
+                <div>
+                  <label className={LABEL}>Product Details (Displays in dropdown below Add to Cart)</label>
+                  <textarea value={fabricComposition} onChange={e => setFabricComposition(e.target.value)} placeholder="Enter details like Weight, Shelf Life, Ingredients, and Origin here. Newlines and spaces will be preserved exactly." rows={6} className={`${INPUT} resize-y min-h-[120px]`} />
                 </div>
                 <div>
                   <label className={LABEL}>Tags (comma-separated)</label>
-                  <input value={tags} onChange={e => setTags(e.target.value)} placeholder="cotton, festive, handloom, bestseller…" className={INPUT} />
-                </div>
-                <div>
-                  <label className={LABEL}>Filter Category (Sidebar Category Filter Name)</label>
-                  <input
-                    type="text"
-                    value={filterCategory}
-                    onChange={(e) => setFilterCategory(e.target.value)}
-                    placeholder="e.g. Shirts, Blazers & Coats, Trousers"
-                    className={INPUT}
-                  />
-                  <p className="mt-1.5 text-[10px] text-black/50 font-medium leading-relaxed">
-                    Determines which checkbox option in the storefront's sidebar categories filter this product belongs to. Type any custom category (e.g. Blazers & Coats).
-                  </p>
+                  <input value={tags} onChange={e => setTags(e.target.value)} placeholder="dry fish, premium, salted, clean…" className={INPUT} />
                 </div>
 
-                {/* Optional & Custom Specifications Dynamic Editor */}
-                <div className="border-t border-brand/10 pt-6">
-                  <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-4">
-                    <div>
-                      <h4 className="text-xs font-black text-black uppercase tracking-wider">Product Specifications</h4>
-                      <p className="text-[10px] text-black/40 font-medium mt-0.5">Optional properties and custom specifications for this product.</p>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {PRESET_SPEC_KEYS.filter(k => !specRows.some(r => r.key.toLowerCase() === k.toLowerCase())).length > 0 && (
-                        <select
-                          onChange={(e) => {
-                            if (e.target.value) {
-                              handleAddPreset(e.target.value);
-                              e.target.value = "";
-                            }
-                          }}
-                          className="bg-brand/5 border border-brand/10 hover:border-[#C5A059]/40 rounded-xl px-3 py-1.5 text-xs font-bold text-black outline-none transition-all cursor-pointer"
-                        >
-                          <option value="">+ Add Preset Specification...</option>
-                          {PRESET_SPEC_KEYS
-                            .filter(k => !specRows.some(r => r.key.toLowerCase() === k.toLowerCase()))
-                            .map(k => (
-                              <option key={k} value={k}>{k}</option>
-                            ))
-                          }
-                        </select>
-                      )}
-                      
-                      <button
-                        type="button"
-                        onClick={handleAddCustom}
-                        className="bg-brand/5 border border-brand/10 hover:border-[#C5A059]/40 hover:bg-[#C5A059]/10 rounded-xl px-3 py-1.5 text-xs font-bold text-black transition-all flex items-center gap-1"
-                      >
-                        <Plus size={12} /> Add Custom Attribute
-                      </button>
-                    </div>
+                <div className="grid grid-cols-2 gap-5">
+                  <div>
+                    <label className={LABEL}>Main Badge Tag (e.g. PATTARAI MADE)</label>
+                    <input value={neckStyle} onChange={e => setNeckStyle(e.target.value)} placeholder="e.g. PATTARAI MADE" className={INPUT} />
                   </div>
-                  
-                  {specRows.length === 0 ? (
-                    <div className="bg-brand/5 rounded-2xl p-6 text-center border border-dashed border-brand/10">
-                      <p className="text-xs text-black/40 font-medium">No specifications added yet. Add style, fabric, or other attributes above.</p>
-                    </div>
-                  ) : (
-                    <div className="space-y-3">
-                      {specRows.map((row) => (
-                        <div key={row.id} className="flex gap-3 items-center bg-brand/5 p-3 rounded-2xl border border-brand/5">
-                          <div className="w-1/3">
-                            <input
-                              type="text"
-                              value={row.key}
-                              onChange={(e) => handleUpdateRow(row.id, { key: e.target.value })}
-                              placeholder="Attribute Name"
-                              disabled={!row.isCustom}
-                              className={`w-full bg-brand/5 border border-transparent rounded-xl px-3 py-2 text-xs font-bold text-black outline-none ${
-                                !row.isCustom ? "opacity-60 cursor-not-allowed bg-transparent" : "focus:border-[#C5A059]/30"
-                              }`}
-                            />
-                          </div>
-                          <div className="flex-1">
-                            <input
-                              type="text"
-                              value={row.value}
-                              onChange={(e) => handleUpdateRow(row.id, { value: e.target.value })}
-                              placeholder={`Value for ${row.key || "attribute"}`}
-                              className="w-full bg-[#FFFDF6] border border-brand/10 focus:border-[#C5A059]/30 rounded-xl px-3 py-2 text-xs font-semibold text-black outline-none"
-                            />
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => handleRemoveRow(row.id)}
-                            className="p-2 text-black/40 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all"
-                            title="Remove attribute"
-                          >
-                            <Trash2 size={14} />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <div>
+                    <label className={LABEL}>Key Attributes (max 2, comma-separated, e.g. OMEGA3, MID SALT)</label>
+                    <input value={keyWords} onChange={e => setKeyWords(e.target.value)} placeholder="e.g. OMEGA3, MID SALT" className={INPUT} />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-5">
+                  <div>
+                    <label className={LABEL}>Top Badges (comma-separated, e.g. Fast Shipping, Branded pack)</label>
+                    <input value={weave} onChange={e => setWeave(e.target.value)} placeholder="e.g. Fast Shipping, Branded pack" className={INPUT} />
+                  </div>
+                  <div>
+                    <label className={LABEL}>Characteristics / Badges (comma-separated, e.g. 100% Natural, No Preservatives)</label>
+                    <input value={style} onChange={e => setStyle(e.target.value)} placeholder="e.g. 100% Natural, No Preservatives" className={INPUT} />
+                  </div>
                 </div>
                 <div className="flex items-center justify-between p-6 bg-brand/5 rounded-[2.5rem] border border-brand/10 transition-all hover:bg-brand/[0.08]">
                   <div className="flex items-center space-x-4">
@@ -1053,143 +967,32 @@ export default function ProductManagement() {
               </div>
             </div>
 
-            {/* ── Section 2: Customization Settings ── */}
+            {/* ── Section 2: Inventory Overview ── */}
             <div>
-              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">2</span> 
-                Customization Settings
-              </h3>
-              <div className="bg-brand/5 rounded-[2.5rem] p-8 border border-brand/10">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-brand/10 rounded-2xl text-black">
-                      <Scissors size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black text-black uppercase tracking-widest">Enable Custom Fit</p>
-                      <p className="text-[10px] text-black/40 font-medium">Allow users to provide bespoke measurements for this product</p>
-                    </div>
-                  </div>
-                  <button 
-                    type="button" 
-                    onClick={() => setIsCustomizable(!isCustomizable)} 
-                    className={`w-14 h-7 rounded-full transition-all relative flex items-center px-1 ${isCustomizable ? "bg-brand-accent shadow-[0_0_15px_rgba(197,160,89,0.3)]" : "bg-brand/20"}`}
-                  >
-                    <div className={`w-5 h-5 rounded-full bg-white shadow-lg transition-transform duration-300 ease-out ${isCustomizable ? "translate-x-7" : "translate-x-0"}`} />
-                  </button>
-                </div>
-
-                {isCustomizable && (
-                  <div className="animate-in fade-in slide-in-from-top-4 duration-500">
-                    <div className="mb-4">
-                      <p className="text-[10px] font-black text-black/40 uppercase tracking-widest mb-4 border-b border-brand/5 pb-2">Select measurements to capture from user</p>
-                    </div>
-                    {gender === "unisex" ? (
-                      <div className="py-8 text-center text-black/30 bg-white/50 rounded-2xl border border-dashed border-brand/10">
-                        <p className="text-[10px] font-bold uppercase tracking-widest">Please select Men or Women gender to configure measurements</p>
-                      </div>
-                    ) : (
-                      <div className="space-y-6">
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                          {Array.from(new Set([
-                            ...(gender === "men" ? MALE_MEASUREMENTS : FEMALE_MEASUREMENTS),
-                            ...customMeasurements
-                          ])).map(m => (
-                            <button
-                              key={m}
-                              type="button"
-                              onClick={() => toggleMeasurement(m)}
-                              className={`flex items-center space-x-3 p-4 rounded-2xl border transition-all ${
-                                enabledMeasurements.includes(m)
-                                  ? "bg-brand text-[#064e3b] border-brand shadow-lg"
-                                  : "bg-white text-black/60 border-brand/5 hover:border-brand/20"
-                              }`}
-                            >
-                              <div className={`w-5 h-5 rounded-md flex items-center justify-center border transition-all ${
-                                enabledMeasurements.includes(m) ? "bg-white border-white text-black" : "bg-brand/5 border-brand/10"
-                              }`}>
-                                {enabledMeasurements.includes(m) && <Check size={12} strokeWidth={4} />}
-                              </div>
-                              <span className="text-[10px] font-black uppercase tracking-widest truncate">{m}</span>
-                            </button>
-                          ))}
-                        </div>
-
-                        {/* Add Custom Measurement Button/Input */}
-                        <div className="flex items-center gap-3 p-4 bg-white/50 rounded-2xl border border-brand/10 border-dashed">
-                          <input 
-                            type="text"
-                            value={newMeasurementInput}
-                            onChange={(e) => setNewMeasurementInput(e.target.value)}
-                            placeholder="Add custom measurement (e.g. Belt Size)..."
-                            className="flex-1 bg-transparent border-none text-[10px] font-bold uppercase tracking-widest outline-none placeholder:text-black/20"
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                e.preventDefault();
-                                if (newMeasurementInput.trim()) {
-                                  setCustomMeasurements(prev => [...prev, newMeasurementInput.trim()]);
-                                  setEnabledMeasurements(prev => [...prev, newMeasurementInput.trim()]);
-                                  setNewMeasurementInput("");
-                                }
-                              }
-                            }}
-                          />
-                          <button 
-                            type="button"
-                            onClick={() => {
-                              if (newMeasurementInput.trim()) {
-                                setCustomMeasurements(prev => [...prev, newMeasurementInput.trim()]);
-                                setEnabledMeasurements(prev => [...prev, newMeasurementInput.trim()]);
-                                setNewMeasurementInput("");
-                              }
-                            }}
-                            className="p-2 bg-brand text-[#064e3b] rounded-lg hover:scale-110 transition-transform shadow-md"
-                          >
-                            <Plus size={14} />
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {enabledMeasurements.length > 0 && (
-                      <div className="mt-6 pt-6 border-t border-brand/10 flex items-center justify-between">
-                        <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Total Enabled: {enabledMeasurements.length}</span>
-                        <button type="button" onClick={() => setEnabledMeasurements([])} className="text-[10px] font-black text-red-400 uppercase tracking-widest hover:text-red-600 transition-colors">Clear All</button>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* ── Section 3: Inventory Overview ── */}
-            <div>
-              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">3</span> Inventory Overview</h3>
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">2</span> Inventory Overview</h3>
               <div className="p-5 bg-brand/5 rounded-2xl flex items-center justify-between">
                 <span className="text-[10px] font-black text-black/40 uppercase tracking-widest">Total Combined Stock (All variations)</span>
                 <span className="text-2xl font-black text-black">{totalStock}</span>
               </div>
             </div>
 
-            {/* ── Section 4: Available Sizes ── */}
+            {/* ── Section 3: Available Weights / Pack Sizes ── */}
             <div className="space-y-4">
               <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">4</span> 
-                Available Sizes
+                <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">3</span> 
+                Available Weights / Pack Sizes
               </h3>
               
               <div>
                 <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2">
-                  Select Size Chart System
+                  Select Package Weight/Size System
                 </label>
                 <select
                   value={sizeSystem}
                   onChange={(e) => {
                     const newSystem = e.target.value as keyof typeof SIZE_SYSTEMS;
                     setSizeSystem(newSystem);
-                    if (newSystem === "oneSize") {
-                      setSelectedSizes(["One Size"]);
-                    } else if (newSystem === "standard") {
+                    if (newSystem === "standard") {
                       setSelectedSizes(["Standard"]);
                     } else {
                       setSelectedSizes([]);
@@ -1257,164 +1060,24 @@ export default function ProductManagement() {
               </div>
             </div>
 
-            {/* ── Section 5: Available Colors ── */}
+            {/* ── Section 4: Product Images ── */}
             <div>
               <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">5</span> 
-                Available Colors
-              </h3>
-              <div className="space-y-6">
-                {/* Preset Colors */}
-                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
-                  {PRESET_COLORS.map(color => (
-                    <button
-                      key={color.name}
-                      type="button"
-                      onClick={() => toggleColor(color.name)}
-                      className={`group relative flex flex-col items-center space-y-2 p-3 rounded-2xl border transition-all ${
-                        selectedColors.includes(color.name) 
-                          ? "bg-brand border-brand shadow-lg scale-105" 
-                          : "bg-white border-brand/5 hover:border-brand/20"
-                      }`}
-                    >
-                      <div 
-                        className={`w-8 h-8 rounded-full border border-black/5 shadow-inner transition-transform group-hover:scale-110 ${selectedColors.includes(color.name) ? "ring-2 ring-white ring-offset-2 ring-offset-brand" : ""}`}
-                        style={{ backgroundColor: color.hex }}
-                      />
-                      <span className={`text-[8px] font-black uppercase tracking-tighter text-center line-clamp-1 ${selectedColors.includes(color.name) ? "text-white" : "text-black/40"}`}>
-                        {color.name}
-                      </span>
-                      {selectedColors.includes(color.name) && (
-                        <div className="absolute -top-1 -right-1 w-4 h-4 bg-brand-accent text-white rounded-full flex items-center justify-center shadow-md">
-                          <Check size={8} strokeWidth={4} />
-                        </div>
-                      )}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Selected Custom Colors */}
-                {selectedColors.filter(c => !PRESET_COLORS.some(p => p.name === c)).length > 0 && (
-                  <div className="space-y-3 mt-4">
-                    <p className="text-[10px] font-black text-black uppercase tracking-widest">Selected Custom Colors</p>
-                    <div className="flex flex-wrap gap-3">
-                      {selectedColors.filter(c => !PRESET_COLORS.some(p => p.name === c)).map(color => {
-                        const name = color.includes("::") ? color.split("::")[0] : color;
-                        const hex = color.includes("::") ? color.split("::")[1] : color;
-                        return (
-                          <div 
-                            key={color} 
-                            className="flex items-center space-x-2 bg-brand/5 border border-brand/10 rounded-full px-3 py-1.5 hover:bg-red-50 hover:border-red-200 hover:text-red-500 transition-all group cursor-pointer"
-                            onClick={() => toggleColor(color)}
-                            title="Click to remove"
-                          >
-                            <div 
-                              className="w-3.5 h-3.5 rounded-full border border-black/10 shadow-sm" 
-                              style={{ backgroundColor: hex }}
-                            />
-                            <span className="text-[10px] font-black uppercase tracking-wider">{name}</span>
-                            <span className="text-[8px] text-black/35 group-hover:text-red-400 font-bold">✕</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-
-                {/* Custom Color Input */}
-                <div className="flex items-center space-x-6 p-6 bg-brand/5 rounded-[2rem] border border-brand/10">
-                  <div className="flex-1">
-                    <p className="text-[10px] font-black text-black uppercase tracking-widest mb-3">Custom Color Picker</p>
-                    <div className="flex items-center gap-4">
-                      <div className="relative">
-                        <input 
-                          type="color" 
-                          value={pendingColor}
-                          onChange={(e) => setPendingColor(e.target.value.toUpperCase())}
-                          className="w-14 h-14 p-1 bg-white border border-brand/20 rounded-2xl cursor-pointer shadow-sm hover:scale-105 transition-transform"
-                        />
-                        <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white" style={{ backgroundColor: pendingColor }} />
-                      </div>
-                      
-                      <div className="flex-1 space-y-2">
-                        <input 
-                          type="text" 
-                          value={pendingColorName}
-                          onChange={(e) => setPendingColorName(e.target.value)}
-                          placeholder="Color Name (e.g. Rust Brown)" 
-                          className="w-full bg-white border border-brand/10 rounded-xl px-4 py-2 text-xs font-black text-black uppercase tracking-widest focus:border-brand-accent outline-none transition-all placeholder:text-black/20"
-                        />
-                        <input 
-                          type="text" 
-                          value={pendingColor}
-                          onChange={(e) => setPendingColor(e.target.value.toUpperCase())}
-                          placeholder="#C5A059" 
-                          className="w-full bg-white border border-brand/10 rounded-xl px-4 py-2 text-xs font-black text-black uppercase tracking-widest focus:border-brand-accent outline-none transition-all"
-                        />
-                        <button 
-                          type="button"
-                          onClick={() => {
-                            const name = pendingColorName.trim();
-                            const hex = pendingColor.trim();
-                            if (!hex.startsWith("#") || hex.length !== 7) {
-                              showToast("Please enter a valid Hex Code (e.g. #563516)");
-                              return;
-                            }
-                            if (!name) {
-                              showToast("Please enter a color name");
-                              return;
-                            }
-                            const colorVal = `${name}::${hex}`;
-                            if (!selectedColors.includes(colorVal)) {
-                              if (window.confirm(`Add color ${name} (${hex}) to variations?`)) {
-                                toggleColor(colorVal);
-                                setPendingColorName("");
-                              }
-                            } else {
-                              showToast("Color already selected");
-                            }
-                          }}
-                          className="w-full bg-[#1B3022] text-[#C5A059] py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#2c4d37] transition-all shadow-md active:scale-95"
-                        >
-                          Add Color to Matrix
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="hidden md:block w-px h-24 bg-brand/10" />
-                  <div className="hidden md:block flex-1">
-                    <p className="text-[9px] text-black/30 font-medium leading-relaxed italic">
-                      Pick a color from the swatch or enter a custom hex code, type a color name, and click "Add Color to Matrix" to generate size variations.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ── Section 6: Color-Specific Images ── */}
-            <div>
-              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">6</span> 
-                Color-Specific Images
+                <span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">4</span> 
+                Product Images
               </h3>
               
               <div className="space-y-6">
-                {(selectedColors.length > 0 ? selectedColors : ["Default"]).map((color) => {
+                {(() => {
+                  const color = "Default";
                   const currentImages = colorImages[color] || [];
                   const currentInput = colorImageInputs[color] || "";
-                  const colorPreset = PRESET_COLORS.find(c => c.name === color);
                   
                   return (
-                    <div key={color} className="p-6 bg-brand/5 rounded-[2.5rem] border border-brand/10 space-y-4">
+                    <div className="p-6 bg-brand/5 rounded-[2.5rem] border border-brand/10 space-y-4">
                       <div className="flex items-center space-x-3 pb-2 border-b border-brand/5">
-                        {color !== "Default" && (
-                          <div 
-                            className="w-4 h-4 rounded-full border border-black/10"
-                            style={{ backgroundColor: color.includes("::") ? color.split("::")[1] : (color.startsWith("#") ? color : colorPreset?.hex) }}
-                          />
-                        )}
                         <span className="text-xs font-black text-black uppercase tracking-wider">
-                          {color === "Default" ? "Default Images" : `${color.includes("::") ? color.split("::")[0] : color} Images`} ({currentImages.length})
+                          Images ({currentImages.length})
                         </span>
                       </div>
                       
@@ -1470,7 +1133,7 @@ export default function ProductManagement() {
                             <div key={i} className="relative aspect-square rounded-xl overflow-hidden border border-brand/10 group">
                               <img 
                                 src={img} 
-                                alt={`${color}-img-${i}`} 
+                                alt={`img-${i}`} 
                                 className="w-full h-full object-cover" 
                                 onError={e => {
                                   e.currentTarget.onerror = null;
@@ -1489,27 +1152,26 @@ export default function ProductManagement() {
                         </div>
                       ) : (
                         <div className="border border-dashed border-brand/10 bg-white/50 rounded-2xl py-6 text-center text-black/30">
-                          <p className="text-[10px] font-black uppercase tracking-widest">No images added for this color</p>
+                          <p className="text-[10px] font-black uppercase tracking-widest">No images added yet</p>
                         </div>
                       )}
                     </div>
                   );
-                })}
+                })()}
               </div>
             </div>
 
 
-            {/* ── Section 7: Variation Matrix ── */}
+            {/* ── Section 5: Variation Matrix ── */}
             <div>
-              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">7</span> Variation Matrix (Stock & SKU)</h3>
+              <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-[#064e3b] text-[8px] flex items-center justify-center font-black">5</span> Variation Matrix (Stock & SKU)</h3>
               {variations.length > 0 ? (
                 <div className="overflow-hidden rounded-[2rem] border border-brand/5 shadow-sm">
                   <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs">
                     <thead className="bg-brand text-[#064e3b]/60 font-black uppercase tracking-widest">
                       <tr>
-                        <th className="px-5 py-4">Size</th>
-                        <th className="px-5 py-4">Color</th>
+                        <th className="px-5 py-4">Weight / Pack Size</th>
                         <th className="px-5 py-4">Base Price (₹)</th>
                         <th className="px-5 py-4">Sale (₹)</th>
                         <th className="px-5 py-4">Stock</th>
@@ -1521,12 +1183,6 @@ export default function ProductManagement() {
                       {variations.map((v, idx) => (
                         <tr key={`${v.size}-${v.color}-${idx}`} className="hover:bg-brand/5 transition-colors">
                           <td className="px-5 py-3 font-bold text-black">{v.size}</td>
-                          <td className="px-5 py-3">
-                            <div className="flex items-center space-x-2">
-                              {v.color && v.color !== "Default" && <span className="w-3 h-3 rounded-full border border-white shadow" style={{ backgroundColor: v.color.includes("::") ? v.color.split("::")[1] : (v.color.startsWith("#") ? v.color : PRESET_COLORS.find(c => c.name === v.color)?.hex) }} />}
-                              <span className="text-black/60 font-medium">{v.color && v.color !== "Default" ? (v.color.includes("::") ? v.color.split("::")[0] : v.color) : "—"}</span>
-                            </div>
-                          </td>
                           <td className="px-5 py-3">
                             <input 
                               type="number" 

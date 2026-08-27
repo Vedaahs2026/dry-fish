@@ -162,7 +162,7 @@ export default function Home() {
               >
                 <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-[3px] border-[#064e3b]/30 shadow-md transition-transform duration-500 group-hover:scale-105 group-hover:border-[#064e3b] relative">
                   <img
-                    src={item.imageUrl || "/images/placeholder.png"}
+                    src={item.imageUrl && item.imageUrl.includes(",") ? item.imageUrl.split(",")[0] : (item.imageUrl || "/images/placeholder.png")}
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     onError={e => {

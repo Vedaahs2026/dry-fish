@@ -15,6 +15,12 @@ interface Product {
   basePrice: number;
   images: string; // JSON string
   category?: string;
+  style?: string | null;
+  neckStyle?: string | null;
+  keyWords?: string | null;
+  avgRating?: number | string | null;
+  numReviews?: number | string | null;
+  isCustomizable?: boolean | number | null;
 }
 
 const containerVariants = {
@@ -112,7 +118,12 @@ export default function ProductGrid() {
                     imageUrl: firstImage,
                     images: parsedImages,
                     categorySlug: product.category || "all",
-                    isCustomizable: product.isCustomizable
+                    isCustomizable: product.isCustomizable,
+                    style: product.style,
+                    neckStyle: product.neckStyle,
+                    keyWords: product.keyWords,
+                    avgRating: product.avgRating,
+                    numReviews: product.numReviews,
                   }} 
                 />
               </motion.div>
