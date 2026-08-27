@@ -26,8 +26,6 @@ export default function Footer() {
           <ul className="space-y-2 text-xs font-semibold text-black/80">
             <li><Link href="/" className="hover:text-black hover:underline transition">Home</Link></li>
             <li><Link href="/#featured-collections" className="hover:text-black hover:underline transition">Products</Link></li>
-            <li><Link href="/" className="hover:text-black hover:underline transition">Combo Packs</Link></li>
-            <li><Link href="/" className="hover:text-black hover:underline transition">Build your combo</Link></li>
             <li><Link href="/profile/orders" className="hover:text-black hover:underline transition">Track Order</Link></li>
             <li><Link href="/my-story#contact" className="hover:text-black hover:underline transition">Contact Us</Link></li>
           </ul>
@@ -52,9 +50,6 @@ export default function Footer() {
           <ul className="space-y-2 text-xs font-semibold text-black/80">
             <li><Link href="/#featured-collections" className="hover:text-black hover:underline transition">Products</Link></li>
             <li><Link href="/" className="hover:text-black hover:underline transition">Other Products</Link></li>
-            <li><Link href="/" className="hover:text-black hover:underline transition">Blogs</Link></li>
-            <li><Link href="/" className="hover:text-black hover:underline transition">Recipes</Link></li>
-            <li><Link href="/" className="hover:text-black hover:underline transition">Offers</Link></li>
           </ul>
         </div>
 
@@ -80,12 +75,14 @@ export default function Footer() {
         <p className="text-[10px] text-black font-bold tracking-wider uppercase text-center flex-1">
           &copy; {new Date().getFullYear()} Venkys Dried Fish Basket.
         </p>
-        <button 
-          onClick={handleBackToTop} 
-          className="flex items-center gap-1 text-[10px] text-black font-bold uppercase tracking-wider hover:underline cursor-pointer flex-1 justify-end"
-        >
-          <span className="text-xs">↑</span> Back to top
-        </button>
+        <div className="flex-1 flex justify-end">
+          <button 
+            onClick={handleBackToTop} 
+            className="flex items-center gap-1 text-[10px] text-black font-bold uppercase tracking-wider hover:underline cursor-pointer focus:outline-none focus:ring-0 active:outline-none border-none outline-none bg-transparent"
+          >
+            <span className="text-xs">↑</span> Back to top
+          </button>
+        </div>
       </div>
     </footer>
   );
