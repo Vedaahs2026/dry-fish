@@ -325,8 +325,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left: Image Gallery (6 cols - reduced from 7) */}
-          <div className="lg:col-span-6 flex flex-col-reverse md:flex-row gap-5">
+          {/* Left: Image Gallery (5 cols - reduced from 6) */}
+          <div className="lg:col-span-5 flex flex-col-reverse md:flex-row gap-5">
             {/* Thumbnails */}
             <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-y-auto max-h-[600px] no-scrollbar">
               {colorImages.map((img: string, idx: number) => (
@@ -342,7 +342,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             </div>
 
             {/* Main Image */}
-            <div className="flex-1 aspect-[4/5] relative rounded-2xl overflow-hidden bg-white shadow-xl group">
+            <div className="flex-1 aspect-square relative rounded-2xl overflow-hidden bg-white shadow-xl group">
               <img
                 src={mainImage}
                 alt={product.name}
@@ -356,8 +356,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             </div>
           </div>
 
-          {/* Right: Product Details (6 cols) */}
-          <div className="lg:col-span-6 flex flex-col bg-[#FAF6ED] border border-[#8c6239]/15 rounded-3xl p-6 md:p-8 shadow-sm">
+          {/* Right: Product Details (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col bg-[#FAF6ED] border border-[#8c6239]/15 rounded-3xl p-6 md:p-8 shadow-sm">
             {/* 1. Product Name */}
             <h1 className="text-2xl md:text-3xl font-serif font-black leading-tight text-[#3b2314] mb-3">
               {product.name}
