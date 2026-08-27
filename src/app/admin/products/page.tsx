@@ -916,36 +916,7 @@ export default function ProductManagement() {
                   <label className={LABEL}>Description (Displays at the bottom of the page)</label>
                   <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Enter general description, stories, or recipe information for this product..." rows={4} className={`${INPUT} resize-y min-h-[80px]`} />
                 </div>
-                <div>
-                  <label className={LABEL}>Product Details (Displays in dropdown below Add to Cart)</label>
-                  <textarea value={fabricComposition} onChange={e => setFabricComposition(e.target.value)} placeholder="Enter details like Weight, Shelf Life, Ingredients, and Origin here. Newlines and spaces will be preserved exactly." rows={6} className={`${INPUT} resize-y min-h-[120px]`} />
-                </div>
-                <div>
-                  <label className={LABEL}>Tags (comma-separated)</label>
-                  <input value={tags} onChange={e => setTags(e.target.value)} placeholder="dry fish, premium, salted, clean…" className={INPUT} />
-                </div>
 
-                <div className="grid grid-cols-2 gap-5">
-                  <div>
-                    <label className={LABEL}>Main Badge Tag (e.g. PATTARAI MADE)</label>
-                    <input value={neckStyle} onChange={e => setNeckStyle(e.target.value)} placeholder="e.g. PATTARAI MADE" className={INPUT} />
-                  </div>
-                  <div>
-                    <label className={LABEL}>Key Attributes (max 2, comma-separated, e.g. OMEGA3, MID SALT)</label>
-                    <input value={keyWords} onChange={e => setKeyWords(e.target.value)} placeholder="e.g. OMEGA3, MID SALT" className={INPUT} />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-5">
-                  <div>
-                    <label className={LABEL}>Top Badges (comma-separated, e.g. Fast Shipping, Branded pack)</label>
-                    <input value={weave} onChange={e => setWeave(e.target.value)} placeholder="e.g. Fast Shipping, Branded pack" className={INPUT} />
-                  </div>
-                  <div>
-                    <label className={LABEL}>Characteristics / Badges (comma-separated, e.g. 100% Natural, No Preservatives)</label>
-                    <input value={style} onChange={e => setStyle(e.target.value)} placeholder="e.g. 100% Natural, No Preservatives" className={INPUT} />
-                  </div>
-                </div>
                 <div className="flex items-center justify-between p-6 bg-brand/5 rounded-[2.5rem] border border-brand/10 transition-all hover:bg-brand/[0.08]">
                   <div className="flex items-center space-x-4">
                     <div className={`p-3 rounded-2xl transition-all ${isFeatured ? "bg-brand-accent/20 text-black-accent" : "bg-brand/10 text-black/30"}`}>
