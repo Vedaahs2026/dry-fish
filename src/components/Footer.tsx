@@ -35,8 +35,12 @@ export default function Footer() {
               <p className="font-bold text-[#fcd34d] tracking-wide mb-1">Address:</p>
               <p>Bhimavaram</p>
               <p>ANDHRAPRADESH - 534204</p>
-              <p className="pt-3">call: +91 98483 57279</p>
-              <p>info@vkdryfishbasket.com</p>
+              <p className="pt-3">
+                call: <a href="tel:+919848357279" className="hover:text-[#fcd34d] hover:underline transition-colors">+91 98483 57279</a>
+              </p>
+              <p>
+                <a href="mailto:info@vkdryfishbasket.com" className="hover:text-[#fcd34d] hover:underline transition-colors">info@vkdryfishbasket.com</a>
+              </p>
             </div>
           </div>
 
