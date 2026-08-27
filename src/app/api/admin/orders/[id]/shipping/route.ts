@@ -33,6 +33,20 @@ export async function POST(
       );
     }
 
+    // Fetch current order status
+    const currentOrder = await db.select({ status: orders.status })
+      .from(orders)
+      .where(eq(orders.id, orderId))
+      .limit(1);
+
+    if (!currentOrder.length) {
+      return NextResponse.json({ success: false, error: "Order not found" }, { status: 404 });
+    }
+
+    if (currentOrder[0].status?.toLowerCase() === "cancelled") {
+      return NextResponse.json({ success: false, error: "Cannot add shipping details to a cancelled order" }, { status: 400 });
+    }
+
     // Update shipping fields and automatically change status to 'Shipped'
     await db.update(orders)
       .set({

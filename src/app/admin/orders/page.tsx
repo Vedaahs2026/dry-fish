@@ -382,7 +382,7 @@ export default function AdminOrders() {
                 <div className="relative group">
                   <select 
                     value={order.status}
-                    disabled={updatingId === order.id}
+                    disabled={updatingId === order.id || order.status?.toLowerCase() === "cancelled"}
                     onChange={(e) => {
                       e.stopPropagation();
                       const val = e.target.value;
@@ -499,7 +499,7 @@ export default function AdminOrders() {
                             </span>
                           </div>
 
-                          {order.paymentStatus !== 'paid' && (
+                          {order.paymentStatus !== 'paid' && order.status?.toLowerCase() !== 'cancelled' && (
                             <div className="pt-2 border-t border-brand/5 flex flex-col gap-2">
                               <button
                                 onClick={(e) => {

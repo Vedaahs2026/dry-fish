@@ -35,6 +35,11 @@ export async function PATCH(
       return NextResponse.json({ success: false, error: "Order not found" }, { status: 404 });
     }
 
+    const currentStatus = currentOrder[0].status?.toLowerCase() || "";
+    if (currentStatus === "cancelled") {
+      return NextResponse.json({ success: false, error: "Cannot modify a cancelled order" }, { status: 400 });
+    }
+
     const updateData: any = {};
 
     if (status) {
