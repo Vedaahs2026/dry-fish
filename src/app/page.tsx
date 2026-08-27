@@ -317,10 +317,10 @@ export default function Home() {
         </div>
       )}
 
-      {/* 2.5. Categories Grid Section (as shown in reference image) */}
+      {/* 2.5. Categories Grid Section */}
       {!isLoading && homepageCatCards.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             {homepageCatCards.map((item, index) => {
               const cardImage = item.imageUrl && item.imageUrl.includes(",") 
                 ? item.imageUrl.split(",")[0] 
@@ -331,7 +331,7 @@ export default function Home() {
                   href={item.link || `/category/${item.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
                   className="group flex flex-col items-center animate-in fade-in duration-300"
                 >
-                  <div className="w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden border border-brand/5 shadow-md transition-transform duration-500 group-hover:scale-[1.01] relative">
+                  <div className="w-full max-h-[220px] md:max-h-[250px] aspect-[4/3] rounded-2xl overflow-hidden border border-brand/5 shadow-sm transition-transform duration-500 group-hover:scale-[1.01] relative">
                     <img
                       src={cardImage}
                       alt={item.name}
@@ -342,7 +342,7 @@ export default function Home() {
                       }}
                     />
                   </div>
-                  <h3 className="mt-4 text-center font-serif text-black font-semibold text-[17px] tracking-tight group-hover:text-brand-accent transition-colors leading-tight">
+                  <h3 className="mt-3 text-center font-serif text-black font-semibold text-sm md:text-base tracking-tight group-hover:text-brand-accent transition-colors leading-tight">
                     {item.name}
                   </h3>
                 </Link>

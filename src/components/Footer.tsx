@@ -111,7 +111,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/location/price" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/search" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Dry Fish Price
                 </Link>
               </li>
