@@ -1,11 +1,11 @@
 import React from "react";
 
 interface LocationViewProps {
-  city: string;
+  city?: string;
 }
 
-export default function LocationView({ city }: LocationViewProps) {
-  const normalizedCity = city
+export default function LocationView({ city = "" }: LocationViewProps) {
+  const normalizedCity = (city || "")
     .toLowerCase()
     .replace(/^dry-fish-in-/, "")
     .replace(/^dry-fish-/, "")
