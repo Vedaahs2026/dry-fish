@@ -222,10 +222,10 @@ export default function MyOrdersPage() {
                     <div className="flex flex-col justify-center min-w-[100px]">
                       <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">Status</p>
                       <div className="flex items-center h-6">
-                        <span className={`inline-flex items-center px-3 py-0 h-6 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-sm border ${
-                          order.status?.toLowerCase() === 'delivered' ? 'bg-green-500/20 text-green-400 border-green-500/30' : 
-                          order.status?.toLowerCase() === 'cancelled' ? 'bg-red-500/20 text-red-400 border-red-500/30' : 
-                          'bg-[#C5A059]/20 text-[#C5A059] border-[#C5A059]/30'
+                        <span className={`inline-flex items-center px-3 py-0 h-6 rounded-full text-[10px] font-extrabold uppercase tracking-widest shadow-sm border ${
+                          order.status?.toLowerCase() === 'delivered' ? 'bg-green-600 text-white border-transparent' : 
+                          order.status?.toLowerCase() === 'cancelled' ? 'bg-red-600 text-white border-transparent' : 
+                          'bg-[#C5A059] text-[#3b2314] border-transparent font-black'
                         }`}>
                           {order.status}
                         </span>
