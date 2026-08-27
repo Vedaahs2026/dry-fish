@@ -298,6 +298,41 @@ export default function Home() {
         </div>
       )}
 
+      {/* 2.5. Categories Grid Section (as shown in reference image) */}
+      {!isLoading && homepageCatCards.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {homepageCatCards.map((item, index) => {
+              const cardImage = item.imageUrl && item.imageUrl.includes(",") 
+                ? item.imageUrl.split(",")[0] 
+                : (item.imageUrl || "/images/placeholder.png");
+              return (
+                <Link
+                  key={`${item.id}-${index}`}
+                  href={item.link || `/category/${item.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
+                  className="group flex flex-col items-center animate-in fade-in duration-300"
+                >
+                  <div className="w-full aspect-[4/5] rounded-[1.5rem] overflow-hidden border border-brand/5 shadow-md transition-transform duration-500 group-hover:scale-[1.01] relative">
+                    <img
+                      src={cardImage}
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      onError={e => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = "/images/placeholder.png";
+                      }}
+                    />
+                  </div>
+                  <h3 className="mt-4 text-center font-serif text-black font-semibold text-[17px] tracking-tight group-hover:text-brand-accent transition-colors leading-tight">
+                    {item.name}
+                  </h3>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       {/* 3. Main Content Section */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <ProductGrid />
