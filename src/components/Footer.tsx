@@ -62,8 +62,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/shipping-payment" className="hover:text-[#fcd34d] hover:underline transition-colors">
-                  Shipping & Delivery
+                <Link href="/shipping-policy" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Shipping &amp; Delivery
                 </Link>
               </li>
               <li>
