@@ -143,42 +143,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-brand-light text-black font-sans selection:bg-brand-accent/30">
 
-      {/* 1. Circular Categories Row (rendered just below navbar) */}
-      <section className="w-full bg-[#FFFDF6] border-b border-brand/5 py-4">
-        <div className="flex gap-6 md:gap-8 overflow-x-auto pb-2 pt-2 px-8 justify-start md:justify-center [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {isLoading ? (
-            Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="flex flex-col items-center shrink-0 animate-pulse">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-brand/5 mb-2"></div>
-                <div className="h-3 w-16 bg-brand/5 rounded-full"></div>
-              </div>
-            ))
-          ) : (
-            homepageCatCards.map((item, index) => (
-              <Link
-                key={`${item.id}-${index}`}
-                href={item.link || `/category/${item.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
-                className="group flex flex-col items-center shrink-0 animate-in fade-in duration-300"
-              >
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-[3px] border-[#064e3b]/30 shadow-md transition-transform duration-500 group-hover:scale-105 group-hover:border-[#064e3b] relative">
-                  <img
-                    src={item.imageUrl && item.imageUrl.includes(",") ? item.imageUrl.split(",")[0] : (item.imageUrl || "/images/placeholder.png")}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    onError={e => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/images/placeholder.png";
-                    }}
-                  />
-                </div>
-                <span className="mt-2 text-[10px] sm:text-xs font-bold tracking-wide text-black group-hover:text-[#064e3b] transition-colors text-center w-full max-w-[6.5rem] break-words block">
-                  {item.name}
-                </span>
-              </Link>
-            ))
-          )}
-        </div>
-      </section>
+
 
       {/* 2. Dynamic Home Banner Carousel (supports image and video) */}
       {banners.length > 0 && (
