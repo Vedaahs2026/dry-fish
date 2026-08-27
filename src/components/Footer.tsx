@@ -29,7 +29,7 @@ export default function Footer() {
               Traditional taste from the Godavari coastal belt. FSSAI licensed & hygienic processing.
             </p>
             <p className="text-xs text-[#FFFDF6]/80 italic leading-relaxed mb-5">
-              Now delivering to <span className="font-bold not-italic">Hyderabad, Bangalore, Chennai, Mumbai, Pune, Delhi</span> & across India.
+              Now delivering to Hyderabad, Bangalore, Chennai, Mumbai, Pune, Delhi &amp; across India.
             </p>
             <div className="text-xs text-[#FFFDF6]/85 space-y-1">
               <p className="font-bold text-[#fcd34d] tracking-wide mb-1">Address:</p>
@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Column 2: Quick Links */}
           <div className="flex flex-col">
             <h3 className="text-sm font-serif font-black text-[#fcd34d] mb-4 tracking-wide uppercase">
-              Quick links
+              QUICK LINKS
             </h3>
             <ul className="space-y-2 text-xs font-medium text-[#FFFDF6]/80">
               <li>
@@ -77,7 +77,7 @@ export default function Footer() {
           {/* Column 3: Delivery Locations */}
           <div className="flex flex-col">
             <h3 className="text-sm font-serif font-black text-[#fcd34d] mb-4 tracking-wide uppercase">
-              Our Dry Fish Delivery Locations
+              OUR DRY FISH DELIVERY LOCATIONS
             </h3>
             <ul className="space-y-2 text-xs font-medium text-[#FFFDF6]/80">
               <li>
