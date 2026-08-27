@@ -337,74 +337,7 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <ProductGrid />
 
-        {/* Brand Intro Section (styled after reference image) */}
-        <section className="bg-[#FAF6ED] rounded-[2.5rem] p-8 md:p-14 my-16 border border-[#C5A059]/10 shadow-sm flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden relative">
-          <div className="flex-1 space-y-6">
-            {/* Badge */}
-            <div className="inline-flex items-center bg-[#C5A059]/15 border-2 border-[#C5A059]/30 text-[#C5A059] text-xs font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full select-none">
-              Premium Quality
-            </div>
 
-            {/* Heading */}
-            <h2 className="text-3xl md:text-5xl font-gabriola font-bold tracking-wide text-[#064e3b] leading-tight">
-              Dry Fish Basket
-            </h2>
-
-            {/* 4 key points grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#C5A059] text-[#064e3b] flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
-                  <Sun size={24} className="fill-[#064e3b]/10" />
-                </div>
-                <span className="text-xs md:text-sm font-black uppercase tracking-wider text-[#064e3b] leading-snug">
-                  Sun dried and handpicked Quality
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#C5A059] text-[#064e3b] flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
-                  <Leaf size={24} className="fill-[#064e3b]/10" />
-                </div>
-                <span className="text-xs md:text-sm font-black uppercase tracking-wider text-[#064e3b] leading-snug">
-                  100% organic
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#C5A059] text-[#064e3b] flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
-                  <FlaskConical size={24} className="fill-[#064e3b]/10" />
-                </div>
-                <span className="text-xs md:text-sm font-black uppercase tracking-wider text-[#064e3b] leading-snug">
-                  No preservative and Chemicals
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#C5A059] text-[#064e3b] flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
-                  <Package size={24} className="fill-[#064e3b]/10" />
-                </div>
-                <span className="text-xs md:text-sm font-black uppercase tracking-wider text-[#064e3b] leading-snug">
-                  International standards packing
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Illustration image on the right */}
-          <div className="w-full md:w-5/12 max-w-sm flex items-center justify-center">
-            <div className="relative group w-full">
-              <img
-                src="/images/intro_illustration.png"
-                alt="Dry Fish Basket Quality"
-                className="w-full aspect-[4/3] object-cover rounded-[2rem] shadow-lg border border-[#C5A059]/20 transition-transform duration-500 group-hover:scale-[1.02]"
-                onError={e => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-            </div>
-          </div>
-        </section>
 
         {/* Dynamic Reviews Section */}
         {reviews.length > 0 && (
