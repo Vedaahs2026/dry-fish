@@ -52,7 +52,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/category/dry-fish" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Buy Dry Fish Online
                 </Link>
               </li>
