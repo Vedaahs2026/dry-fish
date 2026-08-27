@@ -53,7 +53,7 @@ export default function BlogsPage() {
             Our Blog &amp; Recipes
           </h1>
           <p className="text-xs md:text-sm text-black/60 font-medium leading-relaxed">
-            Discover traditional dry fish recipes, culinary tips, and stories directly from the Godavari coastal kitchens.
+            Discover traditional dry fish recipes, culinary tips, and stories directly from the traditional coastal kitchens.
           </p>
         </div>
       </section>

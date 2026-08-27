@@ -236,7 +236,7 @@ export default function AdminBlogsPage() {
           </div>
           <h3 className="text-lg font-bold text-black mb-2">No Blog Posts Yet</h3>
           <p className="text-black/40 mb-6 text-xs leading-relaxed max-w-sm mx-auto">
-            Share news, recipe guides, and stories about Godavari traditional recipes with your storefront buyers.
+            Share news, recipe guides, and stories about traditional dry fish recipes with your storefront buyers.
           </p>
           <button
             onClick={handleOpenAddForm}

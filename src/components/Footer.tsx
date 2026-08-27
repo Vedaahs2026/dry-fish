@@ -23,10 +23,10 @@ export default function Footer() {
           {/* Column 1: Info and Address */}
           <div className="md:col-span-2 flex flex-col pr-0 md:pr-10">
             <h3 className="text-xl font-serif font-black text-[#fcd34d] mb-4 tracking-wide">
-              Godavari Dry fish
+              Dry Fish Basket
             </h3>
             <p className="text-xs text-[#FFFDF6]/80 leading-relaxed mb-3">
-              Traditional taste from the Godavari coastal belt. FSSAI licensed & hygienic processing.
+              Traditional taste from the coastal belt. FSSAI licensed & hygienic processing.
             </p>
             <p className="text-xs text-[#FFFDF6]/80 italic leading-relaxed mb-5">
               Now delivering to Hyderabad, Bangalore, Chennai, Mumbai, Pune, Delhi &amp; across India.
@@ -36,7 +36,7 @@ export default function Footer() {
               <p>Bhimavaram</p>
               <p>ANDHRAPRADESH - 534204</p>
               <p className="pt-3">call: +91-9676344465</p>
-              <p>godavaridryfish@gmail.com</p>
+              <p>dryfishbasket2627@gmail.com</p>
             </div>
           </div>
 
@@ -129,7 +129,7 @@ export default function Footer() {
       {/* Dark Footer Bottom Bar */}
       <div className="w-full bg-[#252525] py-4 px-6 md:px-12 text-[#FFFDF6]/50 text-[11px] font-medium border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-          <p>&copy; 2026 Godavari dryfish</p>
+          <p>&copy; 2026 Dry Fish Basket</p>
           <div className="flex gap-4">
             <Link href="/terms-conditions" className="hover:underline hover:text-white transition-colors">Terms and Conditions</Link>
             <Link href="/privacy-policy" className="hover:underline hover:text-white transition-colors">Privacy Policy</Link>
