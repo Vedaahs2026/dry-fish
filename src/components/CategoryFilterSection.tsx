@@ -30,6 +30,8 @@ interface Product {
   filterCategory?: string | null;
   specifications?: string | null;
   sizes?: string[];
+  totalStock?: number;
+  createdAt?: string | null;
 }
 
 interface Section {
@@ -277,12 +279,26 @@ export default function CategoryFilterSection({
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState<"default" | "price-asc" | "price-desc">("default");
-  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
-  const [isDesktopFiltersOpen, setIsDesktopFiltersOpen] = useState(false);
+  const [availabilityFilter, setAvailabilityFilter] = useState<string[]>([]);
+  const [sortOption, setSortOption] = useState<string>("best-selling");
+  const [isAvailabilityOpen, setIsAvailabilityOpen] = useState(false);
+  const [isPriceOpen, setIsPriceOpen] = useState(false);
+  const [isSortOpen, setIsSortOpen] = useState(false);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [activeThumb, setActiveThumb] = useState<"min" | "max">("min");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const SORT_OPTIONS: Record<string, string> = {
+    "featured": "Featured",
+    "relevant": "Most relevant",
+    "best-selling": "Best selling",
+    "title-asc": "Alphabetically, A-Z",
+    "title-desc": "Alphabetically, Z-A",
+    "price-asc": "Price, low to high",
+    "price-desc": "Price, high to low",
+    "date-asc": "Date, old to new",
+    "date-desc": "Date, new to old",
+  };
 
   useEffect(() => {
     setPriceRange([minLimit, maxLimit]);
@@ -290,7 +306,7 @@ export default function CategoryFilterSection({
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedTypes, selectedColors, selectedSizes, priceRange, sortBy]);
+  }, [selectedTypes, selectedColors, selectedSizes, availabilityFilter, priceRange, sortOption]);
 
   useEffect(() => {
     if (allProducts.length === 0) {
@@ -306,7 +322,8 @@ export default function CategoryFilterSection({
     selectedTypes.length > 0 ||
     selectedColors.length > 0 ||
     selectedSizes.length > 0 ||
-    sortBy !== "default" ||
+    availabilityFilter.length > 0 ||
+    sortOption !== "best-selling" ||
     isPriceFilterActive;
 
   // Determine if this is a shoes/footwear category
@@ -382,7 +399,7 @@ export default function CategoryFilterSection({
   const filteredAndSortedProducts = useMemo(() => {
     let list = [...productsWithTypes];
 
-    // Filter by selected types (OR logic: show products matching any selected type, case and plural insensitively)
+    // Filter by selected types (OR logic)
     if (selectedTypes.length > 0) {
       list = list.filter((p) => 
         p.classifiedTypes.some((t) => 
@@ -391,7 +408,7 @@ export default function CategoryFilterSection({
       );
     }
 
-    // Filter by selected colors (OR logic: show products matching any selected color)
+    // Filter by selected colors
     if (selectedColors.length > 0) {
       list = list.filter((p) => {
         try {
@@ -406,11 +423,21 @@ export default function CategoryFilterSection({
       });
     }
 
-    // Filter by selected sizes (OR logic: show products matching any selected size)
+    // Filter by selected sizes
     if (selectedSizes.length > 0) {
       list = list.filter((p) => {
         const pSizes = (p.sizes || []).map((s) => s.toUpperCase().trim());
         return selectedSizes.some((sz) => pSizes.includes(sz.toUpperCase().trim()));
+      });
+    }
+
+    // Filter by availability (In Stock / Out of Stock)
+    if (availabilityFilter.length > 0) {
+      list = list.filter((p) => {
+        const inStock = p.totalStock !== undefined ? p.totalStock > 0 : true;
+        if (availabilityFilter.includes("in-stock") && inStock) return true;
+        if (availabilityFilter.includes("out-of-stock") && !inStock) return true;
+        return false;
       });
     }
 
@@ -420,23 +447,39 @@ export default function CategoryFilterSection({
       return price >= priceRange[0] && price <= priceRange[1];
     });
 
-    // Sort by Price (salePrice if available, otherwise basePrice)
-    if (sortBy === "price-asc") {
+    // Sort products based on selected option
+    if (sortOption === "title-asc") {
+      list.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOption === "title-desc") {
+      list.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (sortOption === "price-asc") {
       list.sort((a, b) => {
         const priceA = a.salePrice || a.basePrice || 0;
         const priceB = b.salePrice || b.basePrice || 0;
         return priceA - priceB;
       });
-    } else if (sortBy === "price-desc") {
+    } else if (sortOption === "price-desc") {
       list.sort((a, b) => {
         const priceA = a.salePrice || a.basePrice || 0;
         const priceB = b.salePrice || b.basePrice || 0;
         return priceB - priceA;
       });
+    } else if (sortOption === "date-asc") {
+      list.sort((a, b) => {
+        const dateA = new Date(a.createdAt || 0).getTime();
+        const dateB = new Date(b.createdAt || 0).getTime();
+        return dateA - dateB;
+      });
+    } else if (sortOption === "date-desc") {
+      list.sort((a, b) => {
+        const dateA = new Date(a.createdAt || 0).getTime();
+        const dateB = new Date(b.createdAt || 0).getTime();
+        return dateB - dateA;
+      });
     }
 
     return list;
-  }, [productsWithTypes, selectedTypes, selectedColors, selectedSizes, sortBy, priceRange]);
+  }, [productsWithTypes, selectedTypes, selectedColors, selectedSizes, availabilityFilter, sortOption, priceRange]);
 
   const productsPerPage = 20;
   const totalPages = Math.ceil(filteredAndSortedProducts.length / productsPerPage);
@@ -501,7 +544,8 @@ export default function CategoryFilterSection({
     setSelectedTypes([]);
     setSelectedColors([]);
     setSelectedSizes([]);
-    setSortBy("default");
+    setAvailabilityFilter([]);
+    setSortOption("best-selling");
     setPriceRange([minLimit, maxLimit]);
   };
 
@@ -539,180 +583,8 @@ export default function CategoryFilterSection({
     );
   }
 
-  const renderFilters = () => {
-    return (
-      <>
-        {/* Section 1: Categories / Types */}
-        {availableTypes.length > 0 && (
-          <div className="mb-6">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 mb-3 ml-1">Categories</h3>
-            <div className="flex flex-col gap-2.5 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
-              {availableTypes.map((type) => {
-                const count = typeCounts[type] || 0;
-                const isChecked = selectedTypes.includes(type);
-
-                return (
-                  <label
-                    key={type}
-                    className="flex items-center gap-3 text-xs font-bold text-black/75 cursor-pointer hover:text-black transition-colors select-none"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => handleTypeToggle(type)}
-                      className="rounded border-brand/20 accent-brand w-4 h-4 cursor-pointer"
-                    />
-                    <span className="flex-1">{type}</span>
-                    <span className="text-black/35 text-[10px] font-medium">({count})</span>
-                  </label>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Section 2: Colors */}
-        {availableColors.length > 0 && (
-          <div className="mb-6">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 mb-3 ml-1">Color</h3>
-            <div className="flex flex-col gap-2.5 max-h-56 overflow-y-auto pr-2 custom-scrollbar">
-              {availableColors.map((color) => {
-                const count = colorCounts[color] || 0;
-                const isChecked = selectedColors.includes(color);
-                const displayName = color.includes("::") ? color.split("::")[0] : color;
-                const actualColorValue = color.includes("::") ? color.split("::")[1] : color;
-                const lowerColor = actualColorValue.toLowerCase();
-                const hexCode = COLOR_MAP[lowerColor] || (actualColorValue.startsWith("#") ? actualColorValue : "#CCCCCC");
-                const isWhite = lowerColor === "white" || hexCode === "#FFFFFF";
-
-                return (
-                  <label
-                    key={color}
-                    className="flex items-center gap-3 text-xs font-bold text-black/75 cursor-pointer hover:text-black transition-colors select-none"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => handleColorToggle(color)}
-                      className="rounded border-brand/20 accent-brand w-4 h-4 cursor-pointer"
-                    />
-                    {/* Circle Swatch */}
-                    <span
-                      className={`w-3.5 h-3.5 rounded-full inline-block border shadow-sm flex-shrink-0 ${
-                        isWhite ? "border-brand/20" : "border-transparent"
-                      }`}
-                      style={{ backgroundColor: hexCode }}
-                    />
-                    <span className="flex-1">{displayName}</span>
-                    <span className="text-black/35 text-[10px] font-medium">({count})</span>
-                  </label>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Section 3: Sizes */}
-        {availableSizes.length > 0 && (
-          <div className="mb-6">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 mb-3 ml-1">Sizes</h3>
-            <div className="flex flex-wrap gap-2">
-              {availableSizes.map((size) => {
-                const count = sizeCounts[size.toUpperCase()] || 0;
-                const isChecked = selectedSizes.includes(size);
-
-                return (
-                  <button
-                    key={size}
-                    onClick={() => handleSizeToggle(size)}
-                    className={`h-9 min-w-[2.25rem] px-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
-                      isChecked
-                        ? "bg-[#eab308] border-[#064e3b] text-[#064e3b] shadow-sm"
-                        : "bg-white border-brand/10 text-black hover:border-brand/30 hover:bg-brand/5"
-                    }`}
-                  >
-                    <span>{size}</span>
-                    <span className={`text-[9px] ${isChecked ? "text-[#064e3b]/60" : "text-black/30"}`}>({count})</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Price Range Slider */}
-        <div className="mb-4 pb-4 border-b border-brand/5">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 ml-1">Price Range</h3>
-            <span className="text-xs font-bold text-black/80">
-              ₹{priceRange[0].toLocaleString("en-IN")} - ₹{priceRange[1].toLocaleString("en-IN")}{priceRange[1] >= maxLimit ? "+" : ""}
-            </span>
-          </div>
-          
-          <div className="range-slider-container relative w-full h-5 flex items-center px-1">
-            {/* Track background */}
-            <div className="absolute left-1 right-1 h-1 bg-brand/10 rounded-full pointer-events-none" />
-            {/* Highlight track */}
-            <div
-              className="absolute h-1 bg-[#FF4E20] rounded-full pointer-events-none"
-              style={{
-                left: `${((priceRange[0] - minLimit) / (maxLimit - minLimit || 1)) * 100}%`,
-                right: `${100 - ((priceRange[1] - minLimit) / (maxLimit - minLimit || 1)) * 100}%`
-              }}
-            />
-            <input
-              type="range"
-              min={minLimit}
-              max={maxLimit}
-              value={priceRange[0]}
-              onMouseDown={() => setActiveThumb("min")}
-              onTouchStart={() => setActiveThumb("min")}
-              onChange={(e) => {
-                const val = Math.min(Number(e.target.value), priceRange[1]);
-                setPriceRange([val, priceRange[1]]);
-              }}
-              style={{ zIndex: activeThumb === "min" ? 25 : 20 }}
-              className="absolute left-0 w-full top-0 h-5 appearance-none bg-transparent cursor-pointer pointer-events-none"
-            />
-            <input
-              type="range"
-              min={minLimit}
-              max={maxLimit}
-              value={priceRange[1]}
-              onMouseDown={() => setActiveThumb("max")}
-              onTouchStart={() => setActiveThumb("max")}
-              onChange={(e) => {
-                const val = Math.max(Number(e.target.value), priceRange[0]);
-                setPriceRange([priceRange[0], val]);
-              }}
-              style={{ zIndex: activeThumb === "max" ? 25 : 20 }}
-              className="absolute left-0 w-full top-0 h-5 appearance-none bg-transparent cursor-pointer pointer-events-none"
-            />
-          </div>
-        </div>
-
-        {/* Section 4: Sort By */}
-        <div className="pt-2">
-          <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40 mb-3 ml-1">Sort Products</h3>
-          <div className="relative">
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
-              className="w-full bg-brand/5 border border-brand/10 hover:border-brand-accent/50 text-black text-xs font-bold uppercase tracking-widest py-3 pl-4 pr-10 rounded-2xl outline-none appearance-none cursor-pointer transition-all shadow-sm"
-            >
-              <option value="default" className="text-black bg-[#FFFDF6]">Default</option>
-              <option value="price-asc" className="text-black bg-[#FFFDF6]">Price: Low to High</option>
-              <option value="price-desc" className="text-black bg-[#FFFDF6]">Price: High to Low</option>
-            </select>
-            <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-black/50 pointer-events-none" />
-          </div>
-        </div>
-      </>
-    );
-  };
-
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col font-sans select-none pb-12 bg-[#FAF6ED]">
       {/* Category Header */}
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8">
         <div className="flex flex-col gap-2">
@@ -731,77 +603,162 @@ export default function CategoryFilterSection({
         </div>
       </div>
 
-      {/* Main product area */}
-      <div className="flex flex-col lg:flex-row w-full items-start relative z-30">
-        
-        {/* Right Column: Products Content Area */}
-        <div className="flex-grow min-w-0 px-4 sm:px-6 lg:px-8 py-8 lg:py-10 max-w-7xl mx-auto w-full">
-          <AnimatePresence mode="wait">
-          {!isFilterOrSortActive && initialSections.length > 0 ? (
-            <motion.div
-              key="carousel-sections"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="space-y-6"
+      {/* Filters Bar */}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#8c6239]/10 relative z-40 mt-4">
+        {/* Left: Availability & Price Dropdowns */}
+        <div className="flex items-center gap-6 text-xs font-semibold">
+          {/* Availability */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setIsAvailabilityOpen(!isAvailabilityOpen);
+                setIsPriceOpen(false);
+                setIsSortOpen(false);
+              }}
+              className="flex items-center gap-1 text-black/70 hover:text-black transition-colors focus:outline-none cursor-pointer"
             >
-              {paginatedSections.map((section) => (
-                <ProductCarousel
-                  key={section.id}
-                  title={section.title}
-                  products={section.products}
-                />
-              ))}
-
-              {/* Global Pagination Controls for Sections View */}
-              {totalSectionPages > 1 && (
-                <div className="flex items-center justify-center space-x-2.5 mt-12 pt-8 border-t border-brand/5">
-                  <button
-                    onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                    disabled={currentPage === 1}
-                    className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
-                      currentPage === 1
-                        ? "bg-brand/5 text-black/30 border border-brand/5 cursor-not-allowed opacity-60"
-                        : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
-                    }`}
-                  >
-                    Prev
-                  </button>
-                  
-                  {Array.from({ length: totalSectionPages }).map((_, i) => {
-                    const pageNum = i + 1;
-                    const isCurrent = pageNum === currentPage;
-                    return (
-                      <button
-                        key={pageNum}
-                        onClick={() => handlePageChange(pageNum)}
-                        className={`w-10 h-10 rounded-2xl text-xs font-bold transition-all ${
-                          isCurrent
-                            ? "bg-brand text-[#C5A059] shadow-md scale-105"
-                            : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
-                        }`}
-                      >
-                        {pageNum}
-                      </button>
-                    );
-                  })}
-
-                  <button
-                    onClick={() => handlePageChange(Math.min(totalSectionPages, currentPage + 1))}
-                    disabled={currentPage === totalSectionPages}
-                    className={`px-5 py-2.5 rounded-2xl text-xs font-bold transition-all ${
-                      currentPage === totalSectionPages
-                        ? "bg-brand/5 text-black/30 border border-brand/5 cursor-not-allowed opacity-60"
-                        : "bg-brand/5 text-black border border-brand/10 hover:bg-brand/10 cursor-pointer active:scale-95"
-                    }`}
-                  >
-                    Next
-                  </button>
+              Availability
+              <ChevronDown size={14} className={`transition-transform ${isAvailabilityOpen ? "rotate-180" : ""}`} />
+            </button>
+            
+            {isAvailabilityOpen && (
+              <div className="absolute left-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl p-5 min-w-[200px] space-y-4">
+                <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-black/40">
+                  <span>Selected</span>
+                  <button onClick={() => setAvailabilityFilter([])} className="underline hover:text-brand">Reset</button>
                 </div>
-              )}
-            </motion.div>
-          ) : filteredAndSortedProducts.length > 0 ? (
+                <div className="flex flex-col gap-3">
+                  <label className="flex items-center gap-3 text-xs text-black/85 cursor-pointer hover:text-[#8c6239] transition-colors select-none">
+                    <input
+                      type="checkbox"
+                      checked={availabilityFilter.includes("in-stock")}
+                      onChange={() => {
+                        setAvailabilityFilter(prev =>
+                          prev.includes("in-stock") ? prev.filter(x => x !== "in-stock") : [...prev, "in-stock"]
+                        );
+                      }}
+                      className="rounded border-[#8c6239]/20 accent-[#8c6239] w-4 h-4"
+                    />
+                    In stock
+                  </label>
+                  <label className="flex items-center gap-3 text-xs text-black/85 cursor-pointer hover:text-[#8c6239] transition-colors select-none">
+                    <input
+                      type="checkbox"
+                      checked={availabilityFilter.includes("out-of-stock")}
+                      onChange={() => {
+                        setAvailabilityFilter(prev =>
+                          prev.includes("out-of-stock") ? prev.filter(x => x !== "out-of-stock") : [...prev, "out-of-stock"]
+                        );
+                      }}
+                      className="rounded border-[#8c6239]/20 accent-[#8c6239] w-4 h-4"
+                    />
+                    Out of stock
+                  </label>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Price */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setIsPriceOpen(!isPriceOpen);
+                setIsAvailabilityOpen(false);
+                setIsSortOpen(false);
+              }}
+              className="flex items-center gap-1 text-black/70 hover:text-black transition-colors focus:outline-none cursor-pointer"
+            >
+              Price
+              <ChevronDown size={14} className={`transition-transform ${isPriceOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {isPriceOpen && (
+              <div className="absolute left-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl p-5 min-w-[260px] space-y-4">
+                <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-black/40">
+                  <span>Max is Rs. {maxLimit}</span>
+                  <button onClick={() => setPriceRange([minLimit, maxLimit])} className="underline hover:text-brand">Reset</button>
+                </div>
+                <div className="flex gap-2.5 items-center">
+                  <div className="flex items-center bg-white border border-[#3b2314]/15 rounded-xl px-3 py-2 text-xs">
+                    <span className="text-black/40 mr-1">Rs.</span>
+                    <input
+                      type="number"
+                      placeholder="From"
+                      value={priceRange[0]}
+                      onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
+                      className="w-16 focus:outline-none"
+                    />
+                  </div>
+                  <span className="text-black/30">-</span>
+                  <div className="flex items-center bg-white border border-[#3b2314]/15 rounded-xl px-3 py-2 text-xs">
+                    <span className="text-black/40 mr-1">Rs.</span>
+                    <input
+                      type="number"
+                      placeholder="To"
+                      value={priceRange[1]}
+                      onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+                      className="w-16 focus:outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right: Products Count & Sort & Grid Icons */}
+        <div className="flex items-center gap-6 ml-auto text-xs font-semibold text-black/70">
+          <span>{filteredAndSortedProducts.length} items</span>
+
+          {/* Sort */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setIsSortOpen(!isSortOpen);
+                setIsAvailabilityOpen(false);
+                setIsPriceOpen(false);
+              }}
+              className="flex items-center gap-1 text-black/70 hover:text-black transition-colors focus:outline-none cursor-pointer"
+            >
+              Sort by: {SORT_OPTIONS[sortOption]}
+              <ChevronDown size={14} className={`transition-transform ${isSortOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {isSortOpen && (
+              <div className="absolute right-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl py-2 min-w-[200px] overflow-hidden">
+                {Object.entries(SORT_OPTIONS).map(([key, label]) => (
+                  <button
+                    key={key}
+                    onClick={() => {
+                      setSortOption(key);
+                      setIsSortOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2.5 hover:bg-[#8c6239]/5 transition-colors text-xs flex items-center justify-between ${
+                      sortOption === key ? "text-[#8c6239] font-bold" : "text-black/70"
+                    }`}
+                  >
+                    <span>{label}</span>
+                    {sortOption === key && <Check size={12} />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          
+          {/* Grid Layout Icon */}
+          <div className="flex items-center gap-1 bg-white border border-[#3b2314]/10 rounded-lg p-0.5">
+            <button className="p-1.5 text-black/80 hover:bg-[#8c6239]/5 rounded transition cursor-pointer">
+              <LayoutGrid size={14} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main product area */}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 relative z-30">
+        <AnimatePresence mode="wait">
+          {filteredAndSortedProducts.length > 0 ? (
             <motion.div
               key="grid-layout"
               initial={{ opacity: 0, y: 10 }}
@@ -810,19 +767,7 @@ export default function CategoryFilterSection({
               transition={{ duration: 0.3 }}
               className="flex flex-col gap-6"
             >
-              {isFilterOrSortActive && (
-                <div className="flex items-center justify-between border-b border-brand/5 pb-2">
-                  <span className="text-xs font-bold text-black/60 uppercase tracking-widest flex items-center gap-1.5">
-                    <SlidersHorizontal size={12} />
-                    Found {filteredAndSortedProducts.length} product{filteredAndSortedProducts.length !== 1 ? "s" : ""}
-                  </span>
-                  <span className="text-xs font-bold text-black/60 uppercase tracking-widest flex items-center gap-1.5">
-                    <LayoutGrid size={12} />
-                    Grid View
-                  </span>
-                </div>
-              )}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 animate-in fade-in duration-300">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 animate-in fade-in duration-300">
                 {paginatedProducts.map((p) => {
                   const parsedImagesList = getProductImageUrls(p.images, p.colors);
                   const firstImage = getFirstProductImageUrl(p.images, p.colors);
@@ -843,6 +788,7 @@ export default function CategoryFilterSection({
                     keyWords: p.keyWords,
                     avgRating: p.avgRating,
                     numReviews: p.numReviews,
+                    totalStock: p.totalStock,
                   };
                   return <ProductCard key={p.id} product={productProps} />;
                 })}
@@ -912,7 +858,7 @@ export default function CategoryFilterSection({
               </p>
               <button
                 onClick={handleClearFilters}
-                className="bg-brand text-[#064e3b] text-xs font-bold uppercase tracking-widest px-8 py-3.5 rounded-2xl hover:bg-brand-hover shadow-md transition-all duration-300"
+                className="bg-brand text-[#FAF6ED] text-xs font-bold uppercase tracking-widest px-8 py-3.5 rounded-2xl hover:bg-brand-hover shadow-md transition-all duration-300 cursor-pointer"
               >
                 Clear All Filters
               </button>
@@ -920,7 +866,6 @@ export default function CategoryFilterSection({
           )}
         </AnimatePresence>
       </div>
-    </div>
     </div>
   );
 }

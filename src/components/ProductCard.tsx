@@ -22,6 +22,7 @@ interface Product {
   keyWords?: string | null;
   avgRating?: number | string | null;
   numReviews?: number | string | null;
+  totalStock?: number;
 }
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -73,11 +74,17 @@ export default function ProductCard({ product }: { product: Product }) {
           className="transform group-hover:scale-105 transition-transform duration-700" 
         />
 
-        {/* Right Discount Badge */}
-        {discount > 0 && (
-          <div className="absolute top-3 right-3 z-30 bg-[#4c0519] text-white text-[9px] font-black px-2 py-1 rounded shadow-md uppercase tracking-wider">
-            -{discount}% OFF
+        {/* Right Badge (Sold out takes priority) */}
+        {product.totalStock !== undefined && product.totalStock <= 0 ? (
+          <div className="absolute top-3 right-3 z-30 bg-black/80 text-white text-[9px] font-black px-2 py-1 rounded shadow-md uppercase tracking-wider">
+            Sold out
           </div>
+        ) : (
+          discount > 0 && (
+            <div className="absolute top-3 right-3 z-30 bg-[#4c0519] text-white text-[9px] font-black px-2 py-1 rounded shadow-md uppercase tracking-wider">
+              -{discount}% OFF
+            </div>
+          )
         )}
       </div>
       

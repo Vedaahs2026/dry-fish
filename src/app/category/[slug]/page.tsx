@@ -112,30 +112,41 @@ export default async function CategoryPage({ params }: PageProps) {
       .where(inArray(productVariations.productId, allProductIds));
   }
 
-  // Group sizes by product ID
+  // Group sizes and calculate total stock by product ID
   const sizeMap = new Map<number, string[]>();
+  const stockMap = new Map<number, number>();
   allVariations.forEach((v) => {
-    if (!v.productId || !v.size) return;
-    const currentSizes = sizeMap.get(v.productId) || [];
-    const normalizedSize = v.size.trim();
-    if (normalizedSize && !currentSizes.includes(normalizedSize)) {
-      currentSizes.push(normalizedSize);
+    if (!v.productId) return;
+    
+    // Group sizes
+    if (v.size) {
+      const currentSizes = sizeMap.get(v.productId) || [];
+      const normalizedSize = v.size.trim();
+      if (normalizedSize && !currentSizes.includes(normalizedSize)) {
+        currentSizes.push(normalizedSize);
+      }
+      sizeMap.set(v.productId, currentSizes);
     }
-    sizeMap.set(v.productId, currentSizes);
+
+    // Accumulate stock
+    const currentStock = stockMap.get(v.productId) || 0;
+    stockMap.set(v.productId, currentStock + (v.stock || 0));
   });
 
-  // Attach sizes to displayProducts
+  // Attach sizes and totalStock to displayProducts
   displayProducts = displayProducts.map((p) => ({
     ...p,
     sizes: sizeMap.get(p.id) || [],
+    totalStock: stockMap.has(p.id) ? stockMap.get(p.id) : 0,
   }));
 
-  // Attach sizes to sectionsWithProducts
+  // Attach sizes and totalStock to sectionsWithProducts
   sectionsWithProducts = sectionsWithProducts.map((s) => ({
     ...s,
     products: (s.products || []).map((p: any) => ({
       ...p,
       sizes: sizeMap.get(p.id) || [],
+      totalStock: stockMap.has(p.id) ? stockMap.get(p.id) : 0,
     })),
   }));
 
