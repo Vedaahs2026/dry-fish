@@ -205,13 +205,13 @@ export default function Navbar() {
 
             <div className="hidden md:flex items-center space-x-4 ml-auto text-[#3b2314]">
               {/* Search Icon triggers modal */}
-              <button
-                onClick={() => setIsSearchOpen(true)}
+              <Link
+                href="/search"
                 aria-label="Search"
                 className="hover:text-[#8c6239] transition-colors p-2 cursor-pointer outline-none"
               >
                 <Search className="h-5 w-5" />
-              </button>
+              </Link>
 
               <Link
                 href={user ? "/wishlist" : `/login?redirect=${encodeURIComponent(pathname)}`}
@@ -251,9 +251,9 @@ export default function Navbar() {
 
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center space-x-1 sm:space-x-2">
-              <button onClick={() => setIsSearchOpen(true)} aria-label="Search" className="text-white p-1 sm:p-2">
+              <Link href="/search" aria-label="Search" className="text-white p-1 sm:p-2">
                 <Search className="h-5 w-5" />
-              </button>
+              </Link>
               <Link
                 href={user ? "/wishlist" : `/login?redirect=${encodeURIComponent(pathname)}`}
                 aria-label="Wishlist"
