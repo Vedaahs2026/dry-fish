@@ -81,11 +81,10 @@ export default function ProductGrid() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center text-center mb-12 border-b border-brand/10 pb-6"
+        className="flex flex-col items-start mb-8 pb-4"
       >
         <div>
-          <h2 className="text-4xl font-playfair font-bold mb-3 text-black">Featured Products</h2>
-          <p className="text-gray-600 italic">Handpicked premium dry fish delicacies.</p>
+          <h2 className="text-2xl md:text-3xl font-serif font-semibold text-[#3b2314]">Best Selling Products</h2>
         </div>
       </motion.div>
 
@@ -99,7 +98,7 @@ export default function ProductGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {products.map((product: any) => {
             const parsedImages = getProductImageUrls(product.images, product.colors);
