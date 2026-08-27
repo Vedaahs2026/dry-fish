@@ -163,7 +163,7 @@ export default function MyOrdersPage() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center">
         <Loader2 className="w-8 h-8 text-[#C5A059] animate-spin mb-4" />
-        <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.2em]">Loading your wardrobe...</p>
+        <p className="text-[10px] font-black text-black/40 uppercase tracking-[0.2em]">Loading...</p>
       </div>
     );
   }
@@ -173,7 +173,7 @@ export default function MyOrdersPage() {
       <div className="flex items-center justify-between mb-10">
         <div>
           <h1 className="text-4xl font-playfair font-bold text-black mb-2">My Orders</h1>
-          <p className="text-black/40 text-xs font-bold uppercase tracking-widest">Track your bespoke purchases</p>
+          <p className="text-black/40 text-xs font-bold uppercase tracking-widest">Track your orders</p>
         </div>
         <Link href="/" className="p-3 rounded-full bg-brand/5 text-black hover:bg-brand/10 transition-all border border-brand/5">
           <ShoppingBag size={20} />
@@ -210,14 +210,9 @@ export default function MyOrdersPage() {
                       <div className="flex items-center space-x-3 mb-0.5">
                         <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Order ID</p>
                         <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest px-2 py-0.5 bg-white/5 rounded-full border border-white/5">#AS-{order.id}</span>
-                        {hasBespokeItems && (
-                          <span className="text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 bg-[#C5A059] text-black rounded-full shadow-[0_0_10px_rgba(197,160,89,0.3)]">
-                            Bespoke
-                          </span>
-                        )}
                       </div>
                       <h4 className="text-lg font-bold text-white leading-tight">
-                        {hasBespokeItems ? "Dry Fish Basket Bespoke Fit" : "Dry Fish Basket Custom Fit"}
+                        Dry Fish Basket Order
                       </h4>
                     </div>
                   </div>

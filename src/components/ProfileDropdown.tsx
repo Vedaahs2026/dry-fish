@@ -73,7 +73,7 @@ export default function ProfileDropdown({ user, onLogout }: ProfileDropdownProps
               <div className="p-2 rounded-lg bg-brand/5 group-hover:bg-white transition-colors">
                 <Package size={16} />
               </div>
-              <span className="text-sm font-bold tracking-tight">My Order</span>
+              <span className="text-sm font-bold tracking-tight">My Orders</span>
             </Link>
 
             <Link 
