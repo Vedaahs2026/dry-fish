@@ -222,3 +222,14 @@ export const faqs = sqliteTable("faqs", {
   displayOrder: integer("display_order").notNull().default(0),
   createdAt: text("created_at").$defaultFn(() => new Date().toISOString()),
 });
+
+export const blogs = sqliteTable("blogs", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  title: text("title").notNull(),
+  slug: text("slug").notNull().unique(),
+  summary: text("summary").notNull(),
+  content: text("content").notNull(),
+  coverImage: text("cover_image").notNull(),
+  publishedAt: text("published_at").$defaultFn(() => new Date().toISOString()),
+  author: text("author").default("Admin"),
+});

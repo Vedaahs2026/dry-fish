@@ -198,6 +198,9 @@ export default function Navbar() {
               <Link href="/my-story" className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors">
                 About us
               </Link>
+              <Link href="/blogs" className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors">
+                Blog
+              </Link>
             </nav>
 
             <div className="hidden md:flex items-center space-x-4 ml-auto text-[#3b2314]">
@@ -304,6 +307,13 @@ export default function Navbar() {
                   className="block text-white hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2"
                 >
                   About Us
+                </Link>
+                <Link
+                  href="/blogs"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-white hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2"
+                >
+                  Blog
                 </Link>
 
                 {/* Products Section */}

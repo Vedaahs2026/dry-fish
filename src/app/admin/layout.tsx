@@ -22,7 +22,8 @@ import {
   Ticket,
   Menu,
   MessageSquare,
-  HelpCircle
+  HelpCircle,
+  FileText
 } from "lucide-react";
 
 const sidebarLinks = [
@@ -37,6 +38,7 @@ const sidebarLinks = [
   { name: "Reviews", href: "/admin/reviews", icon: MessageSquare },
   { name: "FAQs Settings", href: "/admin/faqs", icon: HelpCircle },
   { name: "Coupons", href: "/admin/coupons", icon: Ticket },
+  { name: "Blogs", href: "/admin/blogs", icon: FileText },
   { name: "About Section", href: "/admin/about", icon: Sparkles },
   { name: "Site Settings", href: "/admin/settings", icon: Settings },
 ];
