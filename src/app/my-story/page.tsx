@@ -84,7 +84,7 @@ export default function MyStory() {
 
           <div className="pt-6">
             <Link
-              href="/search"
+              href="/all"
               className="inline-block bg-[#8c6239] hover:bg-[#734f2d] text-[#FAF6ED] px-12 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-md active:scale-95 cursor-pointer"
             >
               Order Now
