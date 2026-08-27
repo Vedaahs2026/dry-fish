@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 import Razorpay from "razorpay";
 import { db } from "@/db";
-import { orders, orderItems, users } from "@/db/schema";
+import { orders, orderItems, users, cartItems } from "@/db/schema";
 import { getVerifiedPhoneFromCookie } from "@/db/auth-helper";
 import { eq } from "drizzle-orm";
 import { validateAndCalculateCoupon } from "@/utils/coupon";
@@ -53,24 +53,18 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: "Invalid order total amount" }, { status: 400 });
     }
 
-    // Create Razorpay Order
-    // Amount must be in paise (so expectedTotal * 100)
-    const rzpOrder = await getRazorpayClient().orders.create({
-      amount: Math.round(expectedTotal * 100),
-      currency: "INR",
-      receipt: `receipt_order_${Date.now()}`,
-    });
+    const directOrderId = `direct_${Date.now()}`;
 
-    // Save order in database with status 'payment_pending'
+    // Save order in database with status 'pending' and paymentStatus: 'paid'
     const [newOrder] = await db.insert(orders).values({
       userId: user.id,
       totalAmount: expectedTotal,
-      status: "payment_pending",
+      status: "pending",
       shippingAddress: shippingAddress,
       couponCode: couponCode || null,
       discountAmount: discountAmount || 0,
-      razorpayOrderId: rzpOrder.id,
-      paymentStatus: "pending",
+      razorpayOrderId: directOrderId,
+      paymentStatus: "paid",
       createdAt: new Date().toISOString(),
     }).returning();
 
@@ -105,13 +99,13 @@ export async function POST(req: Request) {
           .where(eq(users.id, user.id));
       }
     }
+    
+    // Clear cart items for the user who placed this order
+    await db.delete(cartItems).where(eq(cartItems.userId, user.id));
 
     return NextResponse.json({
       success: true,
-      keyId: process.env.RAZORPAY_API_KEY,
-      amount: rzpOrder.amount,
-      currency: rzpOrder.currency,
-      razorpayOrderId: rzpOrder.id,
+      direct: true,
       dbOrderId: newOrder.id,
     });
   } catch (error: any) {

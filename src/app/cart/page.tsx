@@ -314,6 +314,14 @@ export default function CartPage() {
         return;
       }
 
+      if (data.direct) {
+        clearCart();
+        setIsCheckoutModalOpen(false);
+        setIsProcessingPayment(false);
+        router.push("/profile/orders");
+        return;
+      }
+
       // 3. Configure Razorpay Options
       const options = {
         key: data.keyId,
