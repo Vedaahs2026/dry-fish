@@ -170,7 +170,7 @@ export default function Navbar() {
                 Home
               </Link>
               
-              {categories.slice(0, 3).map((cat) => (
+              {categories.map((cat) => (
                 <Link
                   key={cat.id}
                   href={cat.link || `/category/${cat.name.toLowerCase().trim().replace(/\s+/g, "-")}`}

@@ -20,6 +20,9 @@ import {
 } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { SortableNavItem } from "@/components/admin/SortableNavItem";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { GripVertical } from "lucide-react";
 
 type NavItem = {
   id: number;
@@ -29,11 +32,62 @@ type NavItem = {
   order: number;
   isActive: boolean;
   filterTypes?: string;
-};
+}
+
+interface CategoryItemProps {
+  category: {
+    id: number;
+    name: string;
+    order: number;
+  };
+}
+
+function SortableCategoryItem({ category }: CategoryItemProps) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging
+  } = useSortable({ id: category.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 100 : undefined,
+    position: 'relative' as const,
+  };
+
+  return (
+    <tr 
+      ref={setNodeRef} 
+      style={style}
+      className={`hover:bg-brand/5 transition-all group ${isDragging ? 'bg-white shadow-2xl opacity-50' : ''}`}
+    >
+      <td className="px-2 md:px-8 py-5 w-12">
+        <button 
+          {...attributes} 
+          {...listeners}
+          className="cursor-grab active:cursor-grabbing p-2 text-black/20 hover:text-[#C5A059] transition-colors"
+        >
+          <GripVertical size={20} />
+        </button>
+      </td>
+      <td className="px-2 md:px-8 py-5 font-bold text-black">
+        {category.name}
+      </td>
+      <td className="px-2 md:px-8 py-5 text-black/40 text-xs font-semibold">
+        Position: {category.order + 1}
+      </td>
+    </tr>
+  );
+}
 
 export default function AdminNavigation() {
   const router = useRouter();
   const [items, setItems] = useState<NavItem[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState("");
@@ -67,8 +121,21 @@ export default function AdminNavigation() {
     }
   };
 
+  const fetchCategories = async () => {
+    try {
+      const res = await fetch("/api/admin/homepage-categories");
+      const data = await res.json();
+      if (data.success) {
+        setCategories(data.data);
+      }
+    } catch (err) {
+      console.error("Failed to fetch categories:", err);
+    }
+  };
+
   useEffect(() => {
     fetchItems();
+    fetchCategories();
   }, []);
 
   const handleEdit = (item: NavItem) => {
@@ -200,6 +267,35 @@ export default function AdminNavigation() {
       } catch (err) {
         setError("Failed to save new order.");
         fetchItems(); // Revert on failure
+      }
+    }
+  };
+
+  const handleCategoryDragEnd = async (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over && active.id !== over.id) {
+      const oldIndex = categories.findIndex((item) => item.id === active.id);
+      const newIndex = categories.findIndex((item) => item.id === over.id);
+
+      const newCategories = arrayMove(categories, oldIndex, newIndex).map((item, index) => ({
+        ...item,
+        order: index,
+      }));
+
+      setCategories(newCategories);
+
+      try {
+        await fetch("/api/admin/homepage-categories", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newCategories),
+        });
+        setSuccess("Category order updated successfully!");
+        router.refresh();
+      } catch (err) {
+        setError("Failed to save new category order.");
+        fetchCategories(); // Revert on failure
       }
     }
   };
@@ -391,6 +487,48 @@ export default function AdminNavigation() {
               <p className="text-black/40 font-bold uppercase tracking-widest text-xs">No navigation items found.</p>
             </div>
           )}
+        </div>
+
+        {/* Storefront Categories (Nav Bar Order) */}
+        <div className="mt-16 mb-10">
+          <div className="mb-6 flex flex-col items-center text-center">
+            <h2 className="text-2xl font-playfair font-bold text-black">Storefront Categories (Nav Bar Order)</h2>
+            <p className="mt-1 text-black/60 font-medium text-xs">Drag and drop the categories below to change their display order in the header nav bar.</p>
+          </div>
+
+          <div className="bg-white rounded-[2.5rem] shadow-sm border border-brand/5 overflow-x-auto custom-scrollbar">
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={handleCategoryDragEnd}
+              modifiers={[restrictToVerticalAxis]}
+            >
+              <SortableContext items={categories.map((c) => c.id)} strategy={verticalListSortingStrategy}>
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-brand/5 border-b border-brand/10">
+                      <th className="w-12 px-2 md:px-8 py-6"></th>
+                      <th className="px-2 md:px-8 py-6 text-[10px] font-black text-black/40 uppercase tracking-[0.2em]">Category Name</th>
+                      <th className="px-2 md:px-8 py-6 text-[10px] font-black text-black/40 uppercase tracking-[0.2em]">Order Position</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-brand/5 relative">
+                    {categories.map((cat) => (
+                      <SortableCategoryItem 
+                        key={cat.id} 
+                        category={cat} 
+                      />
+                    ))}
+                  </tbody>
+                </table>
+              </SortableContext>
+            </DndContext>
+            {categories.length === 0 && (
+              <div className="p-20 text-center">
+                <p className="text-black/40 font-bold uppercase tracking-widest text-xs">No categories found.</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
   );
