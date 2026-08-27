@@ -16,74 +16,126 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact-us" className="w-full bg-[#eab308] pt-12 pb-6 px-6 md:px-12 border-t border-[#064e3b]/10 text-black font-inter">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-        {/* Column 1: MAIN MENU */}
-        <div>
-          <div className="bg-black text-[#eab308] px-3.5 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4">
-            MAIN MENU
+    <div className="w-full flex flex-col font-sans select-none">
+      <footer id="contact-us" className="w-full bg-[#8c6239] pt-14 pb-12 px-6 md:px-12 text-[#FFFDF6]/90">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+          
+          {/* Column 1: Info and Address */}
+          <div className="md:col-span-2 flex flex-col pr-0 md:pr-10">
+            <h3 className="text-xl font-serif font-black text-[#fcd34d] mb-4 tracking-wide">
+              Godavari Dry fish
+            </h3>
+            <p className="text-xs text-[#FFFDF6]/80 leading-relaxed mb-3">
+              Traditional taste from the Godavari coastal belt. FSSAI licensed & hygienic processing.
+            </p>
+            <p className="text-xs text-[#FFFDF6]/80 italic leading-relaxed mb-5">
+              Now delivering to <span className="font-bold not-italic">Hyderabad, Bangalore, Chennai, Mumbai, Pune, Delhi</span> & across India.
+            </p>
+            <div className="text-xs text-[#FFFDF6]/85 space-y-1">
+              <p className="font-bold text-[#fcd34d] tracking-wide mb-1">Address:</p>
+              <p>Bhimavaram</p>
+              <p>ANDHRAPRADESH - 534204</p>
+              <p className="pt-3">call: +91-9676344465</p>
+              <p>godavaridryfish@gmail.com</p>
+            </div>
           </div>
-          <ul className="space-y-2 text-xs font-semibold text-black/80">
-            <li><Link href="/" className="hover:text-black hover:underline transition">Home</Link></li>
-            <li><Link href="/#featured-collections" className="hover:text-black hover:underline transition">Products</Link></li>
-            <li><Link href="/profile/orders" className="hover:text-black hover:underline transition">Track Order</Link></li>
-            <li><Link href="/my-story#contact" className="hover:text-black hover:underline transition">Contact Us</Link></li>
-          </ul>
-        </div>
 
-        {/* Column 2: COMPANY */}
-        <div>
-          <div className="bg-black text-[#eab308] px-3.5 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4">
-            COMPANY
+          {/* Column 2: Quick Links */}
+          <div className="flex flex-col">
+            <h3 className="text-sm font-serif font-black text-[#fcd34d] mb-4 tracking-wide uppercase">
+              Quick links
+            </h3>
+            <ul className="space-y-2 text-xs font-medium text-[#FFFDF6]/80">
+              <li>
+                <Link href="/search" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Search
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Buy Dry Fish Online
+                </Link>
+              </li>
+              <li>
+                <Link href="/profile/orders" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Track Your Order
+                </Link>
+              </li>
+              <li>
+                <Link href="/shipping-payment" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Shipping & Delivery
+                </Link>
+              </li>
+              <li>
+                <Link href="/cancellation-returns" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Refund & Return Policy
+                </Link>
+              </li>
+            </ul>
           </div>
-          <ul className="space-y-2 text-xs font-semibold text-black/80">
-            <li><Link href="/profile/orders" className="hover:text-black hover:underline transition">Orders</Link></li>
-            <li><Link href="/account/profile" className="hover:text-black hover:underline transition">Profile</Link></li>
-          </ul>
-        </div>
 
-        {/* Column 3: BESTSELLERS */}
-        <div>
-          <div className="bg-black text-[#eab308] px-3.5 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4">
-            BESTSELLERS
+          {/* Column 3: Delivery Locations */}
+          <div className="flex flex-col">
+            <h3 className="text-sm font-serif font-black text-[#fcd34d] mb-4 tracking-wide uppercase">
+              Our Dry Fish Delivery Locations
+            </h3>
+            <ul className="space-y-2 text-xs font-medium text-[#FFFDF6]/80">
+              <li>
+                <Link href="/search?q=Mumbai" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Dry Fish in Mumbai
+                </Link>
+              </li>
+              <li>
+                <Link href="/search?q=Hyderabad" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Dry Fish in Hyderabad
+                </Link>
+              </li>
+              <li>
+                <Link href="/search?q=Delhi" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Dry Fish in Delhi
+                </Link>
+              </li>
+              <li>
+                <Link href="/search?q=Chennai" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Dry Fish in Chennai
+                </Link>
+              </li>
+              <li>
+                <Link href="/search?q=Bangalore" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Dry Fish in Bangalore
+                </Link>
+              </li>
+              <li>
+                <Link href="/search?q=Kolkata" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Dry Fish in Kolkata
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Dry Fish Price
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                  Dry Fish Wholesale
+                </Link>
+              </li>
+            </ul>
           </div>
-          <ul className="space-y-2 text-xs font-semibold text-black/80">
-            <li><Link href="/#featured-collections" className="hover:text-black hover:underline transition">Products</Link></li>
-            <li><Link href="/" className="hover:text-black hover:underline transition">Other Products</Link></li>
-          </ul>
-        </div>
 
-        {/* Column 4: POLICIES */}
-        <div>
-          <div className="bg-black text-[#eab308] px-3.5 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4">
-            POLICIES
+        </div>
+      </footer>
+
+      {/* Dark Footer Bottom Bar */}
+      <div className="w-full bg-[#252525] py-4 px-6 md:px-12 text-[#FFFDF6]/50 text-[11px] font-medium border-t border-white/5">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+          <p>&copy; 2026 Godavari dryfish</p>
+          <div className="flex gap-4">
+            <Link href="/terms-conditions" className="hover:underline hover:text-white transition-colors">Terms and Conditions</Link>
+            <Link href="/privacy-policy" className="hover:underline hover:text-white transition-colors">Privacy Policy</Link>
           </div>
-          <ul className="space-y-2 text-xs font-semibold text-black/80">
-            <li><Link href="/profile" className="hover:text-black hover:underline transition">My Account</Link></li>
-            <li><Link href="/terms-conditions" className="hover:text-black hover:underline transition">Terms and Conditions</Link></li>
-            <li><Link href="/privacy-policy" className="hover:text-black hover:underline transition">Privacy Policy</Link></li>
-            <li><Link href="/cancellation-returns" className="hover:text-black hover:underline transition">Return and Refund Policy</Link></li>
-            <li><Link href="/shipping-payment" className="hover:text-black hover:underline transition">Shipping Policy</Link></li>
-            <li><Link href="/terms-conditions" className="hover:text-black hover:underline transition">Terms of Service</Link></li>
-            <li><Link href="/cancellation-returns" className="hover:text-black hover:underline transition">Refund policy</Link></li>
-          </ul>
         </div>
       </div>
-
-      <div className="max-w-7xl mx-auto pt-6 border-t border-black/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex-1 hidden sm:block"></div>
-        <p className="text-[10px] text-black font-bold tracking-wider uppercase text-center flex-1">
-          &copy; {new Date().getFullYear()} Venkys Dried Fish Basket.
-        </p>
-        <div className="flex-1 flex justify-end">
-          <button 
-            onClick={handleBackToTop} 
-            className="flex items-center gap-1 text-[10px] text-black font-bold uppercase tracking-wider hover:underline cursor-pointer focus:outline-none focus:ring-0 active:outline-none border-none outline-none bg-transparent"
-          >
-            <span className="text-xs">↑</span> Back to top
-          </button>
-        </div>
-      </div>
-    </footer>
+    </div>
   );
 }
