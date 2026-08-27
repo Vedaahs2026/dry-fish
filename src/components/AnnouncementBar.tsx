@@ -67,7 +67,7 @@ export default function AnnouncementBar() {
   }
 
   return (
-    <div className="w-full bg-[#eab308] text-[#064e3b] h-10 flex items-center overflow-hidden border-b border-[#eab308]/10 relative z-50 shadow-sm">
+    <div className="w-full bg-[#8c6239] text-[#fcd34d] h-10 flex items-center overflow-hidden relative z-50 shadow-sm">
       <div className="w-full flex items-center overflow-hidden relative">
         <div className="flex animate-marquee whitespace-nowrap">
           <div className="flex shrink-0 gap-8 items-center px-4">
@@ -79,7 +79,7 @@ export default function AnnouncementBar() {
                   {offer.link ? (
                     <Link
                       href={offer.link}
-                      className="hover:text-black transition-colors duration-300 font-inter text-[11px] sm:text-xs font-black tracking-widest uppercase whitespace-nowrap"
+                      className="hover:text-white transition-colors duration-300 font-inter text-[11px] sm:text-xs font-black tracking-widest uppercase whitespace-nowrap"
                     >
                       {displayText}
                     </Link>
@@ -88,7 +88,7 @@ export default function AnnouncementBar() {
                       {displayText}
                     </span>
                   )}
-                  <span className="text-[#064e3b] text-xs select-none">★</span>
+                  <span className="text-[#fcd34d]/60 text-xs select-none">★</span>
                 </div>
               );
             })}
@@ -102,7 +102,7 @@ export default function AnnouncementBar() {
                   {offer.link ? (
                     <Link
                       href={offer.link}
-                      className="hover:text-black transition-colors duration-300 font-inter text-[11px] sm:text-xs font-black tracking-widest uppercase whitespace-nowrap"
+                      className="hover:text-white transition-colors duration-300 font-inter text-[11px] sm:text-xs font-black tracking-widest uppercase whitespace-nowrap"
                     >
                       {displayText}
                     </Link>
@@ -111,7 +111,7 @@ export default function AnnouncementBar() {
                       {displayText}
                     </span>
                   )}
-                  <span className="text-[#064e3b] text-xs select-none">★</span>
+                  <span className="text-[#fcd34d]/60 text-xs select-none">★</span>
                 </div>
               );
             })}

@@ -146,9 +146,9 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-black border-b border-white/10 shadow-lg font-inter">
+      <header className="sticky top-0 z-50 w-full bg-[#FAF6ED] border-b border-[#8c6239]/10 shadow-sm font-inter">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-12">
+          <div className="flex justify-between items-center h-16">
 
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center mr-2 sm:mr-4 md:mr-8">
@@ -156,9 +156,9 @@ export default function Navbar() {
                 <img
                   src="/images/logo.png"
                   alt="Dry Fish Basket Logo"
-                  className="h-[28px] sm:h-[34px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-[34px] sm:h-[40px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
-                <span className="font-gabriola text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-wide hover:text-[#eab308] transition-colors translate-y-[0.5px]">
+                <span className="font-gabriola text-xl sm:text-2xl md:text-3xl font-bold text-[#064e3b] tracking-wide hover:text-[#8c6239] transition-colors translate-y-[0.5px]">
                   Dry Fish Basket
                 </span>
               </Link>
@@ -166,41 +166,19 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6 ml-4">
-              <Link href="/" className="text-white hover:text-[#eab308] text-[11px] font-black uppercase tracking-widest transition-colors">
+              <Link href="/" className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors">
                 Home
               </Link>
-              <Link href="/my-story" className="text-white hover:text-[#eab308] text-[11px] font-black uppercase tracking-widest transition-colors">
-                About Us
-              </Link>
               
-              {/* Products Hover Dropdown */}
-              <div className="relative group">
-                <button className="text-white hover:text-[#eab308] text-[11px] font-black uppercase tracking-widest transition-colors flex items-center gap-1 cursor-pointer">
-                  Products
-                  <svg className="w-2.5 h-2.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute left-0 mt-2 w-48 rounded-xl bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="py-2">
-                    {categories.length === 0 ? (
-                      <div className="px-4 py-2.5 text-[9px] font-bold text-white/50 uppercase tracking-wider">
-                        No Categories Yet
-                      </div>
-                    ) : (
-                      categories.map((cat) => (
-                        <Link
-                          key={cat.id}
-                          href={cat.link || `/category/${cat.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
-                          className="block px-4 py-2.5 text-[10px] font-bold text-white hover:bg-white/10 hover:text-[#eab308] transition-colors uppercase tracking-wider"
-                        >
-                          {cat.name}
-                        </Link>
-                      ))
-                    )}
-                  </div>
-                </div>
-              </div>
+              {categories.slice(0, 3).map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={cat.link || `/category/${cat.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
+                  className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors capitalize"
+                >
+                  {cat.name}
+                </Link>
+              ))}
 
               <Link
                 href="/#contact-us"
@@ -213,45 +191,41 @@ export default function Navbar() {
                     router.push("/#contact-us");
                   }
                 }}
-                className="text-white hover:text-[#eab308] text-[11px] font-black uppercase tracking-widest transition-colors"
+                className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors"
               >
-                Contact Us
+                Contact
+              </Link>
+              <Link href="/my-story" className="text-[#3b2314] hover:text-[#8c6239] text-xs font-semibold tracking-wide transition-colors">
+                About us
               </Link>
             </nav>
 
-            <div className="hidden md:flex items-center space-x-4 ml-auto text-white">
-              {/* Unified Minimalist Search Bar */}
-              <div className="max-w-[280px] md:w-[280px]">
-                <form onSubmit={handleSearchSubmit} className="w-full relative flex items-center">
-                  <div className="absolute left-3 flex items-center pointer-events-none text-white/40">
-                    <Search size={16} strokeWidth={2.2} />
-                  </div>
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search for products"
-                    className="w-full bg-[#1A1A1A] text-white pl-9 pr-4 py-2 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-[#C5A059] placeholder:text-white/40 transition-all shadow-sm border border-white/10"
-                  />
-                </form>
-              </div>
+            <div className="hidden md:flex items-center space-x-4 ml-auto text-[#3b2314]">
+              {/* Search Icon triggers modal */}
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                aria-label="Search"
+                className="hover:text-[#8c6239] transition-colors p-2 cursor-pointer outline-none"
+              >
+                <Search className="h-5 w-5" />
+              </button>
 
               <Link
                 href={user ? "/wishlist" : `/login?redirect=${encodeURIComponent(pathname)}`}
                 aria-label="Wishlist"
-                className="hover:text-black transition-colors relative p-2 cursor-pointer"
+                className="hover:text-[#8c6239] transition-colors relative p-2 cursor-pointer"
               >
                 <Heart className="h-5 w-5" />
                 {user && wishlistItems.length > 0 && (
-                  <span className="absolute top-0 right-0 bg-[#eab308] text-black text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center border-2 border-black">
+                  <span className="absolute top-0 right-0 bg-[#8c6239] text-white text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center">
                     {wishlistItems.length}
                   </span>
                 )}
               </Link>
 
-              <Link href={user ? "/cart" : "/login"} aria-label="Cart" className="hover:text-black transition-colors relative p-2">
+              <Link href={user ? "/cart" : "/login"} aria-label="Cart" className="hover:text-[#8c6239] transition-colors relative p-2">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute top-0 right-0 bg-[#eab308] text-black text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center border-2 border-black">
+                <span className="absolute top-0 right-0 bg-[#8c6239] text-white text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               </Link>
@@ -264,9 +238,10 @@ export default function Navbar() {
               ) : (
                 <Link
                   href="/login"
-                  className="bg-white border-2 border-[#064e3b] text-[#064e3b] hover:bg-[#064e3b]/5 text-[10px] sm:text-xs font-black uppercase tracking-widest px-4 py-2 rounded-xl shadow-sm transition-all shrink-0 cursor-pointer ml-2"
+                  aria-label="Login"
+                  className="hover:text-[#8c6239] transition-colors relative p-2 cursor-pointer"
                 >
-                  Login / Sign Up
+                  <User className="h-5 w-5" />
                 </Link>
               )}
             </div>
