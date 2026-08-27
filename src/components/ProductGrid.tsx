@@ -47,6 +47,25 @@ const itemVariants = {
 export default function ProductGrid() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isShowingAll, setIsShowingAll] = useState(false);
+  const [loadingAll, setLoadingAll] = useState(false);
+
+  const fetchProducts = async (showAll: boolean) => {
+    setLoadingAll(true);
+    try {
+      const endpoint = showAll ? "/api/products" : "/api/products/featured";
+      const res = await fetch(endpoint);
+      const data = await res.json();
+      if (data.success) {
+        setProducts(data.data);
+        setIsShowingAll(showAll);
+      }
+    } catch (error) {
+      console.error("Failed to fetch products", error);
+    } finally {
+      setLoadingAll(false);
+    }
+  };
 
   useEffect(() => {
     async function fetchFeatured() {
@@ -84,7 +103,9 @@ export default function ProductGrid() {
         className="flex flex-col items-start mb-8 pb-4"
       >
         <div>
-          <h2 className="text-2xl md:text-3xl font-serif font-semibold text-[#3b2314]">Best Selling Products</h2>
+          <h2 className="text-2xl md:text-3xl font-serif font-semibold text-[#3b2314]">
+            {isShowingAll ? "All Products" : "Best Selling Products"}
+          </h2>
         </div>
       </motion.div>
 
@@ -93,42 +114,55 @@ export default function ProductGrid() {
           <p className="text-black/40 font-bold uppercase tracking-widest text-xs">New collections coming soon</p>
         </div>
       ) : (
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6"
-        >
-          {products.map((product: any) => {
-            const parsedImages = getProductImageUrls(product.images, product.colors);
-            const firstImage = getFirstProductImageUrl(product.images, product.colors);
-            
-            return (
-              <motion.div key={product.id} variants={itemVariants}>
-                <ProductCard 
-                  product={{
-                    id: product.id.toString(),
-                    name: product.name,
-                    description: product.description || "",
-                    price: product.salePrice || product.basePrice,
-                    basePrice: product.basePrice,
-                    salePrice: product.salePrice,
-                    imageUrl: firstImage,
-                    images: parsedImages,
-                    categorySlug: product.category || "all",
-                    isCustomizable: product.isCustomizable,
-                    style: product.style,
-                    neckStyle: product.neckStyle,
-                    keyWords: product.keyWords,
-                    avgRating: product.avgRating,
-                    numReviews: product.numReviews,
-                  }} 
-                />
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        <>
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          >
+            {products.map((product: any) => {
+              const parsedImages = getProductImageUrls(product.images, product.colors);
+              const firstImage = getFirstProductImageUrl(product.images, product.colors);
+              
+              return (
+                <motion.div key={product.id} variants={itemVariants}>
+                  <ProductCard 
+                    product={{
+                      id: product.id.toString(),
+                      name: product.name,
+                      description: product.description || "",
+                      price: product.salePrice || product.basePrice,
+                      basePrice: product.basePrice,
+                      salePrice: product.salePrice,
+                      imageUrl: firstImage,
+                      images: parsedImages,
+                      categorySlug: product.category || "all",
+                      isCustomizable: product.isCustomizable,
+                      style: product.style,
+                      neckStyle: product.neckStyle,
+                      keyWords: product.keyWords,
+                      avgRating: product.avgRating,
+                      numReviews: product.numReviews,
+                    }} 
+                  />
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={() => fetchProducts(!isShowingAll)}
+              disabled={loadingAll}
+              className="flex items-center gap-2 bg-[#8c6239] hover:bg-[#734f2d] text-[#FAF6ED] px-8 py-3.5 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-md active:scale-[0.98] disabled:opacity-50 cursor-pointer"
+            >
+              {loadingAll && <Loader2 className="w-4.5 h-4.5 animate-spin text-white" />}
+              <span>{isShowingAll ? "Show Featured" : "View All"}</span>
+            </button>
+          </div>
+        </>
       )}
     </section>
   );
