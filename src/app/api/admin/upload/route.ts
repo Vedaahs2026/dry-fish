@@ -2,11 +2,11 @@ import { verifyAdminRequest } from "@/utils/auth";
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
-// Configure Cloudinary with keys from .env.local
+// Configure Cloudinary with keys from environment variables or fallback credentials
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "qtwfvzzj",
+  api_key: process.env.CLOUDINARY_API_KEY || "764359716652958",
+  api_secret: process.env.CLOUDINARY_API_SECRET || "HT4eIPfBM_TTdamuBKNnb2sEKVI",
 });
 
 async function isAdmin(request?: Request) {
@@ -14,7 +14,7 @@ async function isAdmin(request?: Request) {
 }
 
 export async function POST(request: Request) {
-  if (!await isAdmin(request)) {
+  if (!(await isAdmin(request))) {
     return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }
 
@@ -29,11 +29,11 @@ export async function POST(request: Request) {
     const buffer = Buffer.from(await file.arrayBuffer());
 
     // Stream upload directly to Cloudinary
-    const uploadResult = await new Promise((resolve, reject) => {
+    const uploadResult = (await new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
           folder: "dry_fish_basket_store", // Folder name in Cloudinary media library
-          resource_type: "auto",   // Automatically detects image or video type
+          resource_type: "auto", // Automatically detects image or video type
         },
         (error, result) => {
           if (error) reject(error);
@@ -41,16 +41,20 @@ export async function POST(request: Request) {
         }
       );
       uploadStream.end(buffer);
-    }) as any;
+    })) as any;
 
-    const secureUrl = uploadResult.secure_url;
-    
-    // Inject f_auto (auto format) and q_auto (auto quality) optimization parameters
-    const optimizedUrl = secureUrl.replace("/upload/", "/upload/f_auto,q_auto/");
+    const secureUrl = uploadResult?.secure_url || uploadResult?.url;
 
-    return NextResponse.json({ success: true, url: optimizedUrl });
+    if (!secureUrl) {
+      throw new Error("Cloudinary response did not include a secure_url");
+    }
+
+    return NextResponse.json({ success: true, url: secureUrl });
   } catch (error: any) {
     console.error("Cloudinary Upload Error:", error);
-    return NextResponse.json({ success: false, error: error.message || "Failed to upload file to Cloudinary" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error.message || "Failed to upload file to Cloudinary" },
+      { status: 500 }
+    );
   }
 }
