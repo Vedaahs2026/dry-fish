@@ -87,10 +87,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   const [added, setAdded] = useState(false);
   const [toast, setToast] = useState("");
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
-  const [isDetailsExpanded, setIsDetailsExpanded] = useState(true);
-  const [isShippingExpanded, setIsShippingExpanded] = useState(false);
-  const [isQualityExpanded, setIsQualityExpanded] = useState(false);
-  const [isStorageExpanded, setIsStorageExpanded] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(true);
+  const [isDeliveryExpanded, setIsDeliveryExpanded] = useState(false);
 
   const addItem = useCartStore((state) => state.addItem);
 
@@ -373,13 +371,6 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               )}
             </div>
 
-            {/* Product Description */}
-            {product.description && (
-              <p className="text-black/70 font-medium text-xs leading-relaxed mb-6 whitespace-pre-wrap">
-                {product.description}
-              </p>
-            )}
-
             {/* 4. Options to Choose Size */}
             {!isSingleSize && (
               <div className="mb-6">
@@ -479,6 +470,53 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 <Heart className={`w-4 h-4 transition-colors ${isWishlisted ? "fill-red-500 text-red-500 animate-pulse" : "text-black/70"}`} />
                 <span>{isWishlisted ? "Wishlisted" : "Add to Wishlist"}</span>
               </button>
+            </div>
+
+            {/* Accordions */}
+            <div className="mt-8 space-y-4 border-t border-black/10 pt-6">
+              {/* Accordion 1: Product Description */}
+              <div className="border-b border-[#8c6239]/10 pb-4">
+                <button 
+                  type="button"
+                  onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                  className="w-full flex items-center justify-between text-left text-sm font-black uppercase tracking-wider text-black py-2 cursor-pointer focus:outline-none select-none"
+                >
+                  <span className="flex items-center gap-2">
+                    📄 Product Description
+                  </span>
+                  <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${isDescriptionExpanded ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                
+                {isDescriptionExpanded && product.description && (
+                  <div className="pt-4 pb-2 text-sm text-black/85 leading-relaxed transition-all duration-300 animate-in fade-in duration-300">
+                    <div className="whitespace-pre-wrap font-medium text-black/85">
+                      {product.description}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Accordion 2: Delivery information */}
+              <div className="border-b border-[#8c6239]/10 pb-4">
+                <button 
+                  type="button"
+                  onClick={() => setIsDeliveryExpanded(!isDeliveryExpanded)}
+                  className="w-full flex items-center justify-between text-left text-sm font-black uppercase tracking-wider text-black py-2 cursor-pointer focus:outline-none select-none animate-in fade-in duration-300"
+                >
+                  <span className="flex items-center gap-2">
+                    🚚 When will I get my order?
+                  </span>
+                  <ChevronDown className={`w-4 h-4 transform transition-transform duration-300 ${isDeliveryExpanded ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                
+                {isDeliveryExpanded && (
+                  <div className="pt-4 pb-2 text-sm text-black/85 leading-relaxed transition-all duration-300 animate-in fade-in duration-300">
+                    <p className="font-medium text-black/85">
+                      We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive a tracking ID of your order via whatsapp and email . Delivery times vary depending on your location.
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
