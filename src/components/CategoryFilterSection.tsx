@@ -714,15 +714,15 @@ export default function CategoryFilterSection({
   return (
     <div className="w-full flex flex-col">
       {/* Split Category Banner Block */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 bg-[#eab308] h-[160px] md:h-[220px] overflow-hidden relative border-b border-brand-accent/20 select-none">
-        {/* Left Yellow Block */}
-        <div className="bg-[#eab308] flex items-center justify-center p-6 text-center h-full min-h-[160px] md:min-h-[220px] relative z-20">
-          <h1 className="text-2xl md:text-4xl font-serif font-black text-black tracking-wide uppercase relative z-30">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 bg-[#8c6239] h-[160px] md:h-[220px] overflow-hidden relative border-b border-brand-accent/20 select-none">
+        {/* Left Brown Block */}
+        <div className="bg-[#8c6239] flex items-center justify-center p-6 text-center h-full min-h-[160px] md:min-h-[220px] relative z-20">
+          <h1 className="text-2xl md:text-4xl font-serif font-black text-[#fcd34d] tracking-wide uppercase relative z-30">
             {displayTitle || "Category"}
           </h1>
         </div>
         {/* Right Block (Image or Solid Color) */}
-        <div className="relative w-full h-full bg-[#eab308]/95 z-10">
+        <div className="relative w-full h-full bg-[#8c6239]/95 z-10">
           {bannerImage ? (
             <img 
               src={bannerImage} 
