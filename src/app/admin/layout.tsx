@@ -37,6 +37,7 @@ const sidebarLinks = [
   { name: "Reviews", href: "/admin/reviews", icon: MessageSquare },
   { name: "FAQs Settings", href: "/admin/faqs", icon: HelpCircle },
   { name: "Coupons", href: "/admin/coupons", icon: Ticket },
+  { name: "About Section", href: "/admin/about", icon: Sparkles },
   { name: "Site Settings", href: "/admin/settings", icon: Settings },
 ];
 
