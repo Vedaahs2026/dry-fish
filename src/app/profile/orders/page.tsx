@@ -472,38 +472,46 @@ export default function MyOrdersPage() {
                             <h5 className="text-[9px] font-black uppercase tracking-widest text-[#C5A059] flex items-center gap-1.5">
                               🚚 Shipping Details
                             </h5>
-                            <div className="bg-[#8c6239]/5 border border-[#8c6239]/10 rounded-2xl p-4 space-y-3 text-black">
-                              {order.courierServiceName && (
-                                <p className="text-xs text-black/80">
-                                  <strong className="text-black font-black uppercase tracking-wider text-[10px]">Courier:</strong>{" "}
-                                  {order.courierServiceName}
-                                </p>
-                              )}
-                              {order.courierId && (
-                                <p className="text-xs text-black/80">
-                                  <strong className="text-black font-black uppercase tracking-wider text-[10px]">Courier ID:</strong>{" "}
-                                  {order.courierId}
-                                </p>
-                              )}
-                              {order.trackingNumber && (
-                                <p className="text-xs text-black/80">
-                                  <strong className="text-black font-black uppercase tracking-wider text-[10px]">Tracking Number:</strong>{" "}
-                                  {order.trackingNumber}
-                                </p>
-                              )}
-                              {order.trackingLink && (
-                                <p className="text-xs">
-                                  <strong className="text-black font-black uppercase tracking-wider text-[10px] block mb-1">Track Shipment:</strong>
-                                  <a 
-                                    href={order.trackingLink} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1 text-[#C5A059] hover:underline text-xs font-bold"
-                                  >
-                                    View Shipment Progress →
-                                  </a>
-                                </p>
-                              )}
+                             <div className="bg-[#8c6239]/5 border border-[#8c6239]/10 rounded-2xl p-4 space-y-3 text-black">
+                               {!order.courierServiceName && !order.trackingNumber ? (
+                                 <p className="text-xs text-black/40 italic font-medium">
+                                   Tracking details will be updated shortly.
+                                 </p>
+                               ) : (
+                                 <>
+                                   {order.courierServiceName && (
+                                     <p className="text-xs text-black/80">
+                                       <strong className="text-black font-black uppercase tracking-wider text-[10px]">Courier:</strong>{" "}
+                                       {order.courierServiceName}
+                                     </p>
+                                   )}
+                                   {order.courierId && (
+                                     <p className="text-xs text-black/80">
+                                       <strong className="text-black font-black uppercase tracking-wider text-[10px]">Courier ID:</strong>{" "}
+                                       {order.courierId}
+                                     </p>
+                                   )}
+                                   {order.trackingNumber && (
+                                     <p className="text-xs text-black/80">
+                                       <strong className="text-black font-black uppercase tracking-wider text-[10px]">Tracking Number:</strong>{" "}
+                                       {order.trackingNumber}
+                                     </p>
+                                   )}
+                                   {order.trackingLink && (
+                                     <p className="text-xs">
+                                       <strong className="text-black font-black uppercase tracking-wider text-[10px] block mb-1">Track Shipment:</strong>
+                                       <a 
+                                         href={order.trackingLink} 
+                                         target="_blank" 
+                                         rel="noopener noreferrer"
+                                         className="inline-flex items-center gap-1 text-[#C5A059] hover:underline text-xs font-bold"
+                                       >
+                                         View Shipment Progress →
+                                       </a>
+                                     </p>
+                                   )}
+                                 </>
+                               )}
                               {order.estimatedDeliveryDate && (
                                 <p className="text-xs text-black/80">
                                   <strong className="text-black font-black uppercase tracking-wider text-[10px]">Estimated Delivery:</strong>{" "}
