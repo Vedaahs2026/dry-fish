@@ -251,7 +251,7 @@ export default function WishlistPage() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest bg-[#eab308] text-[#064e3b] px-8 py-4 rounded-xl hover:bg-[#32451B] transition shadow-lg"
+              className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest bg-[#eab308] text-[#064e3b] px-8 py-4 rounded-xl hover:bg-brand-hover transition shadow-lg"
             >
               <span>Explore Products</span>
               <ArrowRight size={14} />
