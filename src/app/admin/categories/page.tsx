@@ -159,7 +159,7 @@ export default function CategorySettingsPage() {
     setSuccess("");
 
     const defaultLink = `/category/${name.toLowerCase().trim().replace(/\s+/g, "-")}`;
-    const combinedImages = `${imageUrl.trim()},${(bannerImageUrl || imageUrl).trim()}`;
+    const combinedImages = `${imageUrl.trim()},${imageUrl.trim()}`;
     const payload = {
       id: editingId,
       name: name.trim(),
@@ -366,39 +366,6 @@ export default function CategorySettingsPage() {
               </div>
             </div>
 
-            <div>
-              <label className="block text-[10px] font-black text-black/40 uppercase tracking-[0.2em] mb-2 ml-1">
-                Category Page Banner Image (Second Image)
-              </label>
-              <input
-                type="text"
-                value={bannerImageUrl}
-                onChange={(e) => setBannerImageUrl(e.target.value)}
-                placeholder="Paste direct URL OR upload banner image below..."
-                className="w-full bg-brand/5 border border-transparent focus:border-[#C5A059]/50 rounded-2xl px-5 py-3.5 text-sm font-semibold text-black outline-none transition-all placeholder:text-black/20"
-                required
-              />
-              <div className="relative border-2 border-dashed border-brand/10 hover:border-[#C5A059]/40 bg-brand-light/50 hover:bg-white rounded-2xl h-20 transition-all flex flex-col items-center justify-center cursor-pointer mt-3">
-                <input
-                  type="file"
-                  accept="image/*"
-                  disabled={isUploadingBanner}
-                  onChange={handleBannerUpload}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                />
-                {isUploadingBanner ? (
-                  <div className="flex flex-col items-center">
-                    <Loader2 className="w-5 h-5 text-[#C5A059] animate-spin mb-1" />
-                    <span className="text-[9px] font-black text-black/40 uppercase tracking-widest">Uploading banner...</span>
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center text-center p-2">
-                    <Upload className="w-4 h-4 text-[#C5A059] mb-1" />
-                    <p className="text-xs font-bold text-black/60">Click or Drag Files here</p>
-                  </div>
-                )}
-              </div>
-            </div>
 
             <div className="flex space-x-3">
               <button

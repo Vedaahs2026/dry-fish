@@ -713,39 +713,21 @@ export default function CategoryFilterSection({
 
   return (
     <div className="w-full flex flex-col">
-      {/* Split Category Banner Block */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 bg-[#8c6239] h-[160px] md:h-[220px] overflow-hidden relative border-b border-brand-accent/20 select-none">
-        {/* Left Brown Block */}
-        <div className="bg-[#8c6239] flex items-center justify-center p-6 text-center h-full min-h-[160px] md:min-h-[220px] relative z-20">
-          <h1 className="text-2xl md:text-4xl font-serif font-black text-[#fcd34d] tracking-wide uppercase relative z-30">
+      {/* Category Header */}
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="flex flex-col gap-2">
+          {/* Breadcrumbs */}
+          <div className="text-[10px] font-black uppercase tracking-wider text-black/40">
+            <Link href="/" className="hover:text-brand transition-colors">Home</Link>
+            <span className="mx-2 text-black/20">/</span>
+            <span className="text-black/30">Collections</span>
+            <span className="mx-2 text-black/20">/</span>
+            <span className="text-black/60">{displayTitle || "Category"}</span>
+          </div>
+          {/* Category Title */}
+          <h1 className="text-3xl font-serif font-black text-[#3b2314] uppercase tracking-wide mt-1">
             {displayTitle || "Category"}
           </h1>
-        </div>
-        {/* Right Block (Image or Solid Color) */}
-        <div className="relative w-full h-full bg-[#8c6239]/95 z-10">
-          {bannerImage ? (
-            <img 
-              src={bannerImage} 
-              alt={`${displayTitle || "Category"} Banner`} 
-              className="w-full h-full object-cover animate-in fade-in duration-500" 
-              onError={e => {
-                e.currentTarget.onerror = null;
-                e.currentTarget.src = "/images/placeholder.png";
-              }}
-            />
-          ) : (
-            <div className="w-full h-full bg-[#8c6239] flex items-center justify-center">
-              <span className="text-[#C5A059] opacity-25 text-7xl font-serif">🌾</span>
-            </div>
-          )}
-          {/* Overlapping Breadcrumbs bottom left of right block */}
-          <div className="absolute bottom-4 left-6 z-30 bg-black/50 backdrop-blur-md px-4 py-2 rounded-lg text-[9px] md:text-[10px] font-black uppercase tracking-wider text-white">
-            <Link href="/" className="hover:underline text-white">Home</Link>
-            <span className="mx-2 text-white/50">/</span>
-            <span className="text-white/70">Collections</span>
-            <span className="mx-2 text-white/50">/</span>
-            <span className="text-white">{displayTitle || "Category"}</span>
-          </div>
         </div>
       </div>
 
