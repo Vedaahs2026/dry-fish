@@ -24,6 +24,7 @@ export default function Navbar() {
 
 
   const [navItems, setNavItems] = useState<NavItem[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -76,6 +77,13 @@ export default function Navbar() {
         const navData = await navRes.json();
         if (navData.success) {
           setNavItems(navData.data);
+        }
+
+        // Fetch Categories
+        const catRes = await fetch("/api/admin/homepage-categories");
+        const catData = await catRes.json();
+        if (catData.success) {
+          setCategories(catData.data);
         }
 
         // Fetch Session
@@ -175,15 +183,21 @@ export default function Navbar() {
                 </button>
                 <div className="absolute left-0 mt-2 w-48 rounded-xl bg-[#eab308] border border-[#064e3b]/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="py-2">
-                    {navItems.filter(item => item.isActive !== false).map((item) => (
-                      <Link
-                        key={item.id}
-                        href={item.href}
-                        className="block px-4 py-2.5 text-[10px] font-bold text-[#064e3b] hover:bg-black/5 hover:text-black transition-colors uppercase tracking-wider"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                    {categories.length === 0 ? (
+                      <div className="px-4 py-2.5 text-[9px] font-bold text-[#064e3b]/50 uppercase tracking-wider">
+                        No Categories Yet
+                      </div>
+                    ) : (
+                      categories.map((cat) => (
+                        <Link
+                          key={cat.id}
+                          href={cat.link || `/category/${cat.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
+                          className="block px-4 py-2.5 text-[10px] font-bold text-[#064e3b] hover:bg-black/5 hover:text-black transition-colors uppercase tracking-wider"
+                        >
+                          {cat.name}
+                        </Link>
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
@@ -321,16 +335,22 @@ export default function Navbar() {
                 <div className="space-y-2 py-2">
                   <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#064e3b] opacity-80">Products</h3>
                   <div className="flex flex-col space-y-1 pl-3 border-l border-[#064e3b]/20">
-                    {navItems.filter(item => item.isActive !== false).map((item) => (
-                      <Link
-                        key={item.id}
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="text-[#064e3b] hover:text-black transition-colors py-2 text-xs font-bold uppercase tracking-wider"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                    {categories.length === 0 ? (
+                      <span className="text-[#064e3b]/50 py-2 text-xs font-bold uppercase tracking-wider">
+                        No Categories Yet
+                      </span>
+                    ) : (
+                      categories.map((cat) => (
+                        <Link
+                          key={cat.id}
+                          href={cat.link || `/category/${cat.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-[#064e3b] hover:text-black transition-colors py-2 text-xs font-bold uppercase tracking-wider"
+                        >
+                          {cat.name}
+                        </Link>
+                      ))
+                    )}
                   </div>
                 </div>
 
