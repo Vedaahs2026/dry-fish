@@ -38,6 +38,7 @@ interface Order {
   trackingLink?: string | null;
   estimatedDeliveryDate?: string | null;
   shippingNotes?: string | null;
+  cancellationReason?: string | null;
 }
 
 const isProductCouponMatch = (item: OrderItem, couponCode: string | null, targetType: string | null, targetValue: string | null) => {
@@ -341,6 +342,16 @@ export default function MyOrdersPage() {
                           </div>
                         );
                       })}
+                    </div>
+                  </div>
+                )}
+
+                {order.status?.toLowerCase() === "cancelled" && order.cancellationReason && (
+                  <div className="mx-6 md:mx-8 mt-6 p-4 bg-red-50 border border-red-100 rounded-2xl flex items-start space-x-3 text-red-700 animate-in fade-in">
+                    <AlertTriangle size={18} className="shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="text-[10px] font-black uppercase tracking-widest text-red-500 mb-0.5">Cancellation Reason</h5>
+                      <p className="text-xs font-semibold leading-relaxed">{order.cancellationReason}</p>
                     </div>
                   </div>
                 )}

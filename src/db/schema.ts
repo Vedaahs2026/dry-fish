@@ -115,6 +115,7 @@ export const orders = sqliteTable("orders", {
   trackingLink: text("tracking_link"),
   estimatedDeliveryDate: integer("estimated_delivery_date", { mode: "timestamp" }),
   shippingNotes: text("shipping_notes"),
+  cancellationReason: text("cancellation_reason"),
   createdAt: text("created_at").$defaultFn(() => new Date().toISOString()),
 });
 

@@ -35,6 +35,7 @@ export async function GET() {
       trackingLink: orders.trackingLink,
       estimatedDeliveryDate: orders.estimatedDeliveryDate,
       shippingNotes: orders.shippingNotes,
+      cancellationReason: orders.cancellationReason,
     })
     .from(orders)
     .leftJoin(coupons, eq(orders.couponCode, coupons.code))

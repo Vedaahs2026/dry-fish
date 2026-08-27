@@ -18,7 +18,7 @@ export async function PATCH(
   }
 
   try {
-    const { status, paymentStatus, razorpayPaymentId } = await req.json();
+    const { status, paymentStatus, razorpayPaymentId, cancellationReason } = await req.json();
     const orderId = parseInt(id);
 
     if (!status && !paymentStatus) {
@@ -46,6 +46,9 @@ export async function PATCH(
         );
       }
       updateData.status = status;
+      if (status.toLowerCase() === "cancelled" && cancellationReason) {
+        updateData.cancellationReason = cancellationReason;
+      }
     }
 
     if (paymentStatus) {

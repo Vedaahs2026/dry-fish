@@ -90,6 +90,12 @@ export default function AdminOrders() {
   const [paymentForm, setPaymentForm] = useState({ razorpayPaymentId: "" });
   const [isSubmittingPayment, setIsSubmittingPayment] = useState(false);
 
+  // Cancellation Modal States
+  const [showCancelModal, setShowCancelModal] = useState(false);
+  const [cancelOrderId, setCancelOrderId] = useState<number | null>(null);
+  const [cancelReason, setCancelReason] = useState("");
+  const [isSubmittingCancel, setIsSubmittingCancel] = useState(false);
+
   const showToast = (msg: string) => {
     setToast(msg);
     setTimeout(() => setToast(""), 3000);
@@ -138,6 +144,33 @@ export default function AdminOrders() {
       console.error("Failed to update status", error);
     } finally {
       setUpdatingId(null);
+    }
+  };
+
+  const handleConfirmCancel = async () => {
+    if (!cancelOrderId) return;
+    setIsSubmittingCancel(true);
+    try {
+      const res = await fetch(`/api/admin/orders/${cancelOrderId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: "Cancelled", cancellationReason: cancelReason.trim() })
+      });
+      if (res.ok) {
+        setOrders(prev => prev.map(o => o.id === cancelOrderId ? { ...o, status: "Cancelled" } : o));
+        showToast("Order cancelled successfully");
+        setShowCancelModal(false);
+        setCancelReason("");
+        setCancelOrderId(null);
+      } else {
+        const err = await res.json();
+        showToast(err.error || "Failed to cancel order");
+      }
+    } catch (error) {
+      console.error("Failed to cancel order", error);
+      showToast("Something went wrong");
+    } finally {
+      setIsSubmittingCancel(false);
     }
   };
 
@@ -355,7 +388,14 @@ export default function AdminOrders() {
                     disabled={updatingId === order.id}
                     onChange={(e) => {
                       e.stopPropagation();
-                      updateOrderStatus(order.id, e.target.value);
+                      const val = e.target.value;
+                      if (val.toLowerCase() === "cancelled") {
+                        setCancelOrderId(order.id);
+                        setCancelReason("");
+                        setShowCancelModal(true);
+                      } else {
+                        updateOrderStatus(order.id, val);
+                      }
                     }}
                     onClick={(e) => e.stopPropagation()}
                     className={`appearance-none px-4 py-1.5 pr-10 rounded-full text-[10px] font-black uppercase tracking-widest cursor-pointer transition-all border outline-none ${getStatusStyles(order.status)} ${updatingId === order.id ? "opacity-50 animate-pulse" : ""}`}
@@ -970,6 +1010,73 @@ export default function AdminOrders() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* ─── CANCELLATION REASON MODAL ────────────────────────── */}
+      {showCancelModal && cancelOrderId && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-brand/40 backdrop-blur-sm" 
+            onClick={() => !isSubmittingCancel && setShowCancelModal(false)} 
+          />
+          <div className="relative w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl border border-brand/5 overflow-hidden animate-in zoom-in-95 duration-200">
+            {/* Header */}
+            <div className="p-8 border-b border-brand/5 flex items-center justify-between bg-brand/5">
+              <div>
+                <h3 className="text-xl font-playfair font-bold text-black flex items-center gap-2">
+                  Cancel Order
+                </h3>
+                <p className="text-[10px] text-black/40 font-bold uppercase tracking-widest mt-1">
+                  Order #AS-{cancelOrderId}
+                </p>
+              </div>
+              <button 
+                onClick={() => setShowCancelModal(false)}
+                disabled={isSubmittingCancel}
+                className="p-2 rounded-full hover:bg-brand/5 text-black/40 hover:text-black transition-colors cursor-pointer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Form */}
+            <div className="p-8 space-y-6">
+              <div>
+                <label className="block text-[10px] font-bold text-black/40 uppercase tracking-widest mb-2 ml-1">
+                  Reason for Cancellation
+                </label>
+                <textarea
+                  value={cancelReason}
+                  onChange={(e) => setCancelReason(e.target.value)}
+                  placeholder="Enter the reason why this order is being cancelled..."
+                  rows={4}
+                  className="w-full bg-brand/5 border border-brand/10 rounded-2xl py-3.5 px-4 text-xs font-bold text-black placeholder-brand/30 focus:outline-none focus:border-[#C5A059]/30 focus:ring-4 focus:ring-[#C5A059]/10 transition-all resize-none"
+                  required
+                />
+              </div>
+
+              <div className="flex justify-end space-x-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowCancelModal(false)}
+                  disabled={isSubmittingCancel}
+                  className="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-black/40 hover:bg-brand/5 rounded-xl transition-all cursor-pointer"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  onClick={handleConfirmCancel}
+                  disabled={isSubmittingCancel || !cancelReason.trim()}
+                  className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-md disabled:opacity-50 flex items-center gap-2 cursor-pointer"
+                >
+                  {isSubmittingCancel && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                  <span>Cancel Order</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
