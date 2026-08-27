@@ -67,7 +67,7 @@ export const useWishlistStore = create<WishlistStore>((set, get) => ({
           set({ items: mapped, isLoaded: true, isAuthenticated: true });
         }
       } else if (res.status === 401) {
-        set({ items: [], isLoaded: true, isAuthenticated: false });
+        set({ isLoaded: true, isAuthenticated: false });
       }
     } catch (err) {
       console.error("Failed to fetch wishlist", err);

@@ -95,11 +95,6 @@ export default function Navbar() {
           fetchWishlist();
         } else {
           setUser(null);
-          // If the user is logged out, ensure the cart and wishlist are empty
-          if (cartItems.length > 0) {
-            clearCart();
-          }
-          clearWishlist();
         }
       } catch (error) {
         console.error("Failed to fetch data:", error);
@@ -126,8 +121,6 @@ export default function Navbar() {
       const res = await fetch("/api/auth/logout", { method: "POST" });
       if (res.ok) {
         setUser(null);
-        clearCart();
-        clearWishlist();
         setIsLogoutModalOpen(false);
         router.push("/");
         router.refresh();
