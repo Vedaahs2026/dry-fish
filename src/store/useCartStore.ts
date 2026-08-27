@@ -34,17 +34,18 @@ export const useCartStore = create<CartStore>()(
       addItem: (newItem) => {
         const currentItems = get().items;
         const existingItem = currentItems.find((item) => item.id === newItem.id);
+        const qtyToAdd = newItem.quantity && newItem.quantity > 0 ? newItem.quantity : 1;
         
         if (existingItem) {
           set({
             items: currentItems.map((item) =>
               item.id === newItem.id
-                ? { ...item, quantity: item.quantity + 1 }
+                ? { ...item, quantity: item.quantity + qtyToAdd }
                 : item
             ),
           });
         } else {
-          set({ items: [...currentItems, { ...newItem, quantity: 1 }] });
+          set({ items: [...currentItems, { ...newItem, quantity: qtyToAdd }] });
         }
       },
       
