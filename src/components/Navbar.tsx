@@ -146,7 +146,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-[#eab308] border-b border-[#064e3b]/10 shadow-lg font-inter">
+      <header className="sticky top-0 z-50 w-full bg-black border-b border-white/10 shadow-lg font-inter">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-12">
 
@@ -158,7 +158,7 @@ export default function Navbar() {
                   alt="Dry Fish Basket Logo"
                   className="h-[28px] sm:h-[34px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
-                <span className="font-gabriola text-xl sm:text-2xl md:text-3xl font-bold text-[#064e3b] tracking-wide hover:text-black transition-colors translate-y-[0.5px]">
+                <span className="font-gabriola text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-wide hover:text-[#eab308] transition-colors translate-y-[0.5px]">
                   Dry Fish Basket
                 </span>
               </Link>
@@ -166,25 +166,25 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6 ml-4">
-              <Link href="/" className="text-[#064e3b] hover:text-black text-[11px] font-black uppercase tracking-widest transition-colors">
+              <Link href="/" className="text-white hover:text-[#eab308] text-[11px] font-black uppercase tracking-widest transition-colors">
                 Home
               </Link>
-              <Link href="/my-story" className="text-[#064e3b] hover:text-black text-[11px] font-black uppercase tracking-widest transition-colors">
+              <Link href="/my-story" className="text-white hover:text-[#eab308] text-[11px] font-black uppercase tracking-widest transition-colors">
                 About Us
               </Link>
               
               {/* Products Hover Dropdown */}
               <div className="relative group">
-                <button className="text-[#064e3b] hover:text-black text-[11px] font-black uppercase tracking-widest transition-colors flex items-center gap-1 cursor-pointer">
+                <button className="text-white hover:text-[#eab308] text-[11px] font-black uppercase tracking-widest transition-colors flex items-center gap-1 cursor-pointer">
                   Products
                   <svg className="w-2.5 h-2.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className="absolute left-0 mt-2 w-48 rounded-xl bg-[#eab308] border border-[#064e3b]/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="absolute left-0 mt-2 w-48 rounded-xl bg-black border border-white/10 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="py-2">
                     {categories.length === 0 ? (
-                      <div className="px-4 py-2.5 text-[9px] font-bold text-[#064e3b]/50 uppercase tracking-wider">
+                      <div className="px-4 py-2.5 text-[9px] font-bold text-white/50 uppercase tracking-wider">
                         No Categories Yet
                       </div>
                     ) : (
@@ -192,7 +192,7 @@ export default function Navbar() {
                         <Link
                           key={cat.id}
                           href={cat.link || `/category/${cat.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
-                          className="block px-4 py-2.5 text-[10px] font-bold text-[#064e3b] hover:bg-black/5 hover:text-black transition-colors uppercase tracking-wider"
+                          className="block px-4 py-2.5 text-[10px] font-bold text-white hover:bg-white/10 hover:text-[#eab308] transition-colors uppercase tracking-wider"
                         >
                           {cat.name}
                         </Link>
@@ -213,17 +213,17 @@ export default function Navbar() {
                     router.push("/#contact-us");
                   }
                 }}
-                className="text-[#064e3b] hover:text-black text-[11px] font-black uppercase tracking-widest transition-colors"
+                className="text-white hover:text-[#eab308] text-[11px] font-black uppercase tracking-widest transition-colors"
               >
                 Contact Us
               </Link>
             </nav>
 
-            <div className="hidden md:flex items-center space-x-4 ml-auto text-[#064e3b]">
+            <div className="hidden md:flex items-center space-x-4 ml-auto text-white">
               {/* Unified Minimalist Search Bar */}
               <div className="max-w-[280px] md:w-[280px]">
                 <form onSubmit={handleSearchSubmit} className="w-full relative flex items-center">
-                  <div className="absolute left-3 flex items-center pointer-events-none text-brand-dark/45">
+                  <div className="absolute left-3 flex items-center pointer-events-none text-white/40">
                     <Search size={16} strokeWidth={2.2} />
                   </div>
                   <input
@@ -231,7 +231,7 @@ export default function Navbar() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search for products"
-                    className="w-full bg-[#FFFDF6] text-[#064e3b] pl-9 pr-4 py-2 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-[#C5A059] placeholder:text-brand-dark/45 transition-all shadow-sm border border-[#064e3b]/10"
+                    className="w-full bg-[#1A1A1A] text-white pl-9 pr-4 py-2 rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-[#C5A059] placeholder:text-white/40 transition-all shadow-sm border border-white/10"
                   />
                 </form>
               </div>
@@ -243,7 +243,7 @@ export default function Navbar() {
               >
                 <Heart className="h-5 w-5" />
                 {user && wishlistItems.length > 0 && (
-                  <span className="absolute top-0 right-0 bg-[#eab308] text-[#064e3b] text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center border-2 border-[#eab308]">
+                  <span className="absolute top-0 right-0 bg-[#eab308] text-black text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center border-2 border-black">
                     {wishlistItems.length}
                   </span>
                 )}
@@ -251,7 +251,7 @@ export default function Navbar() {
 
               <Link href={user ? "/cart" : "/login"} aria-label="Cart" className="hover:text-black transition-colors relative p-2">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute top-0 right-0 bg-[#eab308] text-[#064e3b] text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center border-2 border-[#eab308]">
+                <span className="absolute top-0 right-0 bg-[#eab308] text-black text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center border-2 border-black">
                   {cartCount}
                 </span>
               </Link>
@@ -273,31 +273,31 @@ export default function Navbar() {
 
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center space-x-1 sm:space-x-2">
-              <button onClick={() => setIsSearchOpen(true)} aria-label="Search" className="text-[#064e3b] p-1 sm:p-2">
+              <button onClick={() => setIsSearchOpen(true)} aria-label="Search" className="text-white p-1 sm:p-2">
                 <Search className="h-5 w-5" />
               </button>
               <Link
                 href={user ? "/wishlist" : `/login?redirect=${encodeURIComponent(pathname)}`}
                 aria-label="Wishlist"
-                className="text-[#064e3b] hover:text-black transition-colors relative p-1 sm:p-2 cursor-pointer"
+                className="text-white hover:text-[#eab308] transition-colors relative p-1 sm:p-2 cursor-pointer"
               >
                 <Heart className="h-5 w-5" />
                 {user && wishlistItems.length > 0 && (
-                  <span className="absolute top-0 right-0 bg-[#eab308] text-[#064e3b] text-[9px] font-black h-4 w-4 rounded-full flex items-center justify-center border-2 border-[#eab308]">
+                  <span className="absolute top-0 right-0 bg-[#eab308] text-black text-[9px] font-black h-4 w-4 rounded-full flex items-center justify-center border-2 border-black">
                     {wishlistItems.length}
                   </span>
                 )}
               </Link>
 
-              <Link href={user ? "/cart" : "/login"} aria-label="Cart" className="text-[#064e3b] hover:text-black transition-colors relative p-1 sm:p-2">
+              <Link href={user ? "/cart" : "/login"} aria-label="Cart" className="text-white hover:text-[#eab308] transition-colors relative p-1 sm:p-2">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute top-0 right-0 bg-[#eab308] text-[#064e3b] text-[9px] font-black h-4 w-4 rounded-full flex items-center justify-center border-2 border-[#eab308]">
+                <span className="absolute top-0 right-0 bg-[#eab308] text-black text-[9px] font-black h-4 w-4 rounded-full flex items-center justify-center border-2 border-black">
                   {cartCount}
                 </span>
               </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-[#064e3b] hover:text-black focus:outline-none p-1 sm:p-2"
+                className="text-white hover:text-[#eab308] focus:outline-none p-1 sm:p-2"
               >
                 {isMobileMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -311,7 +311,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Panel */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-[#eab308] border-t border-[#064e3b]/10 animate-in slide-in-from-top duration-300">
+          <div className="md:hidden bg-black border-t border-white/10 animate-in slide-in-from-top duration-300">
             <div className="px-6 pt-8 pb-12 space-y-6">
 
               {/* Navigation Links */}
@@ -319,24 +319,24 @@ export default function Navbar() {
                 <Link
                   href="/"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-[#064e3b] hover:text-black text-sm font-black uppercase tracking-widest transition-colors py-2"
+                  className="block text-white hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2"
                 >
                   Home
                 </Link>
                 <Link
                   href="/my-story"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-[#064e3b] hover:text-black text-sm font-black uppercase tracking-widest transition-colors py-2"
+                  className="block text-white hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2"
                 >
                   About Us
                 </Link>
 
                 {/* Products Section */}
                 <div className="space-y-2 py-2">
-                  <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#064e3b] opacity-80">Products</h3>
-                  <div className="flex flex-col space-y-1 pl-3 border-l border-[#064e3b]/20">
+                  <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-white opacity-80">Products</h3>
+                  <div className="flex flex-col space-y-1 pl-3 border-l border-white/20">
                     {categories.length === 0 ? (
-                      <span className="text-[#064e3b]/50 py-2 text-xs font-bold uppercase tracking-wider">
+                      <span className="text-white/50 py-2 text-xs font-bold uppercase tracking-wider">
                         No Categories Yet
                       </span>
                     ) : (
@@ -345,7 +345,7 @@ export default function Navbar() {
                           key={cat.id}
                           href={cat.link || `/category/${cat.name.toLowerCase().trim().replace(/\s+/g, "-")}`}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="text-[#064e3b] hover:text-black transition-colors py-2 text-xs font-bold uppercase tracking-wider"
+                          className="text-white hover:text-[#eab308] transition-colors py-2 text-xs font-bold uppercase tracking-wider"
                         >
                           {cat.name}
                         </Link>
@@ -364,28 +364,28 @@ export default function Navbar() {
                       footer.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="block text-[#064e3b] hover:text-black text-sm font-black uppercase tracking-widest transition-colors py-2"
+                  className="block text-white hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2"
                 >
                   Contact Us
                 </Link>
               </div>
 
-              <div className="border-t border-[#064e3b]/15" />
+              <div className="border-t border-white/15" />
 
               {/* Account Section */}
               <div className="space-y-3">
-                <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-[#064e3b] opacity-80">Account</h3>
+                <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-white opacity-80">Account</h3>
 
                 {user ? (
                   <div className="space-y-2">
                     {/* User Info Header in Sidebar */}
-                    <div className="flex items-center space-x-3 px-4 py-3 rounded-2xl bg-white/20 border border-[#064e3b]/10 mb-3">
+                    <div className="flex items-center space-x-3 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 mb-3">
                       <div className="w-8 h-8 rounded-full bg-[#FFFDF6] flex items-center justify-center text-[#064e3b] text-xs font-black shadow-sm">
                         {user.fullName ? user.fullName.split(" ").map(n => n[0]).join("").toUpperCase().substring(0, 1) : "U"}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="text-xs font-black uppercase tracking-widest text-[#064e3b] truncate">{user.fullName || "User"}</div>
-                        <div className="text-[9px] text-[#064e3b]/60 uppercase tracking-widest font-bold mt-0.5">{user.phoneNumber}</div>
+                        <div className="text-xs font-black uppercase tracking-widest text-white truncate">{user.fullName || "User"}</div>
+                        <div className="text-[9px] text-white/60 uppercase tracking-widest font-bold mt-0.5">{user.phoneNumber}</div>
                       </div>
                     </div>
 
@@ -393,25 +393,25 @@ export default function Navbar() {
                       <Link
                         href="/account/profile"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center space-x-3 text-[#064e3b] hover:text-black transition-colors py-2.5"
+                        className="flex items-center space-x-3 text-white hover:text-[#eab308] transition-colors py-2.5"
                       >
-                        <User className="h-4.5 w-4.5 text-[#064e3b]" />
+                        <User className="h-4.5 w-4.5 text-white" />
                         <span className="text-sm font-bold uppercase tracking-wider">Edit Profile</span>
                       </Link>
                       <Link
                         href="/profile/orders"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center space-x-3 text-[#064e3b] hover:text-black transition-colors py-2.5"
+                        className="flex items-center space-x-3 text-white hover:text-[#eab308] transition-colors py-2.5"
                       >
-                        <Package className="h-4.5 w-4.5 text-[#064e3b]" />
+                        <Package className="h-4.5 w-4.5 text-white" />
                         <span className="text-sm font-bold uppercase tracking-wider">My Orders</span>
                       </Link>
                       <Link
                         href="/account/address"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center space-x-3 text-[#064e3b] hover:text-black transition-colors py-2.5"
+                        className="flex items-center space-x-3 text-white hover:text-[#eab308] transition-colors py-2.5"
                       >
-                        <MapPin className="h-4.5 w-4.5 text-[#064e3b]" />
+                        <MapPin className="h-4.5 w-4.5 text-white" />
                         <span className="text-sm font-bold uppercase tracking-wider">My Addresses</span>
                       </Link>
                     </div>
@@ -434,7 +434,7 @@ export default function Navbar() {
                         setIsMobileMenuOpen(false);
                         window.location.href = "/login";
                       }}
-                      className="block w-full px-4 py-4 rounded-xl text-center text-xs font-black uppercase tracking-[0.2em] text-[#064e3b] bg-[#eab308] hover:bg-emerald-950 hover:text-white shadow-lg relative z-10 transition-all cursor-pointer"
+                      className="block w-full px-4 py-4 rounded-xl text-center text-xs font-black uppercase tracking-[0.2em] text-black bg-[#eab308] hover:bg-white hover:text-black shadow-lg relative z-10 transition-all cursor-pointer"
                     >
                       Login / Sign Up
                     </button>
