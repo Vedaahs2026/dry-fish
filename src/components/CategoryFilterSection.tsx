@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
-import { SlidersHorizontal, ChevronDown, Check, X, LayoutGrid, ShoppingBag } from "lucide-react";
+import { SlidersHorizontal, ChevronDown, Check, X, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import ProductCarousel from "@/components/ProductCarousel";
@@ -761,13 +761,6 @@ export default function CategoryFilterSection({
                 </div>
               </>
             )}
-          </div>
-          
-          {/* Grid Layout Icon */}
-          <div className="flex items-center gap-1 bg-white border border-[#3b2314]/10 rounded-lg p-0.5">
-            <button className="p-1.5 text-black/80 hover:bg-[#8c6239]/5 rounded transition cursor-pointer">
-              <LayoutGrid size={14} />
-            </button>
           </div>
         </div>
       </div>
