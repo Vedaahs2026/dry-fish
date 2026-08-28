@@ -49,7 +49,7 @@ export default function BlogsPage() {
   return (
     <main className="min-h-screen bg-[#FAF6ED] text-[#3b2314] font-sans selection:bg-[#8c6239]/20 pb-24">
       {/* Header */}
-      <section className="max-w-4xl mx-auto px-6 pt-16 pb-12 border-b border-[#8c6239]/10">
+      <section className="max-w-4xl mx-auto px-6 pt-16 pb-4 border-b border-[#8c6239]/10">
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <h1 className="text-3xl md:text-5xl font-serif font-black text-[#8c6239] leading-tight">
             Our Blog &amp; Recipes
@@ -61,7 +61,7 @@ export default function BlogsPage() {
       </section>
 
       {/* Blogs Listings Horizontal List */}
-      <section className="max-w-4xl mx-auto px-6 py-12">
+      <section className="max-w-4xl mx-auto px-6 pt-6 pb-12">
         {blogsList.length === 0 ? (
           <div className="py-24 text-center bg-white rounded-[3rem] border border-[#8c6239]/10 shadow-sm max-w-xl mx-auto px-8 space-y-4">
             <div className="w-16 h-16 bg-[#8c6239]/5 rounded-full flex items-center justify-center mx-auto text-[#8c6239]">

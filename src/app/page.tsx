@@ -353,12 +353,12 @@ export default function Home() {
       )}
 
       {/* 3. Main Content Section */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
         <ProductGrid />
 
         {/* Founder Promotion Section */}
         {founderPromoList.length > 0 && (
-          <section className="w-full mx-auto my-16 border-t border-[#8c6239]/10 pt-16 animate-in fade-in duration-500">
+          <section className="w-full mx-auto my-8 border-t border-[#8c6239]/10 pt-8 animate-in fade-in duration-500">
             <div className="flex flex-col items-center text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-serif font-black text-[#3b2314]">Our Mission &amp; Purpose</h2>
               <p className="text-xs text-black/50 font-bold tracking-tight mt-2 uppercase tracking-[0.15em]">Delivering authentic dry fish traditions</p>
