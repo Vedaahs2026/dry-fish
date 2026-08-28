@@ -40,6 +40,7 @@ interface Product {
   weave?: string | null;
   neckStyle?: string | null;
   keyWords?: string | null;
+  alternativeNames?: string | null;
   specifications?: string | null;
   variations: Variation[];
 }
@@ -358,6 +359,13 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
           {/* Right: Product Details (7 cols) */}
           <div className="lg:col-span-7 flex flex-col bg-[#FAF6ED] border border-[#8c6239]/15 rounded-3xl p-6 md:p-8 shadow-sm">
+            {/* Alternative Language Names */}
+            {product.alternativeNames && (
+              <div className="text-xs md:text-sm text-[#2e5b30]/85 font-bold tracking-wide mb-1 text-left">
+                {product.alternativeNames.split(',').map(n => n.trim()).filter(Boolean).join(' | ')}
+              </div>
+            )}
+
             {/* 1. Product Name */}
             <h1 className="text-2xl md:text-3xl font-serif font-black leading-tight text-[#3b2314] mb-3">
               {product.name}
@@ -577,6 +585,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                       style: p.style,
                       neckStyle: p.neckStyle,
                       keyWords: p.keyWords,
+                      alternativeNames: p.alternativeNames,
                       avgRating: p.avgRating,
                       numReviews: p.numReviews,
                     }}

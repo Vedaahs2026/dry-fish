@@ -18,6 +18,7 @@ interface Product {
   category?: string;
   isFeatured: boolean | number | null;
   isCustomizable: boolean | number | null;
+  alternativeNames?: string | null;
 }
 
 function SearchResults() {
@@ -137,6 +138,7 @@ function SearchResults() {
                   images: parsedImagesList,
                   categorySlug: "search",
                   isCustomizable: p.isCustomizable ? true : false,
+                  alternativeNames: p.alternativeNames,
                 };
                 return <ProductCard key={p.id} product={productProps} />;
               })}

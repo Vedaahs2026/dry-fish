@@ -64,6 +64,7 @@ interface Product {
   weave?: string | null;
   neckStyle?: string | null;
   keyWords?: string | null;
+  alternativeNames?: string | null;
   filterCategory?: string | null;
   specifications?: string | null;
 }
@@ -100,6 +101,7 @@ export default function ProductManagement() {
   const [weave, setWeave] = useState("");
   const [neckStyle, setNeckStyle] = useState("");
   const [keyWords, setKeyWords] = useState("");
+  const [alternativeNames, setAlternativeNames] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
   const [specRows, setSpecRows] = useState<{ id: string; key: string; value: string; isCustom: boolean }[]>(() => [
     { id: "weight-init", key: "Weight", value: "", isCustom: false },
@@ -465,7 +467,7 @@ export default function ProductManagement() {
     setIsNameChecking(false);
     setAvgRating("4.3"); setNumReviews("1");
     setIsFeatured(false); setIsCustomizable(false); setTags("");
-    setStyle(""); setFabricComposition(""); setWeave(""); setNeckStyle(""); setKeyWords(""); setFilterCategory("");
+    setStyle(""); setFabricComposition(""); setWeave(""); setNeckStyle(""); setKeyWords(""); setAlternativeNames(""); setFilterCategory("");
     setSpecRows([
       { id: Math.random().toString(), key: "Weight", value: "", isCustom: false },
       { id: Math.random().toString(), key: "Shelf Life", value: "", isCustom: false },
@@ -520,7 +522,7 @@ export default function ProductManagement() {
         setWeave(p.weave || "");
         setNeckStyle(p.neckStyle || "");
         setKeyWords(p.keyWords || "");
-        
+        setAlternativeNames(p.alternativeNames || "");
         setFilterCategory(p.filterCategory || "");
 
         // Parse specifications
@@ -680,6 +682,7 @@ export default function ProductManagement() {
         weave: weave ? weave.trim() : null,
         neckStyle: neckStyle ? neckStyle.trim() : null,
         keyWords: keyWords ? keyWords.trim() : null,
+        alternativeNames: alternativeNames ? alternativeNames.trim() : null,
         filterCategory: null,
         specifications: null
       };
@@ -886,6 +889,10 @@ export default function ProductManagement() {
             <div>
               <h3 className="text-xs font-black text-black/30 uppercase tracking-[0.3em] mb-6 flex items-center gap-2"><span className="w-5 h-5 rounded-full bg-brand text-white text-[8px] flex items-center justify-center font-black">1</span> Product Identity</h3>
               <div className="space-y-5">
+                <div>
+                  <label className={LABEL}>Alternative Language Names (Comma separated, e.g. நெத்தিলি, ನೆತ್ತಿಲಿ ಮೀನು)</label>
+                  <input value={alternativeNames} onChange={e => setAlternativeNames(e.target.value)} placeholder="e.g. நெத்தিলি, ನೆತ್ತಿಲಿ ಮೀನು" className={INPUT} />
+                </div>
                 <div>
                   <label className={LABEL}>Product Name *</label>
                   <input value={name} onChange={e => setName(e.target.value)} placeholder="e.g. Premium Sun-Dried Anchovies" className={`${INPUT} ${nameError ? 'border-red-500 focus:border-red-500' : ''}`} required />

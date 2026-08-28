@@ -144,6 +144,7 @@ export default function ProductGrid() {
                       style: product.style,
                       neckStyle: product.neckStyle,
                       keyWords: product.keyWords,
+                      alternativeNames: product.alternativeNames,
                       avgRating: product.avgRating,
                       numReviews: product.numReviews,
                     }} 

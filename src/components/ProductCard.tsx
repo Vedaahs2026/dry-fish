@@ -20,6 +20,7 @@ interface Product {
   style?: string | null;
   neckStyle?: string | null;
   keyWords?: string | null;
+  alternativeNames?: string | null;
   avgRating?: number | string | null;
   numReviews?: number | string | null;
   totalStock?: number;
@@ -89,7 +90,14 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
       
       {/* Bottom Content Section */}
-      <div className="pt-3 pb-2 px-1 flex flex-col flex-1 items-start">
+      <div className="pt-3 pb-2 px-1 flex flex-col flex-1 items-start w-full">
+        {/* Alternative Language Names */}
+        {product.alternativeNames && (
+          <div className="text-[10px] md:text-xs text-[#2e5b30]/85 font-bold leading-none mb-1.5 truncate w-full text-left">
+            {product.alternativeNames.split(',').map(n => n.trim()).filter(Boolean).join(' | ')}
+          </div>
+        )}
+
         {/* Product Name */}
         <h3 className="text-xs md:text-sm font-medium text-black/85 text-left line-clamp-2 mb-1 w-full leading-tight">
           {product.name}

@@ -24,6 +24,7 @@ interface Product {
   tags?: string | null;
   style?: string | null;
   keyWords?: string | null;
+  alternativeNames?: string | null;
   neckStyle?: string | null;
   avgRating?: number | string | null;
   numReviews?: number | string | null;
@@ -796,6 +797,7 @@ export default function CategoryFilterSection({
                     style: p.style,
                     neckStyle: p.neckStyle,
                     keyWords: p.keyWords,
+                    alternativeNames: p.alternativeNames,
                     avgRating: p.avgRating,
                     numReviews: p.numReviews,
                     totalStock: p.totalStock,

@@ -92,7 +92,7 @@ export async function POST(request: Request) {
       name, description, salePrice, images, variations,
       avgRating, numReviews, category, gender, colors, tags, isFeatured, 
       isCustomizable, enabledMeasurements,
-      style, fabricComposition, weave, neckStyle, keyWords, filterCategory,
+      style, fabricComposition, weave, neckStyle, keyWords, alternativeNames, filterCategory,
       specifications
     } = body;
 
@@ -113,7 +113,7 @@ export async function POST(request: Request) {
     // We will calculate a "base price" for the main product entry from the minimum variation price.
     const basePriceValue = variations && variations.length > 0 ? Math.min(...variations.map((v: any) => Number(v.basePrice) || 0)) : 0;
     const baseSalePrice = variations && variations.length > 0 ? Math.min(...variations.map((v: any) => Number(v.salePrice) || 0)) : 0;
-
+ 
     // 1 & 2. Insert Product and Variations in a Transaction
     const newProduct = await db.transaction(async (tx) => {
       const productResult = await tx.insert(products).values({
@@ -136,6 +136,7 @@ export async function POST(request: Request) {
         weave: weave || null,
         neckStyle: neckStyle || null,
         keyWords: keyWords || null,
+        alternativeNames: alternativeNames || null,
         filterCategory: filterCategory || null,
         specifications: specifications ? JSON.stringify(specifications) : null,
       }).returning();
@@ -184,7 +185,7 @@ export async function PATCH(request: Request) {
       id, name, description, salePrice, images, variations,
       avgRating, numReviews, category, gender, colors, tags, isFeatured, 
       isCustomizable, enabledMeasurements,
-      style, fabricComposition, weave, neckStyle, keyWords, filterCategory,
+      style, fabricComposition, weave, neckStyle, keyWords, alternativeNames, filterCategory,
       specifications
     } = body;
 
@@ -237,6 +238,7 @@ export async function PATCH(request: Request) {
     if (weave !== undefined) updateData.weave = weave || null;
     if (neckStyle !== undefined) updateData.neckStyle = neckStyle || null;
     if (keyWords !== undefined) updateData.keyWords = keyWords || null;
+    if (alternativeNames !== undefined) updateData.alternativeNames = alternativeNames || null;
     if (filterCategory !== undefined) updateData.filterCategory = filterCategory || null;
     if (specifications !== undefined) updateData.specifications = specifications ? JSON.stringify(specifications) : null;
 

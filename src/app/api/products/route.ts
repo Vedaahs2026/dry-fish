@@ -18,6 +18,7 @@ export async function GET() {
       category: products.category,
       gender: products.gender,
       isFeatured: products.isFeatured,
+      alternativeNames: products.alternativeNames,
       totalStock: sql<number>`SUM(${productVariations.stock})`.mapWith(Number)
     })
     .from(products)
