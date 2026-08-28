@@ -145,13 +145,15 @@ export default function Navbar() {
 
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center mr-2 sm:mr-4 md:mr-8">
-              <Link href="/" className="flex items-center gap-1 sm:gap-1.5 group">
-                <img
-                  src="/images/logo.png"
-                  alt="Dry Fish Basket Logo"
-                  className="h-[34px] sm:h-[40px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                />
-                <span className="font-gabriola text-xl sm:text-2xl md:text-3xl font-bold text-[#064e3b] tracking-wide hover:text-[#8c6239] transition-colors translate-y-[0.5px]">
+              <Link href="/" className="flex items-center gap-2 group">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden flex items-center justify-center bg-white border border-[#8c6239]/15 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src="/images/logo.png"
+                    alt="Dry Fish Basket Logo"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="font-gabriola text-xl sm:text-2xl md:text-3xl font-bold text-[#3b2314] tracking-wide hover:text-[#8c6239] transition-colors translate-y-[0.5px]">
                   Dry Fish Basket
                 </span>
               </Link>
@@ -174,17 +176,10 @@ export default function Navbar() {
               ))}
 
               <Link
-                href="/#contact-us"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const footer = document.getElementById("contact-us");
-                  if (footer) {
-                    footer.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    router.push("/#contact-us");
-                  }
-                }}
-                className="text-[#3b2314] hover:text-[#8c6239] text-sm font-bold tracking-wide transition-colors"
+                href="/contact"
+                className={`hover:text-[#8c6239] text-sm font-bold tracking-wide transition-colors ${
+                  pathname === "/contact" ? "text-[#8c6239]" : "text-[#3b2314]"
+                }`}
               >
                 Contact
               </Link>
@@ -333,16 +328,11 @@ export default function Navbar() {
                 </div>
 
                 <Link
-                  href="/#contact-us"
-                  onClick={(e) => {
-                    setIsMobileMenuOpen(false);
-                    const footer = document.getElementById("contact-us");
-                    if (footer) {
-                      e.preventDefault();
-                      footer.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
-                  className="block text-white hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2"
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block hover:text-[#eab308] text-sm font-black uppercase tracking-widest transition-colors py-2 ${
+                    pathname === "/contact" ? "text-[#eab308]" : "text-white"
+                  }`}
                 >
                   Contact Us
                 </Link>

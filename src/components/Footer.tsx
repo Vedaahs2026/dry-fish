@@ -85,32 +85,32 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-xs font-medium text-[#FFFDF6]/80">
               <li>
-                <Link href="/search?q=Mumbai" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/location/mumbai" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Dry Fish in Mumbai
                 </Link>
               </li>
               <li>
-                <Link href="/search?q=Hyderabad" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/location/hyderabad" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Dry Fish in Hyderabad
                 </Link>
               </li>
               <li>
-                <Link href="/search?q=Delhi" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/location/delhi" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Dry Fish in Delhi
                 </Link>
               </li>
               <li>
-                <Link href="/search?q=Chennai" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/location/chennai" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Dry Fish in Chennai
                 </Link>
               </li>
               <li>
-                <Link href="/search?q=Bangalore" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/location/bangalore" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Dry Fish in Bangalore
                 </Link>
               </li>
               <li>
-                <Link href="/search?q=Kolkata" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/location/kolkata" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Dry Fish in Kolkata
                 </Link>
               </li>
@@ -120,7 +120,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/" className="hover:text-[#fcd34d] hover:underline transition-colors">
+                <Link href="/contact" className="hover:text-[#fcd34d] hover:underline transition-colors">
                   Dry Fish Wholesale
                 </Link>
               </li>

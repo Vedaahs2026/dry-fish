@@ -15,17 +15,25 @@ export default function WhatsAppButton() {
       href="https://wa.me/919848357279"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-20 md:bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA56] text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer"
+      className="fixed bottom-6 right-5 sm:bottom-8 sm:right-8 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA56] text-white rounded-full shadow-[0_8px_25px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer shrink-0"
       aria-label="Chat on WhatsApp"
     >
       {/* Tooltip */}
-      <span className="absolute right-16 bg-black/80 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap shadow-md">
+      <span className="absolute right-full mr-3 bg-black/85 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg opacity-0 pointer-events-none transition-all duration-300 group-hover:opacity-100 whitespace-nowrap shadow-lg translate-x-2 group-hover:translate-x-0">
         Chat with us
       </span>
 
-      {/* WhatsApp SVG Icon */}
-      <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
-        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.114-2.905-6.99C16.257 1.875 13.779 1.84 11.998 1.84c-5.442 0-9.87 4.421-9.875 9.867a9.78 9.78 0 0 0 1.5 4.896l-.988 3.606 3.693-.97c1.554.912 3.11 1.353 4.719 1.353zm8.932-6.52c-.3-.15-1.774-.875-2.046-.975-.272-.1-.47-.15-.668.15-.198.3-.767.975-.94 1.175-.173.2-.347.225-.648.075-.3-.15-1.266-.467-2.41-1.485-.89-.795-1.49-1.777-1.665-2.078-.173-.3-.018-.462.13-.61.135-.135.3-.349.45-.524.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.668-1.612-.915-2.2-.24-.579-.486-.5-.668-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.774-.726 2.022-1.43.247-.704.247-1.306.173-1.43-.075-.124-.272-.198-.57-.347z"/>
+      {/* Clean Official WhatsApp Vector Icon */}
+      <svg
+        className="w-8 h-8 fill-white shrink-0"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.127 1.2 4.488L3 21l4.632-1.216a8.948 8.948 0 0 0 4.42 1.168h.004c4.947 0 8.976-4.027 8.978-8.977 0-2.398-.934-4.653-2.631-6.342zM12.057 19.382h-.003a7.466 7.466 0 0 1-3.805-1.042l-.272-.162-2.83.742.755-2.757-.177-.282a7.46 7.46 0 0 1-1.144-3.985c.002-4.123 3.356-7.477 7.48-7.477 1.996 0 3.873.778 5.283 2.188a7.447 7.447 0 0 1 2.187 5.285c-.002 4.124-3.356 7.477-7.474 7.477zm4.103-5.602c-.225-.113-1.332-.657-1.538-.732-.206-.075-.356-.113-.506.113-.15.225-.58.732-.711.882-.131.15-.262.169-.487.056-.225-.113-.949-.35-1.808-1.115-.668-.596-1.119-1.332-1.25-1.557-.131-.225-.014-.347.098-.459.102-.102.225-.262.338-.394.113-.131.15-.225.225-.375.075-.15.038-.281-.019-.394-.056-.113-.506-1.218-.693-1.668-.182-.439-.367-.379-.506-.386-.131-.007-.281-.007-.431-.007s-.394.056-.6.281c-.206.225-.788.769-.788 1.875s.806 2.175.919 2.325c.113.15 1.587 2.424 3.845 3.399.537.232.956.371 1.283.475.539.171 1.03.147 1.418.089.432-.065 1.332-.544 1.52-.1.069.188-.731.188-1.35.131-.15-.075-.263-.3-.375z"
+        />
       </svg>
     </a>
   );

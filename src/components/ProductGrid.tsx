@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ProductCard from './ProductCard';
+import Link from 'next/link';
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { getFirstProductImageUrl, getProductImageUrls } from "@/utils/product";
@@ -156,7 +157,7 @@ export default function ProductGrid() {
           <div className="mt-12 flex justify-center">
             <Link
               href="/all"
-              className="flex items-center gap-2 bg-[#8c6239] hover:bg-[#734f2d] text-[#FAF6ED] px-8 py-3.5 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-md active:scale-[0.98] cursor-pointer"
+              className="flex items-center gap-2 bg-[#8c6239] hover:bg-[#734f2d] text-white px-8 py-3.5 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-md active:scale-[0.98] cursor-pointer"
             >
               <span>View All</span>
             </Link>

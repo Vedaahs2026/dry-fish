@@ -367,30 +367,40 @@ export default function CategorySettingsPage() {
             </div>
 
 
-            <div className="flex space-x-3">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="flex-1 flex items-center justify-center space-x-2 bg-[#8c6239] text-white py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-[#734f2d] transition-all shadow-lg disabled:opacity-50"
-              >
-                {isSubmitting ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                ) : (
-                  <Save size={16} />
-                )}
-                <span>{editingId ? "Save Changes" : "Create Card"}</span>
-              </button>
+            {(() => {
+              const isFormValid = name.trim().length > 0 && imageUrl.trim().length > 0;
+              
+              return (
+                <div className="flex space-x-3">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !isFormValid}
+                    className={`flex-1 flex items-center justify-center space-x-2 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all ${
+                      isFormValid && !isSubmitting
+                        ? "bg-[#8c6239] text-white hover:bg-[#6e4b2a] shadow-xl hover:scale-[1.01] active:scale-[0.98] cursor-pointer ring-2 ring-[#8c6239]/20"
+                        : "bg-[#8c6239]/30 text-white/50 cursor-not-allowed shadow-none"
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Save size={16} />
+                    )}
+                    <span>{editingId ? "Save Changes" : "Create Card"}</span>
+                  </button>
 
-              {editingId && (
-                <button
-                  type="button"
-                  onClick={resetForm}
-                  className="px-6 py-4 border border-brand/10 text-black/60 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-brand/5 transition-all"
-                >
-                  Cancel
-                </button>
-              )}
-            </div>
+                  {editingId && (
+                    <button
+                      type="button"
+                      onClick={resetForm}
+                      className="px-6 py-4 border border-brand/10 text-black/60 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-brand/5 transition-all"
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
+              );
+            })()}
           </form>
         </div>
 
