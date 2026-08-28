@@ -622,40 +622,43 @@ export default function CategoryFilterSection({
             </button>
             
             {isAvailabilityOpen && (
-              <div className="absolute left-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl p-5 min-w-[200px] space-y-4">
-                <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-black/40">
-                  <span>Selected</span>
-                  <button onClick={() => setAvailabilityFilter([])} className="underline hover:text-brand">Reset</button>
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setIsAvailabilityOpen(false)} />
+                <div className="absolute left-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl p-5 min-w-[200px] space-y-4">
+                  <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-black/40">
+                    <span>Selected</span>
+                    <button onClick={() => setAvailabilityFilter([])} className="underline hover:text-brand">Reset</button>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <label className="flex items-center gap-3 text-xs text-black/85 cursor-pointer hover:text-[#8c6239] transition-colors select-none">
+                      <input
+                        type="checkbox"
+                        checked={availabilityFilter.includes("in-stock")}
+                        onChange={() => {
+                          setAvailabilityFilter(prev =>
+                            prev.includes("in-stock") ? prev.filter(x => x !== "in-stock") : [...prev, "in-stock"]
+                          );
+                        }}
+                        className="rounded border-[#8c6239]/20 accent-[#8c6239] w-4 h-4"
+                      />
+                      In stock
+                    </label>
+                    <label className="flex items-center gap-3 text-xs text-black/85 cursor-pointer hover:text-[#8c6239] transition-colors select-none">
+                      <input
+                        type="checkbox"
+                        checked={availabilityFilter.includes("out-of-stock")}
+                        onChange={() => {
+                          setAvailabilityFilter(prev =>
+                            prev.includes("out-of-stock") ? prev.filter(x => x !== "out-of-stock") : [...prev, "out-of-stock"]
+                          );
+                        }}
+                        className="rounded border-[#8c6239]/20 accent-[#8c6239] w-4 h-4"
+                      />
+                      Out of stock
+                    </label>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-3">
-                  <label className="flex items-center gap-3 text-xs text-black/85 cursor-pointer hover:text-[#8c6239] transition-colors select-none">
-                    <input
-                      type="checkbox"
-                      checked={availabilityFilter.includes("in-stock")}
-                      onChange={() => {
-                        setAvailabilityFilter(prev =>
-                          prev.includes("in-stock") ? prev.filter(x => x !== "in-stock") : [...prev, "in-stock"]
-                        );
-                      }}
-                      className="rounded border-[#8c6239]/20 accent-[#8c6239] w-4 h-4"
-                    />
-                    In stock
-                  </label>
-                  <label className="flex items-center gap-3 text-xs text-black/85 cursor-pointer hover:text-[#8c6239] transition-colors select-none">
-                    <input
-                      type="checkbox"
-                      checked={availabilityFilter.includes("out-of-stock")}
-                      onChange={() => {
-                        setAvailabilityFilter(prev =>
-                          prev.includes("out-of-stock") ? prev.filter(x => x !== "out-of-stock") : [...prev, "out-of-stock"]
-                        );
-                      }}
-                      className="rounded border-[#8c6239]/20 accent-[#8c6239] w-4 h-4"
-                    />
-                    Out of stock
-                  </label>
-                </div>
-              </div>
+              </>
             )}
           </div>
 
@@ -674,35 +677,44 @@ export default function CategoryFilterSection({
             </button>
 
             {isPriceOpen && (
-              <div className="absolute left-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl p-5 min-w-[260px] space-y-4">
-                <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-black/40">
-                  <span>Max is Rs. {maxLimit}</span>
-                  <button onClick={() => setPriceRange([minLimit, maxLimit])} className="underline hover:text-brand">Reset</button>
-                </div>
-                <div className="flex gap-2.5 items-center">
-                  <div className="flex items-center bg-white border border-[#3b2314]/15 rounded-xl px-3 py-2 text-xs">
-                    <span className="text-black/40 mr-1">Rs.</span>
-                    <input
-                      type="number"
-                      placeholder="From"
-                      value={priceRange[0]}
-                      onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
-                      className="w-16 focus:outline-none"
-                    />
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setIsPriceOpen(false)} />
+                <div className="absolute left-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl p-5 min-w-[260px] space-y-4">
+                  <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-black/40">
+                    <span>Max is Rs. {maxLimit}</span>
+                    <button onClick={() => setPriceRange([minLimit, maxLimit])} className="underline hover:text-brand">Reset</button>
                   </div>
-                  <span className="text-black/30">-</span>
-                  <div className="flex items-center bg-white border border-[#3b2314]/15 rounded-xl px-3 py-2 text-xs">
-                    <span className="text-black/40 mr-1">Rs.</span>
-                    <input
-                      type="number"
-                      placeholder="To"
-                      value={priceRange[1]}
-                      onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                      className="w-16 focus:outline-none"
-                    />
+                  <div className="flex gap-2.5 items-center">
+                    <div className="flex items-center bg-white border border-[#3b2314]/15 rounded-xl px-3 py-2 text-xs">
+                      <span className="text-black/40 mr-1">Rs.</span>
+                      <input
+                        type="number"
+                        placeholder="From"
+                        value={priceRange[0]}
+                        onChange={(e) => {
+                          const val = e.target.value === "" ? minLimit : Number(e.target.value);
+                          setPriceRange([val, priceRange[1]]);
+                        }}
+                        className="w-16 focus:outline-none"
+                      />
+                    </div>
+                    <span className="text-black/30">-</span>
+                    <div className="flex items-center bg-white border border-[#3b2314]/15 rounded-xl px-3 py-2 text-xs">
+                      <span className="text-black/40 mr-1">Rs.</span>
+                      <input
+                        type="number"
+                        placeholder="To"
+                        value={priceRange[1]}
+                        onChange={(e) => {
+                          const val = e.target.value === "" ? maxLimit : Number(e.target.value);
+                          setPriceRange([priceRange[0], val]);
+                        }}
+                        className="w-16 focus:outline-none"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
         </div>
@@ -726,23 +738,28 @@ export default function CategoryFilterSection({
             </button>
 
             {isSortOpen && (
-              <div className="absolute right-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl py-2 min-w-[200px] overflow-hidden">
-                {Object.entries(SORT_OPTIONS).map(([key, label]) => (
-                  <button
-                    key={key}
-                    onClick={() => {
-                      setSortOption(key);
-                      setIsSortOpen(false);
-                    }}
-                    className={`w-full text-left px-4 py-2.5 hover:bg-[#8c6239]/5 transition-colors text-xs flex items-center justify-between ${
-                      sortOption === key ? "text-[#8c6239] font-bold" : "text-black/70"
-                    }`}
-                  >
-                    <span>{label}</span>
-                    {sortOption === key && <Check size={12} />}
-                  </button>
-                ))}
-              </div>
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setIsSortOpen(false)} />
+                <div className="absolute right-0 mt-2 z-50 bg-[#FAF6ED] border border-[#8c6239]/15 rounded-2xl shadow-xl py-2 min-w-[200px] overflow-hidden">
+                  {Object.entries(SORT_OPTIONS).map(([key, label]) => (
+                    <button
+                      key={key}
+                      onClick={() => {
+                        setSortOption(key);
+                        setIsSortOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2.5 hover:bg-[#8c6239]/5 transition-colors text-xs flex items-center gap-2 ${
+                        sortOption === key ? "text-[#8c6239] font-bold" : "text-black/70"
+                      }`}
+                    >
+                      <span className="w-3 flex-shrink-0 flex items-center justify-center">
+                        {sortOption === key && <Check size={12} />}
+                      </span>
+                      <span>{label}</span>
+                    </button>
+                  ))}
+                </div>
+              </>
             )}
           </div>
           
