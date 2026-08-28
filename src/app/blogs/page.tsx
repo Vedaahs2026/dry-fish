@@ -83,11 +83,11 @@ export default function BlogsPage() {
             {blogsList.map((blog) => (
               <article
                 key={blog.id}
-                className="bg-[#FFFDF6] border border-[#8c6239]/15 rounded-[2rem] overflow-hidden p-6 flex flex-col md:flex-row gap-6 shadow-sm hover:shadow-md transition-all text-left"
+                className="bg-[#FFFDF6] border border-[#8c6239]/15 rounded-[2rem] overflow-hidden p-4 md:p-6 flex flex-row gap-4 md:gap-6 shadow-sm hover:shadow-md transition-all text-left items-center"
               >
                 {/* Small cover image to the left */}
                 {blog.coverImage && (
-                  <div className="w-full md:w-56 lg:w-64 flex-shrink-0 aspect-[4/3] md:aspect-[4/3] rounded-xl overflow-hidden shadow-sm border border-[#8c6239]/10">
+                  <div className="w-20 h-20 md:w-32 md:h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-sm border border-[#8c6239]/10 bg-brand/5">
                     <img
                       src={blog.coverImage}
                       alt={blog.title}
@@ -101,27 +101,27 @@ export default function BlogsPage() {
                 )}
                 
                 {/* Card content on the right */}
-                <div className="flex-grow flex flex-col justify-between space-y-3">
-                  <div className="space-y-2">
-                    <h2 className="text-lg font-serif font-black text-[#3b2314] leading-tight">
+                <div className="flex-grow flex flex-col justify-between space-y-2 md:space-y-3">
+                  <div className="space-y-1 md:space-y-2">
+                    <h2 className="text-sm md:text-lg font-serif font-black text-[#3b2314] leading-tight">
                       {blog.title}
                     </h2>
-                    <div className="text-[10px] font-black text-black/40 uppercase tracking-widest">
+                    <div className="text-[9px] md:text-[10px] font-black text-black/40 uppercase tracking-widest">
                       {new Date(blog.publishedAt).toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",
                         year: "numeric"
                       })}
                     </div>
-                    <p className="text-xs text-black/75 leading-relaxed font-medium">
+                    <p className="text-[11px] md:text-xs text-black/75 leading-relaxed font-medium line-clamp-2 md:line-clamp-none">
                       {blog.summary}
                     </p>
                   </div>
 
-                  <div className="pt-2">
+                  <div className="pt-1">
                     <button
                       onClick={() => setActiveBlog(blog)}
-                      className="text-xs font-black uppercase tracking-wider text-[#8c6239] hover:underline cursor-pointer focus:outline-none"
+                      className="text-[10px] md:text-xs font-black uppercase tracking-wider text-[#8c6239] hover:underline cursor-pointer focus:outline-none"
                     >
                       Read more...
                     </button>
@@ -199,7 +199,7 @@ export default function BlogsPage() {
             <div className="p-4 bg-brand/5 border-t border-[#8c6239]/10 flex justify-end">
               <button
                 onClick={() => setActiveBlog(null)}
-                className="bg-[#8c6239] hover:bg-[#734f2d] text-[#FAF6ED] px-6 py-2.5 rounded-xl font-bold uppercase tracking-widest text-[9px] transition-all cursor-pointer"
+                className="bg-[#8c6239] hover:bg-[#734f2d] text-white px-6 py-2.5 rounded-xl font-bold uppercase tracking-widest text-[9px] transition-all cursor-pointer"
               >
                 Close
               </button>

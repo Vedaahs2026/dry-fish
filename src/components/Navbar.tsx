@@ -148,7 +148,7 @@ export default function Navbar() {
               <Link href="/" className="flex items-center gap-2 group">
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden flex items-center justify-center bg-white border border-[#8c6239]/15 shadow-sm group-hover:scale-105 transition-transform duration-300">
                   <img
-                    src="/images/logo.png"
+                    src="/logo.jpeg"
                     alt="Dry Fish Basket Logo"
                     className="w-full h-full object-cover"
                   />
