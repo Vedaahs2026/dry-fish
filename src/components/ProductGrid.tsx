@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import ProductCard from './ProductCard';
 import Link from 'next/link';
 import { Loader2 } from "lucide-react";
-import Link from "next/link";
 import { getFirstProductImageUrl, getProductImageUrls } from "@/utils/product";
 
 
